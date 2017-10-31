@@ -1,0 +1,13 @@
+version: 2
+
+jobs:
+  deploy:
+    docker:
+      - image: circleci/node:8
+    steps:
+      - checkout
+      - run: aws s3 sync ionic-angular/base s3://ionic-starters/ionic-angular/base/
+      - run: aws s3 sync ionic-angular/tabs s3://ionic-starters/ionic-angular/tabs/
+    branches:
+      only:
+        - master
