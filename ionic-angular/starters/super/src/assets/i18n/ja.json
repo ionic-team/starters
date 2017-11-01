@@ -1,0 +1,68 @@
+{
+  "BACK_BUTTON_TEXT": "戻る",
+
+  "NAME": "名前",
+  "EMAIL": "Eメール",
+  "USERNAME": "ユーザー名",
+  "PASSWORD": "パスワード",
+  "LOGIN": "サインイン",
+  "SIGNUP": "サインアップ",
+
+  "TAB1_TITLE": "項目",
+  "TAB2_TITLE": "検索",
+  "TAB3_TITLE": "設定",
+
+  "MAP_TITLE": "地図",
+
+  "TUTORIAL_SKIP_BUTTON": "スキップ",
+  "TUTORIAL_CONTINUE_BUTTON": "続ける",
+
+  "TUTORIAL_SLIDE1_TITLE": "Ionic Super Starterへようこそ",
+  "TUTORIAL_SLIDE1_DESCRIPTION": "<b> Ionic Super Starter </b>は、多くのビルド済ページとベストプラクティスを備えた、完全な機能をもつIonicのスターターです。",
+
+  "TUTORIAL_SLIDE2_TITLE": "Super Starterの使い方",
+  "TUTORIAL_SLIDE2_DESCRIPTION": "いろいろなページタイプの中から欲しいものを組み合わせて、いらないものを取り除いてください。 ログインページ、サインアップページ、タブ、このチュートリアルページなど、一般的なモバイルアプリのページレイアウトをいろいろと提供しています。",
+
+  "TUTORIAL_SLIDE3_TITLE": "はじめに",
+  "TUTORIAL_SLIDE3_DESCRIPTION": "ヘルプが必要ですか？完全なチュートリアルについては、Super Starter READMEを参照してください。",
+
+  "TUTORIAL_SLIDE4_TITLE": "準備ができましたか?",
+
+  "WELCOME_INTRO": "あなたのすばらしいIonicアプリの出発点",
+
+  "SETTINGS_TITLE": "設定",
+  "SETTINGS_OPTION1": "オプション 1",
+  "SETTINGS_OPTION2": "オプション 2",
+  "SETTINGS_OPTION3": "オプション 3",
+  "SETTINGS_OPTION4": "オプション 4",
+
+  "SETTINGS_PROFILE_BUTTON": "プロフィールの編集",
+
+  "SETTINGS_PAGE_PROFILE": "プロフィールの編集",
+
+  "WELCOME_TITLE": "ようこそ",
+
+  "LOGIN_TITLE": "サインイン",
+  "LOGIN_ERROR": "サインインできません。アカウント情報を確認して、もう一度お試しください。",
+  "LOGIN_BUTTON": "サインイン",
+  "SIGNUP_TITLE": "サインアップ",
+  "SIGNUP_ERROR": "アカウントを作成できません。 アカウント情報を確認して、もう一度お試しください。",
+  "SIGNUP_BUTTON": "サインアップ",
+
+  "LIST_MASTER_TITLE": "項目",
+
+  "ITEM_CREATE_TITLE": "新しい項目",
+  "ITEM_CREATE_CHOOSE_IMAGE": "画像の追加",
+
+  "ITEM_NAME_PLACEHOLDER": "名前",
+  "ITEM_ABOUT_PLACEHOLDER": "説明",
+
+  "DONE_BUTTON": "完了",
+  "CANCEL_BUTTON": "キャンセル",
+  "DELETE_BUTTON": "削除",
+
+  "CARDS_TITLE": "ソーシャル",
+
+  "SEARCH_TITLE": "検索",
+  "SEARCH_PLACEHOLDER": "項目一覧を検索 例 \"Donald Duck\""
+}

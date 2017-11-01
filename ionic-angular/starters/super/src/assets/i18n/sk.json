@@ -1,0 +1,80 @@
+{
+  "BACK_BUTTON_TEXT": "Späť",
+
+  "NAME": "Meno",
+  "EMAIL": "Email",
+  "USERNAME": "Prihlasovacie meno",
+  "PASSWORD": "Heslo",
+  "LOGIN": "Prihlásiť",
+  "SIGNUP": "Registrovať",
+
+  "TAB1_TITLE": "Položky",
+  "TAB2_TITLE": "Hľadať",
+  "TAB3_TITLE": "Nastavenia",
+
+  "MAP_TITLE": "Mapa",
+
+  "TUTORIAL_SKIP_BUTTON": "Preskočiť",
+  "TUTORIAL_CONTINUE_BUTTON": "Pokračovať",
+
+  "TUTORIAL_SLIDE1_TITLE": "Vitajte v Ionic Super Starter",
+  "TUTORIAL_SLIDE1_DESCRIPTION": "<b>Ionic Super Starter</b> kompletný Ionic starter projekt s mnohými predkonfigurovanými stránkami a doporučenými postupmi.",
+
+  "TUTORIAL_SLIDE2_TITLE": "Ako použiť Super Starter",
+  "TUTORIAL_SLIDE2_DESCRIPTION": "Upravte si stránky, ktoré vám vyhovujú a ostatné odstránte. Poskytujeme mnoho šablón mobilných stránok, ako napríklad stránka na prihlásenie, registráciu, záložky a tento návod.",
+
+  "TUTORIAL_SLIDE3_TITLE": "Začíname",
+  "TUTORIAL_SLIDE3_DESCRIPTION": "Potrebujete pomoc? Prečítajte si Super Starter README, v ktorom je popísaný komplený návod",
+
+  "TUTORIAL_SLIDE4_TITLE": "Ste pripravený?",
+
+
+
+  "WELCOME_INTRO": "Prvý krok vašej novej Ionic aplikácie.",
+
+  "SETTINGS_TITLE": "Nastavenia",
+  "SETTINGS_OPTION1": "Možnosť 1",
+  "SETTINGS_OPTION2": "Možnosť 2",
+  "SETTINGS_OPTION3": "Možnosť 3",
+  "SETTINGS_OPTION4": "Možnosť 4",
+
+  "SETTINGS_PROFILE_BUTTON": "Upraviť profil",
+
+
+  "SETTINGS_PAGE_PROFILE": "Profil",
+
+
+  "WELCOME_TITLE": "Vitajte",
+
+
+
+
+
+  "LOGIN_TITLE": "Prihlásenie",
+  "LOGIN_ERROR": "Nedá sa prihlásiť. Skotrolujte zadané informácie a skuste to znova.",
+  "LOGIN_BUTTON": "Prihlásiť",
+  "SIGNUP_TITLE": "Registrácia",
+  "SIGNUP_ERROR": "Nedá sa vytvoriť konto. Skotrolujte zadané informácie a skuste to znova.",
+  "SIGNUP_BUTTON": "Registrovať",
+
+  "LIST_MASTER_TITLE": "Položky",
+
+  "ITEM_CREATE_TITLE": "Nová položka",
+  "ITEM_CREATE_CHOOSE_IMAGE": "Pridať obrázok",
+
+
+
+
+
+  "ITEM_NAME_PLACEHOLDER": "Názov",
+  "ITEM_ABOUT_PLACEHOLDER": "O položke",
+
+  "DONE_BUTTON": "Hotovo",
+  "CANCEL_BUTTON": "Zrušiť",
+  "DELETE_BUTTON": "Vymazať",
+
+  "CARDS_TITLE": "Soc. siete",
+
+  "SEARCH_TITLE": "Hľadať",
+  "SEARCH_PLACEHOLDER": "Napíšte hľadaný výraz, e.g. \"Donald Duck\""
+}

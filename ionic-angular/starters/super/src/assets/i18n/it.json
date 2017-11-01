@@ -1,0 +1,68 @@
+{
+  "BACK_BUTTON_TEXT": "Indietro",
+
+  "NAME": "Nome",
+  "EMAIL": "Email",
+  "USERNAME": "Nome utente",
+  "PASSWORD": "Password",
+  "LOGIN": "Login",
+  "SIGNUP": "Registrati",
+
+  "TAB1_TITLE": "Elenco",
+  "TAB2_TITLE": "Ricerca",
+  "TAB3_TITLE": "Impostazioni",
+
+  "MAP_TITLE": "Mappa",
+
+  "TUTORIAL_SKIP_BUTTON": "Salta",
+  "TUTORIAL_CONTINUE_BUTTON": "Continua",
+
+  "TUTORIAL_SLIDE1_TITLE": "Benvenuti in Ionic Super Starter",
+  "TUTORIAL_SLIDE1_DESCRIPTION": "<b>Ionic Super Starter</b> è un applicazione di partenza per Ionic che contiene molte pagine di esempio già pronte realizzate seguendo delle best practices.",
+
+  "TUTORIAL_SLIDE2_TITLE": "Come usare Super Starter",
+  "TUTORIAL_SLIDE2_DESCRIPTION": "Mantenete le pagine che volete e rimuovete quelle che non vi servono. Troverete diverse pagine di uso comune in questa applicazione come le pagine per il login e la registrazione, layout con tabs, e questa pagina di tutorial.",
+
+  "TUTORIAL_SLIDE3_TITLE": "Come iniziare",
+  "TUTORIAL_SLIDE3_DESCRIPTION": "Serve aiuto? Leggete il README del progetto Super Starter per avere maggiori informazioni sul tutorial completo.",
+
+  "TUTORIAL_SLIDE4_TITLE": "Pronti ad iniziare?",
+
+  "WELCOME_INTRO": "Il punto di partenza per la tua prossima applicazione Ionic",
+
+  "SETTINGS_TITLE": "Impostazioni",
+  "SETTINGS_OPTION1": "Opzione 1",
+  "SETTINGS_OPTION2": "Opzione 2",
+  "SETTINGS_OPTION3": "Opzione 3",
+  "SETTINGS_OPTION4": "Opzione 4",
+
+  "SETTINGS_PROFILE_BUTTON": "Modifica Profilo",
+
+  "SETTINGS_PAGE_PROFILE": "Modifica Profilo",
+
+  "WELCOME_TITLE": "Benvenuto",
+
+  "LOGIN_TITLE": "Login",
+  "LOGIN_ERROR": "Non è possibile accedere. Ricontrollare le informazioni utente digitate prima di riprovare.",
+  "LOGIN_BUTTON": "Accedi",
+  "SIGNUP_TITLE": "Registrazione",
+  "SIGNUP_ERROR": "Non è possibile creare l'utente. Assicurarsi di aver inserito le informazioni utente correttamente e poi riprovare.",
+  "SIGNUP_BUTTON": "Registrati",
+
+  "LIST_MASTER_TITLE": "Elenco elementi",
+
+  "ITEM_CREATE_TITLE": "Nuovo elemento",
+  "ITEM_CREATE_CHOOSE_IMAGE": "Aggiungi immagine",
+
+  "ITEM_NAME_PLACEHOLDER": "Nome",
+  "ITEM_ABOUT_PLACEHOLDER": "Informazioni",
+
+  "DONE_BUTTON": "Fatto",
+  "CANCEL_BUTTON": "Annulla",
+  "DELETE_BUTTON": "Elimina",
+
+  "CARDS_TITLE": "Social",
+
+  "SEARCH_TITLE": "Ricerca",
+  "SEARCH_PLACEHOLDER": "Trova elementi in lista, ex. \"Donald Duck\""
+}

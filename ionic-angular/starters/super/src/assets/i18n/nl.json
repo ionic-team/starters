@@ -1,0 +1,48 @@
+{
+  "NAME": "Naam",
+  "PASSWORD": "Wachtwoord",
+  "EMAIL": "E-mail",
+  "LOGIN": "Inloggen",
+  "SIGNUP": "Aanmelden",
+
+  "TAB1_TITLE": "Items",
+  "TAB2_TITLE": "Zoeken",
+  "TAB3_TITLE": "Instellingen",
+
+  "MAP_TITLE": "Kaart",
+
+  "TUTORIAL_SLIDE1_TITLE": "Welkom bij de Ionic Super Starter",
+  "TUTORIAL_SLIDE1_DESCRIPTION": "De <b>Ionic Super Starter</b> biedt een volledig functionele basis voor een Ionic applicatie met veel voorgedefinieëerde pagina's en 'best practices'.",
+
+  "TUTORIAL_SLIDE2_TITLE": "Hoe de Super Starter te gebruiken",
+  "TUTORIAL_SLIDE2_DESCRIPTION": "Stel je applicatie samen door pagina's te combineren en verwijder degenen die je niet wil gebruiken. We bieden je verschillende typen mobiele applicatie pagina's, zoals login- en aanmeld pagina's, tabbladen, en deze handleiding pagina.",
+
+  "TUTORIAL_SLIDE3_TITLE": "Beginnen",
+  "TUTORIAL_SLIDE3_DESCRIPTION": "Hulp nodig? Check de Super Starter README voor een uitgebreide introductie",
+
+  "SETTINGS_TITLE": "Instellingen",
+  "SETTINGS_OPTION1": "Optie 1",
+  "SETTINGS_OPTION2": "Optie 2",
+  "SETTINGS_OPTION3": "Optie 3",
+  "SETTINGS_OPTION4": "Optie 4",
+
+  "SETTINGS_PAGE_PROFILE": "Wijzig Profiel",
+
+  "WELCOME_TITLE": "Welkom",
+
+  "LOGIN_TITLE": "Aanmelden",
+  "LOGIN_ERROR": "Inloggen mislukt. Controleer a.u.b. uw account informatie en probeer het nogmaals.",
+  "LOGIN_BUTTON": "Inloggen",
+  "SIGNUP_TITLE": "Aanmelden",
+  "SIGNUP_ERROR": "Aanmelden mislukt. Controleer a.u.b. uw account informatie en probeer het nogmaals.",
+  "SIGNUP_BUTTON": "Aanmelden",
+
+  "LIST_MASTER_TITLE": "Items",
+
+  "ITEM_CREATE_TITLE": "Nieuw Item",
+  "ITEM_CREATE_CHOOSE_IMAGE": "Afbeeldingen Toevoegen",
+
+  "CARDS_TITLE": "Sociaal",
+
+  "SEARCH_TITLE": "Zoeken"
+}

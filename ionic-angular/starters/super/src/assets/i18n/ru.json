@@ -1,0 +1,48 @@
+{
+  "NAME": "Имя",
+  "PASSWORD": "Пароль",
+  "EMAIL": "Email",
+  "LOGIN": "Вход",
+  "SIGNUP": "Регистрация",
+
+  "TAB1_TITLE": "Список",
+  "TAB2_TITLE": "Поиск",
+  "TAB3_TITLE": "Настройки",
+
+  "MAP_TITLE": "Карта",
+
+  "TUTORIAL_SLIDE1_TITLE": "Добро пожаловать в Ionic Super Starter",
+  "TUTORIAL_SLIDE1_DESCRIPTION": "<b>Ionic Super Starter</b> это полноценный набор примеров Ionic с большим количеством готовых страниц и лучших практик.",
+
+  "TUTORIAL_SLIDE2_TITLE": "Как использовать Super Starter",
+  "TUTORIAL_SLIDE2_DESCRIPTION": "Сделайте свой набор из многочисленных страниц разного типа. Все лишнее можете выкинуть. Мы предоставили много типовых макетов страниц мобильных приложений, таких как страницы регистрации, вкладки, и страницы с руководством, наподобие этой.",
+
+  "TUTORIAL_SLIDE3_TITLE": "Начало работы",
+  "TUTORIAL_SLIDE3_DESCRIPTION": "Нужна помощь? Вы найдете полное руководство к Super Starter в файле README",
+
+  "SETTINGS_TITLE": "Настройки",
+  "SETTINGS_OPTION1": "Опция 1",
+  "SETTINGS_OPTION2": "Опция 2",
+  "SETTINGS_OPTION3": "Опция 3",
+  "SETTINGS_OPTION4": "Опция 4",
+
+  "SETTINGS_PAGE_PROFILE": "Редактирование профиля",
+
+  "WELCOME_TITLE": "Добро пожаловать",
+
+  "LOGIN_TITLE": "Вход",
+  "LOGIN_ERROR": "Невозможно войти. Пожалуйста проверьте информацию о Вашей учетной записи и попробуйте войти еще раз.",
+  "LOGIN_BUTTON": "Войти",
+  "SIGNUP_TITLE": "Регистрация",
+  "SIGNUP_ERROR": "Невозможно создать учетную запись. Пожалуйста проверьте информацию о Вашей учетной записи и попробуйте еще раз.",
+  "SIGNUP_BUTTON": "Регистрация",
+
+  "LIST_MASTER_TITLE": "Список",
+
+  "ITEM_CREATE_TITLE": "Новый элемент",
+  "ITEM_CREATE_CHOOSE_IMAGE": "Добавить изображение",
+
+  "CARDS_TITLE": "Социальный",
+
+  "SEARCH_TITLE": "Поиск"
+}

@@ -1,0 +1,48 @@
+{
+  "NAME": "שם",
+  "PASSWORD": "סיסמא",
+  "EMAIL": "דואר אלקטרוני",
+  "LOGIN": "התחברות",
+  "SIGNUP": "הרשמה",
+
+  "TAB1_TITLE": "פריטים",
+  "TAB2_TITLE": "חיפוש",
+  "TAB3_TITLE": "הגדרות",
+
+  "MAP_TITLE": "מפה",
+
+  "TUTORIAL_SLIDE1_TITLE": "ברוכים הבאים ל-Ionic Super Starter",
+  "TUTORIAL_SLIDE1_DESCRIPTION": "ה-<b>Ionic Super Starter</b> הוא Starter מלא בתכונות עם הרבה דפים מוכנים ותרגולים הכי טובים.",
+
+  "TUTORIAL_SLIDE2_TITLE": "איך להשתמש ב-Super Starter",
+  "TUTORIAL_SLIDE2_DESCRIPTION": "Assemble the various page types you want and remove the ones you don't. We've provided many common mobile app page layouts, like login and signup pages, tabs, and this tutorial page.",
+
+  "TUTORIAL_SLIDE3_TITLE": "התחלה",
+  "TUTORIAL_SLIDE3_DESCRIPTION": "צריך עזרה? תבדקו את ה-README של ה-Super Starter להדרכה מלאה.",
+
+  "SETTINGS_TITLE": "הגדרות",
+  "SETTINGS_OPTION1": "אופציה 1",
+  "SETTINGS_OPTION2": "אופציה 2",
+  "SETTINGS_OPTION3": "אופציה 3",
+  "SETTINGS_OPTION4": "אופציה 4",
+
+  "SETTINGS_PAGE_PROFILE": "עריכת פרופיל",
+
+  "WELCOME_TITLE": "ברוכים הבאים",
+
+  "LOGIN_TITLE": "התחברות",
+  "LOGIN_ERROR": "לא ניתן להתחבר. אנא בדוק את פרטי ההתחברות ונסה שנית.",
+  "LOGIN_BUTTON": "התחבר",
+  "SIGNUP_TITLE": "הרשמה",
+  "SIGNUP_ERROR": "לא ניתן ליצור חשבון. אנא בדוק את פרטי ההתחברות ונסה שנית.",
+  "SIGNUP_BUTTON": "הירשם",
+
+  "LIST_MASTER_TITLE": "פריטים",
+
+  "ITEM_CREATE_TITLE": "פריט חדש",
+  "ITEM_CREATE_CHOOSE_IMAGE": "הוסף תמונה",
+
+  "CARDS_TITLE": "חברתי",
+
+  "SEARCH_TITLE": "חיפוש"
+}

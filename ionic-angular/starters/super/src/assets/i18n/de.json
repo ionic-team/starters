@@ -1,0 +1,56 @@
+{
+  "BACK_BUTTON_TEXT": "Zurück",
+
+  "NAME": "Name",
+  "PASSWORD": "Passwort",
+  "EMAIL": "Email",
+  "LOGIN": "Anmelden",
+  "SIGNUP": "Registrieren",
+  "CANCEL_BUTTON": "Schließen",
+
+  "TAB1_TITLE": "Items",
+  "TAB2_TITLE": "Suche",
+  "TAB3_TITLE": "Einstellung",
+
+  "MAP_TITLE": "Karte",
+
+  "TUTORIAL_SLIDE1_TITLE": "Hallo Ionic Super Starter App",
+  "TUTORIAL_SLIDE1_DESCRIPTION": "Die <b>Ionic Super Starter App</b> ist eine umfangreiche Starter App mit vielen vorgefertigten Seiten und Best Practices.",
+
+  "TUTORIAL_SLIDE2_TITLE": "Wie soll man die Super Starter App verwenden",
+  "TUTORIAL_SLIDE2_DESCRIPTION": "Nütze und bearbeite die Funktionen und Seiten die du benötigst und lösche den Rest. Wähle aus einer vielzahl an Layouts, wie Anmelden, Registrieren, Tabs und einer Tutorial Seite.",
+
+  "TUTORIAL_SLIDE3_TITLE": "Los gehts",
+  "TUTORIAL_SLIDE3_DESCRIPTION": "Du brauchst Hilfe? Sieh dir das README File an um mehr zu erfahren.",
+
+  "TUTORIAL_CONTINUE_BUTTON": "Fortfahren",
+
+  "WELCOME_INTRO": "Der Startpunkt für Deine nächste tolle Ionic App",
+
+  "SETTINGS_TITLE": "Einstellungen",
+  "SETTINGS_OPTION1": "Option 1",
+  "SETTINGS_OPTION2": "Option 2",
+  "SETTINGS_OPTION3": "Option 3",
+  "SETTINGS_OPTION4": "Option 4",
+
+  "SETTINGS_PAGE_PROFILE": "Profil ändern",
+
+  "WELCOME_TITLE": "Willkommen",
+
+  "LOGIN_TITLE": "Anmelden",
+  "LOGIN_ERROR": "Fehler beim Anmelden, bitte überprüfe deine Informationen und versuche es erneut.",
+  "LOGIN_BUTTON": "Anmelden",
+  "SIGNUP_TITLE": "Registrieren",
+  "SIGNUP_ERROR": "Fehler beim Registrieren, bitte überprüfe deine Informationen und versuche es erneut.",
+  "SIGNUP_BUTTON": "Registrieren",
+
+  "LIST_MASTER_TITLE": "Artikel",
+
+  "ITEM_CREATE_TITLE": "Neuer Artikel",
+  "ITEM_CREATE_CHOOSE_IMAGE": "Artikel hinzufügen",
+
+  "CARDS_TITLE": "Social",
+
+  "SEARCH_TITLE": "Suche",
+  "SEARCH_PLACEHOLDER": "Suche in der Artikel-Liste, z.B. \"Donald Duck\""
+}

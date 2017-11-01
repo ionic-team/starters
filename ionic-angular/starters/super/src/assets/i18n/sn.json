@@ -1,0 +1,68 @@
+{
+  "BACK_BUTTON_TEXT": "Dzoka Shure",
+
+  "NAME": "Zita",
+  "EMAIL": "Tsambambozha",
+  "USERNAME": "Zitamushandisi",
+  "PASSWORD": "Chihori",
+  "LOGIN": "Sign mu",
+  "SIGNUP": "Gadzira homwe yejikichidzo",
+
+  "TAB1_TITLE": "Maaitemu",
+  "TAB2_TITLE": "Tsvaga",
+  "TAB3_TITLE": "Gadziro",
+
+  "MAP_TITLE": "Mepu",
+
+  "TUTORIAL_SKIP_BUTTON": "Darika",
+  "TUTORIAL_CONTINUE_BUTTON": "Enderera",
+
+  "TUTORIAL_SLIDE1_TITLE": "Tinokugachirai ku Ionic Super Starter",
+  "TUTORIAL_SLIDE1_DESCRIPTION": "<b>Ionic Super Starter</b> i Ionic Starter yakarungwa zvakakwanira nemapeji akagadzirwa kare nenzira dzakanaka dzinotenderwa",
+
+  "TUTORIAL_SLIDE2_TITLE": "Mashandisiro  eSuper Starter",
+  "TUTORIAL_SLIDE2_DESCRIPTION": "Kororodza mapeji akasiyana siyana aunoda ,uchibvisa ayo ausingadi, Tapa huwarirwa hwakawanda unozivikanwa sokunge mapeji e login ne sign up,tabs uye peji rino rechidzidzo",
+
+  "TUTORIAL_SLIDE3_TITLE": "Kuvamba matangiro",
+  "TUTORIAL_SLIDE3_DESCRIPTION": "Unotsvaga rubatsiro? Ongorora Super Starter README kuti uwane chidzidzo chizere",
+
+  "TUTORIAL_SLIDE4_TITLE": "Wagadzirira kutamba?",
+
+  "WELCOME_INTRO": "Pekutangira kwako kugadzira jikichidzo guru yeIonic",
+
+  "SETTINGS_TITLE": "Gadziro",
+  "SETTINGS_OPTION1": "Sarudzo yekutanga",
+  "SETTINGS_OPTION2": "Sarudzo yepiri",
+  "SETTINGS_OPTION3": "Sarudzo yechitatu",
+  "SETTINGS_OPTION4": "Sarudzo yechina",
+
+  "SETTINGS_PROFILE_BUTTON": "Pepeta Profile",
+
+  "SETTINGS_PAGE_PROFILE": "Pepeta Profile",
+
+  "WELCOME_TITLE": "Tinokuchingamidza",
+
+  "LOGIN_TITLE": "Sign mu",
+  "LOGIN_ERROR": "Takundikana kuita sign in. Tinokumbirawo mutarire homwe yenyu yejikichidzo mugoedza zvakare",
+  "LOGIN_BUTTON": "Sign mu",
+  "SIGNUP_TITLE": "Gadzira homwe yejikichidzo",
+  "SIGNUP_ERROR": "Takundikana kugadzira homwe yejikichidzo ,Tinokumbirawo mutarire zvakatarwa pahomwe yenyu yejikichidzo moedza zvakare.",
+  "SIGNUP_BUTTON": "Gadzira homwe yejikichidzo",
+
+  "LIST_MASTER_TITLE": "maaitemu",
+
+  "ITEM_CREATE_TITLE": "Aitemu itsva",
+  "ITEM_CREATE_CHOOSE_IMAGE": "Wedzera mufananidzo",
+
+  "ITEM_NAME_PLACEHOLDER": "Zita",
+  "ITEM_ABOUT_PLACEHOLDER": "Nezve",
+
+  "DONE_BUTTON": "aita",
+  "CANCEL_BUTTON": "kanzura",
+  "DELETE_BUTTON": "Dzima",
+
+  "CARDS_TITLE": "Social",
+
+  "SEARCH_TITLE": "Tsvaga",
+  "SEARCH_PLACEHOLDER": "Tsvaga mumaaitemu sokuti \"Donald Duck\""
+}

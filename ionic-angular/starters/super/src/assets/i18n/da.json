@@ -1,0 +1,48 @@
+{
+  "NAME": "Navn",
+  "PASSWORD": "Adgangskode",
+  "EMAIL": "Email",
+  "LOGIN": "Log Ind",
+  "SIGNUP": "Tilmeld",
+
+  "TAB1_TITLE": "Poster",
+  "TAB2_TITLE": "Søg",
+  "TAB3_TITLE": "Indstillinger",
+
+  "MAP_TITLE": "Kort",
+
+  "TUTORIAL_SLIDE1_TITLE": "Velkommen til Ionic Super Starter",
+  "TUTORIAL_SLIDE1_DESCRIPTION": "<b>Ionic Super Starter</b> er en fuldt funktionsdygtig Ionic starter med mange køreklare sidetyper bygget efter best practices.",
+
+  "TUTORIAL_SLIDE2_TITLE": "Sådan bruges Super Starter",
+  "TUTORIAL_SLIDE2_DESCRIPTION": "Sammensæt de forskellige sidetyper du ønsker at bruge og fjern dem du ikke har behov for. Vi leverer mange gænse mobil app sider, som f.eks. login- og registreringssider, faneblade, og denne introduktionsside.",
+
+  "TUTORIAL_SLIDE3_TITLE": "Kom i gang",
+  "TUTORIAL_SLIDE3_DESCRIPTION": "Har du brug for hjælp? Kig på Super Starter README for en omfattende forklaring.",
+
+  "SETTINGS_TITLE": "Indstillinger",
+  "SETTINGS_OPTION1": "Mulighed 1",
+  "SETTINGS_OPTION2": "Mulighed 2",
+  "SETTINGS_OPTION3": "Mulighed 3",
+  "SETTINGS_OPTION4": "Mulighed 4",
+
+  "SETTINGS_PAGE_PROFILE": "Rediger Profil",
+
+  "WELCOME_TITLE": "Velkommen",
+
+  "LOGIN_TITLE": "Log ind",
+  "LOGIN_ERROR": "Fejl ved log ind. Kontroller venligst kontooplysningerne og prøv igen.",
+  "LOGIN_BUTTON": "Log ind",
+  "SIGNUP_TITLE": "Registrer",
+  "SIGNUP_ERROR": "Fejl ved oprettelse. Kontroller venligst kontooplysningerne og prøv igen.",
+  "SIGNUP_BUTTON": "Registrer",
+
+  "LIST_MASTER_TITLE": "Poster",
+
+  "ITEM_CREATE_TITLE": "Ny post",
+  "ITEM_CREATE_CHOOSE_IMAGE": "Tilføj billede",
+
+  "CARDS_TITLE": "Social",
+
+  "SEARCH_TITLE": "Søg"
+}

@@ -1,0 +1,47 @@
+{
+  "NAME": "ชื่อ",
+  "PASSWORD": "รหัสผ่าน",
+  "EMAIL": "อีเมล์",
+  "LOGIN": "เข้าระบบ",
+  "SIGNUP": "สมัครใช้งาน",
+
+  "TAB1_TITLE": "รายการ",
+  "TAB2_TITLE": "ค้นหา",
+  "TAB3_TITLE": "ตั้งค่า",
+
+  "MAP_TITLE": "แผนที่",
+
+  "TUTORIAL_SLIDE1_TITLE": "ยินดีต้อนรับสู่ the Ionic Super Starter",
+  "TUTORIAL_SLIDE1_DESCRIPTION": "The <b>Ionic Super Starter</b> คือโปรเจคเริ่มต้น Ionic ที่มีหน้าจอพร้อมใช้งานและเขียนแบบ Best practices",
+
+  "TUTORIAL_SLIDE2_TITLE": "วิธีใช้ Super Starter",
+  "TUTORIAL_SLIDE2_DESCRIPTION": "เก็บหน้าจอแบบที่ใช้ไว้ ลบที่ไม่ใช้ออก เราเตรียมหน้าจอที่ใช้กันประจำสำหรับแอพมือถือไว้ให้ เช่น หน้าล็อกอิน, หน้าสมัครใช้งาน, แทบ, และหน้าสอนใช้งานนี้",
+
+  "TUTORIAL_SLIDE3_TITLE": "เริ่มต้นใช้งาน",
+  "TUTORIAL_SLIDE3_DESCRIPTION": "ต้องการความช่วยเหลือ? ลองอ่าน tutorial ฉบับเต็มจากไฟล์ README",
+
+  "SETTINGS_TITLE": "ตั้งค่า",
+  "SETTINGS_OPTION1": "ตัวเลือก 1",
+  "SETTINGS_OPTION2": "ตัวเลือก 2",
+  "SETTINGS_OPTION3": "ตัวเลือก 3",
+  "SETTINGS_OPTION4": "ตัวเลือก 4",
+
+  "SETTINGS_PAGE_PROFILE": "แก้ไขข้อมูลส่วนตัว",
+
+  "WELCOME_TITLE": "ยินดีต้อนรับ",
+
+  "LOGIN_TITLE": "การเข้าระบบ",
+  "LOGIN_ERROR": "เข้าระบบไม่ได้. ตรวจสอบข้อมูลที่กรอกแล้วกรุณาลองใหม่",
+  "LOGIN_BUTTON": "เข้าระบบ",
+  "SIGNUP_TITLE": "สมัครใช้งาน",
+  "SIGNUP_ERROR": "ไม่สามารถสร้างผู้ใช้ใหม่ กรุณาตรวจสอบข้อมูลที่กรอกแล้วลองใหม่",
+  "SIGNUP_BUTTON": "สมัคร",
+  "LIST_MASTER_TITLE": "รายการ",
+
+  "ITEM_CREATE_TITLE": "รายการใหม่",
+  "ITEM_CREATE_CHOOSE_IMAGE": "เพิ่มรูปภาพ",
+
+  "CARDS_TITLE": "โซเชียลเน็ตเวิร์ค",
+
+  "SEARCH_TITLE": "ค้นหา"
+}

@@ -1,0 +1,48 @@
+{
+  "NAME": "Nome",
+  "PASSWORD": "Password",
+  "EMAIL": "Email",
+  "LOGIN": "Entrar",
+  "SIGNUP": "Criar conta",
+
+  "TAB1_TITLE": "Items",
+  "TAB2_TITLE": "Pesquisa",
+  "TAB3_TITLE": "Configurações",
+
+  "MAP_TITLE": "Mapa",
+
+  "TUTORIAL_SLIDE1_TITLE": "Bem-vindo ao Ionic Super Starter",
+  "TUTORIAL_SLIDE1_DESCRIPTION": "O <b>Ionic Super Starter</b> é um pacote Ionic com várias páginas prontas e exemplos de boas práticas.",
+
+  "TUTORIAL_SLIDE2_TITLE": "Como usar o Super Starter",
+  "TUTORIAL_SLIDE2_DESCRIPTION": "Combine os vários tipos de página que quer usar e remova as desnecessárias. Nós disponibilizamos vários layouts mobile comuns, como páginas de login e registo, tabs, e esta página de tutorial.",
+
+  "TUTORIAL_SLIDE3_TITLE": "Como começar",
+  "TUTORIAL_SLIDE3_DESCRIPTION": "Precisa de ajuda? Para um tutorial completo leia o README do Super Starter",
+
+  "SETTINGS_TITLE": "Configurações",
+  "SETTINGS_OPTION1": "Opção 1",
+  "SETTINGS_OPTION2": "Opção 2",
+  "SETTINGS_OPTION3": "Opção 3",
+  "SETTINGS_OPTION4": "Opção 4",
+
+  "SETTINGS_PAGE_PROFILE": "Editar Perfil",
+
+  "WELCOME_TITLE": "Bem-vindo",
+
+  "LOGIN_TITLE": "Entrar",
+  "LOGIN_ERROR": "Não foi possível entrar na sua conta. Por favor confirme os seus dados e tente novamente.",
+  "LOGIN_BUTTON": "Entrar",
+  "SIGNUP_TITLE": "Criar conta",
+  "SIGNUP_ERROR": "Não foi possível criar a sua conta. Por favor confirme os seus dados e tente novamente.",
+  "SIGNUP_BUTTON": "Criar conta",
+
+  "LIST_MASTER_TITLE": "Items",
+
+  "ITEM_CREATE_TITLE": "Novo Item",
+  "ITEM_CREATE_CHOOSE_IMAGE": "Adicionar Imagem",
+
+  "CARDS_TITLE": "Social",
+
+  "SEARCH_TITLE": "Pesquisa"
+}

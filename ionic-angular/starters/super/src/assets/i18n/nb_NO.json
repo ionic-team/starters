@@ -1,0 +1,48 @@
+{
+  "NAME": "Navn",
+  "PASSWORD": "Passord",
+  "EMAIL": "Email",
+  "LOGIN": "Logg inn",
+  "SIGNUP": "Registrer deg",
+
+  "TAB1_TITLE": "Innlegg",
+  "TAB2_TITLE": "Søk",
+  "TAB3_TITLE": "Innstillinger",
+
+  "MAP_TITLE": "Kart",
+
+  "TUTORIAL_SLIDE1_TITLE": "Velkommen til Ionic Super Starter",
+  "TUTORIAL_SLIDE1_DESCRIPTION": "<b>Ionic Super Starter</b> er en fullverdig startpakke for Ionic med forhåndslagde undersider utviklet etter beste praksis.",
+
+  "TUTORIAL_SLIDE2_TITLE": "Hvordan bruke Super Starter",
+  "TUTORIAL_SLIDE2_DESCRIPTION": "Ta i bruk undersidene du trenger og fjern de unødvendige. Pakken tilbyr vanlige layouts for mobil-apper slik som innlogging- og registreringssider, faner og denne opplæringssiden.",
+
+  "TUTORIAL_SLIDE3_TITLE": "Kom i gang",
+  "TUTORIAL_SLIDE3_DESCRIPTION": "Trenger du hjelp? Les Super Starter README-dokumentet for instruksjoner",
+
+  "SETTINGS_TITLE": "Innstillinger",
+  "SETTINGS_OPTION1": "Alternativ 1",
+  "SETTINGS_OPTION2": "Alternativ 2",
+  "SETTINGS_OPTION3": "Alternativ 3",
+  "SETTINGS_OPTION4": "Alternativ 4",
+
+  "SETTINGS_PAGE_PROFILE": "Endre Profil",
+
+  "WELCOME_TITLE": "Velkommen",
+
+  "LOGIN_TITLE": "Innlogging",
+  "LOGIN_ERROR": "Feil ved innlogging. Bekreft at kontodetaljene er riktig og prøv igjen.",
+  "LOGIN_BUTTON": "Logg inn",
+  "SIGNUP_TITLE": "Registrering",
+  "SIGNUP_ERROR": "Feil ved registrering. Bekreft kontodetaljene og prøv igjen.",
+  "SIGNUP_BUTTON": "Registrer deg",
+
+  "LIST_MASTER_TITLE": "Innlegg",
+
+  "ITEM_CREATE_TITLE": "Nytt Innlegg",
+  "ITEM_CREATE_CHOOSE_IMAGE": "Legg Til Bilde",
+
+  "CARDS_TITLE": "Sosialt",
+
+  "SEARCH_TITLE": "Søk"
+}

@@ -1,0 +1,48 @@
+{
+  "NAME": "Ime",
+  "PASSWORD": "Geslo",
+  "EMAIL": "E-mail",
+  "LOGIN": "Prijava",
+  "SIGNUP": "Ustvari račun",
+
+  "TAB1_TITLE": "Elementi",
+  "TAB2_TITLE": "Iskanje",
+  "TAB3_TITLE": "Nastavitve",
+
+  "MAP_TITLE": "Zemljevid",
+
+  "TUTORIAL_SLIDE1_TITLE": "Dobrodošli v Ionic Super Starter",
+  "TUTORIAL_SLIDE1_DESCRIPTION": "<b>Ionic Super Starter</b> je celosten Ionic začetni paket z pestrim naborom funkcionalnosti in uporablja najboljše prakse razvoja Ionic aplikacij.",
+
+  "TUTORIAL_SLIDE2_TITLE": "Kako uporabljati Super Starter",
+  "TUTORIAL_SLIDE2_DESCRIPTION": "Sestavite poljubne tipe strani in odstranite tiste, ki jih ne potrebujete. Ponujamo vam mnogo različnih oblik strani, npr. stran za prijavo oz. vpis, stran z zavihki in stran tega vodiča.",
+
+  "TUTORIAL_SLIDE3_TITLE": "Kako začeti?",
+  "TUTORIAL_SLIDE3_DESCRIPTION": "Potrebujete pomoč? Poglejte si Super Starter README datoteko za celoten vodič.",
+
+  "SETTINGS_TITLE": "Nastavitve",
+  "SETTINGS_OPTION1": "Opcija 1",
+  "SETTINGS_OPTION2": "Opcija 2",
+  "SETTINGS_OPTION3": "Opcija 3",
+  "SETTINGS_OPTION4": "Opcija 4",
+
+  "SETTINGS_PAGE_PROFILE": "Uredi profil",
+
+  "WELCOME_TITLE": "Dobrodošli",
+
+  "LOGIN_TITLE": "Prijava",
+  "LOGIN_ERROR": "Napaka pri prijavi. Prosimo preglejte prijavne podatke računa in poskusite ponovno.",
+  "LOGIN_BUTTON": "Prijava",
+  "SIGNUP_TITLE": "Ustvari račun",
+  "SIGNUP_ERROR": "Napaka pri kreiranju računa. Prosimo preglejte podatke kreiranega računa in poskusite ponovno. ",
+  "SIGNUP_BUTTON": "Ustvari račun",
+
+  "LIST_MASTER_TITLE": "Elementi",
+
+  "ITEM_CREATE_TITLE": "Dodaj element",
+  "ITEM_CREATE_CHOOSE_IMAGE": "Dodaj sliko",
+
+  "CARDS_TITLE": "Socialno",
+
+  "SEARCH_TITLE": "Iskanje"
+}

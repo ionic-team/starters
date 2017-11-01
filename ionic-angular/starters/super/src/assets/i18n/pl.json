@@ -1,0 +1,48 @@
+{
+  "NAME": "Imię",
+  "PASSWORD": "Hasło",
+  "EMAIL": "Email",
+  "LOGIN": "Zaloguj",
+  "SIGNUP": "Zarejestruj",
+
+  "TAB1_TITLE": "Pozycje",
+  "TAB2_TITLE": "Szukaj",
+  "TAB3_TITLE": "Ustawienia",
+
+  "MAP_TITLE": "Mapa",
+
+  "TUTORIAL_SLIDE1_TITLE": "Witaj w Ionic Super Starter",
+  "TUTORIAL_SLIDE1_DESCRIPTION": "<b>Ionic Super Starter</b> jest w pełni funkcjonalnym początkiem przygody z Ionic'iem, złożonym z wielu predefiniowanych szablonów i najlepszych praktyk programistycznych.",
+
+  "TUTORIAL_SLIDE2_TITLE": "Jak korzystać z Super Startera",
+  "TUTORIAL_SLIDE2_DESCRIPTION": "Pozbieraj różne typy stron, które chcesz usunąć, a także te, których nie chcesz. Mamy do zaoferowania wiele wspólnych stron i szablonów mobilnej aplikacji. Są to między innymi: strona logowania, rejestracji, taby, a także ten oto poradnik.",
+
+  "TUTORIAL_SLIDE3_TITLE": "Pierwsze kroki",
+  "TUTORIAL_SLIDE3_DESCRIPTION": "Potrzebujesz pomocy? Sprawdź plik README projektu Super Starter dla pełnego poradnika",
+
+  "SETTINGS_TITLE": "Ustawienia",
+  "SETTINGS_OPTION1": "Opcja 1",
+  "SETTINGS_OPTION2": "Opcja 2",
+  "SETTINGS_OPTION3": "Opcja 3",
+  "SETTINGS_OPTION4": "Opcja 4",
+
+  "SETTINGS_PAGE_PROFILE": "Edytuj Profil",
+
+  "WELCOME_TITLE": "Witaj",
+
+  "LOGIN_TITLE": "Zaloguj",
+  "LOGIN_ERROR": "Nie udało się zalogować. Sprawdź raz jeszcze dane swoje konta i spróbuj ponownie.",
+  "LOGIN_BUTTON": "Zaloguj",
+  "SIGNUP_TITLE": "Zarejestruj",
+  "SIGNUP_ERROR": "Nie udało się stworzyć konta. Sprawdź raz jeszcze dane swoje konta i spróbuj ponownie.",
+  "SIGNUP_BUTTON": "Zarejestruj",
+
+  "LIST_MASTER_TITLE": "Pozycje",
+
+  "ITEM_CREATE_TITLE": "Nowa pozycja",
+  "ITEM_CREATE_CHOOSE_IMAGE": "Dodaj obrazek",
+
+  "CARDS_TITLE": "Społeczność",
+
+  "SEARCH_TITLE": "Szukaj"
+}

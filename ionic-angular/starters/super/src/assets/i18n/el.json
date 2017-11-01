@@ -1,0 +1,48 @@
+{
+  "NAME": "Όνομα",
+  "PASSWORD": "Κωδικός",
+  "EMAIL": "Email",
+  "LOGIN": "Σύνδεση",
+  "SIGNUP": "Εγγραφή",
+
+  "TAB1_TITLE": "Αντικείμενα",
+  "TAB2_TITLE": "Αναζήτηση",
+  "TAB3_TITLE": "Ρυθμίσεις",
+
+  "MAP_TITLE": "Χάρτης",
+
+  "TUTORIAL_SLIDE1_TITLE": "Καλώς ορίσατε στο Ionic Super Starter",
+  "TUTORIAL_SLIDE1_DESCRIPTION": "Το <b>Ionic Super Starter</b> είναι ένα πλήρες βοηθητικό πακέτο εκκίνησης προγραμματισμού με το Ionic και περιέχει πληθώρα έτοιμων, ανεπτυγμένων σελίδων αλλά και βέλτιστων-πρακτικών εφαρμογής του.",
+
+  "TUTORIAL_SLIDE2_TITLE": "Πως να χρησημοποιήσετε το Super Starter",
+  "TUTORIAL_SLIDE2_DESCRIPTION": "Συγκεντρώστε οποιες σελίδες επιθυμείτε και αφαιρέστε εκείνες που δε σας χρειάζονται. Σας παρέχουμε πολλές συνηθισμένες διατάξεις σελίδων, όπως σελίδες σύνδεσης και εγγραφής, με καρτέλες ή επεξήγησης όπως η παρούσα.",
+
+  "TUTORIAL_SLIDE3_TITLE": "Ξεκινώντας",
+  "TUTORIAL_SLIDE3_DESCRIPTION": "Χρειάζεστε βοήθεια; Ρίχτε μια ματιά στο Super Starter README αρχείο για την πλήρη επεξήγηση.",
+
+  "SETTINGS_TITLE": "Ρυθμίσεις",
+  "SETTINGS_OPTION1": "Επιλογή 1",
+  "SETTINGS_OPTION2": "Επιλογή 2",
+  "SETTINGS_OPTION3": "Επιλογή 3",
+  "SETTINGS_OPTION4": "Επιλογή 4",
+
+  "SETTINGS_PAGE_PROFILE": "Επεξεργασία Προφίλ",
+
+  "WELCOME_TITLE": "Καλώς ορίσατε",
+
+  "LOGIN_TITLE": "Σύνδεση",
+  "LOGIN_ERROR": "Η σύνδεση ήταν ανέφικτη. Παρακαλούμε ελέγξτε τις πληροφορίες λογαριασμού σας και ξαναπροσπαθήστε.",
+  "LOGIN_BUTTON": "Σύνδεση",
+  "SIGNUP_TITLE": "Εγγραφή",
+  "SIGNUP_ERROR": "Η δημιουργία λογαριασμού ήταν ανέφικτη. Παρακαλούμε ελέγξτε τις πληροφορίες λογαριασμού σας και ξαναπροσπαθήστε.",
+  "SIGNUP_BUTTON": "Εγγραφή",
+
+  "LIST_MASTER_TITLE": "Αντικείμενα",
+
+  "ITEM_CREATE_TITLE": "Νέο Αντικείμενο",
+  "ITEM_CREATE_CHOOSE_IMAGE": "Προσθήκη φωτογραφίας",
+
+  "CARDS_TITLE": "Κοινωνικά",
+
+  "SEARCH_TITLE": "Αναζήτηση"
+}
