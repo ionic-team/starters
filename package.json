@@ -1,3 +1,17 @@
 {
-  "private": true
+  "private": true,
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "deploy": "node ./dist/deploy.js"
+  },
+  "dependencies": {
+    "archiver": "^2.1.0",
+    "aws-sdk": "^2.141.0"
+  },
+  "devDependencies": {
+    "@types/archiver": "^2.0.1",
+    "@types/node": "^8.0.47",
+    "typescript": "^2.6.1"
+  }
 }
