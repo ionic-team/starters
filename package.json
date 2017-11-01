@@ -7,7 +7,8 @@
   },
   "dependencies": {
     "archiver": "^2.1.0",
-    "aws-sdk": "^2.141.0"
+    "aws-sdk": "^2.141.0",
+    "chalk": "^2.3.0"
   },
   "devDependencies": {
     "@types/archiver": "^2.0.1",
