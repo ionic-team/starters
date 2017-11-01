@@ -1,0 +1,28 @@
+<ion-content>
+  <div text-center class="logo">
+    <img src="assets/ionic-aws-logo.png" />
+  </div>
+  <form (submit)="login()">
+    <ion-list>
+
+      <ion-item>
+        <ion-label floating>Username</ion-label>
+        <ion-input [(ngModel)]="loginDetails.username" type="text" autocorrect="off" autocapitalize="none" name="username"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Password</ion-label>
+        <ion-input [(ngModel)]="loginDetails.password" type="password" name="password"></ion-input>
+      </ion-item>
+
+      <div padding>
+        <button ion-button color="primary" block>LOGIN</button>
+      </div>
+
+      <div padding text-center>
+        <p>Don't have an account yet? <a (click)="signup()">Create one.</a></p>
+      </div>
+
+    </ion-list>
+  </form>
+</ion-content>

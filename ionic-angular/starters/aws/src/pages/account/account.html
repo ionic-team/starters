@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Account
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <div padding text-center>
+    <div *ngIf="avatarPhoto" class="avatar" [style.background-image]="'url('+ avatarPhoto +')'">
+    </div>
+
+    <button ion-button clear (click)="selectAvatar()">Change photo</button>
+
+    <input #avatar class="avatar-input" type="file" (change)="uploadFromFile($event)" />
+  </div>
+
+  <div>
+    <ion-list>
+      <ion-item>
+        <strong>username</strong> {{ user.getUser().getUsername() }}
+      </ion-item>
+      <ion-item *ngFor="let attr of attributes">
+        <strong>{{ attr.getName() }}</strong> {{ attr.getValue() }}
+      </ion-item>
+    </ion-list>
+  </div>
+
+</ion-content>

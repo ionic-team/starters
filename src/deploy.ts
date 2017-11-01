@@ -17,7 +17,7 @@ const writeFilep = util.promisify(fs.writeFile);
 const ncpp: (s: string, d: string, o?: ncp.Options) => void = <any>util.promisify(ncp.ncp);
 const rimrafp: (p: string) => void = <any>util.promisify(rimraf);
 
-const TYPE_DIRECTORIES = ['ionic-angular'];
+const TYPE_DIRECTORIES = ['ionic1', 'ionic-angular'];
 
 const s3 = new S3({ apiVersion: '2006-03-01' });
 const cloudfront = new CloudFront({ apiVersion: '2017-03-25' });

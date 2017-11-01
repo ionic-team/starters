@@ -1,0 +1,21 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Settings
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-list>
+      <button ion-item [navPush]="aboutPage">
+        About this app
+      </button>
+      <button ion-item [navPush]="accountPage">
+        Account
+      </button>
+      <button ion-item (click)="logout()">
+        <ion-label color="danger">Logout</ion-label>
+      </button>
+    </ion-list>
+</ion-content>
