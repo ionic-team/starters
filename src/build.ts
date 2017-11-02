@@ -5,6 +5,7 @@ import * as util from 'util'
 import chalk from 'chalk';
 import * as ncp from 'ncp';
 import * as rimraf from 'rimraf';
+import * as _ from 'lodash';
 
 import { readPackageJson, readStarterManifest, getDirectories, log, runcmd } from './utils';
 
@@ -12,16 +13,19 @@ const writeFilep = util.promisify(fs.writeFile);
 const ncpp: (s: string, d: string, o?: ncp.Options) => void = <any>util.promisify(ncp.ncp);
 const rimrafp: (p: string) => void = <any>util.promisify(rimraf);
 
-const BUILD_DIRECTORY = 'build';
-const TYPE_DIRECTORIES = ['ionic1', 'ionic-angular'];
+const STARTER_TYPE_OFFICIAL = 'official';
+const STARTER_TYPE_COMMUNITY = 'community';
+const REPO_DIRECTORY = path.resolve(path.dirname(__dirname));
+const BUILD_DIRECTORY = path.resolve(REPO_DIRECTORY, 'build');
+const IONIC_TYPE_DIRECTORIES = ['ionic1', 'ionic-angular'];
 
 async function run() {
   const starter = process.argv[2];
 
   await rimrafp(`${BUILD_DIRECTORY}/*`);
 
-  await Promise.all(TYPE_DIRECTORIES.map(async (starterType) => {
-    const baseDir = path.resolve(starterType, 'base');
+  await Promise.all(IONIC_TYPE_DIRECTORIES.map(async (ionicType) => {
+    const baseDir = path.resolve(REPO_DIRECTORY, ionicType, 'base');
     const baseChanges = Boolean((await runcmd('git', ['status', '--porcelain', '--', baseDir])).trim());
 
     if (baseChanges) {
@@ -41,12 +45,21 @@ async function run() {
 
   if (starter) {
     const starterDir = path.resolve(starter);
-    const starterType = path.basename(path.dirname(path.dirname(starterDir)));
-    await buildStarterArchive(starterType, starterDir);
+
+    if (!starterDir.startsWith(REPO_DIRECTORY)) {
+      throw new Error(chalk.red('Starter not in this repo.'));
+    }
+
+    const [ ionicType, starterType ] = getStarterInfoFromPath(starterDir);
+    await buildStarterArchive(ionicType, starterType, starterDir);
   } else  {
-    await Promise.all(TYPE_DIRECTORIES.map(async (starterType) => {
-      const baseDir = path.resolve(starterType, 'base');
-      const starterDirs = await getDirectories(path.resolve(starterType, 'official'));
+    await Promise.all(IONIC_TYPE_DIRECTORIES.map(async (ionicType) => {
+      const baseDir = path.resolve(REPO_DIRECTORY, ionicType, 'base');
+      const officialStarterDirs = await getDirectories(path.resolve(ionicType, STARTER_TYPE_OFFICIAL));
+      const communityScopes = await getDirectories(path.resolve(ionicType, STARTER_TYPE_COMMUNITY));
+      const communityStarterDirs = _.flatten(await Promise.all(communityScopes.map(async (scopeDir) => getDirectories(scopeDir))));
+      const starterDirs = officialStarterDirs.concat(communityStarterDirs);
+
       const refmap = new Map<string, string[]>();
 
       await Promise.all(starterDirs.map(async (starterDir) => {
@@ -64,20 +77,40 @@ async function run() {
       const currentBranch = (await runcmd('git', ['rev-parse', '--abbrev-ref', 'HEAD'])).trim();
 
       for (let [ref, starterDirsAtRef] of refmap.entries()) {
-        console.log(`Checking out ${chalk.cyan.bold(starterType)} base files at ${chalk.bold(ref)}`);
+        console.log(`Checking out ${chalk.cyan.bold(ionicType)} base files at ${chalk.bold(ref)}`);
 
         await runcmd('git', ['checkout', ref, '--', baseDir]);
-        await Promise.all(starterDirsAtRef.map(starterDir => buildStarterArchive(starterType, starterDir)));
+
+        await Promise.all(starterDirsAtRef.map(async (starterDir) => {
+          const [ , starterType ] = getStarterInfoFromPath(starterDir);
+          await buildStarterArchive(ionicType, starterType, starterDir);
+        }));
+
         await runcmd('git', ['checkout', currentBranch, '--', baseDir]);
       }
     }));
   }
 }
 
-async function buildStarterArchive(starterType: string, starterDir: string): Promise<void> {
-  const baseDir = path.resolve(starterType, 'base');
-  const starter = path.basename(starterDir);
-  const id = `${starterType}-starter-${starter}`;
+function getStarterInfoFromPath(starterDir: string): string[] {
+  return starterDir.substring(REPO_DIRECTORY.length + 1).split(path.sep);
+}
+
+function generateStarterName(starterType: string, starterDir: string) {
+  if (starterType === STARTER_TYPE_OFFICIAL) {
+    return path.basename(starterDir);
+  } else if (starterType === STARTER_TYPE_COMMUNITY) {
+    const scope = path.dirname(starterDir);
+    return `${path.basename(scope)}-${path.basename(starterDir)}`;
+  }
+
+  throw new Error(chalk.red(`Unknown starter type: ${starterType}`));
+}
+
+async function buildStarterArchive(ionicType: string, starterType: string, starterDir: string): Promise<void> {
+  const baseDir = path.resolve(REPO_DIRECTORY, ionicType, 'base');
+  const starter = generateStarterName(starterType, starterDir);
+  const id = `${ionicType}-${starterType}-${starter}`;
   const tmpdest = path.resolve(BUILD_DIRECTORY, id);
 
   log(id, 'Building...');

@@ -38,6 +38,28 @@ in the file.
 | `welcome`      | _(optional)_ A custom message to be displayed when the user runs `ionic start` on the starter.
 | `dependencies` | _(optional)_ During build, the defined dependencies will be merged into `package.json`, overwriting any existing keys.
 
+### Community Starters
+
+To submit your own starter,
+
+1. Clone this repo.
+1. Fork or copy [this repository](https://github.com/ionic-team/starter-example)
+   for an example starter.
+1. Add a git submodule for your starter at `<type>/community/<your github
+   name>/<github repo name>`. For example:
+
+    ```bash
+    git submodule add https://github.com/ionic-team/starter-example.git ionic-angular/community/ionic-team/example
+    ```
+
+1. Build your starter. For example:
+
+    ```bash
+    npm run build -- ionic-angular/community/ionic-team/example
+    ```
+
+1. Copy the generated starter into a different directory and test it!
+
 ## Deploying
 
 During the deploy process, the `build/` directory is read and an archive of each
