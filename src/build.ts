@@ -32,7 +32,7 @@ async function buildStarterArchive(starterType: string, starterDir: string): Pro
 
   console.log('=>', chalk.cyan(id), 'Building...');
 
-  const starterManifestPath = path.resolve(path.dirname(starterDir), `${starter}.json`);
+  const starterManifestPath = path.resolve(path.dirname(starterDir), starter, 'ionic.starter.json');
   const manifest = await readStarterManifest(starterManifestPath);
 
   await ncpp(baseDir, tmpdest, {});
@@ -43,7 +43,7 @@ async function buildStarterArchive(starterType: string, starterDir: string): Pro
 
   if (manifest && manifest.dependencies) {
     Object.assign(packageJson.dependencies, manifest.dependencies);
-    await writeFilep(packageJsonPath, JSON.stringify(packageJson, undefined, 2), { encoding: 'utf8' });
+    await writeFilep(packageJsonPath, JSON.stringify(packageJson, undefined, 2) + '\n', { encoding: 'utf8' });
   }
 
   console.log('=>', chalk.cyan(id), `Built!`);
