@@ -1,4 +1,6 @@
 export interface StarterManifest {
+  name: string;
+  welcome?: string;
   dependencies?: { [key: string]: string; };
 }
 

@@ -5,7 +5,7 @@ import * as archiver from 'archiver';
 import * as S3 from 'aws-sdk/clients/s3';
 import * as CloudFront from 'aws-sdk/clients/cloudfront';
 
-import { getDirectories } from './utils';
+import { getDirectories, log } from './utils';
 
 const s3 = new S3({ apiVersion: '2006-03-01' });
 const cloudfront = new CloudFront({ apiVersion: '2017-03-25' });
@@ -23,12 +23,12 @@ async function run() {
     archive.directory(dir, false);
 
     await uploadArchive(archive, templateKey);
-    console.log('=>', chalk.cyan(id), `Uploaded!`);
+    log(id, `Uploaded!`);
 
     templateKeys.push(templateKey);
   }));
 
-  console.log('=>', `Invalidating cache for keys:\n${templateKeys.map(k => `    - ${chalk.bold(k)}`).join('\n')}`);
+  console.log(`Invalidating cache for keys:\n${templateKeys.map(k => `    - ${chalk.bold(k)}`).join('\n')}`);
 
   const result = await cloudfront.createInvalidation({
     DistributionId: 'E1XZ2T0DZXJ521',
@@ -45,7 +45,7 @@ async function run() {
     throw new Error('No result from invalidation batch.');
   }
 
-  console.log('=>', `Invalidation ID: ${chalk.bold(result.Invalidation.Id)}`);
+  console.log(`Invalidation ID: ${chalk.bold(result.Invalidation.Id)}`);
 }
 
 async function uploadArchive(archive: archiver.Archiver, key: string) {

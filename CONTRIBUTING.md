@@ -19,13 +19,17 @@ Then, the starter manifest file is read (located at
 `<type>/starters/<name>/ionic.starter.json`), invoking additional operations on
 the generated starter files.
 
-### Manifest Operations
+### Manifest Files
 
-The starter manifest file is a JSON file. The build process reads the manifest
-and takes actions based upon what's defined in the file.
+The starter manifest file is a required JSON file at the root of the starter.
+The build process reads the manifest and takes actions based upon what's defined
+in the file.
 
-`dependencies`: Merge the defined dependencies into `package.json`, overwriting
-any existing keys.
+| Key            | Description
+|----------------|-------------
+| `name`         | The human-readable name.
+| `welcome`      | _(optional)_ A custom message to be displayed when the user runs `ionic start` on the starter.
+| `dependencies` | _(optional)_ During build, the defined dependencies will be merged into `package.json`, overwriting any existing keys.
 
 ## Deploying
 

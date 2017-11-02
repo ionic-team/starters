@@ -2,6 +2,8 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as util from 'util'
 
+import chalk from 'chalk';
+
 import { PackageJson, StarterManifest } from './definitions';
 
 const statp = util.promisify(fs.stat);
@@ -24,11 +26,11 @@ export async function readPackageJson(p: string): Promise<PackageJson> {
   return JSON.parse(contents);
 }
 
-export async function readStarterManifest(p: string): Promise<StarterManifest | undefined> {
+export async function readStarterManifest(p: string): Promise<StarterManifest> {
   const contents = await readFile(p);
 
   if (!contents) {
-    return;
+    throw new Error(`No starter manifest found at: ${p}`);
   }
 
   return JSON.parse(contents);
@@ -50,4 +52,8 @@ export async function readFile(p: string): Promise<string | undefined> {
   }
 
   return readFilep(p, { encoding: 'utf8' });
+}
+
+export async function log(id: string, msg: string) {
+  console.log(chalk.dim('=>'), chalk.cyan(id), msg);
 }

@@ -6,7 +6,7 @@ import chalk from 'chalk';
 import * as ncp from 'ncp';
 import * as rimraf from 'rimraf';
 
-import { readPackageJson, readStarterManifest, getDirectories } from './utils';
+import { readPackageJson, readStarterManifest, getDirectories, log } from './utils';
 
 const writeFilep = util.promisify(fs.writeFile);
 const ncpp: (s: string, d: string, o?: ncp.Options) => void = <any>util.promisify(ncp.ncp);
@@ -30,7 +30,7 @@ async function buildStarterArchive(starterType: string, starterDir: string): Pro
   const id = `${starterType}-starter-${starter}`;
   const tmpdest = path.resolve(BUILD_DIRECTORY, id);
 
-  console.log('=>', chalk.cyan(id), 'Building...');
+  log(id, 'Building...');
 
   const starterManifestPath = path.resolve(path.dirname(starterDir), starter, 'ionic.starter.json');
   const manifest = await readStarterManifest(starterManifestPath);
@@ -41,12 +41,14 @@ async function buildStarterArchive(starterType: string, starterDir: string): Pro
   const packageJsonPath = path.resolve(tmpdest, 'package.json');
   const packageJson = await readPackageJson(packageJsonPath);
 
-  if (manifest && manifest.dependencies) {
+  log(id, `Performing manifest operations for ${chalk.bold(manifest.name)}`);
+
+  if (manifest.dependencies) {
     Object.assign(packageJson.dependencies, manifest.dependencies);
     await writeFilep(packageJsonPath, JSON.stringify(packageJson, undefined, 2) + '\n', { encoding: 'utf8' });
   }
 
-  console.log('=>', chalk.cyan(id), `Built!`);
+  log(id, chalk.green('Built!'));
 }
 
 run().catch(e => console.error(e));

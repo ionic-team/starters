@@ -1,4 +1,5 @@
 {
+  "name": "AWS Starter",
   "dependencies": {
     "@ionic-native/camera": "4.3.2"
   }
