@@ -98,10 +98,10 @@ function getStarterInfoFromPath(starterDir: string): string[] {
 
 function generateStarterName(starterType: string, starterDir: string) {
   if (starterType === STARTER_TYPE_OFFICIAL) {
-    return path.basename(starterDir);
+    return path.basename(starterDir).toLowerCase();
   } else if (starterType === STARTER_TYPE_COMMUNITY) {
     const scope = path.dirname(starterDir);
-    return `${path.basename(scope)}-${path.basename(starterDir)}`;
+    return `${path.basename(scope)}-${path.basename(starterDir)}`.toLowerCase();
   }
 
   throw new Error(chalk.red(`Unknown starter type: ${starterType}`));
