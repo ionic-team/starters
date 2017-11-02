@@ -28,6 +28,7 @@ in the file.
 | Key            | Description
 |----------------|-------------
 | `name`         | The human-readable name.
+| `baseref`      | The latest git ref (branch or sha) at which the starter is compatible with the base files (located in `<type>/base/`).
 | `welcome`      | _(optional)_ A custom message to be displayed when the user runs `ionic start` on the starter.
 | `dependencies` | _(optional)_ During build, the defined dependencies will be merged into `package.json`, overwriting any existing keys.
 

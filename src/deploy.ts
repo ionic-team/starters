@@ -23,7 +23,7 @@ async function run() {
     archive.directory(dir, false);
 
     await uploadArchive(archive, templateKey);
-    log(id, `Uploaded!`);
+    log(id, chalk.green(`Uploaded!`));
 
     templateKeys.push(templateKey);
   }));
