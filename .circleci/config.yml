@@ -6,6 +6,8 @@ jobs:
       - image: circleci/node:8
     steps:
       - checkout
+      - run: git submodule sync
+      - run: git submodule update --init
       - restore_cache:
           key: dependency-cache-{{ checksum "package.json" }}
       - run: npm install
