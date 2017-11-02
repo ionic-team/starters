@@ -1,9 +1,9 @@
 {
   "private": true,
   "scripts": {
-    "build": "tsc",
-    "watch": "tsc -w",
-    "deploy": "node ./dist/deploy.js"
+    "tsc": "tsc",
+    "build": "node ./dist/build.js",
+    "deploy": "npm run build && node ./dist/deploy.js"
   },
   "dependencies": {
     "archiver": "^2.1.0",
