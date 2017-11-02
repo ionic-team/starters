@@ -2,6 +2,6 @@
   "name": "AWS Starter",
   "baseref": "master",
   "dependencies": {
-    "@ionic-native/camera": "4.3.2"
+    "@ionic-native/camera": "4.3.3"
   }
 }
