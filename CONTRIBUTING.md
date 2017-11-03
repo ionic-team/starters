@@ -35,7 +35,7 @@ in the file.
 |---------------|-------------
 | `name`        | The human-readable name.
 | `baseref`     | The latest git ref (branch or sha) at which the starter is compatible with the base files (located in `<type>/base/`).
-| `welcome`     | _(optional)_ A custom message to be displayed when the user runs `ionic start` on the starter.
+| `welcome`     | _(optional)_ A custom message to be displayed when the user runs `ionic start` on the starter. See [Starter Welcome](#starter-welcome).
 | `packageJson` | _(optional)_ During build, the defined keys will be [recursively merged](https://lodash.com/docs/4.17.4#merge) (with the exception that arrays are replaced, not merged) into `package.json`.
 
 ### Community Starters
@@ -59,6 +59,16 @@ To submit your own starter,
     ```
 
 1. Copy the generated starter into a different directory and test it!
+
+### Starter Welcome
+
+For a custom message to be displayed for your starter during `ionic start`, you
+can set the `welcome` key of your starter manifest file to a string. For
+terminal colors and other formatting, you can create a quick script to generate
+the message, JSON-encode it, and copy it into your manifest file. See [this
+example
+script](https://github.com/ionic-team/starters/tree/master/ionic-angular/official/super.welcome.js)
+for the Super Starter.
 
 ## Deploying
 
