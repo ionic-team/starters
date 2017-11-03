@@ -130,7 +130,7 @@ async function buildStarterArchive(ionicType: string, starterType: string, start
   log(id, `Performing manifest operations for ${chalk.bold(manifest.name)}`);
 
   if (manifest.packageJson) {
-    _.merge(packageJson, manifest.packageJson);
+    _.mergeWith(packageJson, manifest.packageJson, (objv, v) => _.isArray(v) ? v : undefined);
     await writeFilep(path.resolve(tmpdest, 'package.json'), JSON.stringify(packageJson, undefined, 2) + '\n', { encoding: 'utf8' });
   }
 
