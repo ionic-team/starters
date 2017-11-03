@@ -76,8 +76,8 @@ export function runcmd(command: string, args?: string[]): Promise<string> {
       });
     }
 
-    if (p.stdout) {
-      p.stdout.on('data', chunk => {
+    if (p.stderr) {
+      p.stderr.on('data', chunk => {
         if (Buffer.isBuffer(chunk)) {
           stderrbufs.push(chunk);
         } else {
@@ -91,10 +91,13 @@ export function runcmd(command: string, args?: string[]): Promise<string> {
     });
 
     p.on('close', code => {
+      const stdout = Buffer.concat(stdoutbufs).toString();
+      const stderr = Buffer.concat(stderrbufs).toString();
+
       if (code === 0) {
-        resolve(Buffer.concat(stdoutbufs).toString());
+        resolve(stdout);
       } else {
-        reject(new Error(Buffer.concat(stderrbufs).toString()));
+        reject(new Error(stderr));
       }
     });
   });
