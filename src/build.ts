@@ -19,7 +19,7 @@ const REPO_DIRECTORY = path.resolve(path.dirname(__dirname));
 const BUILD_DIRECTORY = path.resolve(REPO_DIRECTORY, 'build');
 const IONIC_TYPE_DIRECTORIES = ['ionic1', 'ionic-angular'];
 
-async function run() {
+export async function run() {
   const starter = process.argv[2];
 
   await rimrafp(`${BUILD_DIRECTORY}/*`);
@@ -131,5 +131,3 @@ async function buildStarterArchive(ionicType: string, starterType: string, start
 
   log(id, chalk.green('Built!'));
 }
-
-run().catch(e => console.error(e));

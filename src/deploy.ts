@@ -6,19 +6,26 @@ import * as S3 from 'aws-sdk/clients/s3';
 import * as CloudFront from 'aws-sdk/clients/cloudfront';
 
 import { getDirectories, log } from './utils';
+import { run as build } from './build';
 
 const s3 = new S3({ apiVersion: '2006-03-01' });
 const cloudfront = new CloudFront({ apiVersion: '2017-03-25' });
 
 const templateKeys: string[] = [];
 
-async function run() {
+export async function run() {
+  await build();
+
   const contents = await getDirectories('build');
 
   await Promise.all(contents.map(async (dir) => {
     const id = path.basename(dir);
     const archive = archiver('tar');
     const templateKey = `${id}.tar.gz`;
+
+    archive.on('entry', (entry) => {
+      // console.log('add', entry.name);
+    });
 
     archive.directory(dir, false);
 
@@ -57,5 +64,3 @@ async function uploadArchive(archive: archiver.Archiver, key: string) {
     Body: archive,
   }).promise();
 }
-
-run().catch(e => console.error(e));

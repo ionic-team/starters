@@ -2,8 +2,8 @@
   "private": true,
   "scripts": {
     "tsc": "tsc",
-    "build": "node ./dist/build.js",
-    "deploy": "npm run build && node ./dist/deploy.js"
+    "build": "node ./bin/build.js",
+    "deploy": "node ./bin/deploy.js"
   },
   "dependencies": {
     "archiver": "^2.1.0",
