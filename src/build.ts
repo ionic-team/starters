@@ -17,6 +17,7 @@ const STARTER_TYPE_OFFICIAL = 'official';
 const STARTER_TYPE_COMMUNITY = 'community';
 const REPO_DIRECTORY = path.resolve(path.dirname(__dirname));
 const BUILD_DIRECTORY = path.resolve(REPO_DIRECTORY, 'build');
+const INTEGRATIONS_DIRECTORY = path.resolve(REPO_DIRECTORY, 'integrations');
 const IONIC_TYPE_DIRECTORIES = ['ionic1', 'ionic-angular'];
 
 export async function run() {
@@ -57,7 +58,7 @@ export async function run() {
 
     const [ ionicType, starterType ] = getStarterInfoFromPath(starterDir);
     await buildStarterArchive(ionicType, starterType, starterDir);
-  } else  {
+  } else {
     for (let ionicType of IONIC_TYPE_DIRECTORIES) {
       const baseDir = path.resolve(REPO_DIRECTORY, ionicType, 'base');
       const officialStarterDirs = await getDirectories(path.resolve(ionicType, STARTER_TYPE_OFFICIAL));
@@ -94,6 +95,14 @@ export async function run() {
         await runcmd('git', ['checkout', currentBranch, '--', baseDir]);
       }
     }
+
+    const integrationDirs = await getDirectories(INTEGRATIONS_DIRECTORY);
+
+    await Promise.all(integrationDirs.map(async (integrationDir) => {
+      const integration = `integration-${path.basename(integrationDir)}`;
+      await ncpp(integrationDir, path.resolve(BUILD_DIRECTORY, integration));
+      log(integration, chalk.green('Copied!'));
+    }));
   }
 }
 
