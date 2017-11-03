@@ -43,8 +43,8 @@ in the file.
 To submit your own starter,
 
 1. Clone this repo.
-1. Fork or copy [this repository](https://github.com/ionic-team/starter-example)
-   for an example starter.
+1. Fork or copy the [Example
+   Starter](https://github.com/ionic-team/starter-example).
 1. Add a git submodule for your starter at `<type>/community/<your github
    name>/<github repo name>`. For example:
 
