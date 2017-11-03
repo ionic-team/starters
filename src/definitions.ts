@@ -2,9 +2,10 @@ export interface StarterManifest {
   name: string;
   baseref: string;
   welcome?: string;
-  dependencies?: { [key: string]: string; };
+  packageJson?: PackageJson;
 }
 
 export interface PackageJson {
-  dependencies: { [key: string]: string; };
+  dependencies?: { [key: string]: string; };
+  devDependencies?: { [key: string]: string; };
 }

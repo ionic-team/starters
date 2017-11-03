@@ -1,9 +1,11 @@
 {
   "name": "Ionic Super Starter",
   "baseref": "master",
-  "dependencies": {
-    "@ionic-native/camera": "4.3.3",
-    "@ngx-translate/core": "8.0.0",
-    "@ngx-translate/http-loader": "^2.0.0"
+  "packageJson": {
+    "dependencies": {
+      "@ionic-native/camera": "4.3.3",
+      "@ngx-translate/core": "8.0.0",
+      "@ngx-translate/http-loader": "^2.0.0"
+    }
   }
 }

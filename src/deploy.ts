@@ -27,9 +27,9 @@ export async function run() {
     const archive = archiver('tar');
     const templateKey = `${id}.tar.gz`;
 
-    archive.on('entry', (entry) => {
-      // console.log('add', entry.name);
-    });
+    // archive.on('entry', (entry) => {
+    //   console.log('add', entry.name);
+    // });
 
     archive.directory(dir, false);
 
