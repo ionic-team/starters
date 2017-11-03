@@ -22,6 +22,11 @@ const IONIC_TYPE_DIRECTORIES = ['ionic1', 'ionic-angular'];
 export async function run() {
   const starter = process.argv[2];
 
+  console.log('-----');
+  console.log(chalk.cyan.bold('BUILD'));
+  console.log('-----');
+  console.log(`Wiping ${chalk.bold(`${BUILD_DIRECTORY}/*`)}`);
+
   await rimrafp(`${BUILD_DIRECTORY}/*`);
 
   await Promise.all(IONIC_TYPE_DIRECTORIES.map(async (ionicType) => {
@@ -53,7 +58,7 @@ export async function run() {
     const [ ionicType, starterType ] = getStarterInfoFromPath(starterDir);
     await buildStarterArchive(ionicType, starterType, starterDir);
   } else  {
-    await Promise.all(IONIC_TYPE_DIRECTORIES.map(async (ionicType) => {
+    for (let ionicType of IONIC_TYPE_DIRECTORIES) {
       const baseDir = path.resolve(REPO_DIRECTORY, ionicType, 'base');
       const officialStarterDirs = await getDirectories(path.resolve(ionicType, STARTER_TYPE_OFFICIAL));
       const communityScopes = await getDirectories(path.resolve(ionicType, STARTER_TYPE_COMMUNITY));
@@ -88,7 +93,7 @@ export async function run() {
 
         await runcmd('git', ['checkout', currentBranch, '--', baseDir]);
       }
-    }));
+    }
   }
 }
 

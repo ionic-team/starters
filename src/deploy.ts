@@ -16,6 +16,10 @@ const templateKeys: string[] = [];
 export async function run() {
   await build();
 
+  console.log('------');
+  console.log(chalk.cyan.bold('DEPLOY'));
+  console.log('------');
+
   const contents = await getDirectories('build');
 
   await Promise.all(contents.map(async (dir) => {
