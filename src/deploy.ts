@@ -41,10 +41,12 @@ export async function run() {
     log(id, chalk.green(`Uploaded!`));
   }));
 
-  console.log(`Invalidating cache for keys:\n${keys.map(k => `    - ${chalk.bold(k)}`).join('\n')}`);
-
   await upload(fs.createReadStream(STARTERS_LIST_PATH), 'starters.json');
   keys.push('starters.json');
+
+  log('starters.json', chalk.green('Uploaded!'));
+
+  console.log(`Invalidating cache for keys:\n${keys.map(k => `    - ${chalk.bold(k)}`).join('\n')}`);
 
   const result = await cloudfront.createInvalidation({
     DistributionId: 'E1XZ2T0DZXJ521',

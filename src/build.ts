@@ -115,6 +115,7 @@ export async function run() {
       log(integration, chalk.green('Copied!'));
     }));
 
+    console.log(`Writing ${chalk.cyan('starters.json')}`);
     await writeFilep(STARTERS_LIST_PATH, JSON.stringify(starterList, undefined, 2));
   }
 }
