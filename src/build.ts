@@ -1,17 +1,20 @@
-import * as fs from 'fs';
 import * as path from 'path';
-import * as util from 'util'
 
 import chalk from 'chalk';
-import * as ncp from 'ncp';
-import * as rimraf from 'rimraf';
 import * as _ from 'lodash';
 
-import { readPackageJson, readStarterManifest, getDirectories, log, runcmd } from './utils';
+import { StarterList } from './definitions';
 
-const writeFilep = util.promisify(fs.writeFile);
-const ncpp: (s: string, d: string, o?: ncp.Options) => void = <any>util.promisify(ncp.ncp);
-const rimrafp: (p: string) => void = <any>util.promisify(rimraf);
+import {
+  getDirectories,
+  log,
+  ncpp,
+  readPackageJson,
+  readStarterManifest,
+  rimrafp,
+  runcmd,
+  writeFilep,
+} from './utils';
 
 const STARTER_TYPE_OFFICIAL = 'official';
 const STARTER_TYPE_COMMUNITY = 'community';
@@ -59,6 +62,8 @@ export async function run() {
     const [ ionicType, starterType ] = getStarterInfoFromPath(starterDir);
     await buildStarterArchive(ionicType, starterType, starterDir);
   } else {
+    const starterList: StarterList = { starters: [], integrations: [] };
+
     for (let ionicType of IONIC_TYPE_DIRECTORIES) {
       const baseDir = path.resolve(REPO_DIRECTORY, ionicType, 'base');
       const officialStarterDirs = await getDirectories(path.resolve(ionicType, STARTER_TYPE_OFFICIAL));
@@ -88,8 +93,10 @@ export async function run() {
         await runcmd('git', ['checkout', ref, '--', baseDir]);
 
         await Promise.all(starterDirsAtRef.map(async (starterDir) => {
-          const [ , starterType ] = getStarterInfoFromPath(starterDir);
-          await buildStarterArchive(ionicType, starterType, starterDir);
+          const [ , starterType, ...rest ] = getStarterInfoFromPath(starterDir);
+          const name = rest.join('/');
+          const { id } = await buildStarterArchive(ionicType, starterType, starterDir);
+          starterList.starters.push({ name, id, type: ionicType });
         }));
 
         await runcmd('git', ['checkout', currentBranch, '--', baseDir]);
@@ -99,10 +106,14 @@ export async function run() {
     const integrationDirs = await getDirectories(INTEGRATIONS_DIRECTORY);
 
     await Promise.all(integrationDirs.map(async (integrationDir) => {
-      const integration = `integration-${path.basename(integrationDir)}`;
+      const name = path.basename(integrationDir);
+      const integration = `integration-${name}`;
       await ncpp(integrationDir, path.resolve(BUILD_DIRECTORY, integration));
+      starterList.integrations.push({ name, id: integration });
       log(integration, chalk.green('Copied!'));
     }));
+
+    await writeFilep(path.resolve(BUILD_DIRECTORY, 'starters.json'), JSON.stringify(starterList, undefined, 2));
   }
 }
 
@@ -121,7 +132,7 @@ function generateStarterName(starterType: string, starterDir: string) {
   throw new Error(chalk.red(`Unknown starter type: ${starterType}`));
 }
 
-async function buildStarterArchive(ionicType: string, starterType: string, starterDir: string): Promise<void> {
+async function buildStarterArchive(ionicType: string, starterType: string, starterDir: string): Promise<{ id: string; }> {
   const baseDir = path.resolve(REPO_DIRECTORY, ionicType, 'base');
   const starter = generateStarterName(starterType, starterDir);
   const id = `${ionicType}-${starterType}-${starter}`;
@@ -144,4 +155,6 @@ async function buildStarterArchive(ionicType: string, starterType: string, start
   }
 
   log(id, chalk.green('Built!'));
+
+  return { id };
 }
