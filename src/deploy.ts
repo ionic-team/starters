@@ -41,7 +41,7 @@ export async function run() {
     log(id, chalk.green(`Uploaded!`));
   }));
 
-  await upload(fs.createReadStream(STARTERS_LIST_PATH), 'starters.json');
+  await upload(fs.createReadStream(STARTERS_LIST_PATH), 'starters.json', { ContentType: 'application/json' });
   keys.push('starters.json');
 
   log('starters.json', chalk.green('Uploaded!'));
@@ -66,10 +66,11 @@ export async function run() {
   console.log(`Invalidation ID: ${chalk.bold(result.Invalidation.Id)}`);
 }
 
-async function upload(rs: NodeJS.ReadableStream, key: string) {
+async function upload(rs: NodeJS.ReadableStream, key: string, params?: Partial<S3.PutObjectRequest>) {
   await s3.upload({
     Bucket: 'ionic-starters',
     Key: key,
     Body: rs,
+    ...params,
   }).promise();
 }
