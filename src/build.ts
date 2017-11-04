@@ -19,9 +19,11 @@ import {
 const STARTER_TYPE_OFFICIAL = 'official';
 const STARTER_TYPE_COMMUNITY = 'community';
 const REPO_DIRECTORY = path.resolve(path.dirname(__dirname));
-const BUILD_DIRECTORY = path.resolve(REPO_DIRECTORY, 'build');
 const INTEGRATIONS_DIRECTORY = path.resolve(REPO_DIRECTORY, 'integrations');
 const IONIC_TYPE_DIRECTORIES = ['ionic1', 'ionic-angular'];
+
+export const BUILD_DIRECTORY = path.resolve(REPO_DIRECTORY, 'build');
+export const STARTERS_LIST_PATH = path.resolve(BUILD_DIRECTORY, 'starters.json');
 
 export async function run() {
   const starter = process.argv[2];
@@ -113,7 +115,7 @@ export async function run() {
       log(integration, chalk.green('Copied!'));
     }));
 
-    await writeFilep(path.resolve(BUILD_DIRECTORY, 'starters.json'), JSON.stringify(starterList, undefined, 2));
+    await writeFilep(STARTERS_LIST_PATH, JSON.stringify(starterList, undefined, 2));
   }
 }
 
