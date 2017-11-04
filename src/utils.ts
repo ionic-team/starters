@@ -13,6 +13,7 @@ export const statp = util.promisify(fs.stat);
 export const readdirp = util.promisify(fs.readdir);
 export const readFilep = util.promisify(fs.readFile);
 export const writeFilep = util.promisify(fs.writeFile);
+export const unlink = util.promisify(fs.unlink);
 export const ncpp: (s: string, d: string, o?: ncp.Options) => void = <any>util.promisify(ncp.ncp);
 export const rimrafp: (p: string) => void = <any>util.promisify(rimraf);
 

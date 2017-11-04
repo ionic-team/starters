@@ -13,6 +13,7 @@ import {
   readStarterManifest,
   rimrafp,
   runcmd,
+  unlink,
   writeFilep,
 } from './utils';
 
@@ -147,6 +148,14 @@ async function buildStarterArchive(ionicType: string, starterType: string, start
 
   await ncpp(baseDir, tmpdest, {});
   await ncpp(starterDir, tmpdest, {});
+
+  try {
+    await unlink(path.resolve(tmpdest, '.git'));
+  } catch (e) {
+    if (e.code !== 'ENOENT') {
+      throw e;
+    }
+  }
 
   const packageJson = await readPackageJson(tmpdest);
 
