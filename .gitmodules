@@ -1,6 +1,3 @@
 [submodule "ionic-angular/community/ionic-team/example"]
 	path = ionic-angular/community/ionic-team/example
 	url = https://github.com/ionic-team/starter-example.git
-[submodule "ionic-angular/community/danielsogl/ionic-super-starter"]
-	path = ionic-angular/community/danielsogl/ionic-super-starter
-	url = https://github.com/danielsogl/ionic-super-starter.git
