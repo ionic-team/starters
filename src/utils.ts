@@ -4,12 +4,18 @@ import * as util from 'util'
 
 import chalk from 'chalk';
 import { spawn } from 'cross-spawn';
+import * as rimraf from 'rimraf';
+import * as ncp from 'ncp';
 
 import { PackageJson, StarterManifest } from './definitions';
 
-const statp = util.promisify(fs.stat);
-const readdirp = util.promisify(fs.readdir);
-const readFilep = util.promisify(fs.readFile);
+export const statp = util.promisify(fs.stat);
+export const readdirp = util.promisify(fs.readdir);
+export const readFilep = util.promisify(fs.readFile);
+export const writeFilep = util.promisify(fs.writeFile);
+export const unlink = util.promisify(fs.unlink);
+export const ncpp: (s: string, d: string, o?: ncp.Options) => void = <any>util.promisify(ncp.ncp);
+export const rimrafp: (p: string) => void = <any>util.promisify(rimraf);
 
 export async function getDirectories(p: string): Promise<string[]> {
   const contents = await readdirp(p);

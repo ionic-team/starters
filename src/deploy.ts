@@ -1,3 +1,4 @@
+import * as fs from 'fs';
 import * as path from 'path';
 
 import chalk from 'chalk';
@@ -6,12 +7,12 @@ import * as S3 from 'aws-sdk/clients/s3';
 import * as CloudFront from 'aws-sdk/clients/cloudfront';
 
 import { getDirectories, log } from './utils';
-import { run as build } from './build';
+import { BUILD_DIRECTORY, STARTERS_LIST_PATH, run as build } from './build';
 
 const s3 = new S3({ apiVersion: '2006-03-01' });
 const cloudfront = new CloudFront({ apiVersion: '2017-03-25' });
 
-const templateKeys: string[] = [];
+const keys: string[] = [];
 
 export async function run() {
   await build();
@@ -20,7 +21,7 @@ export async function run() {
   console.log(chalk.cyan.bold('DEPLOY'));
   console.log('------');
 
-  const contents = await getDirectories('build');
+  const contents = await getDirectories(BUILD_DIRECTORY);
 
   await Promise.all(contents.map(async (dir) => {
     const id = path.basename(dir);
@@ -32,22 +33,28 @@ export async function run() {
     // });
 
     archive.directory(dir, false);
+    archive.finalize();
 
-    await uploadArchive(archive, templateKey);
+    await upload(archive, templateKey);
+    keys.push(templateKey);
+
     log(id, chalk.green(`Uploaded!`));
-
-    templateKeys.push(templateKey);
   }));
 
-  console.log(`Invalidating cache for keys:\n${templateKeys.map(k => `    - ${chalk.bold(k)}`).join('\n')}`);
+  await upload(fs.createReadStream(STARTERS_LIST_PATH), 'starters.json', { ContentType: 'application/json' });
+  keys.push('starters.json');
+
+  log('starters.json', chalk.green('Uploaded!'));
+
+  console.log(`Invalidating cache for keys:\n${keys.map(k => `    - ${chalk.bold(k)}`).join('\n')}`);
 
   const result = await cloudfront.createInvalidation({
     DistributionId: 'E1XZ2T0DZXJ521',
     InvalidationBatch: {
       CallerReference: String(new Date().getTime()),
       Paths: {
-        Quantity: templateKeys.length,
-        Items: templateKeys.map(k => `/${k}`),
+        Quantity: keys.length,
+        Items: keys.map(k => `/${k}`),
       },
     },
   }).promise();
@@ -59,12 +66,11 @@ export async function run() {
   console.log(`Invalidation ID: ${chalk.bold(result.Invalidation.Id)}`);
 }
 
-async function uploadArchive(archive: archiver.Archiver, key: string) {
-  archive.finalize();
-
+async function upload(rs: NodeJS.ReadableStream, key: string, params?: Partial<S3.PutObjectRequest>) {
   await s3.upload({
     Bucket: 'ionic-starters',
     Key: key,
-    Body: archive,
+    Body: rs,
+    ...params,
   }).promise();
 }
