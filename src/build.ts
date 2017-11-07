@@ -2,6 +2,7 @@ import * as path from 'path';
 
 import chalk from 'chalk';
 import * as _ from 'lodash';
+// import { spawn } from 'cross-spawn';
 
 import { StarterList } from './definitions';
 
@@ -63,7 +64,7 @@ export async function run() {
     }
 
     const [ ionicType, starterType ] = getStarterInfoFromPath(starterDir);
-    await buildStarterArchive(ionicType, starterType, starterDir);
+    await buildStarter(ionicType, starterType, starterDir);
   } else {
     const starterList: StarterList = { starters: [], integrations: [] };
 
@@ -98,7 +99,7 @@ export async function run() {
         await Promise.all(starterDirsAtRef.map(async (starterDir) => {
           const [ , starterType, ...rest ] = getStarterInfoFromPath(starterDir);
           const name = rest.join('/');
-          const { id } = await buildStarterArchive(ionicType, starterType, starterDir);
+          const id = await buildStarter(ionicType, starterType, starterDir);
           starterList.starters.push({ name, id, type: ionicType });
         }));
 
@@ -136,7 +137,7 @@ function generateStarterName(starterType: string, starterDir: string) {
   throw new Error(chalk.red(`Unknown starter type: ${starterType}`));
 }
 
-async function buildStarterArchive(ionicType: string, starterType: string, starterDir: string): Promise<{ id: string; }> {
+async function buildStarter(ionicType: string, starterType: string, starterDir: string): Promise<string> {
   const baseDir = path.resolve(REPO_DIRECTORY, ionicType, 'base');
   const starter = generateStarterName(starterType, starterDir);
   const id = `${ionicType}-${starterType}-${starter}`;
@@ -166,7 +167,31 @@ async function buildStarterArchive(ionicType: string, starterType: string, start
     await writeFilep(path.resolve(tmpdest, 'package.json'), JSON.stringify(packageJson, undefined, 2) + '\n', { encoding: 'utf8' });
   }
 
-  log(id, chalk.green('Built!'));
+  // const depstmpdest = `${tmpdest}-dependencies`;
+  // await mkdirp(depstmpdest);
 
-  return { id };
+  // log(id, `Installing ${chalk.bold('node_modules')} dependencies`);
+  // await npmInstall(tmpdest);
+
+  // await renamep(path.resolve(tmpdest, 'node_modules'), path.resolve(depstmpdest, 'node_modules'));
+
+  return id;
 }
+
+// async function npmInstall(dir: string) {
+//   const p = spawn('npm', ['install', '--no-shrinkwrap', '--no-package-lock', '--ignore-scripts'], { cwd: dir, stdio: 'inherit', env: { PATH: process.env.PATH, NODE_ENV: 'development' } });
+
+//   return new Promise((resolve, reject) => {
+//     p.on('err', err => {
+//       reject(err);
+//     });
+
+//     p.on('close', code => {
+//       if (code === 0) {
+//         resolve();
+//       } else {
+//         reject(new Error(`bad status code: ${code}`));
+//       }
+//     });
+//   });
+// }

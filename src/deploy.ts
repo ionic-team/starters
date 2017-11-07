@@ -35,6 +35,8 @@ export async function run() {
     archive.directory(dir, false);
     archive.finalize();
 
+    log(id, `Archiving and uploading`);
+
     await upload(archive, templateKey);
     keys.push(templateKey);
 

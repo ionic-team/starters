@@ -9,11 +9,14 @@ import * as ncp from 'ncp';
 
 import { PackageJson, StarterManifest } from './definitions';
 
-export const statp = util.promisify(fs.stat);
-export const readdirp = util.promisify(fs.readdir);
+export const mkdirp = util.promisify(fs.mkdir);
 export const readFilep = util.promisify(fs.readFile);
-export const writeFilep = util.promisify(fs.writeFile);
+export const readdirp = util.promisify(fs.readdir);
+export const renamep = util.promisify(fs.rename);
+export const statp = util.promisify(fs.stat);
 export const unlink = util.promisify(fs.unlink);
+export const writeFilep = util.promisify(fs.writeFile);
+
 export const ncpp: (s: string, d: string, o?: ncp.Options) => void = <any>util.promisify(ncp.ncp);
 export const rimrafp: (p: string) => void = <any>util.promisify(rimraf);
 
