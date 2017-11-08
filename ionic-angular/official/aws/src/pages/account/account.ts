@@ -116,8 +116,8 @@ export class AccountPage {
         console.log('upload failed....', err);
         loading.dismiss();
       });
+    } else {
+      loading.dismiss();
     }
-    loading.dismiss();
-
   }
 }

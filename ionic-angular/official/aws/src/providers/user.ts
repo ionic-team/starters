@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Config } from 'ionic-angular';
 
-import { Cognito } from './providers';
+import { Cognito } from './aws.cognito';
 
 declare var AWS: any;
 declare const aws_cognito_region;
@@ -46,13 +46,19 @@ export class User {
            'IdentityPoolId': aws_cognito_identity_pool_id,
            'Logins': logins
           });
-          
-          this.isAuthenticated().then(() => {
-            resolve();
-          }).catch((err) => {
-            console.log('auth session failed');
-          });
 
+          AWS.config.credentials.get((err) => {
+            if (err) {
+              return reject(err);
+            }
+
+            this.isAuthenticated().then(() => {
+              resolve();
+            }).catch((err) => {
+              console.log('auth session failed');
+            });
+          });
+          
         },
 
         'onFailure': (err:any) => {
@@ -68,6 +74,7 @@ export class User {
   logout() {
     this.user = null;
     this.cognito.getUserPool().getCurrentUser().signOut();
+    AWS.config.credentials.clearCachedId();
   }
 
   register(username, password, attr) {
