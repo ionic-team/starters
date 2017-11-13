@@ -4,3 +4,6 @@
 [submodule "ionic-angular/community/danielsogl/super"]
 	path = ionic-angular/community/danielsogl/super
 	url = https://github.com/danielsogl/ionic-super-starter.git
+[submodule "ionic-angular/community/oktadeveloper/jhipster"]
+	path = ionic-angular/community/oktadeveloper/jhipster
+	url = https://github.com/oktadeveloper/ionic-jhipster-starter.git
