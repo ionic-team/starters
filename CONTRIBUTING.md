@@ -59,6 +59,17 @@ To submit your own starter,
 
 1. Copy the generated starter into a different directory and test it!
 
+Tips:
+
+* When you `cd` into a git submodule directory (i.e.
+  `ionic-angular/community/ionic-team/example`), git commands operate on the
+  submodule as its own repository.
+* Inside a submodule folder, `git remote add local /path/to/starter/at/local`
+  will add a new [git remote](https://git-scm.com/docs/git-remote) which you can
+  use to pull local changes in. Make commits in your local starter repo, then
+  `git pull local`.
+* New commits in a submodule must also be saved in the base repository for PRs.
+
 ### Starter Welcome
 
 For a custom message to be displayed for your starter during `ionic start`, you
