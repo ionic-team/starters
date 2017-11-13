@@ -41,7 +41,7 @@ actions based upon what's defined in the file.
 
 To submit your own starter,
 
-1. Clone this repo.
+1. Fork this repo.
 1. Fork or copy the [Example
    Starter](https://github.com/ionic-team/starter-example).
 1. Add a git submodule for your starter at `<type>/community/<your github
@@ -58,6 +58,13 @@ To submit your own starter,
     ```
 
 1. Copy the generated starter into a different directory and test it!
+
+To update your starter,
+
+1. Push changes to your starter repo freely.
+1. Run `git pull` in your starters fork directory
+   (`ionic-angular/community/ionic-team/example` for example).
+1. Commit the changes to your fork and create a PR.
 
 Tips:
 
