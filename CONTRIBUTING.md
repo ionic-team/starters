@@ -76,6 +76,9 @@ Tips:
   use to pull local changes in. Make commits in your local starter repo, then
   `git pull local`.
 * New commits in a submodule must also be saved in the base repository for PRs.
+* Don't include a `.gitignore` file. If you need to ignore some files in your
+  starter repo, you can use the private gitignore file located at
+  `.git/info/exclude`.
 
 ### Starter Welcome
 
