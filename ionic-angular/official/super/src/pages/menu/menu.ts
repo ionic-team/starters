@@ -1,6 +1,12 @@
 import { Component, ViewChild } from '@angular/core';
 import { IonicPage, Nav, NavController } from 'ionic-angular';
 
+interface PageItem {
+  title: string
+  component: any
+}
+type PageList = PageItem[]
+
 @IonicPage()
 @Component({
   selector: 'page-menu',
@@ -12,7 +18,7 @@ export class MenuPage {
 
   rootPage: any = 'ContentPage';
 
-  pages: Array<{ title: string, component: any }>;
+  pages: PageList;
 
   constructor(public navCtrl: NavController) {
     // used for an example of ngFor and navigation
@@ -26,7 +32,7 @@ export class MenuPage {
     console.log('Hello MenuPage Page');
   }
 
-  openPage(page) {
+  openPage(page: PageItem) {
     // Reset the content nav to have just this page
     // we wouldn't want the back button to show in this scenario
     this.nav.setRoot(page.component);
