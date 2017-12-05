@@ -1,0 +1,68 @@
+{
+  "BACK_BUTTON_TEXT": "回退",
+
+  "NAME": "姓名",
+  "EMAIL": "邮箱",
+  "USERNAME": "登录名",
+  "PASSWORD": "口令",
+  "LOGIN": "登 录",
+  "SIGNUP": "注 册",
+
+  "TAB1_TITLE": "项目",
+  "TAB2_TITLE": "搜索",
+  "TAB3_TITLE": "设置",
+
+  "MAP_TITLE": "地图",
+
+  "TUTORIAL_SKIP_BUTTON": "跳过",
+  "TUTORIAL_CONTINUE_BUTTON": "继续",
+
+  "TUTORIAL_SLIDE1_TITLE": "欢迎来到 Ionic Super Starter",
+  "TUTORIAL_SLIDE1_DESCRIPTION": "<b>Ionic Super Starter</b> 是一个全功能的内置多个页面并且最佳实践的 Ionic 启动器。",
+
+  "TUTORIAL_SLIDE2_TITLE": "如何使用 Super 启动器",
+  "TUTORIAL_SLIDE2_DESCRIPTION": "使用你需要的多种多样的页面删除你不需要的页面。我们提供许多常见移动 app 页面，如登录、注册页面，tabs 标签页，以及本教程页面。",
+
+  "TUTORIAL_SLIDE3_TITLE": "开始",
+  "TUTORIAL_SLIDE3_DESCRIPTION": "需要帮助？查看 Super 启动器帮助文档可获得完整教程。",
+
+  "TUTORIAL_SLIDE4_TITLE": "开始学习？",
+
+  "WELCOME_INTRO": "出发，你的下一个强大的 Ionic app",
+
+  "SETTINGS_TITLE": "设置",
+  "SETTINGS_OPTION1": "选项 1",
+  "SETTINGS_OPTION2": "选项 2",
+  "SETTINGS_OPTION3": "选项 3",
+  "SETTINGS_OPTION4": "选项 4",
+
+  "SETTINGS_PROFILE_BUTTON": "编辑资料",
+
+  "SETTINGS_PAGE_PROFILE": "编辑资料",
+
+  "WELCOME_TITLE": "欢迎",
+
+  "LOGIN_TITLE": "登录",
+  "LOGIN_ERROR": "无法登录。请检查账号信息然后重试。",
+  "LOGIN_BUTTON": "登 录",
+  "SIGNUP_TITLE": "注 册",
+  "SIGNUP_ERROR": "无法创建账号。请检查账户信息然后重试。",
+  "SIGNUP_BUTTON": "注 册",
+
+  "LIST_MASTER_TITLE": "项目",
+
+  "ITEM_CREATE_TITLE": "新项目",
+  "ITEM_CREATE_CHOOSE_IMAGE": "添加图片",
+
+  "ITEM_NAME_PLACEHOLDER": "名称",
+  "ITEM_ABOUT_PLACEHOLDER": "关于",
+
+  "DONE_BUTTON": "完成",
+  "CANCEL_BUTTON": "取消",
+  "DELETE_BUTTON": "删除",
+
+  "CARDS_TITLE": "社交",
+
+  "SEARCH_TITLE": "搜索",
+  "SEARCH_PLACEHOLDER": "搜索项目列表, 比如：\"Donald Duck\""
+}
