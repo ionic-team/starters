@@ -21,7 +21,7 @@ const STARTER_TYPE_OFFICIAL = 'official';
 const STARTER_TYPE_COMMUNITY = 'community';
 const REPO_DIRECTORY = path.resolve(path.dirname(__dirname));
 const INTEGRATIONS_DIRECTORY = path.resolve(REPO_DIRECTORY, 'integrations');
-const IONIC_TYPE_DIRECTORIES = ['ionic1', 'ionic-angular'];
+const IONIC_TYPE_DIRECTORIES = ['ionic1', 'ionic-angular', 'ionic-core-angular'];
 
 export const BUILD_DIRECTORY = path.resolve(REPO_DIRECTORY, 'build');
 export const STARTERS_LIST_PATH = path.resolve(BUILD_DIRECTORY, 'starters.json');
