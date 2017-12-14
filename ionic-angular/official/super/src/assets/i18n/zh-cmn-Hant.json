@@ -1,0 +1,68 @@
+{
+  "BACK_BUTTON_TEXT": "回退",
+
+  "NAME": "姓名",
+  "EMAIL": "郵箱",
+  "USERNAME": "登錄名",
+  "PASSWORD": "口令",
+  "LOGIN": "登 錄",
+  "SIGNUP": "註 冊",
+
+  "TAB1_TITLE": "項目",
+  "TAB2_TITLE": "搜索",
+  "TAB3_TITLE": "設置",
+
+  "MAP_TITLE": "地圖",
+
+  "TUTORIAL_SKIP_BUTTON": "跳過",
+  "TUTORIAL_CONTINUE_BUTTON": "繼續",
+
+  "TUTORIAL_SLIDE1_TITLE": "歡迎來到 Ionic Super Starter",
+  "TUTORIAL_SLIDE1_DESCRIPTION": "<b>Ionic Super Starter</b> 是一個功能全面，內置多個頁面以及最佳實踐的 Ionic 入門教程。",
+
+  "TUTORIAL_SLIDE2_TITLE": "如何使用 Super 入門教程",
+  "TUTORIAL_SLIDE2_DESCRIPTION": "使用你需要的多種多樣的頁面刪除你不需要的頁面。我們提供許多常見移動 app 頁面，如登錄、註冊頁面，tabs 標簽頁，以及本教程頁面。",
+
+  "TUTORIAL_SLIDE3_TITLE": "開始",
+  "TUTORIAL_SLIDE3_DESCRIPTION": "需要幫助？查看 Super 入門教程的幫助文檔，可獲得完整教程。",
+
+  "TUTORIAL_SLIDE4_TITLE": "開始學習？",
+
+  "WELCOME_INTRO": "出發，你的下一個強大的 Ionic app",
+
+  "SETTINGS_TITLE": "設置",
+  "SETTINGS_OPTION1": "選項 1",
+  "SETTINGS_OPTION2": "選項 2",
+  "SETTINGS_OPTION3": "選項 3",
+  "SETTINGS_OPTION4": "選項 4",
+
+  "SETTINGS_PROFILE_BUTTON": "編輯資料",
+
+  "SETTINGS_PAGE_PROFILE": "編輯資料",
+
+  "WELCOME_TITLE": "歡迎",
+
+  "LOGIN_TITLE": "登錄",
+  "LOGIN_ERROR": "無法登錄。請檢查賬號信息然後重試。",
+  "LOGIN_BUTTON": "登 錄",
+  "SIGNUP_TITLE": "註 冊",
+  "SIGNUP_ERROR": "無法創建賬號。請檢查賬戶信息然後重試。",
+  "SIGNUP_BUTTON": "註 冊",
+
+  "LIST_MASTER_TITLE": "項目",
+
+  "ITEM_CREATE_TITLE": "新項目",
+  "ITEM_CREATE_CHOOSE_IMAGE": "添加圖片",
+
+  "ITEM_NAME_PLACEHOLDER": "名稱",
+  "ITEM_ABOUT_PLACEHOLDER": "關於",
+
+  "DONE_BUTTON": "完 成",
+  "CANCEL_BUTTON": "取 消",
+  "DELETE_BUTTON": "刪 除",
+
+  "CARDS_TITLE": "社交",
+
+  "SEARCH_TITLE": "搜索",
+  "SEARCH_PLACEHOLDER": "搜索項目列表, 例如：\"Donald Duck\""
+}
