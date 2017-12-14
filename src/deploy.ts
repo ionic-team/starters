@@ -14,8 +14,8 @@ const cloudfront = new CloudFront({ apiVersion: '2017-03-25' });
 
 const keys: string[] = [];
 
-export async function run() {
-  await build();
+export async function run(argv: string[]) {
+  await build(argv);
 
   console.log('------');
   console.log(chalk.cyan.bold('DEPLOY'));

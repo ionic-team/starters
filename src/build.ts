@@ -26,8 +26,8 @@ const IONIC_TYPE_DIRECTORIES = ['ionic1', 'ionic-angular', 'ionic-core-angular']
 export const BUILD_DIRECTORY = path.resolve(REPO_DIRECTORY, 'build');
 export const STARTERS_LIST_PATH = path.resolve(BUILD_DIRECTORY, 'starters.json');
 
-export async function run() {
-  const starter = process.argv[2];
+export async function run(argv: string[]) {
+  const starter = argv[2];
 
   console.log('-----');
   console.log(chalk.cyan.bold('BUILD'));
