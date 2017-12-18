@@ -36,6 +36,8 @@ actions based upon what's defined in the file.
 | `baseref`     | The latest git ref (branch or sha) at which the starter is compatible with the base files (located in `<type>/base/`).
 | `welcome`     | _(optional)_ A custom message to be displayed when the user runs `ionic start` on the starter. See [Starter Welcome](#starter-welcome).
 | `packageJson` | _(optional)_ During build, the defined keys will be [recursively merged](https://lodash.com/docs/4.17.4#merge) (with the exception that arrays are replaced, not merged) into `package.json`.
+| `tsconfigJson` | _(optional)_ During build, the defined keys will be [recursively merged](https://lodash.com/docs/4.17.4#merge) (with the exception that arrays are replaced, not merged) into the root `tsconfig.json`.
+| `gitignore` | _(optional)_ During build, the defined array of strings will be added to the bottom of the project's `.gitignore` file.
 
 ### Community Starters
 
