@@ -7,7 +7,7 @@ import { spawn } from 'cross-spawn';
 import * as rimraf from 'rimraf';
 import * as ncp from 'ncp';
 
-import { PackageJson, StarterManifest } from './definitions';
+import { PackageJson, TsconfigJson, StarterManifest } from './definitions';
 
 export const mkdirp = util.promisify(fs.mkdir);
 export const readFilep = util.promisify(fs.readFile);
@@ -34,6 +34,26 @@ export async function readPackageJson(dir: string): Promise<PackageJson> {
   }
 
   return JSON.parse(contents);
+}
+
+export async function readTsconfigJson(dir: string): Promise<TsconfigJson> {
+  const contents = await readFile(path.resolve(dir, 'tsconfig.json'));
+
+  if (!contents) {
+    return {};
+  }
+
+  return JSON.parse(contents);
+}
+
+export async function readGitignore(dir: string): Promise<string[]> {
+  const contents = await readFile(path.resolve(dir, '.gitignore'));
+
+  if (!contents) {
+    return [];
+  }
+
+  return contents.split(/\n/);
 }
 
 export async function readStarterManifest(dir: string): Promise<StarterManifest> {

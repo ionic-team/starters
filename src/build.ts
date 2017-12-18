@@ -11,6 +11,8 @@ import {
   log,
   ncpp,
   readPackageJson,
+  readTsconfigJson,
+  readGitignore,
   readStarterManifest,
   rimrafp,
   runcmd,
@@ -165,6 +167,20 @@ async function buildStarter(ionicType: string, starterType: string, starterDir: 
   if (manifest.packageJson) {
     _.mergeWith(packageJson, manifest.packageJson, (objv, v) => _.isArray(v) ? v : undefined);
     await writeFilep(path.resolve(tmpdest, 'package.json'), JSON.stringify(packageJson, undefined, 2) + '\n', { encoding: 'utf8' });
+  }
+
+  const tsconfigJson = await readTsconfigJson(tmpdest);
+
+  if (Object.keys(tsconfigJson).length > 0 && manifest.tsconfigJson) {
+    _.mergeWith(tsconfigJson, manifest.tsconfigJson, (objv, v) => _.isArray(v) ? v: undefined);
+    await writeFilep(path.resolve(tmpdest, 'tsconfig.json'), JSON.stringify(tsconfigJson, undefined, 2) + '\n', { encoding: 'utf8' });
+  }
+
+  const gitignore = await readGitignore(tmpdest);
+
+  if (manifest.gitignore) {
+    let united = _.union(gitignore.map(x => x.trim()), manifest.gitignore.map(x => x.trim()));
+    await writeFilep(path.resolve(tmpdest, '.gitignore'), united.join("\n") + '\n', { encoding: 'utf8' });
   }
 
   // const depstmpdest = `${tmpdest}-dependencies`;
