@@ -5,5 +5,9 @@
     "dependencies": {
       "@ionic-native/camera": "4.3.3"
     }
-  }
+  },
+  "gitignore": [
+    "cors-policy.xml",
+    "mobile-hub-project.zip"
+  ]
 }
