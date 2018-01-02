@@ -30,14 +30,14 @@ The starter manifest file (named `ionic.starter.json`) is a required JSON file
 at the root of the starter. The build process reads the manifest and takes
 actions based upon what's defined in the file.
 
-| Key           | Description
-|---------------|-------------
-| `name`        | The human-readable name.
-| `baseref`     | The latest git ref (branch or sha) at which the starter is compatible with the base files (located in `<type>/base/`).
-| `welcome`     | _(optional)_ A custom message to be displayed when the user runs `ionic start` on the starter. See [Starter Welcome](#starter-welcome).
-| `packageJson` | _(optional)_ During build, the defined keys will be [recursively merged](https://lodash.com/docs/4.17.4#merge) (with the exception that arrays are replaced, not merged) into `package.json`.
-| `tsconfigJson` | _(optional)_ During build, the defined keys will be [recursively merged](https://lodash.com/docs/4.17.4#merge) (with the exception that arrays are replaced, not merged) into the root `tsconfig.json`.
-| `gitignore` | _(optional)_ During build, the defined array of strings will be added to the bottom of the project's `.gitignore` file.
+| Key            | Description
+|----------------|-------------
+| `name`         | The human-readable name.
+| `baseref`      | The latest git ref (branch or sha) at which the starter is compatible with the base files (located in `<type>/base/`).
+| `welcome`      | _(optional)_ A custom message to be displayed when the user runs `ionic start` on the starter. See [Starter Welcome](#starter-welcome).
+| `packageJson`  | _(optional)_ During build, the defined keys will be recursively merged into the generated `package.json`.
+| `tsconfigJson` | _(optional)_ During build, the defined keys will be recursively merged into the generated `tsconfig.json`.
+| `gitignore`    | _(optional)_ During build, the defined array of strings will be added to the bottom of the project's `.gitignore` file.
 
 ### Community Starters
 
@@ -80,7 +80,8 @@ Tips:
 * New commits in a submodule must also be saved in the base repository for PRs.
 * Don't include a `.gitignore` file. If you need to ignore some files in your
   starter repo, you can use the private gitignore file located at
-  `.git/info/exclude`.
+  `.git/info/exclude`. If you need to add entries, you can use the `gitignore`
+  key in your manifest file.
 
 ### Starter Welcome
 
