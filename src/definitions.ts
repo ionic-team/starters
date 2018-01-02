@@ -1,3 +1,5 @@
+import { PackageJson } from '@ionic/cli-framework';
+
 export interface StarterList {
   starters: {
     name: string;
@@ -15,9 +17,4 @@ export interface StarterManifest {
   baseref: string;
   welcome?: string;
   packageJson?: PackageJson;
-}
-
-export interface PackageJson {
-  dependencies?: { [key: string]: string; };
-  devDependencies?: { [key: string]: string; };
 }

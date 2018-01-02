@@ -2,8 +2,6 @@
   "compilerOptions": {
     "allowUnreachableCode": false,
     "baseUrl": "./",
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
     "forceConsistentCasingInFileNames": true,
     "module": "commonjs",
     "moduleResolution": "node",

@@ -2,9 +2,10 @@
   "private": true,
   "scripts": {
     "tsc": "tsc",
-    "build": "node ./bin/build.js",
-    "deploy": "node ./bin/deploy.js"
+    "build": "node ./bin/ionic-starters build",
+    "deploy": "node ./bin/ionic-starters deploy"
   },
+  "main": "./dist/index.js",
   "dependencies": {
     "archiver": "^2.1.0",
     "aws-sdk": "^2.145.0",
@@ -15,8 +16,11 @@
     "rimraf": "^2.6.2"
   },
   "devDependencies": {
+    "@ionic/cli-framework": "canary",
     "@types/archiver": "^2.0.1",
+    "@types/dargs": "^5.1.0",
     "@types/lodash": "^4.14.81",
+    "@types/minimist": "^1.2.0",
     "@types/ncp": "^2.0.1",
     "@types/node": "^8.0.47",
     "@types/rimraf": "^2.0.2",

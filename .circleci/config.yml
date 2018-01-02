@@ -16,6 +16,7 @@ jobs:
           paths:
             - node_modules
       - run: npm run tsc
+      - run: npm run build
       - run: npm run deploy
     branches:
       only:
