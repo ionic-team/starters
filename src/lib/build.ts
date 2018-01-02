@@ -6,7 +6,7 @@ import * as _ from 'lodash';
 import { copyDirectory, fsUnlink, fsWriteFile } from '@ionic/cli-framework/utils/fs';
 import { readPackageJsonFile } from '@ionic/cli-framework/utils/npm';
 
-import { log, readStarterManifest } from '../utils';
+import { log, readGitignore, readStarterManifest, readTsconfigJson } from '../utils';
 
 export const STARTER_TYPE_OFFICIAL = 'official';
 export const STARTER_TYPE_COMMUNITY = 'community';
@@ -61,6 +61,20 @@ export async function buildStarter(ionicType: string, starterType: string, start
   if (manifest.packageJson) {
     _.mergeWith(pkg, manifest.packageJson, (objv, v) => _.isArray(v) ? v : undefined);
     await fsWriteFile(pkgPath, JSON.stringify(pkg, undefined, 2) + '\n', { encoding: 'utf8' });
+  }
+
+  const tsconfigJson = await readTsconfigJson(tmpdest);
+
+  if (Object.keys(tsconfigJson).length > 0 && manifest.tsconfigJson) {
+    _.mergeWith(tsconfigJson, manifest.tsconfigJson, (objv, v) => _.isArray(v) ? v: undefined);
+    await fsWriteFile(path.resolve(tmpdest, 'tsconfig.json'), JSON.stringify(tsconfigJson, undefined, 2) + '\n', { encoding: 'utf8' });
+  }
+
+  const gitignore = await readGitignore(tmpdest);
+
+  if (manifest.gitignore) {
+    let united = _.union(gitignore.map(x => x.trim()), manifest.gitignore.map(x => x.trim()));
+    await fsWriteFile(path.resolve(tmpdest, '.gitignore'), united.join("\n") + '\n', { encoding: 'utf8' });
   }
 
   return id;
