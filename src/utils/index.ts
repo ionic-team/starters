@@ -15,23 +15,23 @@ export async function getDirectories(p: string): Promise<string[]> {
 }
 
 export async function readTsconfigJson(dir: string): Promise<TsconfigJson> {
-  const contents = await fsReadFile(path.resolve(dir, 'tsconfig.json'), { encoding: 'utf8' });
-
-  if (!contents) {
-    return {};
+  try {
+    return JSON.parse(await fsReadFile(path.resolve(dir, 'tsconfig.json'), { encoding: 'utf8' }));
+  } catch (e) {
+    // ignore
   }
 
-  return JSON.parse(contents);
+  return {}
 }
 
 export async function readGitignore(dir: string): Promise<string[]> {
-  const contents = await fsReadFile(path.resolve(dir, '.gitignore'), { encoding: 'utf8' });
-
-  if (!contents) {
-    return [];
+  try {
+    return (await fsReadFile(path.resolve(dir, '.gitignore'), { encoding: 'utf8' })).split(/\n/);
+  } catch (e) {
+    // ignore
   }
 
-  return contents.split(/\n/);
+  return [];
 }
 
 export async function readStarterManifest(dir: string): Promise<StarterManifest> {
