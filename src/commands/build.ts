@@ -99,7 +99,7 @@ export class BuildCommand extends Command {
 
         const currentBranch = (await runcmd('git', ['rev-parse', '--abbrev-ref', 'HEAD'])).trim();
 
-        for (let [ref, starterDirsAtRef] of refmap.entries()) {
+        for (let [ ref, starterDirsAtRef ] of refmap.entries()) {
           console.log(`Checking out ${chalk.cyan.bold(ionicType)} base files at ${chalk.bold(ref)}`);
 
           await runcmd('git', ['checkout', ref, '--', baseDir]);

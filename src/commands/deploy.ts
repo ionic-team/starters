@@ -19,67 +19,89 @@ const keys: string[] = [];
 export class DeployCommand extends Command {
   async getMetadata() {
     return {
-      name: 'build',
-      description: 'Builds all the starters',
-      inputs: [
+      name: 'deploy',
+      description: 'Deploys the built starter templates to the CDN',
+      options: [
         {
-          name: 'starter',
-          description: 'Path to single starter to build',
+          name: 'tag',
+          description: `Deploy to a tag, such as 'next' ('latest' is production)`,
+          default: 'testing',
+        },
+        {
+          name: 'dry',
+          description: 'Perform a dry run and do not upload anything',
+          type: Boolean,
         },
       ],
     };
   }
 
   async run(inputs: CommandLineInputs, options: CommandLineOptions) {
+    const tag = options['tag'] ? String(options['tag']) : 'testing';
+    const dry = options['dry'] ? true : false;
+
     console.log('------');
     console.log(chalk.cyan.bold('DEPLOY'));
     console.log('------');
+
+    console.log(`tag: ${chalk.bold(tag)}`);
 
     const contents = await getDirectories(BUILD_DIRECTORY);
 
     await Promise.all(contents.map(async (dir) => {
       const id = path.basename(dir);
-      const archive = archiver('tar');
-      const templateKey = `${id}.tar.gz`;
+      const templateKey = `${tag === 'latest' ? '' : `${tag}/`}${id}.tar.gz`;
 
-      // archive.on('entry', (entry) => {
-      //   console.log('add', entry.name);
-      // });
+      if (dry) {
+        log(id, chalk.green(`${chalk.bold('--dry')}: upload to ${chalk.bold(templateKey)}`));
+      } else {
+        const archive = archiver('tar');
 
-      archive.directory(dir, false);
-      archive.finalize();
+        // archive.on('entry', (entry) => {
+        //   console.log('add', entry.name);
+        // });
 
-      log(id, `Archiving and uploading`);
+        archive.directory(dir, false);
+        archive.finalize();
 
-      await upload(archive, templateKey);
-      keys.push(templateKey);
+        log(id, `Archiving and uploading`);
 
-      log(id, chalk.green(`Uploaded!`));
+        await upload(archive, templateKey);
+        keys.push(templateKey);
+
+        log(id, chalk.green(`Uploaded to ${chalk.bold(templateKey)}`));
+      }
     }));
 
-    await upload(fs.createReadStream(STARTERS_LIST_PATH), 'starters.json', { ContentType: 'application/json' });
-    keys.push('starters.json');
+    const startersJsonKey = `${tag === 'latest' ? '' : `${tag}/`}starters.json`;
 
-    log('starters.json', chalk.green('Uploaded!'));
+    if (dry) {
+      console.log(chalk.bold('starters.json'), chalk.green(`${chalk.bold('--dry')}: upload to ${chalk.bold(startersJsonKey)}`));
+    } else {
+      await upload(fs.createReadStream(STARTERS_LIST_PATH), startersJsonKey, { ContentType: 'application/json' });
+      keys.push(startersJsonKey);
 
-    console.log(`Invalidating cache for keys:\n${keys.map(k => `    - ${chalk.bold(k)}`).join('\n')}`);
+      console.log(chalk.bold('starters.json'), chalk.green(`Uploaded to ${chalk.bold(startersJsonKey)}`));
 
-    const result = await cloudfront.createInvalidation({
-      DistributionId: 'E1XZ2T0DZXJ521',
-      InvalidationBatch: {
-        CallerReference: String(new Date().getTime()),
-        Paths: {
-          Quantity: keys.length,
-          Items: keys.map(k => `/${k}`),
+      console.log(`Invalidating cache for keys:\n${keys.map(k => `    - ${chalk.bold(k)}`).join('\n')}`);
+
+      const result = await cloudfront.createInvalidation({
+        DistributionId: 'E1XZ2T0DZXJ521',
+        InvalidationBatch: {
+          CallerReference: String(new Date().getTime()),
+          Paths: {
+            Quantity: keys.length,
+            Items: keys.map(k => `/${k}`),
+          },
         },
-      },
-    }).promise();
+      }).promise();
 
-    if (!result.Invalidation) {
-      throw new Error('No result from invalidation batch.');
+      if (!result.Invalidation) {
+        throw new Error('No result from invalidation batch.');
+      }
+
+      console.log(`Invalidation ID: ${chalk.bold(result.Invalidation.Id)}`);
     }
-
-    console.log(`Invalidation ID: ${chalk.bold(result.Invalidation.Id)}`);
   }
 }
 
