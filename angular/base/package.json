@@ -14,7 +14,6 @@
   "private": true,
   "dependencies": {
     "@angular/common": "5.1.1",
-    "@angular/compiler": "5.1.1",
     "@angular/core": "5.1.1",
     "@angular/forms": "5.1.1",
     "@angular/http": "5.1.1",
@@ -23,13 +22,15 @@
     "@angular/router": "5.1.1",
     "@ionic/angular": "next",
     "@ionic/core": "next",
+    "@ionic/schematics-angular": "canary",
     "core-js": "^2.4.1",
     "rxjs": "^5.5.2",
     "zone.js": "^0.8.14"
   },
   "devDependencies": {
-    "@angular/cli": "1.6.0",
-    "@angular/compiler-cli": "^5.1.2",
+    "@angular/cli": "1.6.5",
+    "@angular/compiler": "5.1.1",
+    "@angular/compiler-cli": "5.1.1",
     "tslint": "~5.7.0",
     "typescript": "~2.4.2"
   }
