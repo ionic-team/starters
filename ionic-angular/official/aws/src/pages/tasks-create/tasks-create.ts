@@ -13,7 +13,6 @@ export class TasksCreatePage {
 
   isAndroid: boolean;
 
-
   constructor(public navCtrl: NavController,
               public navParams: NavParams,
               public viewCtrl: ViewController,

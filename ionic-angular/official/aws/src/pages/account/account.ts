@@ -1,14 +1,11 @@
 import { Component, ViewChild } from '@angular/core';
 
-import { Config, LoadingController, NavController } from 'ionic-angular';
+import { LoadingController, NavController } from 'ionic-angular';
+import { Auth, Storage, Logger } from 'aws-amplify';
 
 import { Camera, CameraOptions } from '@ionic-native/camera';
 
-import { DynamoDB, User } from '../../providers/providers';
-
-declare var AWS: any;
-declare const aws_user_files_s3_bucket;
-declare const aws_user_files_s3_bucket_region;
+const logger = new Logger('Account');
 
 @Component({
   selector: 'page-account',
@@ -18,38 +15,31 @@ export class AccountPage {
 
   @ViewChild('avatar') avatarInput;
 
-  private s3: any;
   public avatarPhoto: string;
   public selectedPhoto: Blob;
   public attributes: any;
-  public sub: string = null;
 
   constructor(public navCtrl: NavController,
-              public user: User,
-              public db: DynamoDB,
-              public config: Config,
               public camera: Camera,
               public loadingCtrl: LoadingController) {
     this.attributes = [];
     this.avatarPhoto = null;
     this.selectedPhoto = null;
-    this.s3 = new AWS.S3({
-      'params': {
-        'Bucket': aws_user_files_s3_bucket
-      },
-      'region': aws_user_files_s3_bucket_region
-    });
-    this.sub = AWS.config.credentials.identityId;
-    user.getUser().getUserAttributes((err, data) => {
-      this.attributes = data;
-      this.refreshAvatar();
-    });
+
+    Auth.currentUserInfo()
+      .then(info => {
+        this.userId = info.id;
+        this.username = info.username;
+        this.attributes = [];
+        if (info['email']) { this.attribute.push({ name: 'email', value: info['email']}); }
+        if (info['phone_number']) { this.attribute.push({ name: 'phone_number', value: info['phone_number']}); }
+        this.refreshAvatar();
+      });
   }
 
   refreshAvatar() {
-    this.s3.getSignedUrl('getObject', {'Key': 'protected/' + this.sub + '/avatar'}, (err, url) => {
-      this.avatarPhoto = url;
-    });
+    Storage.get(this.userId + '/avatar')
+      .then(url => this.avatarPhoto = url);
   }
 
   dataURItoBlob(dataURI) {
@@ -85,39 +75,31 @@ export class AccountPage {
 
   uploadFromFile(event) {
     const files = event.target.files;
-    console.log('Uploading', files)
-    var reader = new FileReader();
-    reader.readAsDataURL(files[0]);
-    reader.onload = () => {
-      this.selectedPhoto = this.dataURItoBlob(reader.result);
-      this.upload();
-    };
-    reader.onerror = (error) => {
-      alert('Unable to load file. Please try another.')
-    }
+    logger.debug('Uploading', files)
+
+    const file = files[0];
+    const { type } = file;
+    Storage.put(this.userId + '/avatar', file, { contentType: type })
+      .then(() => this.refreshAvatar())
+      .catch(err => logger.error(err));
   }
 
   upload() {
-    let loading = this.loadingCtrl.create({
-      content: 'Uploading image...'
-    });
-    loading.present();
-
     if (this.selectedPhoto) {
-      this.s3.upload({
-        'Key': 'protected/' + this.sub + '/avatar',
-        'Body': this.selectedPhoto,
-        'ContentType': 'image/jpeg'
-      }).promise().then((data) => {
-        this.refreshAvatar();
-        console.log('upload complete:', data);
-        loading.dismiss();
-      }, err => {
-        console.log('upload failed....', err);
-        loading.dismiss();
+      let loading = this.loadingCtrl.create({
+        content: 'Uploading image...'
       });
-    } else {
-      loading.dismiss();
+      loading.present();
+
+      Storage.put(this.userId + '/avatar', this.selectedPhoto, { contentType: 'image/jpeg' })
+        .then(() => {
+          this.refreshAvatar()
+          loading.dismiss();
+        })
+        .catch(err => {
+          logger.error(err)
+          loading.dismiss();
+        });
     }
   }
 }

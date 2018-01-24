@@ -3,7 +3,8 @@
   "baseref": "master",
   "packageJson": {
     "dependencies": {
-      "@ionic-native/camera": "4.3.3"
+      "@ionic-native/camera": "4.3.3",
+      "aws-amplify": "^0.1.36"
     }
   },
   "gitignore": [

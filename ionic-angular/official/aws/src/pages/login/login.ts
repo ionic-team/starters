@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 
 import { NavController, LoadingController } from 'ionic-angular';
+import { Auth, Logger } from 'aws-amplify';
 
 import { TabsPage } from '../tabs/tabs';
 import { SignupPage } from '../signup/signup';
 import { ConfirmPage } from '../confirm/confirm';
 
-import { User } from '../../providers/providers';
+const logger = new Logger('Login');
 
 export class LoginDetails {
   username: string;
@@ -22,7 +23,6 @@ export class LoginPage {
   public loginDetails: LoginDetails;
 
   constructor(public navCtrl: NavController,
-              public user: User,
               public loadingCtrl: LoadingController) {
     this.loginDetails = new LoginDetails(); 
   }
@@ -34,19 +34,18 @@ export class LoginPage {
     loading.present();
 
     let details = this.loginDetails;
-    console.log('login..');
-    this.user.login(details.username, details.password).then((result) => {
-      console.log('result:', result);
-      loading.dismiss();
-      this.navCtrl.setRoot(TabsPage);
-    }).catch((err) => { 
-      if (err.message === "User is not confirmed.") {
-        loading.dismiss();
-        this.navCtrl.push(ConfirmPage, { 'username': details.username });
-      }
-      console.log('errrror', err);
-      loading.dismiss();
-    });
+    logger.info('login..');
+    Auth.signIn(details.username, details.password)
+      .then(user => {
+        logger.debug('signed in user', user);
+        if (user.challengeName === 'SMS_MFA') {
+          this.navCtrl.push(ConfirmPage, { 'username': details.username });
+        } else {
+          this.navCtrl.setRoot(TabsPage);
+        }
+      })
+      .catch(err => logger.debug('errrror', err))
+      .then(() => loading.dismiss());
   }
 
   signup() {

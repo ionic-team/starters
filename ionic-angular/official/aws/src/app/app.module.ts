@@ -18,10 +18,12 @@ import { TasksCreatePage } from '../pages/tasks-create/tasks-create';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { User } from '../providers/user';
-import { Cognito } from '../providers/aws.cognito';
 import { DynamoDB } from '../providers/aws.dynamodb';
 
+import Amplify from 'aws-amplify';
+import aws_exports from '../aws-exports';
+
+Amplify.configure(aws_exports);
 
 @NgModule({
   declarations: [
@@ -58,8 +60,6 @@ import { DynamoDB } from '../providers/aws.dynamodb';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     Camera,
-    User,
-    Cognito,
     DynamoDB
   ]
 })
