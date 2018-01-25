@@ -17,6 +17,8 @@ export class AccountPage {
 
   public avatarPhoto: string;
   public selectedPhoto: Blob;
+  public userId: string;
+  public username: string;
   public attributes: any;
 
   constructor(public navCtrl: NavController,
@@ -31,8 +33,8 @@ export class AccountPage {
         this.userId = info.id;
         this.username = info.username;
         this.attributes = [];
-        if (info['email']) { this.attribute.push({ name: 'email', value: info['email']}); }
-        if (info['phone_number']) { this.attribute.push({ name: 'phone_number', value: info['phone_number']}); }
+        if (info['email']) { this.attributes.push({ name: 'email', value: info['email']}); }
+        if (info['phone_number']) { this.attributes.push({ name: 'phone_number', value: info['phone_number']}); }
         this.refreshAvatar();
       });
   }

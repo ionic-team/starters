@@ -5,7 +5,7 @@ import { Auth, Logger } from 'aws-amplify';
 
 import { TabsPage } from '../tabs/tabs';
 import { SignupPage } from '../signup/signup';
-import { ConfirmPage } from '../confirm/confirm';
+import { ConfirmSignInPage } from '../confirmSignIn/confirmSignIn';
 
 const logger = new Logger('Login');
 
@@ -39,7 +39,7 @@ export class LoginPage {
       .then(user => {
         logger.debug('signed in user', user);
         if (user.challengeName === 'SMS_MFA') {
-          this.navCtrl.push(ConfirmPage, { 'username': details.username });
+          this.navCtrl.push(ConfirmSignInPage, { 'user': user });
         } else {
           this.navCtrl.setRoot(TabsPage);
         }

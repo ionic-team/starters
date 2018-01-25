@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
 
 import { NavController, ModalController } from 'ionic-angular';
-import { Auth } from 'aws-amplify';
+import { Auth, Logger } from 'aws-amplify';
 
 import { TasksCreatePage } from '../tasks-create/tasks-create';
+import aws_exports from '../../aws-exports';
 
 import { DynamoDB } from '../../providers/providers';
+
+const logger = new Logger('Tasks');
 
 @Component({
   selector: 'page-tasks',
@@ -15,7 +18,8 @@ export class TasksPage {
 
   public items: any;
   public refresher: any;
-  private taskTable: string = 'ionic-mobile-hub-tasks';
+  private taskTable: string = aws_exports.aws_resource_name_prefix + '-tasks';
+  private userId: string;
 
   constructor(public navCtrl: NavController,
               public modalCtrl: ModalController,
