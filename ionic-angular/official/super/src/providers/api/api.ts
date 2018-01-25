@@ -22,7 +22,7 @@ export class Api {
     if (params) {
       reqOpts.params = new HttpParams();
       for (let k in params) {
-        reqOpts.params.set(k, params[k]);
+        reqOpts.params = reqOpts.params.set(k, params[k]);
       }
     }
 
