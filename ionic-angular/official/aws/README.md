@@ -14,21 +14,11 @@ npm install -g ionic@latest
 
 Make sure to add `sudo` on Mac and Linux. If you encounter issues installing the Ionic 3 CLI, uninstall the old one using `npm uninstall -g ionic` first.
 
-### Installing AWS CLI
-
-To install the AWS CLI, first ensure your pip installation is up to date:
+### Installing AWSMobile CLI
 
 ```
-pip install --upgrade pip
+npm install -g awsmobile-cli
 ```
-
-Next, install the AWS CLI:
-
-```
-pip install awscli
-```
-
-Note: add `sudo` to the above commands on Mac and Linux.
 
 ### Creating the Ionic Project
 
@@ -46,24 +36,89 @@ Once the app is created, `cd` into it:
 cd myApp
 ```
 
-Proceed to the next steps on importing the auto-generated AWS Mobile Hub project.
-
 ### Creating AWS Mobile Hub Project
 
-Visit the [AWS Mobile Hub](https://aws.amazon.com/mobile/) and enter the Mobile Hub Console.
-
-In the Mobile Hub dashboard, click the "Import your project" button. Next, find the `mobile-hub-project.zip` included
-in this starter project, and drag and drop it to the import modal. Set the name of the project, and then click "Import project."
-
-Once the project is imported, you'll be directed to the dashboard for this Mobile Hub project. To continue configuring the app, you'll need to find the name of the Amazon S3 bucket auto generated through the App Content Delivery system. To do this, click the "Resources" button on the left side of the Mobile Hub project dashboard, find the "Amazon S3 Buckets" card, and then copy the bucket name that contains `hosting-mobilehub`.
-
-Next, assuming your terminal is still open inside of the `myApp` folder, run:
+Init AWSMobile project 
 
 ```bash
-aws s3 cp s3://BUCKET_NAME/aws-config.js src/assets
+awsmobile init
+
+Please tell us about your project:
+? Where is your project's source directory:  src
+? Where is your project's distribution directory that stores build artifacts:  dist
+? What is your project's build command:  npm run-script build
+? What is your project's start command for local test run:  ionic serve
+
+? What awsmobile project name would you like to use:  ...
+
+Successfully created AWS Mobile Hub project: ...
 ```
 
-Replacing `BUCKET_NAME` with the full name of the S3 bucket found above. This will copy the auto-generated `aws-config.js` file into the `src/assets` folder in your Ionic app, which pre-configures all your AWS settings automatically.
+Enable user-signin and database features
+
+```bash
+awsmobile features
+
+? select features:
+ ◉ user-signin
+ ◯ user-files
+ ◯ cloud-api
+❯◉ database
+ ◉ analytics
+ ◉ hosting
+```
+
+Configure database, create a table with name `tasks`
+
+```bash
+awsmobile database configure
+
+? Select from one of the choices below. Create a new table
+
+Welcome to NoSQL database wizard
+You will be asked a series of questions to help determine how to best construct your NoSQL database table.
+
+? Should the data of this table be open or restricted by user? Open
+? Table name tasks
+
+ You can now add columns to the table.
+
+? What would you like to name this column taskId
+? Choose the data type string
+? Would you like to add another column Yes
+? What would you like to name this column userId
+? Choose the data type string
+? Would you like to add another column Yes
+? What would you like to name this column category
+? Choose the data type string
+? Would you like to add another column Yes
+? What would you like to name this column description
+? Choose the data type string
+? Would you like to add another column Yes
+? What would you like to name this column created
+? Choose the data type number
+? Would you like to add another column No
+
+... /* primary and sort key */
+
+? Select primary key userId
+? Select sort key taskId
+
+... /* index */
+
+? Add index Yes
+? Index name DateSorted
+? Select partition key userId
+? Select sort key created
+? Add index No
+Table tasks saved
+```
+
+Finally push the changes to server side
+
+```bash
+awsmobile push
+```
 
 ### Enabling file uploads
 
@@ -107,11 +162,9 @@ open platforms/ios/MyApp.xcodeproj
 
 ### Hosting app on Amazon S3
 
-Since your Ionic app is just a web app, it can be hosted as a static website in an Amazon S3 bucket. To do this, copy the web assets to the S3 bucket:
+Since your Ionic app is just a web app, it can be hosted as a static website in an Amazon S3 bucket.
 
 ```
 npm run build
-aws s3 cp --recursive ./www s3://WEBSITE_BUCKET
+awsmobile publish
 ```
-
-Where `WEBSITE_BUCKET` is an S3 bucket configured with static hosting.

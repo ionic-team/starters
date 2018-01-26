@@ -1,11 +1,14 @@
 import { Component } from '@angular/core';
 
 import { NavController, ModalController } from 'ionic-angular';
+import { Auth, Logger } from 'aws-amplify';
+
 import { TasksCreatePage } from '../tasks-create/tasks-create';
+import aws_exports from '../../aws-exports';
 
-import { DynamoDB, User } from '../../providers/providers';
+import { DynamoDB } from '../../providers/providers';
 
-declare var AWS: any;
+const logger = new Logger('Tasks');
 
 @Component({
   selector: 'page-tasks',
@@ -15,14 +18,19 @@ export class TasksPage {
 
   public items: any;
   public refresher: any;
-  private taskTable: string = 'ionic-mobile-hub-tasks';
+  private taskTable: string = aws_exports.aws_resource_name_prefix + '-tasks';
+  private userId: string;
 
   constructor(public navCtrl: NavController,
               public modalCtrl: ModalController,
-              public user: User,
               public db: DynamoDB) {
 
-    this.refreshTasks();
+    Auth.currentCredentials()
+      .then(credentials => {
+        this.userId = credentials.identityId;
+        this.refreshTasks();
+      })
+      .catch(err => logger.debug('get current credentials err', err));
   }
 
   refreshData(refresher) {
@@ -31,25 +39,19 @@ export class TasksPage {
   }
 
   refreshTasks() {
-    this.db.getDocumentClient().query({
+    const params = {
       'TableName': this.taskTable,
       'IndexName': 'DateSorted',
       'KeyConditionExpression': "#userId = :userId",
-      'ExpressionAttributeNames': {
-        '#userId': 'userId',
-      },
-      'ExpressionAttributeValues': {
-        ':userId': AWS.config.credentials.identityId
-      },
+      'ExpressionAttributeNames': { '#userId': 'userId' },
+      'ExpressionAttributeValues': { ':userId': this.userId },
       'ScanIndexForward': false
-    }).promise().then((data) => {
-      this.items = data.Items;
-      if (this.refresher) {
-        this.refresher.complete();
-      }
-    }).catch((err) => {
-      console.log(err);
-    });
+    };
+    this.db.getDocumentClient()
+      .then(client => client.query(params).promise())
+      .then(data => { this.items = data.Items; })
+      .catch(err => logger.debug('error in refresh tasks', err))
+      .then(() => { this.refresher && this.refresher.complete() });
   }
 
   generateId() {
@@ -68,34 +70,34 @@ export class TasksPage {
     let id = this.generateId();
     let addModal = this.modalCtrl.create(TasksCreatePage, { 'id': id });
     addModal.onDidDismiss(item => {
-      if (item) {
-        item.userId = AWS.config.credentials.identityId;
-        item.created = (new Date().getTime() / 1000);
-        this.db.getDocumentClient().put({
-          'TableName': this.taskTable,
-          'Item': item,
-          'ConditionExpression': 'attribute_not_exists(id)'
-        }, (err, data) => {
-          if (err) { console.log(err); }
-          this.refreshTasks();
-        });
-      }
+      if (!item) { return; }
+      item.userId = this.userId;
+      item.created = (new Date().getTime() / 1000);
+      const params = {
+        'TableName': this.taskTable,
+        'Item': item,
+        'ConditionExpression': 'attribute_not_exists(id)'
+      };
+      this.db.getDocumentClient()
+        .then(client => client.put(params).promise())
+        .then(data => this.refreshTasks())
+        .catch(err => logger.debug('add task error', err));
     })
     addModal.present();
   }
 
   deleteTask(task, index) {
-    this.db.getDocumentClient().delete({
+    const params = {
       'TableName': this.taskTable,
       'Key': {
-        'userId': AWS.config.credentials.identityId,
+        'userId': this.userId,
         'taskId': task.taskId
       }
-    }).promise().then((data) => {
-      this.items.splice(index, 1);
-    }).catch((err) => {
-      console.log('there was an error', err);
-    });
+    };
+    this.db.getDocumentClient()
+      .then(client => client.delete(params).promise())
+      .then(data => this.items.splice(index, 1))
+      .catch((err) => logger.debug('delete task error', err));
   }
 
 }

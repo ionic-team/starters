@@ -1,15 +1,17 @@
 import { Component } from '@angular/core';
 
 import { NavController, LoadingController } from 'ionic-angular';
+import { Auth, Logger } from 'aws-amplify';
 
 import { LoginPage } from '../login/login';
-import { ConfirmPage } from '../confirm/confirm';
+import { ConfirmSignUpPage } from '../confirmSignUp/confirmSignUp';
 
-import { User } from '../../providers/user';
+const logger = new Logger('SignUp');
 
 export class UserDetails {
     username: string;
     email: string;
+    phone_number: string;
     password: string;
 }
 
@@ -24,7 +26,6 @@ export class SignupPage {
   error: any;
 
   constructor(public navCtrl: NavController,
-              public user: User,
               public loadingCtrl: LoadingController) {
    this.userDetails = new UserDetails();
   }
@@ -38,14 +39,13 @@ export class SignupPage {
 
     let details = this.userDetails;
     this.error = null;
-    console.log('register');
-    this.user.register(details.username, details.password, {'email': details.email}).then((user) => {
-      loading.dismiss();
-      this.navCtrl.push(ConfirmPage, { username: details.username });
-    }).catch((err) => {
-      loading.dismiss();
-      this.error = err;
-    });
+    logger.debug('register');
+    Auth.signUp(details.username, details.password, details.email, details.phone_number)
+      .then(user => {
+        this.navCtrl.push(ConfirmSignUpPage, { username: details.username });
+      })
+      .catch(err => { this.error = err; })
+      .then(() => loading.dismiss());
   }
 
   login() {

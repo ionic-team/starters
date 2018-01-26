@@ -5,13 +5,13 @@ import { Auth, Logger } from 'aws-amplify';
 
 import { LoginPage } from '../login/login';
 
-const logger = new Logger('Confirm');
+const logger = new Logger('ConfirmSignUp');
 
 @Component({
-  selector: 'page-confirm',
-  templateUrl: 'confirm.html'
+  selector: 'page-confirm-signup',
+  templateUrl: 'confirmSignUp.html'
 })
-export class ConfirmPage {
+export class ConfirmSignUpPage {
   
   public code: string;
   public username: string;

@@ -7,7 +7,8 @@ import { Camera } from '@ionic-native/camera';
 import { MyApp } from './app.component';
 import { LoginPage } from '../pages/login/login';
 import { SignupPage } from '../pages/signup/signup';
-import { ConfirmPage } from '../pages/confirm/confirm';
+import { ConfirmSignInPage } from '../pages/confirmSignIn/confirmSignIn';
+import { ConfirmSignUpPage } from '../pages/confirmSignUp/confirmSignUp';
 import { SettingsPage } from '../pages/settings/settings';
 import { AboutPage } from '../pages/about/about';
 import { AccountPage } from '../pages/account/account';
@@ -18,17 +19,20 @@ import { TasksCreatePage } from '../pages/tasks-create/tasks-create';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-import { User } from '../providers/user';
-import { Cognito } from '../providers/aws.cognito';
 import { DynamoDB } from '../providers/aws.dynamodb';
 
+import Amplify from 'aws-amplify';
+import aws_exports from '../aws-exports';
+
+Amplify.configure(aws_exports);
 
 @NgModule({
   declarations: [
     MyApp,
     LoginPage,
     SignupPage,
-    ConfirmPage,
+    ConfirmSignInPage,
+    ConfirmSignUpPage,
     SettingsPage,
     AboutPage,
     AccountPage,
@@ -45,7 +49,8 @@ import { DynamoDB } from '../providers/aws.dynamodb';
     MyApp,
     LoginPage,
     SignupPage,
-    ConfirmPage,
+    ConfirmSignInPage,
+    ConfirmSignUpPage,
     SettingsPage,
     AboutPage,
     AccountPage,
@@ -58,8 +63,6 @@ import { DynamoDB } from '../providers/aws.dynamodb';
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     Camera,
-    User,
-    Cognito,
     DynamoDB
   ]
 })

@@ -20,7 +20,7 @@
   <div>
     <ion-list>
       <ion-item>
-        <strong>username</strong> {{ user.getUser().getUsername() }}
+        <strong>username</strong> {{ username }}
       </ion-item>
       <ion-item *ngFor="let attr of attributes">
         <strong>{{ attr.getName() }}</strong> {{ attr.getValue() }}

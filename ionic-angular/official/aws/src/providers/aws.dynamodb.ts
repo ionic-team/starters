@@ -1,18 +1,23 @@
 import { Injectable } from '@angular/core';
+import { Auth, Logger } from 'aws-amplify';
+import AWS from 'aws-sdk';
+import aws_exports from '../aws-exports';
 
-declare var AWS: any;
+AWS.config.region = aws_exports.aws_project_region;
+AWS.config.update({customUserAgent: 'ionic-starter'});
+
+const logger = new Logger('DynamoDB');
 
 @Injectable()
 export class DynamoDB {
 
-  private documentClient: any;
-
   constructor() {
-    this.documentClient = new AWS.DynamoDB.DocumentClient();
   }
 
   getDocumentClient() {
-    return this.documentClient;
+    return Auth.currentCredentials()
+      .then(credentials => new AWS.DynamoDB.DocumentClient({ credentials: credentials }))
+      .catch(err => logger.debug('error getting document client', err));
   }
 
 }
