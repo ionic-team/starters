@@ -22,7 +22,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { DynamoDB } from '../providers/aws.dynamodb';
 
 import Amplify from 'aws-amplify';
-import aws_exports from '../aws-exports';
+const aws_exports = require('../aws-exports').default;
 
 Amplify.configure(aws_exports);
 

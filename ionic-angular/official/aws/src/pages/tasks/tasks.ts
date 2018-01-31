@@ -4,7 +4,7 @@ import { NavController, ModalController } from 'ionic-angular';
 import { Auth, Logger } from 'aws-amplify';
 
 import { TasksCreatePage } from '../tasks-create/tasks-create';
-import aws_exports from '../../aws-exports';
+const aws_exports = require('../../aws-exports').default;
 
 import { DynamoDB } from '../../providers/providers';
 

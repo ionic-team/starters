@@ -3,6 +3,7 @@
   "baseref": "master",
   "packageJson": {
     "dependencies": {
+      "@types/node": "^9.4.0",
       "@ionic-native/camera": "4.3.3",
       "aws-amplify": "^0.1.36"
     }
