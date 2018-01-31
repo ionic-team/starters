@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Auth, Logger } from 'aws-amplify';
 import AWS from 'aws-sdk';
-import aws_exports from '../aws-exports';
+const aws_exports = require('../aws-exports').default;
 
 AWS.config.region = aws_exports.aws_project_region;
 AWS.config.update({customUserAgent: 'ionic-starter'});

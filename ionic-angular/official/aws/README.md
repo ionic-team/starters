@@ -61,7 +61,7 @@ awsmobile features
 
 ? select features:
  ◉ user-signin
- ◯ user-files
+ ◉ user-files
  ◯ cloud-api
 ❯◉ database
  ◉ analytics
@@ -118,25 +118,6 @@ Finally push the changes to server side
 
 ```bash
 awsmobile push
-```
-
-### Enabling file uploads
-
-The Account page has an example of taking a photo or uploading a file to the `userfiles` S3 bucket. To enable uploads from the web, make sure to edit the CORS Policy for the S3 bucket by opening the bucket with `userfiles` in it from the Resources tab in the Mobile Hub.
-
-A working, albeit liberal CORS configuration looks like
-
-```xml
-<!-- Sample policy -->
-<CORSConfiguration>
-	<CORSRule>
-		<AllowedOrigin>*</AllowedOrigin>
-		<AllowedMethod>GET</AllowedMethod>
-		<AllowedMethod>POST</AllowedMethod>
-		<AllowedMethod>PUT</AllowedMethod>
-		<AllowedHeader>*</AllowedHeader>
-	</CORSRule>
-</CORSConfiguration>
 ```
 
 ### Running the app
