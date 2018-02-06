@@ -25,6 +25,7 @@
     "@ionic/schematics-angular": "canary",
     "core-js": "^2.5.3",
     "rxjs": "^5.5.6",
+    "ts-node": "4.1.0",
     "zone.js": "^0.8.20"
   },
   "devDependencies": {
