@@ -3,10 +3,15 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicAngularModule } from '@ionic/angular';
 
 import { AppComponent } from './app.component';
+import { HomePage } from './pages/home/home.page';
 
 @NgModule({
   declarations: [
     AppComponent,
+    HomePage,
+  ],
+  entryComponents: [
+    HomePage,
   ],
   imports: [
     BrowserModule,
