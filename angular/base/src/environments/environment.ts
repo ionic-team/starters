@@ -1,8 +1,15 @@
-// The file contents for the current environment will overwrite these during build.
-// The build system defaults to the dev environment which uses `environment.ts`, but if you do
-// `ng build --env=prod` then `environment.prod.ts` will be used instead.
-// The list of which env maps to which file can be found in `.angular-cli.json`.
+// Values defined in this default environment will be overwritten when another
+// environment is selected, such as during `ionic build --prod`. For details,
+// see `ionic build --help`.
+//
+// Import the environment like this: `import env from '@env';`
+//
+// Configure additional environments in `.angular-cli.json`.
 
-export const environment = {
-  production: false
+import { EnvironmentSchema } from './schema';
+
+const env: EnvironmentSchema = {
+  name: 'development',
 };
+
+export default env;

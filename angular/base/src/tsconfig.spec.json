@@ -4,6 +4,9 @@
     "outDir": "../out-tsc/spec",
     "baseUrl": "./",
     "module": "commonjs",
+    "paths": {
+      "@env": ["./environments/environment"]
+    },
     "types": [
       "jasmine",
       "node"
