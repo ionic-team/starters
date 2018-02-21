@@ -42,6 +42,6 @@ export class Api {
   }
 
   patch(endpoint: string, body: any, reqOpts?: any) {
-    return this.http.put(this.url + '/' + endpoint, body, reqOpts);
+    return this.http.patch(this.url + '/' + endpoint, body, reqOpts);
   }
 }
