@@ -1,6 +1,6 @@
 /**
  * This schema is an interface for each exported environment object in
- * `environment.ts`, `environment.prod.ts`, etc.
+ * `index.ts` (main/dev environment), `prod.ts` (prod environment), etc.
  *
  * Modify it to represent the values for your environment(s).
  */

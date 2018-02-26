@@ -27,10 +27,10 @@
         "global.scss"
       ],
       "scripts": [],
-      "environmentSource": "environments/environment.ts",
+      "environmentSource": "environment/index.ts",
       "environments": {
-        "dev": "environments/environment.ts",
-        "prod": "environments/environment.prod.ts"
+        "dev": "environment/index.ts",
+        "prod": "environment/prod.ts"
       }
     }
   ],
