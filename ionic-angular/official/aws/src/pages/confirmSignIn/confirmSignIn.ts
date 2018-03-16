@@ -1,10 +1,9 @@
 import { Component } from '@angular/core';
-
-import { NavController, NavParams } from 'ionic-angular';
 import { Auth, Logger } from 'aws-amplify';
+import { NavController, NavParams } from 'ionic-angular';
 
-import { TabsPage } from '../tabs/tabs';
 import { LoginPage } from '../login/login';
+import { TabsPage } from '../tabs/tabs';
 
 const logger = new Logger('ConfirmSignIn');
 
@@ -13,7 +12,6 @@ const logger = new Logger('ConfirmSignIn');
   templateUrl: 'confirmSignIn.html'
 })
 export class ConfirmSignInPage {
-  
   public code: string;
   public user: any;
 
@@ -30,5 +28,4 @@ export class ConfirmSignInPage {
   login() {
     this.navCtrl.push(LoginPage);
   }
-
 }

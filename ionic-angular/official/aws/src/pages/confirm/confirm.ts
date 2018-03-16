@@ -1,7 +1,6 @@
 import { Component } from '@angular/core';
-
-import { NavController, NavParams } from 'ionic-angular';
 import { Auth, Logger } from 'aws-amplify';
+import { NavController, NavParams } from 'ionic-angular';
 
 import { LoginPage } from '../login/login';
 
@@ -12,7 +11,6 @@ const logger = new Logger('Confirm');
   templateUrl: 'confirm.html'
 })
 export class ConfirmPage {
-  
   public code: string;
   public username: string;
 

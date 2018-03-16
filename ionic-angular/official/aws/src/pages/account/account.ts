@@ -1,18 +1,13 @@
 import { Component, ViewChild } from '@angular/core';
-
-import { LoadingController, NavController } from 'ionic-angular';
-import { Auth, Storage, Logger } from 'aws-amplify';
-
 import { Camera, CameraOptions } from '@ionic-native/camera';
-
-const logger = new Logger('Account');
+import { Auth, Storage } from 'aws-amplify';
+import { LoadingController, NavController } from 'ionic-angular';
 
 @Component({
   selector: 'page-account',
   templateUrl: 'account.html'
 })
 export class AccountPage {
-
   @ViewChild('avatar') avatarInput;
 
   public avatarPhoto: string;
@@ -21,27 +16,34 @@ export class AccountPage {
   public username: string;
   public attributes: any;
 
-  constructor(public navCtrl: NavController,
-              public camera: Camera,
-              public loadingCtrl: LoadingController) {
+  constructor(
+    public navCtrl: NavController,
+    private camera: Camera,
+    public loadingCtrl: LoadingController
+  ) {
     this.attributes = [];
     this.avatarPhoto = null;
     this.selectedPhoto = null;
 
-    Auth.currentUserInfo()
-      .then(info => {
-        this.userId = info.id;
-        this.username = info.username;
-        this.attributes = [];
-        if (info['email']) { this.attributes.push({ name: 'email', value: info['email']}); }
-        if (info['phone_number']) { this.attributes.push({ name: 'phone_number', value: info['phone_number']}); }
-        this.refreshAvatar();
-      });
+    Auth.currentUserInfo().then(info => {
+      this.userId = info.id;
+      this.username = info.username;
+      this.attributes = [];
+      if (info['email']) {
+        this.attributes.push({ name: 'email', value: info['email'] });
+      }
+      if (info['phone_number']) {
+        this.attributes.push({
+          name: 'phone_number',
+          value: info['phone_number']
+        });
+      }
+      this.refreshAvatar();
+    });
   }
 
   refreshAvatar() {
-    Storage.get(this.userId + '/avatar')
-      .then(url => this.avatarPhoto = url);
+    Storage.get(this.userId + '/avatar').then(url => (this.avatarPhoto = url));
   }
 
   dataURItoBlob(dataURI) {
@@ -51,8 +53,8 @@ export class AccountPage {
     for (let i = 0; i < binary.length; i++) {
       array.push(binary.charCodeAt(i));
     }
-    return new Blob([new Uint8Array(array)], {type: 'image/jpeg'});
-  };
+    return new Blob([new Uint8Array(array)], { type: 'image/jpeg' });
+  }
 
   selectAvatar() {
     const options: CameraOptions = {
@@ -62,22 +64,27 @@ export class AccountPage {
       destinationType: this.camera.DestinationType.DATA_URL,
       encodingType: this.camera.EncodingType.JPEG,
       mediaType: this.camera.MediaType.PICTURE
-    }
+    };
 
-    this.camera.getPicture(options).then((imageData) => {
-      // imageData is either a base64 encoded string or a file URI
-      // If it's base64:
-      this.selectedPhoto  = this.dataURItoBlob('data:image/jpeg;base64,' + imageData);
-      this.upload();
-    }, (err) => {
-      this.avatarInput.nativeElement.click();
-      // Handle error
-    });
+    this.camera.getPicture(options).then(
+      imageData => {
+        // imageData is either a base64 encoded string or a file URI
+        // If it's base64:
+        this.selectedPhoto = this.dataURItoBlob(
+          'data:image/jpeg;base64,' + imageData
+        );
+        this.upload();
+      },
+      err => {
+        this.avatarInput.nativeElement.click();
+        // Handle error
+      }
+    );
   }
 
   uploadFromFile(event) {
     const files = event.target.files;
-    logger.debug('Uploading', files)
+    logger.debug('Uploading', files);
 
     const file = files[0];
     const { type } = file;
@@ -93,13 +100,15 @@ export class AccountPage {
       });
       loading.present();
 
-      Storage.put(this.userId + '/avatar', this.selectedPhoto, { contentType: 'image/jpeg' })
+      Storage.put(this.userId + '/avatar', this.selectedPhoto, {
+        contentType: 'image/jpeg'
+      })
         .then(() => {
-          this.refreshAvatar()
+          this.refreshAvatar();
           loading.dismiss();
         })
         .catch(err => {
-          logger.error(err)
+          logger.error(err);
           loading.dismiss();
         });
     }

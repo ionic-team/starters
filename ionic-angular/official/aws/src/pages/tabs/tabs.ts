@@ -7,11 +7,8 @@ import { TasksPage } from '../tasks/tasks';
   templateUrl: 'tabs.html'
 })
 export class TabsPage {
+  public tab1Root = TasksPage;
+  public tab2Root = SettingsPage;
 
-  tab1Root = TasksPage;
-  tab2Root = SettingsPage;
-
-  constructor() {
-
-  }
+  constructor() {}
 }
