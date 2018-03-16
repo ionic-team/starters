@@ -13,28 +13,28 @@
   },
   "private": true,
   "dependencies": {
-    "@angular/common": "5.2.4",
-    "@angular/core": "5.2.4",
-    "@angular/forms": "5.2.4",
-    "@angular/http": "5.2.4",
-    "@angular/platform-browser": "5.2.4",
-    "@angular/platform-browser-dynamic": "5.2.4",
-    "@angular/router": "5.2.4",
+    "@angular/common": "5.2.9",
+    "@angular/core": "5.2.9",
+    "@angular/forms": "5.2.9",
+    "@angular/http": "5.2.9",
+    "@angular/platform-browser": "5.2.9",
+    "@angular/platform-browser-dynamic": "5.2.9",
+    "@angular/router": "5.2.9",
     "@ionic/angular": "next",
     "@ionic/core": "next",
     "@ionic/schematics-angular": "canary",
     "core-js": "^2.5.3",
-    "rxjs": "^5.5.6",
+    "rxjs": "^5.5.7",
     "ts-node": "4.1.0",
     "zone.js": "^0.8.20"
   },
   "devDependencies": {
-    "@angular/cli": "1.6.8",
-    "@angular/compiler": "5.2.4",
-    "@angular/compiler-cli": "5.2.4",
+    "@angular/cli": "1.7.3",
+    "@angular/compiler": "5.2.9",
+    "@angular/compiler-cli": "5.2.9",
     "@types/jasmine": "2.8.6",
     "codelyzer": "4.1.0",
-    "jasmine-core": "2.9.1",
+    "jasmine-core": "3.1.0",
     "jasmine-spec-reporter": "4.2.1",
     "karma": "2.0.0",
     "karma-chrome-launcher": "2.2.0",
@@ -43,6 +43,6 @@
     "karma-jasmine-html-reporter": "0.2.2",
     "protractor": "5.3.0",
     "tslint": "5.9.1",
-    "typescript": "2.4.2"
+    "typescript": "~2.6.2"
   }
 }
