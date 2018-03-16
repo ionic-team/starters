@@ -5,11 +5,10 @@
 // Import the environment like this: `import env from './environment';`
 //
 // Configure additional environments in `.angular-cli.json`.
-
 import { EnvironmentSchema } from './schema';
 
 const env: EnvironmentSchema = {
-  name: 'development',
+  name: 'development'
 };
 
 export default env;

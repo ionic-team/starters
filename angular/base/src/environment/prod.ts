@@ -1,7 +1,7 @@
 import { EnvironmentSchema } from './schema';
 
 const env: EnvironmentSchema = {
-  name: 'production',
+  name: 'production'
 };
 
 export default env;

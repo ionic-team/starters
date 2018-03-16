@@ -5,7 +5,6 @@
  * Modify it to represent the values for your environment(s).
  */
 export interface EnvironmentSchema {
-
   /**
    * The name of the environment.
    *
@@ -13,5 +12,4 @@ export interface EnvironmentSchema {
    * You can also change the type to `string` :)
    */
   name: 'development' | 'production';
-
 }
