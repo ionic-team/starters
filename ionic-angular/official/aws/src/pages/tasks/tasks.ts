@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
-
-import { NavController, ModalController } from 'ionic-angular';
 import { Auth, Logger } from 'aws-amplify';
-
-import { TasksCreatePage } from '../tasks-create/tasks-create';
-const aws_exports = require('../../aws-exports').default;
+import { ModalController, NavController } from 'ionic-angular';
 
 import { DynamoDB } from '../../providers/providers';
+import { TasksCreatePage } from '../tasks-create/tasks-create';
+
+const aws_exports = require('../../aws-exports').default;
 
 const logger = new Logger('Tasks');
 
@@ -15,16 +14,16 @@ const logger = new Logger('Tasks');
   templateUrl: 'tasks.html'
 })
 export class TasksPage {
-
   public items: any;
   public refresher: any;
   private taskTable: string = aws_exports.aws_resource_name_prefix + '-tasks';
   private userId: string;
 
-  constructor(public navCtrl: NavController,
-              public modalCtrl: ModalController,
-              public db: DynamoDB) {
-
+  constructor(
+    public navCtrl: NavController,
+    public modalCtrl: ModalController,
+    public db: DynamoDB
+  ) {
     Auth.currentCredentials()
       .then(credentials => {
         this.userId = credentials.identityId;
@@ -35,32 +34,38 @@ export class TasksPage {
 
   refreshData(refresher) {
     this.refresher = refresher;
-    this.refreshTasks()
+    this.refreshTasks();
   }
 
   refreshTasks() {
     const params = {
-      'TableName': this.taskTable,
-      'IndexName': 'DateSorted',
-      'KeyConditionExpression': "#userId = :userId",
-      'ExpressionAttributeNames': { '#userId': 'userId' },
-      'ExpressionAttributeValues': { ':userId': this.userId },
-      'ScanIndexForward': false
+      TableName: this.taskTable,
+      IndexName: 'DateSorted',
+      KeyConditionExpression: '#userId = :userId',
+      ExpressionAttributeNames: { '#userId': 'userId' },
+      ExpressionAttributeValues: { ':userId': this.userId },
+      ScanIndexForward: false
     };
-    this.db.getDocumentClient()
+    this.db
+      .getDocumentClient()
       .then(client => client.query(params).promise())
-      .then(data => { this.items = data.Items; })
+      .then(data => {
+        this.items = data.Items;
+      })
       .catch(err => logger.debug('error in refresh tasks', err))
-      .then(() => { this.refresher && this.refresher.complete() });
+      .then(() => {
+        this.refresher && this.refresher.complete();
+      });
   }
 
   generateId() {
     var len = 16;
-    var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+    var chars =
+      'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     var charLength = chars.length;
-    var result = "";
+    var result = '';
     let randoms = window.crypto.getRandomValues(new Uint32Array(len));
-    for(var i = 0; i < len; i++) {
+    for (var i = 0; i < len; i++) {
       result += chars[randoms[i] % charLength];
     }
     return result.toLowerCase();
@@ -68,36 +73,39 @@ export class TasksPage {
 
   addTask() {
     let id = this.generateId();
-    let addModal = this.modalCtrl.create(TasksCreatePage, { 'id': id });
+    let addModal = this.modalCtrl.create(TasksCreatePage, { id: id });
     addModal.onDidDismiss(item => {
-      if (!item) { return; }
+      if (!item) {
+        return;
+      }
       item.userId = this.userId;
-      item.created = (new Date().getTime() / 1000);
+      item.created = new Date().getTime() / 1000;
       const params = {
-        'TableName': this.taskTable,
-        'Item': item,
-        'ConditionExpression': 'attribute_not_exists(id)'
+        TableName: this.taskTable,
+        Item: item,
+        ConditionExpression: 'attribute_not_exists(id)'
       };
-      this.db.getDocumentClient()
+      this.db
+        .getDocumentClient()
         .then(client => client.put(params).promise())
         .then(data => this.refreshTasks())
         .catch(err => logger.debug('add task error', err));
-    })
+    });
     addModal.present();
   }
 
   deleteTask(task, index) {
     const params = {
-      'TableName': this.taskTable,
-      'Key': {
-        'userId': this.userId,
-        'taskId': task.taskId
+      TableName: this.taskTable,
+      Key: {
+        userId: this.userId,
+        taskId: task.taskId
       }
     };
-    this.db.getDocumentClient()
+    this.db
+      .getDocumentClient()
       .then(client => client.delete(params).promise())
       .then(data => this.items.splice(index, 1))
-      .catch((err) => logger.debug('delete task error', err));
+      .catch(err => logger.debug('delete task error', err));
   }
-
 }

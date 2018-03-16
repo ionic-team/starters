@@ -1,13 +1,10 @@
 import { Component } from '@angular/core';
+import { Auth } from 'aws-amplify';
+import { LoadingController, NavController } from 'ionic-angular';
 
-import { NavController, LoadingController } from 'ionic-angular';
-import { Auth, Logger } from 'aws-amplify';
-
-import { TabsPage } from '../tabs/tabs';
-import { SignupPage } from '../signup/signup';
 import { ConfirmSignInPage } from '../confirmSignIn/confirmSignIn';
-
-const logger = new Logger('Login');
+import { SignupPage } from '../signup/signup';
+import { TabsPage } from '../tabs/tabs';
 
 export class LoginDetails {
   username: string;
@@ -19,11 +16,12 @@ export class LoginDetails {
   templateUrl: 'login.html'
 })
 export class LoginPage {
-
   public loginDetails: LoginDetails;
 
-  constructor(public navCtrl: NavController,
-              public loadingCtrl: LoadingController) {
+  constructor(
+    public navCtrl: NavController,
+    public loadingCtrl: LoadingController
+  ) {
     this.loginDetails = new LoginDetails();
   }
 
@@ -39,7 +37,7 @@ export class LoginPage {
       .then(user => {
         logger.debug('signed in user', user);
         if (user.challengeName === 'SMS_MFA') {
-          this.navCtrl.push(ConfirmSignInPage, { 'user': user });
+          this.navCtrl.push(ConfirmSignInPage, { user: user });
         } else {
           this.navCtrl.setRoot(TabsPage);
         }
@@ -51,5 +49,4 @@ export class LoginPage {
   signup() {
     this.navCtrl.push(SignupPage);
   }
-
 }
