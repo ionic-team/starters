@@ -59,13 +59,13 @@ export class TasksPage {
   }
 
   generateId() {
-    var len = 16;
-    var chars =
+    let len = 16;
+    let chars =
       'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    var charLength = chars.length;
-    var result = '';
+    let charLength = chars.length;
+    let result = '';
     let randoms = window.crypto.getRandomValues(new Uint32Array(len));
-    for (var i = 0; i < len; i++) {
+    for (let i = 0; i < len; i++) {
       result += chars[randoms[i] % charLength];
     }
     return result.toLowerCase();
