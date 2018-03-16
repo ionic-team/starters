@@ -8,12 +8,9 @@ import { HomePage } from '../home/home';
   templateUrl: 'tabs.html'
 })
 export class TabsPage {
+  public tab1Root = HomePage;
+  public tab2Root = AboutPage;
+  public tab3Root = ContactPage;
 
-  tab1Root = HomePage;
-  tab2Root = AboutPage;
-  tab3Root = ContactPage;
-
-  constructor() {
-
-  }
+  constructor() {}
 }

@@ -22,7 +22,7 @@ export class AccountPage {
   public attributes: any;
 
   constructor(public navCtrl: NavController,
-              public camera: Camera,
+              private camera: Camera,
               public loadingCtrl: LoadingController) {
     this.attributes = [];
     this.avatarPhoto = null;

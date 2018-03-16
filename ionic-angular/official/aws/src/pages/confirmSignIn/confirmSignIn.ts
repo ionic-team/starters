@@ -13,7 +13,7 @@ const logger = new Logger('ConfirmSignIn');
   templateUrl: 'confirmSignIn.html'
 })
 export class ConfirmSignInPage {
-  
+
   public code: string;
   public user: any;
 

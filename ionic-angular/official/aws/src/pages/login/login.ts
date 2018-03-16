@@ -19,12 +19,12 @@ export class LoginDetails {
   templateUrl: 'login.html'
 })
 export class LoginPage {
-  
+
   public loginDetails: LoginDetails;
 
   constructor(public navCtrl: NavController,
               public loadingCtrl: LoadingController) {
-    this.loginDetails = new LoginDetails(); 
+    this.loginDetails = new LoginDetails();
   }
 
   login() {

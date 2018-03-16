@@ -1,27 +1,24 @@
-import { NgModule, ErrorHandler } from '@angular/core';
+import { ErrorHandler, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
-
 import { Camera } from '@ionic-native/camera';
+import { SplashScreen } from '@ionic-native/splash-screen';
+import { StatusBar } from '@ionic-native/status-bar';
+import Amplify from 'aws-amplify';
+import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 
-import { MyApp } from './app.component';
-import { LoginPage } from '../pages/login/login';
-import { SignupPage } from '../pages/signup/signup';
-import { ConfirmSignInPage } from '../pages/confirmSignIn/confirmSignIn';
-import { ConfirmSignUpPage } from '../pages/confirmSignUp/confirmSignUp';
-import { SettingsPage } from '../pages/settings/settings';
 import { AboutPage } from '../pages/about/about';
 import { AccountPage } from '../pages/account/account';
+import { ConfirmSignInPage } from '../pages/confirmSignIn/confirmSignIn';
+import { ConfirmSignUpPage } from '../pages/confirmSignUp/confirmSignUp';
+import { LoginPage } from '../pages/login/login';
+import { SettingsPage } from '../pages/settings/settings';
+import { SignupPage } from '../pages/signup/signup';
 import { TabsPage } from '../pages/tabs/tabs';
-import { TasksPage } from '../pages/tasks/tasks';
 import { TasksCreatePage } from '../pages/tasks-create/tasks-create';
-
-import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
-
+import { TasksPage } from '../pages/tasks/tasks';
 import { DynamoDB } from '../providers/aws.dynamodb';
+import { MyApp } from './app.component';
 
-import Amplify from 'aws-amplify';
 const aws_exports = require('../aws-exports').default;
 
 Amplify.configure(aws_exports);
@@ -61,7 +58,7 @@ Amplify.configure(aws_exports);
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
     Camera,
     DynamoDB
   ]
