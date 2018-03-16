@@ -32,17 +32,17 @@ export class LoginPage {
     loading.present();
 
     let details = this.loginDetails;
-    logger.info('login..');
+    console.info('login..');
     Auth.signIn(details.username, details.password)
       .then(user => {
-        logger.debug('signed in user', user);
+        console.debug('signed in user', user);
         if (user.challengeName === 'SMS_MFA') {
           this.navCtrl.push(ConfirmSignInPage, { user: user });
         } else {
           this.navCtrl.setRoot(TabsPage);
         }
       })
-      .catch(err => logger.debug('errrror', err))
+      .catch(err => console.debug('error', err))
       .then(() => loading.dismiss());
   }
 
