@@ -32,6 +32,8 @@
     "@angular/cli": "1.6.8",
     "@angular/compiler": "5.2.4",
     "@angular/compiler-cli": "5.2.4",
+    "@angular-devkit/core": "0.4.6",
+    "@angular-devkit/schematics": "0.4.6",
     "@types/jasmine": "2.8.6",
     "codelyzer": "4.1.0",
     "jasmine-core": "2.9.1",
