@@ -3,19 +3,18 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicAngularModule } from '@ionic/angular';
 
 import { AppComponent } from './app.component';
-import { HomePage } from './pages/home/home.page';
+import { PagesModule } from './pages/pages.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomePage,
   ],
   entryComponents: [
-    HomePage,
   ],
   imports: [
     BrowserModule,
     IonicAngularModule.forRoot(),
+    PagesModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
