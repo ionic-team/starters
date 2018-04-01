@@ -13,6 +13,6 @@ import { HomePage } from './home/home.page';
   ],
   entryComponents: [
     HomePage,
-  ]
+  ],
 })
-export class PagesModule { }
+export class PagesModule {}

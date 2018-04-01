@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicModule } from '@ionic/angular';
 
 import { AppComponent } from './app.component';
+import { ComponentsModule } from './components/components.module';
 import { PagesModule } from './pages/pages.module';
 
 @NgModule({
@@ -14,9 +15,10 @@ import { PagesModule } from './pages/pages.module';
   imports: [
     BrowserModule,
     IonicModule.forRoot(),
+    ComponentsModule,
     PagesModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
