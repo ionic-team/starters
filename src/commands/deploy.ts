@@ -20,16 +20,16 @@ export class DeployCommand extends Command {
   async getMetadata() {
     return {
       name: 'deploy',
-      description: 'Deploys the built starter templates to the CDN',
+      summary: 'Deploys the built starter templates to the CDN',
       options: [
         {
           name: 'tag',
-          description: `Deploy to a tag, such as 'next' ('latest' is production)`,
+          summary: `Deploy to a tag, such as 'next' ('latest' is production)`,
           default: 'testing',
         },
         {
           name: 'dry',
-          description: 'Perform a dry run and do not upload anything',
+          summary: 'Perform a dry run and do not upload anything',
           type: Boolean,
         },
       ],

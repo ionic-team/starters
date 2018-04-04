@@ -25,11 +25,11 @@ export class BuildCommand extends Command {
   async getMetadata() {
     return {
       name: 'build',
-      description: 'Builds all the starters',
+      summary: 'Builds all the starters',
       inputs: [
         {
           name: 'starter',
-          description: 'Path to single starter to build',
+          summary: 'Path to single starter to build',
         },
       ],
     };

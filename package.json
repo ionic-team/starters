@@ -16,7 +16,7 @@
     "rimraf": "^2.6.2"
   },
   "devDependencies": {
-    "@ionic/cli-framework": "canary",
+    "@ionic/cli-framework": "1.0.0-rc.2",
     "@types/archiver": "^2.0.1",
     "@types/dargs": "^5.1.0",
     "@types/lodash": "^4.14.81",
@@ -24,6 +24,6 @@
     "@types/ncp": "^2.0.1",
     "@types/node": "^8.0.47",
     "@types/rimraf": "^2.0.2",
-    "typescript": "^2.6.1"
+    "typescript": "^2.8.1"
   }
 }

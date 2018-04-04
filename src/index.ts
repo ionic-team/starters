@@ -7,7 +7,7 @@ class StartersNamespace extends Namespace {
   async getMetadata() {
     return {
       name: 'ionic-starters',
-      description: '',
+      summary: '',
     };
   }
 
@@ -19,8 +19,8 @@ class StartersNamespace extends Namespace {
   }
 }
 
-const ns = new StartersNamespace();
+const namespace = new StartersNamespace();
 
-export async function run(pargv: string[], env: { [k: string]: string; }) {
-  await execute(ns, pargv, env);
+export async function run(argv: string[], env: { [k: string]: string; }) {
+  await execute({ namespace, argv, env });
 }
