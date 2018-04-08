@@ -24,7 +24,7 @@
     "@ionic/schematics-angular": "latest",
     "core-js": "^2.5.3",
     "rxjs": "^5.5.8",
-    "zone.js": "^0.8.25"
+    "zone.js": "^0.8.26"
   },
   "devDependencies": {
     "@angular-devkit/core": "^0.5.4",
