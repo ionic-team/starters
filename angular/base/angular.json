@@ -111,7 +111,7 @@
         }
       }
     },
-    "ionio-app-base-e2e": {
+    "ionic-app-base-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
