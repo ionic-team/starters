@@ -15,6 +15,7 @@ jobs:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
             - node_modules
+      - run: npm run lint
       - run: npm run tsc
       - run: npm run build
       - run: npm run deploy -- --tag latest

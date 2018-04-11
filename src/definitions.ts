@@ -5,6 +5,8 @@ export interface StarterList {
     name: string;
     id: string;
     type: string;
+    ref: string;
+    sha1: string;
   }[];
   integrations: {
     name: string;
