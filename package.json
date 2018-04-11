@@ -2,8 +2,10 @@
   "private": true,
   "scripts": {
     "tsc": "tsc",
+    "lint": "tslint --project tsconfig.json",
     "build": "node ./bin/ionic-starters build",
-    "deploy": "node ./bin/ionic-starters deploy"
+    "deploy": "node ./bin/ionic-starters deploy",
+    "precommit": "npm run lint"
   },
   "main": "./dist/index.js",
   "dependencies": {
@@ -24,6 +26,9 @@
     "@types/ncp": "^2.0.1",
     "@types/node": "^8.0.47",
     "@types/rimraf": "^2.0.2",
+    "husky": "^0.14.3",
+    "tslint": "^5.9.1",
+    "tslint-ionic-rules": "0.0.14",
     "typescript": "^2.8.1"
   }
 }

@@ -76,7 +76,7 @@ export class BuildCommand extends Command {
     } else {
       const starterList: StarterList = { starters: [], integrations: [] };
 
-      for (let ionicType of IONIC_TYPE_DIRECTORIES) {
+      for (const ionicType of IONIC_TYPE_DIRECTORIES) {
         const baseDir = path.resolve(REPO_DIRECTORY, ionicType, 'base');
         const officialStarterDirs = await getDirectories(path.resolve(ionicType, STARTER_TYPE_OFFICIAL));
         const communityScopes = await getDirectories(path.resolve(ionicType, STARTER_TYPE_COMMUNITY));
@@ -99,7 +99,7 @@ export class BuildCommand extends Command {
 
         const currentBranch = (await runcmd('git', ['rev-parse', '--abbrev-ref', 'HEAD'])).trim();
 
-        for (let [ ref, starterDirsAtRef ] of refmap.entries()) {
+        for (const [ ref, starterDirsAtRef ] of refmap.entries()) {
           console.log(`Checking out ${chalk.cyan.bold(ionicType)} base files at ${chalk.bold(ref)}`);
 
           await runcmd('git', ['checkout', ref, '--', baseDir]);

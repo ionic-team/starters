@@ -6,12 +6,12 @@ import { spawn } from 'cross-spawn';
 
 import { fsReadDir, fsReadFile, fsStat } from '@ionic/cli-framework/utils/fs';
 
-import { TsconfigJson, StarterManifest } from '../definitions';
+import { StarterManifest, TsconfigJson } from '../definitions';
 
 export async function getDirectories(p: string): Promise<string[]> {
   const contents = await fsReadDir(p);
   const stats = await Promise.all(contents.map(async (f): Promise<[string, fs.Stats]> => [f, await fsStat(path.resolve(p, f))]));
-  return stats.filter(([f, stats]) => stats.isDirectory()).map(([f,]) => path.resolve(p, f));
+  return stats.filter(([f, stats]) => stats.isDirectory()).map(([f, ]) => path.resolve(p, f));
 }
 
 export async function readTsconfigJson(dir: string): Promise<TsconfigJson> {
@@ -21,7 +21,7 @@ export async function readTsconfigJson(dir: string): Promise<TsconfigJson> {
     // ignore
   }
 
-  return {}
+  return {};
 }
 
 export async function readGitignore(dir: string): Promise<string[]> {
