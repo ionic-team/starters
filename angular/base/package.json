@@ -21,7 +21,6 @@
     "@angular/platform-browser-dynamic": "6.0.0-rc.3",
     "@angular/router": "6.0.0-rc.3",
     "@ionic/angular": "4.0.0-alpha.1",
-    "@ionic/cli-hooks": "1.0.0-rc.1",
     "@ionic/schematics-angular": "latest",
     "core-js": "^2.5.3",
     "rxjs": "6.0.0-rc.1",
