@@ -2,7 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 
 import chalk from 'chalk';
-import * as archiver from 'archiver';
+import * as tar from 'tar';
 import * as S3 from 'aws-sdk/clients/s3';
 import * as CloudFront from 'aws-sdk/clients/cloudfront';
 
@@ -50,20 +50,14 @@ export class DeployCommand extends Command {
 
     await Promise.all(contents.map(async (dir) => {
       const id = path.basename(dir);
-      const templateKey = `${tag === 'latest' ? '' : `${tag}/`}${id}.tar.gz`;
+      const templateFileName = `${id}.tar.gz`;
+      const templateKey = `${tag === 'latest' ? '' : `${tag}/`}${templateFileName}`;
+      const archive = tar.create({ gzip: true, cwd: dir }, ['.']);
 
       if (dry) {
         log(id, chalk.green(`${chalk.bold('--dry')}: upload to ${chalk.bold(templateKey)}`));
+        archive.pipe(fs.createWriteStream(path.resolve(BUILD_DIRECTORY, templateFileName)));
       } else {
-        const archive = archiver('tar');
-
-        // archive.on('entry', (entry) => {
-        //   console.log('add', entry.name);
-        // });
-
-        archive.directory(dir, false);
-        archive.finalize();
-
         log(id, `Archiving and uploading`);
 
         await upload(archive, templateKey);
