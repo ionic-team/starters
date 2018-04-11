@@ -23,9 +23,8 @@
     "@ionic/angular": "4.0.0-alpha.1",
     "@ionic/schematics-angular": "latest",
     "core-js": "^2.5.3",
-    "rxjs": "6.0.0-beta.4",
-    "rxjs-compat": "6.0.0-beta.4",
-    "zone.js": "^0.8.25"
+    "rxjs": "6.0.0-rc.1",
+    "zone.js": "^0.8.26"
   },
   "devDependencies": {
     "@angular/cli": "^6.0.0-rc.1",
