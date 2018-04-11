@@ -46,9 +46,14 @@ export class BuildCommand extends Command {
     const [ starter ] = inputs;
     const current = options['current'] ? true : false;
 
+    const gitVersion = (await runcmd('git', ['--version'])).trim();
+
     console.log('-----');
     console.log(chalk.cyan.bold('BUILD'));
     console.log('-----');
+
+    console.log(`\n${gitVersion}\n`);
+
     console.log(`Wiping ${chalk.bold(`${BUILD_DIRECTORY}/*`)}`);
 
     await removeDirectory(`${BUILD_DIRECTORY}/*`);
