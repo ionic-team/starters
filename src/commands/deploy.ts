@@ -53,14 +53,16 @@ export class DeployCommand extends Command {
       const templateFileName = `${id}.tar.gz`;
       const templateKey = `${tag === 'latest' ? '' : `${tag}/`}${templateFileName}`;
       const archive = tar.create({ gzip: true, cwd: dir }, ['.']);
+      const archivePath = path.resolve(BUILD_DIRECTORY, templateFileName);
+      await writeStarter(archive, archivePath);
 
       if (dry) {
         log(id, chalk.green(`${chalk.bold('--dry')}: upload to ${chalk.bold(templateKey)}`));
-        archive.pipe(fs.createWriteStream(path.resolve(BUILD_DIRECTORY, templateFileName)));
       } else {
         log(id, `Archiving and uploading`);
 
-        await upload(archive, templateKey);
+        // s3 needs a content length, and it's safe to know content length from a file
+        await upload(fs.createReadStream(archivePath), templateKey);
         keys.push(templateKey);
 
         log(id, chalk.green(`Uploaded to ${chalk.bold(templateKey)}`));
@@ -97,6 +99,16 @@ export class DeployCommand extends Command {
       console.log(`Invalidation ID: ${chalk.bold(result.Invalidation.Id)}`);
     }
   }
+}
+
+async function writeStarter(rs: NodeJS.ReadableStream, dest: string) {
+  return new Promise<void>((resolve, reject) => {
+    const ws = fs.createWriteStream(dest)
+      .on('finish', () => resolve())
+      .on('error', err => reject(err));
+
+    rs.pipe(ws);
+  });
 }
 
 async function upload(rs: NodeJS.ReadableStream, key: string, params?: Partial<S3.PutObjectRequest>) {

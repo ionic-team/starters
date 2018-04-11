@@ -1,11 +1,13 @@
 {
   "private": true,
   "scripts": {
-    "tsc": "tsc",
-    "lint": "tslint --project tsconfig.json",
-    "build": "node ./bin/ionic-starters build",
-    "deploy": "node ./bin/ionic-starters deploy",
-    "precommit": "npm run lint"
+    "src:lint": "tslint --project tsconfig.json",
+    "src:build": "tsc",
+    "src:watch": "tsc -w",
+    "starters:build": "node ./bin/ionic-starters build",
+    "starters:deploy": "node ./bin/ionic-starters deploy",
+    "build": "npm run src:build && npm run starters:build",
+    "precommit": "npm run src:lint"
   },
   "main": "./dist/index.js",
   "dependencies": {

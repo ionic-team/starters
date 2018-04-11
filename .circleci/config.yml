@@ -15,10 +15,10 @@ jobs:
           key: dependency-cache-{{ checksum "package.json" }}
           paths:
             - node_modules
-      - run: npm run lint
-      - run: npm run tsc
-      - run: npm run build
-      - run: npm run deploy -- --tag latest
+      - run: npm run src:lint
+      - run: npm run src:build
+      - run: npm run starters:build
+      - run: npm run starters:deploy -- --tag latest
     branches:
       only:
         - master
