@@ -53,7 +53,7 @@ export async function buildStarter(ionicType: string, starterType: string, start
     }
   }
 
-  const pkgPath = path.resolve(tmpdest, 'package.json')
+  const pkgPath = path.resolve(tmpdest, 'package.json');
   const pkg = await readPackageJsonFile(pkgPath);
 
   log(id, `Performing manifest operations for ${chalk.bold(manifest.name)}`);
@@ -66,15 +66,15 @@ export async function buildStarter(ionicType: string, starterType: string, start
   const tsconfigJson = await readTsconfigJson(tmpdest);
 
   if (Object.keys(tsconfigJson).length > 0 && manifest.tsconfigJson) {
-    _.mergeWith(tsconfigJson, manifest.tsconfigJson, (objv, v) => _.isArray(v) ? v: undefined);
+    _.mergeWith(tsconfigJson, manifest.tsconfigJson, (objv, v) => _.isArray(v) ? v : undefined);
     await fsWriteFile(path.resolve(tmpdest, 'tsconfig.json'), JSON.stringify(tsconfigJson, undefined, 2) + '\n', { encoding: 'utf8' });
   }
 
   const gitignore = await readGitignore(tmpdest);
 
   if (manifest.gitignore) {
-    let united = _.union(gitignore.map(x => x.trim()), manifest.gitignore.map(x => x.trim()));
-    await fsWriteFile(path.resolve(tmpdest, '.gitignore'), united.join("\n") + '\n', { encoding: 'utf8' });
+    const united = _.union(gitignore.map(x => x.trim()), manifest.gitignore.map(x => x.trim()));
+    await fsWriteFile(path.resolve(tmpdest, '.gitignore'), united.join('\n') + '\n', { encoding: 'utf8' });
   }
 
   return id;

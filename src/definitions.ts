@@ -5,6 +5,8 @@ export interface StarterList {
     name: string;
     id: string;
     type: string;
+    ref: string;
+    sha1: string;
   }[];
   integrations: {
     name: string;
@@ -37,12 +39,12 @@ export interface TsconfigBase {
     emitBOM?: boolean;
     inlineSourceMap?: boolean;
     inlineSources?: boolean;
-    jsx?: "preserve" | "react" | "react-native";
+    jsx?: 'preserve' | 'react' | 'react-native';
     reactNamespace?: string;
     listFiles?: boolean;
     mapRoot?: string;
-    module?: "commonjs" | "amd" | "umd" | "system" | "es6" | "es2015" | "esnext" | "none";
-    newLine?: "CRLF" | "LF";
+    module?: 'commonjs' | 'amd' | 'umd' | 'system' | 'es6' | 'es2015' | 'esnext' | 'none';
+    newLine?: 'CRLF' | 'LF';
     noEmit?: boolean;
     noEmitHelpers?: boolean;
     noEmitOnError?: boolean;
@@ -68,11 +70,11 @@ export interface TsconfigBase {
     suppressExcessPropertyErrors?: boolean;
     suppressImplicitAnyIndexErrors?: boolean;
     stripInternal?: boolean;
-    target?: "es3" | "es5" | "es2015" | "es2016" | "es2017" | "esnext";
+    target?: 'es3' | 'es5' | 'es2015' | 'es2016' | 'es2017' | 'esnext';
     watch?: boolean;
     experimentalDecorators?: boolean;
     emitDecoratorMetadata?: boolean;
-    moduleResolution?: "classic" | "node";
+    moduleResolution?: 'classic' | 'node';
     allowUnusedLabels?: boolean;
     noImplicitReturns?: boolean;
     noFallthroughCasesInSwitch?: boolean;
@@ -95,30 +97,30 @@ export interface TsconfigBase {
     noImplicitUseStrict?: boolean;
     listEmittedFiles?: boolean;
     lib?: (
-      | "es5"
-      | "es6"
-      | "es2015"
-      | "es7"
-      | "es2016"
-      | "es2017"
-      | "esnext"
-      | "dom"
-      | "dom.iterable"
-      | "webworker"
-      | "scripthost"
-      | "es2015.core"
-      | "es2015.collection"
-      | "es2015.generator"
-      | "es2015.iterable"
-      | "es2015.promise"
-      | "es2015.proxy"
-      | "es2015.reflect"
-      | "es2015.symbol"
-      | "es2015.symbol.wellknown"
-      | "es2016.array.include"
-      | "es2017.object"
-      | "es2017.sharedmemory"
-      | "esnext.asynciterable")[];
+      | 'es5'
+      | 'es6'
+      | 'es2015'
+      | 'es7'
+      | 'es2016'
+      | 'es2017'
+      | 'esnext'
+      | 'dom'
+      | 'dom.iterable'
+      | 'webworker'
+      | 'scripthost'
+      | 'es2015.core'
+      | 'es2015.collection'
+      | 'es2015.generator'
+      | 'es2015.iterable'
+      | 'es2015.promise'
+      | 'es2015.proxy'
+      | 'es2015.reflect'
+      | 'es2015.symbol'
+      | 'es2015.symbol.wellknown'
+      | 'es2016.array.include'
+      | 'es2017.object'
+      | 'es2017.sharedmemory'
+      | 'esnext.asynciterable')[];
     strictNullChecks?: boolean;
     maxNodeModuleJsDepth?: number;
     importHelpers?: boolean;
