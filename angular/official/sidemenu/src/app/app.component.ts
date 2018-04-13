@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { HomePage } from './pages/home/home.page';
 
@@ -7,6 +8,8 @@ import { HomePage } from './pages/home/home.page';
   templateUrl: 'app.component.html',
 })
 export class AppComponent {
+
+  constructor(private router: Router) {}
 
   appPages = [
     {
@@ -20,5 +23,9 @@ export class AppComponent {
       icon: 'list'
     }
   ];
+
+  navigate(url: string) {
+    return this.router.navigateByUrl(url);
+  }
 
 }
