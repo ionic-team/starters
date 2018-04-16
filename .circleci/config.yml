@@ -37,11 +37,13 @@ jobs:
       - run: npm run starters:build
   test:
     <<: *defaults
-      - restore_cache: *restore-cache-staters
+    steps:
+      - restore_cache: *restore-cache-starters
       - run: npm run starters:test
       - save_cache: *save-cache-angular-official-blank
   deploy:
     <<: *defaults
+    steps:
       - run: npm run starters:deploy -- --tag latest
 
 workflows:
