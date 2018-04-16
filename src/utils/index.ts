@@ -1,7 +1,7 @@
 import * as path from 'path';
 
 import chalk from 'chalk';
-import { spawn } from 'cross-spawn';
+import { SpawnOptions, spawn } from 'cross-spawn';
 
 import { filter } from '@ionic/cli-framework/utils/array';
 import { fsReadDir, fsReadFile, fsStat } from '@ionic/cli-framework/utils/fs';
@@ -33,23 +33,21 @@ export async function readGitignore(dir: string): Promise<string[]> {
   return [];
 }
 
-export async function readStarterManifest(dir: string): Promise<StarterManifest> {
-  const contents = await fsReadFile(path.resolve(dir, 'ionic.starter.json'), { encoding: 'utf8' });
-
-  if (!contents) {
-    throw new Error(`No starter manifest found in directory: ${dir}`);
+export async function readStarterManifest(dir: string): Promise<StarterManifest | undefined> {
+  try {
+    return JSON.parse(await fsReadFile(path.resolve(dir, 'ionic.starter.json'), { encoding: 'utf8' }));
+  } catch (e) {
+    // ignore
   }
-
-  return JSON.parse(contents);
 }
 
 export async function log(id: string, msg: string) {
   console.log(chalk.dim('=>'), chalk.cyan(id), msg);
 }
 
-export function runcmd(command: string, args?: string[]): Promise<string> {
+export function runcmd(command: string, args?: string[], opts?: SpawnOptions): Promise<string> {
   return new Promise<string>((resolve, reject) => {
-    const p = spawn(command, args);
+    const p = spawn(command, args, opts);
 
     const stdoutbufs: Buffer[] = [];
     const stderrbufs: Buffer[] = [];
