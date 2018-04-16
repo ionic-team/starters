@@ -2,15 +2,13 @@ import * as fs from 'fs';
 import * as path from 'path';
 
 import chalk from 'chalk';
-import * as lodash from 'lodash';
 import * as tar from 'tar';
-import * as minimatch from 'minimatch';
 import * as S3 from 'aws-sdk/clients/s3';
 import * as CloudFront from 'aws-sdk/clients/cloudfront';
 
 import { Command, CommandLineInputs, CommandLineOptions } from '@ionic/cli-framework';
 
-import { getDirectories, log, readStarterManifest } from '../utils';
+import { getDirectories, log } from '../utils';
 import { BUILD_DIRECTORY, STARTERS_LIST_PATH } from '../lib/build';
 
 const s3 = new S3({ apiVersion: '2006-03-01' });
@@ -54,23 +52,7 @@ export class DeployCommand extends Command {
       const id = path.basename(dir);
       const templateFileName = `${id}.tar.gz`;
       const templateKey = `${tag === 'latest' ? '' : `${tag}/`}${templateFileName}`;
-      const manifest = await readStarterManifest(dir);
-      const tarignore = manifest && manifest.tarignore ? manifest.tarignore : undefined;
-
-      const archive = tar.create({
-        gzip: true,
-        cwd: dir,
-        filter: (p, stat) => {
-          const filePath = path.relative(dir, path.resolve(dir, p));
-
-          if (!tarignore) {
-            return true;
-          }
-
-          return !lodash.some(tarignore.map(rule => minimatch(filePath, rule)));
-        },
-      }, ['.']);
-
+      const archive = tar.create({ gzip: true, cwd: dir }, ['.']);
       const archivePath = path.resolve(BUILD_DIRECTORY, templateFileName);
       await writeStarter(archive, archivePath);
 

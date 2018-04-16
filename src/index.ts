@@ -2,7 +2,6 @@ import { CommandMap, Namespace, execute } from '@ionic/cli-framework';
 
 import { BuildCommand } from './commands/build';
 import { DeployCommand } from './commands/deploy';
-import { TestCommand } from './commands/test';
 
 class StartersNamespace extends Namespace {
   async getMetadata() {
@@ -16,7 +15,6 @@ class StartersNamespace extends Namespace {
     return new CommandMap([
       ['build', async () => new BuildCommand(this)],
       ['deploy', async () => new DeployCommand(this)],
-      ['test', async () => new TestCommand(this)],
     ]);
   }
 }

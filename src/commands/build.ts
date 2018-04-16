@@ -96,17 +96,14 @@ export class BuildCommand extends Command {
 
         await Promise.all(starterDirs.map(async (starterDir) => {
           const manifest = await readStarterManifest(starterDir);
+          let starterDirsAtRef = refmap.get(manifest.baseref);
 
-          if (manifest) {
-            let starterDirsAtRef = refmap.get(manifest.baseref);
-
-            if (!starterDirsAtRef) {
-              starterDirsAtRef = [];
-            }
-
-            starterDirsAtRef.push(starterDir);
-            refmap.set(manifest.baseref, starterDirsAtRef);
+          if (!starterDirsAtRef) {
+            starterDirsAtRef = [];
           }
+
+          starterDirsAtRef.push(starterDir);
+          refmap.set(manifest.baseref, starterDirsAtRef);
         }));
 
         for (const [ ref, starterDirsAtRef ] of refmap.entries()) {

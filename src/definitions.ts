@@ -17,10 +17,6 @@ export interface StarterList {
 export interface StarterManifest {
   name: string;
   baseref: string;
-  tarignore?: string[];
-  scripts?: {
-    test?: string;
-  };
   welcome?: string;
   packageJson?: PackageJson;
   tsconfigJson?: TsconfigJson;
