@@ -1,17 +1,16 @@
-import * as fs from 'fs';
 import * as path from 'path';
 
 import chalk from 'chalk';
 import { spawn } from 'cross-spawn';
 
+import { filter } from '@ionic/cli-framework/utils/array';
 import { fsReadDir, fsReadFile, fsStat } from '@ionic/cli-framework/utils/fs';
 
 import { StarterManifest, TsconfigJson } from '../definitions';
 
 export async function getDirectories(p: string): Promise<string[]> {
   const contents = await fsReadDir(p);
-  const stats = await Promise.all(contents.map(async (f): Promise<[string, fs.Stats]> => [f, await fsStat(path.resolve(p, f))]));
-  return stats.filter(([f, stats]) => stats.isDirectory()).map(([f, ]) => path.resolve(p, f));
+  return filter(contents.map(f => path.resolve(p, f)), async f => (await fsStat(f)).isDirectory());
 }
 
 export async function readTsconfigJson(dir: string): Promise<TsconfigJson> {
