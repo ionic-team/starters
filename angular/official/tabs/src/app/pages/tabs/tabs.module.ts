@@ -3,15 +3,15 @@ import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 
 import { TabsPage } from './tabs.page';
-import { HomePageModule } from '../home/home.page.module';
+import { HomePageModule } from '../home/home.module';
 import { HomePage } from '../home/home.page';
 import { AboutPage } from '../about/about.page';
 import { ContactPage } from '../contact/contact.page';
-import { ContactPageModule } from '../contact/contact.page.module';
-import { AboutPageModule } from '../about/about.page.module';
+import { ContactPageModule } from '../contact/contact.module';
+import { AboutPageModule } from '../about/about.module';
 
-          // Blocked by angular
-          // loadChildren: 'app/pages/home/home.page.module#HomePageModule',
+// Blocked by angular
+// loadChildren: 'app/pages/home/home.page.module#HomePageModule',
 @NgModule({
   imports: [
     IonicModule,
@@ -23,7 +23,6 @@ import { AboutPageModule } from '../about/about.page.module';
         path: 'tabs',
         component: TabsPage,
         children: [
-
           {
             path: 'home',
             outlet: 'home',
@@ -43,7 +42,7 @@ import { AboutPageModule } from '../about/about.page.module';
       },
       {
         path: '',
-        redirectTo: '/tabs/(home:home)',
+        redirectTo: '/tabs',
         pathMatch: 'full'
       }
     ])

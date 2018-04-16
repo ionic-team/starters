@@ -12,7 +12,7 @@ import { AppComponent } from './app.component';
     BrowserModule,
     IonicModule.forRoot(),
     RouterModule.forRoot([
-      { path: '', loadChildren: './pages/tabs/tabs.page.module#TabsPageModule' },
+      { path: '', loadChildren: './pages/tabs/tabs.module#TabsPageModule' }
     ])
   ],
   providers: [],
