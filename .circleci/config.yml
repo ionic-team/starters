@@ -1,24 +1,69 @@
 version: 2
 
+aliases:
+  - &restore-cache-src
+    key: dependency-cache-{{ .Branch }}-{{ checksum "package.json" }}
+
+  - &save-cache-src
+    key: dependency-cache-{{ .Branch }}-{{ checksum "package.json" }}
+    paths:
+      - node_modules
+
+  - &restore-cache-starters
+    keys:
+      - angular-official-blank-dependency-cache-{{ .Branch }}{{ checksum "package.json" }}
+
+  - &save-cache-angular-official-blank
+    key: angular-official-blank-dependency-cache-{{ .Branch }}{{ checksum "package.json" }}
+    paths:
+      - build/angular-official-blank/node_modules
+
+defaults: &defaults
+  working_directory: /tmp/workspace
+  docker:
+    - image: circleci/node:8
+
 jobs:
   build:
-    docker:
-      - image: circleci/node:8
+    <<: *defaults
     steps:
       - checkout
       - run: git submodule sync
       - run: git submodule update --init
-      - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
+      - restore_cache: *restore-cache-src
       - run: npm install
-      - save_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
-          paths:
-            - node_modules
+      - save_cache: *save-cache-src
       - run: npm run src:lint
       - run: npm run src:build
       - run: npm run starters:build
+      - persist_to_workspace:
+          root: /tmp/workspace
+          paths:
+            - "*"
+  test:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: /tmp/workspace
+      - restore_cache: *restore-cache-starters
+      - run: npm run starters:test
+      - save_cache: *save-cache-angular-official-blank
+  deploy:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: /tmp/workspace
       - run: npm run starters:deploy -- --tag latest
-    branches:
-      only:
-        - master
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build
+      - test:
+          requires: [build]
+      - deploy:
+          requires: [test]
+          filters:
+            branches:
+              only: master

@@ -42,6 +42,10 @@ export async function buildStarter(ionicType: string, starterType: string, start
 
   const manifest = await readStarterManifest(starterDir);
 
+  if (!manifest) {
+    throw new Error(`No starter manifest found in ${starterDir}`);
+  }
+
   await copyDirectory(baseDir, tmpdest, {});
   await copyDirectory(starterDir, tmpdest, {});
 
