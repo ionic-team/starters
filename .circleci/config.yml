@@ -2,21 +2,27 @@ version: 2
 
 aliases:
   - &restore-cache-src
-    key: dependency-cache-{{ .Branch }}-{{ checksum "package.json" }}
+    key: dependency-cache-{{ .Branch }}-{{ checksum "package.json" }}-1
 
   - &save-cache-src
-    key: dependency-cache-{{ .Branch }}-{{ checksum "package.json" }}
+    key: dependency-cache-{{ .Branch }}-{{ checksum "package.json" }}-1
     paths:
       - node_modules
 
   - &restore-cache-starters
     keys:
-      - angular-official-blank-dependency-cache-{{ .Branch }}{{ checksum "package.json" }}
+      - dependency-cache-{{ .Branch }}{{ checksum "build/angular-official-blank/package.json" }}-1
+      - dependency-cache-{{ .Branch }}{{ checksum "build/angular-official-tabs/package.json" }}-1
 
   - &save-cache-angular-official-blank
-    key: angular-official-blank-dependency-cache-{{ .Branch }}{{ checksum "package.json" }}
+    key: dependency-cache-{{ .Branch }}{{ checksum "build/angular-official-blank/package.json" }}-1
     paths:
       - build/angular-official-blank/node_modules
+
+  - &save-cache-angular-official-tabs
+    key: dependency-cache-{{ .Branch }}{{ checksum "build/angular-official-tabs/package.json" }}-1
+    paths:
+      - build/angular-official-tabs/node_modules
 
 defaults: &defaults
   working_directory: /tmp/workspace
@@ -48,6 +54,7 @@ jobs:
       - restore_cache: *restore-cache-starters
       - run: npm run starters:test
       - save_cache: *save-cache-angular-official-blank
+      - save_cache: *save-cache-angular-official-tabs
   deploy:
     <<: *defaults
     steps:
