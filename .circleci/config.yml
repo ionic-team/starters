@@ -1,28 +1,36 @@
 version: 2
 
 aliases:
+  - &install-chrome
+      name: Install Chrome
+      command: |
+        curl -L -o google-chrome.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+        sudo dpkg -i google-chrome.deb
+        sudo sed -i 's|HERE/chrome\"|HERE/chrome\" --disable-setuid-sandbox|g' /opt/google/chrome/google-chrome
+        rm google-chrome.deb
+
   - &restore-cache-src
-    key: dependency-cache-{{ .Branch }}-{{ checksum "package.json" }}-1
+      key: dependency-cache-{{ .Branch }}-{{ checksum "package.json" }}-1
 
   - &save-cache-src
-    key: dependency-cache-{{ .Branch }}-{{ checksum "package.json" }}-1
-    paths:
-      - node_modules
+      key: dependency-cache-{{ .Branch }}-{{ checksum "package.json" }}-1
+      paths:
+        - node_modules
 
   - &restore-cache-starters
-    keys:
-      - dependency-cache-{{ .Branch }}{{ checksum "build/angular-official-blank/package.json" }}-1
-      - dependency-cache-{{ .Branch }}{{ checksum "build/angular-official-tabs/package.json" }}-1
+      keys:
+        - dependency-cache-{{ .Branch }}{{ checksum "build/angular-official-blank/package.json" }}-1
+        - dependency-cache-{{ .Branch }}{{ checksum "build/angular-official-tabs/package.json" }}-1
 
   - &save-cache-angular-official-blank
-    key: dependency-cache-{{ .Branch }}{{ checksum "build/angular-official-blank/package.json" }}-1
-    paths:
-      - build/angular-official-blank/node_modules
+      key: dependency-cache-{{ .Branch }}{{ checksum "build/angular-official-blank/package.json" }}-1
+      paths:
+        - build/angular-official-blank/node_modules
 
   - &save-cache-angular-official-tabs
-    key: dependency-cache-{{ .Branch }}{{ checksum "build/angular-official-tabs/package.json" }}-1
-    paths:
-      - build/angular-official-tabs/node_modules
+      key: dependency-cache-{{ .Branch }}{{ checksum "build/angular-official-tabs/package.json" }}-1
+      paths:
+        - build/angular-official-tabs/node_modules
 
 defaults: &defaults
   working_directory: /tmp/workspace
@@ -49,6 +57,7 @@ jobs:
   test:
     <<: *defaults
     steps:
+      - run: *install-chrome
       - attach_workspace:
           at: /tmp/workspace
       - restore_cache: *restore-cache-starters
