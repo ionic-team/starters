@@ -2,12 +2,13 @@ import { CommandMap, Namespace, execute } from '@ionic/cli-framework';
 
 import { BuildCommand } from './commands/build';
 import { DeployCommand } from './commands/deploy';
+import { TestCommand } from './commands/test';
 
 class StartersNamespace extends Namespace {
   async getMetadata() {
     return {
       name: 'ionic-starters',
-      description: '',
+      summary: '',
     };
   }
 
@@ -15,12 +16,13 @@ class StartersNamespace extends Namespace {
     return new CommandMap([
       ['build', async () => new BuildCommand(this)],
       ['deploy', async () => new DeployCommand(this)],
+      ['test', async () => new TestCommand(this)],
     ]);
   }
 }
 
-const ns = new StartersNamespace();
+const namespace = new StartersNamespace();
 
-export async function run(pargv: string[], env: { [k: string]: string; }) {
-  await execute(ns, pargv, env);
+export async function run(argv: string[], env: { [k: string]: string; }) {
+  await execute({ namespace, argv, env });
 }

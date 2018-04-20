@@ -25,11 +25,18 @@ export class BuildCommand extends Command {
   async getMetadata() {
     return {
       name: 'build',
-      description: 'Builds all the starters',
+      summary: 'Builds all the starters',
       inputs: [
         {
           name: 'starter',
-          description: 'Path to single starter to build',
+          summary: 'Path to single starter to build',
+        },
+      ],
+      options: [
+        {
+          name: 'current',
+          summary: 'Use base files as-is, do not checkout base files using baseref',
+          type: Boolean,
         },
       ],
     };
@@ -37,32 +44,33 @@ export class BuildCommand extends Command {
 
   async run(inputs: CommandLineInputs, options: CommandLineOptions) {
     const [ starter ] = inputs;
+    const current = options['current'] ? true : false;
+
+    const gitVersion = (await runcmd('git', ['--version'])).trim();
 
     console.log('-----');
     console.log(chalk.cyan.bold('BUILD'));
     console.log('-----');
+
+    console.log(`\n${gitVersion}\n`);
+
     console.log(`Wiping ${chalk.bold(`${BUILD_DIRECTORY}/*`)}`);
 
     await removeDirectory(`${BUILD_DIRECTORY}/*`);
 
-    await Promise.all(IONIC_TYPE_DIRECTORIES.map(async (ionicType) => {
+    for (const ionicType of IONIC_TYPE_DIRECTORIES) {
       const baseDir = path.resolve(REPO_DIRECTORY, ionicType, 'base');
       const baseChanges = (await runcmd('git', ['status', '--porcelain', '--', baseDir])).trim();
 
-      if (baseChanges) {
-        if (starter) {
-          console.warn(chalk.yellow(
-            `${chalk.bold('WARNING')}: Changes detected in ${chalk.bold(baseDir)}. ` +
-            `Building ${chalk.bold(starter)} with LATEST (not base files from ${chalk.bold('baseref')})`
-          ));
-        } else {
-          throw new Error(chalk.red(
-            `Changes detected in ${chalk.bold(baseDir)}. ` +
-            `With changes in the base files, you can only build one starter at a time. (try ${chalk.green('npm run build -- path/to/starter')})`
-          ));
-        }
+      if (baseChanges && !current) {
+        console.error(chalk.red(
+          `Changes detected in ${chalk.bold(baseDir)}.\n` +
+          `You must either commit/reset these changes OR explicitly use the ${chalk.green('--current')} flag, which ignores starter baserefs.`
+        ));
+
+        process.exit(1);
       }
-    }));
+    }
 
     if (starter) {
       const starterDir = path.resolve(starter);
@@ -75,8 +83,9 @@ export class BuildCommand extends Command {
       await buildStarter(ionicType, starterType, starterDir);
     } else {
       const starterList: StarterList = { starters: [], integrations: [] };
+      const currentSha1 = (await runcmd('git', ['rev-parse', 'HEAD'])).trim();
 
-      for (let ionicType of IONIC_TYPE_DIRECTORIES) {
+      for (const ionicType of IONIC_TYPE_DIRECTORIES) {
         const baseDir = path.resolve(REPO_DIRECTORY, ionicType, 'base');
         const officialStarterDirs = await getDirectories(path.resolve(ionicType, STARTER_TYPE_OFFICIAL));
         const communityScopes = await getDirectories(path.resolve(ionicType, STARTER_TYPE_COMMUNITY));
@@ -87,31 +96,36 @@ export class BuildCommand extends Command {
 
         await Promise.all(starterDirs.map(async (starterDir) => {
           const manifest = await readStarterManifest(starterDir);
-          let starterDirsAtRef = refmap.get(manifest.baseref);
 
-          if (!starterDirsAtRef) {
-            starterDirsAtRef = [];
+          if (manifest) {
+            let starterDirsAtRef = refmap.get(manifest.baseref);
+
+            if (!starterDirsAtRef) {
+              starterDirsAtRef = [];
+            }
+
+            starterDirsAtRef.push(starterDir);
+            refmap.set(manifest.baseref, starterDirsAtRef);
           }
-
-          starterDirsAtRef.push(starterDir);
-          refmap.set(manifest.baseref, starterDirsAtRef);
         }));
 
-        const currentBranch = (await runcmd('git', ['rev-parse', '--abbrev-ref', 'HEAD'])).trim();
-
-        for (let [ ref, starterDirsAtRef ] of refmap.entries()) {
-          console.log(`Checking out ${chalk.cyan.bold(ionicType)} base files at ${chalk.bold(ref)}`);
-
-          await runcmd('git', ['checkout', ref, '--', baseDir]);
+        for (const [ ref, starterDirsAtRef ] of refmap.entries()) {
+          if (!current) {
+            console.log(`Checking out ${chalk.cyan.bold(ionicType)} base files at ${chalk.bold(ref)}`);
+            await runcmd('git', ['checkout', ref, '--', baseDir]);
+          }
 
           await Promise.all(starterDirsAtRef.map(async (starterDir) => {
             const [ , starterType, ...rest ] = getStarterInfoFromPath(starterDir);
             const name = rest.join('/');
             const id = await buildStarter(ionicType, starterType, starterDir);
-            starterList.starters.push({ name, id, type: ionicType });
+            const sha1 = current ? currentSha1 : (await runcmd('git', ['rev-parse', ref])).trim();
+            starterList.starters.push({ name, id, type: ionicType, ref, sha1 });
           }));
 
-          await runcmd('git', ['checkout', currentBranch, '--', baseDir]);
+          if (!current) {
+            await runcmd('git', ['checkout', currentSha1, '--', baseDir]);
+          }
         }
       }
 
@@ -125,8 +139,20 @@ export class BuildCommand extends Command {
         log(integration, chalk.green('Copied!'));
       }));
 
-      console.log(`Writing ${chalk.cyan('starters.json')}`);
+      console.log(`Writing ${chalk.cyan('starters.json')}\n`);
       await fsWriteFile(STARTERS_LIST_PATH, JSON.stringify(starterList, undefined, 2), { encoding: 'utf8' });
+
+      const mismatchedStarters = starterList.starters.filter(s => s.sha1 !== currentSha1);
+
+      if (mismatchedStarters.length > 0) {
+        const currentRef = (await runcmd('git', ['log', '-1', '--format="%D"', currentSha1])).trim();
+
+        console.log(
+          `The following starters were built from a ref other than ${chalk.bold(currentRef ? currentRef : currentSha1)}:\n` +
+          ` - ${mismatchedStarters.map(s => `${chalk.cyan(s.id)} ${chalk.dim(`(${s.ref})`)}`).join('\n - ')}\n` +
+          `If this isn't what you want, consider running with the ${chalk.green('--current')} flag, which ignores starter baserefs.`
+        );
+      }
     }
   }
 }

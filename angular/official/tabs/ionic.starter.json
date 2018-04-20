@@ -1,5 +1,5 @@
 {
-  "name": "Blank Starter",
+  "name": "Tabs Starter",
   "baseref": "master",
   "tarignore": [
     "node_modules",

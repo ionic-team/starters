@@ -2,13 +2,15 @@ import * as fs from 'fs';
 import * as path from 'path';
 
 import chalk from 'chalk';
-import * as archiver from 'archiver';
+import * as lodash from 'lodash';
+import * as tar from 'tar';
+import * as minimatch from 'minimatch';
 import * as S3 from 'aws-sdk/clients/s3';
 import * as CloudFront from 'aws-sdk/clients/cloudfront';
 
 import { Command, CommandLineInputs, CommandLineOptions } from '@ionic/cli-framework';
 
-import { getDirectories, log } from '../utils';
+import { getDirectories, log, readStarterManifest } from '../utils';
 import { BUILD_DIRECTORY, STARTERS_LIST_PATH } from '../lib/build';
 
 const s3 = new S3({ apiVersion: '2006-03-01' });
@@ -20,16 +22,16 @@ export class DeployCommand extends Command {
   async getMetadata() {
     return {
       name: 'deploy',
-      description: 'Deploys the built starter templates to the CDN',
+      summary: 'Deploys the built starter templates to the CDN',
       options: [
         {
           name: 'tag',
-          description: `Deploy to a tag, such as 'next' ('latest' is production)`,
+          summary: `Deploy to a tag, such as 'next' ('latest' is production)`,
           default: 'testing',
         },
         {
           name: 'dry',
-          description: 'Perform a dry run and do not upload anything',
+          summary: 'Perform a dry run and do not upload anything',
           type: Boolean,
         },
       ],
@@ -50,23 +52,35 @@ export class DeployCommand extends Command {
 
     await Promise.all(contents.map(async (dir) => {
       const id = path.basename(dir);
-      const templateKey = `${tag === 'latest' ? '' : `${tag}/`}${id}.tar.gz`;
+      const templateFileName = `${id}.tar.gz`;
+      const templateKey = `${tag === 'latest' ? '' : `${tag}/`}${templateFileName}`;
+      const manifest = await readStarterManifest(dir);
+      const tarignore = manifest && manifest.tarignore ? manifest.tarignore : undefined;
+
+      const archive = tar.create({
+        gzip: true,
+        cwd: dir,
+        filter: (p, stat) => {
+          const filePath = path.relative(dir, path.resolve(dir, p));
+
+          if (!tarignore) {
+            return true;
+          }
+
+          return !lodash.some(tarignore.map(rule => minimatch(filePath, rule)));
+        },
+      }, ['.']);
+
+      const archivePath = path.resolve(BUILD_DIRECTORY, templateFileName);
+      await writeStarter(archive, archivePath);
 
       if (dry) {
         log(id, chalk.green(`${chalk.bold('--dry')}: upload to ${chalk.bold(templateKey)}`));
       } else {
-        const archive = archiver('tar');
-
-        // archive.on('entry', (entry) => {
-        //   console.log('add', entry.name);
-        // });
-
-        archive.directory(dir, false);
-        archive.finalize();
-
         log(id, `Archiving and uploading`);
 
-        await upload(archive, templateKey);
+        // s3 needs a content length, and it's safe to know content length from a file
+        await upload(fs.createReadStream(archivePath), templateKey);
         keys.push(templateKey);
 
         log(id, chalk.green(`Uploaded to ${chalk.bold(templateKey)}`));
@@ -103,6 +117,16 @@ export class DeployCommand extends Command {
       console.log(`Invalidation ID: ${chalk.bold(result.Invalidation.Id)}`);
     }
   }
+}
+
+async function writeStarter(rs: NodeJS.ReadableStream, dest: string) {
+  return new Promise<void>((resolve, reject) => {
+    const ws = fs.createWriteStream(dest)
+      .on('finish', () => resolve())
+      .on('error', err => reject(err));
+
+    rs.pipe(ws);
+  });
 }
 
 async function upload(rs: NodeJS.ReadableStream, key: string, params?: Partial<S3.PutObjectRequest>) {

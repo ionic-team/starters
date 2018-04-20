@@ -1,29 +1,39 @@
 {
   "private": true,
   "scripts": {
-    "tsc": "tsc",
-    "build": "node ./bin/ionic-starters build",
-    "deploy": "node ./bin/ionic-starters deploy"
+    "src:lint": "tslint --project tsconfig.json",
+    "src:build": "tsc",
+    "src:watch": "tsc -w",
+    "starters:build": "node ./bin/ionic-starters build",
+    "starters:deploy": "node ./bin/ionic-starters deploy",
+    "starters:test": "node ./bin/ionic-starters test",
+    "build": "npm run src:build && npm run starters:build",
+    "precommit": "npm run src:lint"
   },
   "main": "./dist/index.js",
   "dependencies": {
-    "archiver": "^2.1.0",
     "aws-sdk": "^2.145.0",
     "chalk": "^2.3.0",
     "cross-spawn": "^5.1.0",
     "lodash": "^4.17.4",
+    "minimatch": "^3.0.4",
     "ncp": "^2.0.0",
-    "rimraf": "^2.6.2"
+    "rimraf": "^2.6.2",
+    "tar": "^4.4.1"
   },
   "devDependencies": {
-    "@ionic/cli-framework": "canary",
-    "@types/archiver": "^2.0.1",
+    "@ionic/cli-framework": "1.0.0-rc.2",
     "@types/dargs": "^5.1.0",
     "@types/lodash": "^4.14.81",
+    "@types/minimatch": "^3.0.3",
     "@types/minimist": "^1.2.0",
     "@types/ncp": "^2.0.1",
     "@types/node": "^8.0.47",
     "@types/rimraf": "^2.0.2",
-    "typescript": "^2.6.1"
+    "@types/tar": "^4.0.0",
+    "husky": "^0.14.3",
+    "tslint": "^5.9.1",
+    "tslint-ionic-rules": "0.0.14",
+    "typescript": "^2.8.1"
   }
 }

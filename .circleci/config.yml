@@ -1,23 +1,86 @@
 version: 2
 
+aliases:
+  - &install-chrome
+      name: Install Chrome
+      command: |
+        sudo apt install -y libappindicator3-1
+        curl -L -o google-chrome.deb https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+        sudo dpkg -i google-chrome.deb
+        sudo sed -i 's|HERE/chrome\"|HERE/chrome\" --disable-setuid-sandbox|g' /opt/google/chrome/google-chrome
+        rm google-chrome.deb
+
+  - &restore-cache-src
+      key: dependency-cache-{{ .Branch }}-{{ checksum "package.json" }}-1
+
+  - &save-cache-src
+      key: dependency-cache-{{ .Branch }}-{{ checksum "package.json" }}-1
+      paths:
+        - node_modules
+
+  - &restore-cache-starters
+      keys:
+        - dependency-cache-{{ .Branch }}{{ checksum "build/angular-official-blank/package.json" }}-1
+        - dependency-cache-{{ .Branch }}{{ checksum "build/angular-official-tabs/package.json" }}-1
+
+  - &save-cache-angular-official-blank
+      key: dependency-cache-{{ .Branch }}{{ checksum "build/angular-official-blank/package.json" }}-1
+      paths:
+        - build/angular-official-blank/node_modules
+
+  - &save-cache-angular-official-tabs
+      key: dependency-cache-{{ .Branch }}{{ checksum "build/angular-official-tabs/package.json" }}-1
+      paths:
+        - build/angular-official-tabs/node_modules
+
+defaults: &defaults
+  working_directory: /tmp/workspace
+  docker:
+    - image: circleci/node:latest-browsers
+
 jobs:
   build:
-    docker:
-      - image: circleci/node:8
+    <<: *defaults
     steps:
       - checkout
       - run: git submodule sync
       - run: git submodule update --init
-      - restore_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
+      - restore_cache: *restore-cache-src
       - run: npm install
-      - save_cache:
-          key: dependency-cache-{{ checksum "package.json" }}
+      - save_cache: *save-cache-src
+      - run: npm run src:lint
+      - run: npm run src:build
+      - run: npm run starters:build
+      - persist_to_workspace:
+          root: /tmp/workspace
           paths:
-            - node_modules
-      - run: npm run tsc
-      - run: npm run build
-      - run: npm run deploy -- --tag latest
-    branches:
-      only:
-        - master
+            - "*"
+  test:
+    <<: *defaults
+    steps:
+      - run: *install-chrome
+      - attach_workspace:
+          at: /tmp/workspace
+      - restore_cache: *restore-cache-starters
+      - run: npm run starters:test
+      - save_cache: *save-cache-angular-official-blank
+      - save_cache: *save-cache-angular-official-tabs
+  deploy:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: /tmp/workspace
+      - run: npm run starters:deploy -- --tag latest
+
+workflows:
+  version: 2
+  build:
+    jobs:
+      - build
+      - test:
+          requires: [build]
+      - deploy:
+          requires: [test]
+          filters:
+            branches:
+              only: master
