@@ -11,14 +11,13 @@
     "package-lock.json",
     "www"
   ],
-  "scripts": {
-    "test": "npm run build"
-  },
   "packageJson": {
     "dependencies": {
-      "@types/node": "^9.4.0",
       "@ionic-native/camera": "4.5.3",
       "aws-amplify": "^0.2.9"
+    },
+    "devDependencies": {
+      "@types/node": "^9.4.0"
     }
   }
 }
