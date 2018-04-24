@@ -18,27 +18,36 @@ aliases:
       paths:
         - node_modules
 
-  - &restore-cache-starters
+  - &restore-cache-angular-official-blank
       keys:
         - dependency-cache-{{ .Branch }}{{ checksum "build/angular-official-blank/package.json" }}-1
-        - dependency-cache-{{ .Branch }}{{ checksum "build/angular-official-tabs/package.json" }}-1
-        - dependency-cache-{{ .Branch }}{{ checksum "build/ionic-angular-official-super/package.json" }}-1
-        - dependency-cache-{{ .Branch }}{{ checksum "build/ionic-angular-official-tabs/package.json" }}-1
 
   - &save-cache-angular-official-blank
       key: dependency-cache-{{ .Branch }}{{ checksum "build/angular-official-blank/package.json" }}-1
       paths:
         - build/angular-official-blank/node_modules
 
+  - &restore-cache-angular-official-tabs
+      keys:
+        - dependency-cache-{{ .Branch }}{{ checksum "build/angular-official-tabs/package.json" }}-1
+
   - &save-cache-angular-official-tabs
       key: dependency-cache-{{ .Branch }}{{ checksum "build/angular-official-tabs/package.json" }}-1
       paths:
         - build/angular-official-tabs/node_modules
 
+  - &restore-cache-ionic-angular-official-super
+      keys:
+        - dependency-cache-{{ .Branch }}{{ checksum "build/ionic-angular-official-super/package.json" }}-1
+
   - &save-cache-ionic-angular-official-super
       key: dependency-cache-{{ .Branch }}{{ checksum "build/ionic-angular-official-super/package.json" }}-1
       paths:
         - build/ionic-angular-official-super/node_modules
+
+  - &restore-cache-ionic-angular-official-tabs
+      keys:
+        - dependency-cache-{{ .Branch }}{{ checksum "build/ionic-angular-official-tabs/package.json" }}-1
 
   - &save-cache-ionic-angular-official-tabs
       key: dependency-cache-{{ .Branch }}{{ checksum "build/ionic-angular-official-tabs/package.json" }}-1
@@ -73,7 +82,10 @@ jobs:
       - run: *install-chrome
       - attach_workspace:
           at: /tmp/workspace
-      - restore_cache: *restore-cache-starters
+      - restore_cache: *restore-cache-angular-official-blank
+      - restore_cache: *restore-cache-angular-official-tabs
+      - restore_cache: *restore-cache-ionic-angular-official-super
+      - restore_cache: *restore-cache-ionic-angular-official-tabs
       - run: npm run starters:test
       - save_cache: *save-cache-angular-official-blank
       - save_cache: *save-cache-angular-official-tabs
