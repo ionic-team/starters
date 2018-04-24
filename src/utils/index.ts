@@ -8,6 +8,18 @@ import { fsReadDir, fsReadFile, fsStat } from '@ionic/cli-framework/utils/fs';
 
 import { StarterManifest, TsconfigJson } from '../definitions';
 
+export const IONIC_MANIFEST_FILE = 'ionic.starter.json';
+
+export function getCommandHeader(title: string): string {
+  const separator = '-'.repeat(title.length);
+
+  return (
+    `${separator}\n` +
+    `${chalk.cyan.bold(title)}\n` +
+    `${separator}\n`
+  );
+}
+
 export async function getDirectories(p: string): Promise<string[]> {
   const contents = await fsReadDir(p);
   return filter(contents.map(f => path.resolve(p, f)), async f => (await fsStat(f)).isDirectory());
@@ -35,7 +47,7 @@ export async function readGitignore(dir: string): Promise<string[]> {
 
 export async function readStarterManifest(dir: string): Promise<StarterManifest | undefined> {
   try {
-    return JSON.parse(await fsReadFile(path.resolve(dir, 'ionic.starter.json'), { encoding: 'utf8' }));
+    return JSON.parse(await fsReadFile(path.resolve(dir, IONIC_MANIFEST_FILE), { encoding: 'utf8' }));
   } catch (e) {
     // ignore
   }

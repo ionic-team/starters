@@ -10,7 +10,7 @@ import * as CloudFront from 'aws-sdk/clients/cloudfront';
 
 import { Command, CommandLineInputs, CommandLineOptions } from '@ionic/cli-framework';
 
-import { getDirectories, log, readStarterManifest } from '../utils';
+import { getCommandHeader, getDirectories, log, readStarterManifest } from '../utils';
 import { BUILD_DIRECTORY, STARTERS_LIST_PATH } from '../lib/build';
 
 const s3 = new S3({ apiVersion: '2006-03-01' });
@@ -42,9 +42,7 @@ export class DeployCommand extends Command {
     const tag = options['tag'] ? String(options['tag']) : 'testing';
     const dry = options['dry'] ? true : false;
 
-    console.log('------');
-    console.log(chalk.cyan.bold('DEPLOY'));
-    console.log('------');
+    console.log(getCommandHeader('DEPLOY'));
 
     console.log(`tag: ${chalk.bold(tag)}`);
 

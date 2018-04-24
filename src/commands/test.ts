@@ -4,7 +4,7 @@ import chalk from 'chalk';
 
 import { Command, CommandLineInputs, CommandLineOptions } from '@ionic/cli-framework';
 
-import { getDirectories, log, readStarterManifest, runcmd } from '../utils';
+import { getCommandHeader, getDirectories, log, readStarterManifest, runcmd } from '../utils';
 import { BUILD_DIRECTORY } from '../lib/build';
 
 export class TestCommand extends Command {
@@ -24,9 +24,7 @@ export class TestCommand extends Command {
   async run(inputs: CommandLineInputs, options: CommandLineOptions) {
     // const [ starter ] = inputs;
 
-    console.log('----');
-    console.log(chalk.cyan.bold('TEST'));
-    console.log('----');
+    console.log(getCommandHeader('TEST'));
 
     const contents = await getDirectories(BUILD_DIRECTORY);
     const failedTests: string[] = [];
