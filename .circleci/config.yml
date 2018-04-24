@@ -22,6 +22,7 @@ aliases:
       keys:
         - dependency-cache-{{ .Branch }}{{ checksum "build/angular-official-blank/package.json" }}-1
         - dependency-cache-{{ .Branch }}{{ checksum "build/angular-official-tabs/package.json" }}-1
+        - dependency-cache-{{ .Branch }}{{ checksum "build/ionic-angular-official-tabs/package.json" }}-1
 
   - &save-cache-angular-official-blank
       key: dependency-cache-{{ .Branch }}{{ checksum "build/angular-official-blank/package.json" }}-1
@@ -32,6 +33,11 @@ aliases:
       key: dependency-cache-{{ .Branch }}{{ checksum "build/angular-official-tabs/package.json" }}-1
       paths:
         - build/angular-official-tabs/node_modules
+
+  - &save-cache-ionic-angular-official-tabs
+      key: dependency-cache-{{ .Branch }}{{ checksum "build/ionic-angular-official-tabs/package.json" }}-1
+      paths:
+        - build/ionic-angular-official-tabs/node_modules
 
 defaults: &defaults
   working_directory: /tmp/workspace
@@ -65,6 +71,7 @@ jobs:
       - run: npm run starters:test
       - save_cache: *save-cache-angular-official-blank
       - save_cache: *save-cache-angular-official-tabs
+      - save_cache: *save-cache-ionic-angular-official-tabs
   deploy:
     <<: *defaults
     steps:
