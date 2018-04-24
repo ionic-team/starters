@@ -12,3 +12,5 @@ node_modules/
 build/*
 !build/.gitkeep
 dist
+
+starter-checksum

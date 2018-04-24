@@ -7,7 +7,7 @@ import { Command, CommandLineInputs, CommandLineOptions } from '@ionic/cli-frame
 import { copyDirectory, fsWriteFile, removeDirectory } from '@ionic/cli-framework/utils/fs';
 
 import { StarterList } from '../definitions';
-import { getDirectories, log, readStarterManifest, runcmd } from '../utils';
+import { getCommandHeader, getDirectories, log, readStarterManifest, runcmd } from '../utils';
 
 import {
   BUILD_DIRECTORY,
@@ -48,9 +48,7 @@ export class BuildCommand extends Command {
 
     const gitVersion = (await runcmd('git', ['--version'])).trim();
 
-    console.log('-----');
-    console.log(chalk.cyan.bold('BUILD'));
-    console.log('-----');
+    console.log(getCommandHeader('BUILD'));
 
     console.log(`\n${gitVersion}\n`);
 

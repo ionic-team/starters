@@ -6,6 +6,7 @@
     "src:watch": "tsc -w",
     "starters:build": "node ./bin/ionic-starters build",
     "starters:deploy": "node ./bin/ionic-starters deploy",
+    "starters:generate-checksum": "node ./bin/ionic-starters generate-checksum",
     "starters:test": "node ./bin/ionic-starters test",
     "build": "npm run src:build && npm run starters:build",
     "precommit": "npm run src:lint"
