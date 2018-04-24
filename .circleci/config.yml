@@ -11,46 +11,46 @@ aliases:
         rm google-chrome.deb
 
   - &restore-cache-src
-      key: dependency-cache-{{ .Branch }}-{{ checksum "package.json" }}-1
+      key: dependency-cache-{{ .Branch }}-{{ checksum "package.json" }}-2
 
   - &save-cache-src
-      key: dependency-cache-{{ .Branch }}-{{ checksum "package.json" }}-1
+      key: dependency-cache-{{ .Branch }}-{{ checksum "package.json" }}-2
       paths:
         - node_modules
 
   - &restore-cache-angular-official-blank
       keys:
-        - dependency-cache-{{ .Branch }}{{ checksum "build/angular-official-blank/package.json" }}-1
+        - dependency-cache-{{ .Branch }}{{ checksum "build/angular-official-blank/package.json" }}-2
 
   - &save-cache-angular-official-blank
-      key: dependency-cache-{{ .Branch }}{{ checksum "build/angular-official-blank/package.json" }}-1
+      key: dependency-cache-{{ .Branch }}{{ checksum "build/angular-official-blank/package.json" }}-2
       paths:
         - build/angular-official-blank/node_modules
 
   - &restore-cache-angular-official-tabs
       keys:
-        - dependency-cache-{{ .Branch }}{{ checksum "build/angular-official-tabs/package.json" }}-1
+        - dependency-cache-{{ .Branch }}{{ checksum "build/angular-official-tabs/package.json" }}-2
 
   - &save-cache-angular-official-tabs
-      key: dependency-cache-{{ .Branch }}{{ checksum "build/angular-official-tabs/package.json" }}-1
+      key: dependency-cache-{{ .Branch }}{{ checksum "build/angular-official-tabs/package.json" }}-2
       paths:
         - build/angular-official-tabs/node_modules
 
   - &restore-cache-ionic-angular-official-super
       keys:
-        - dependency-cache-{{ .Branch }}{{ checksum "build/ionic-angular-official-super/package.json" }}-1
+        - dependency-cache-{{ .Branch }}{{ checksum "build/ionic-angular-official-super/package.json" }}-2
 
   - &save-cache-ionic-angular-official-super
-      key: dependency-cache-{{ .Branch }}{{ checksum "build/ionic-angular-official-super/package.json" }}-1
+      key: dependency-cache-{{ .Branch }}{{ checksum "build/ionic-angular-official-super/package.json" }}-2
       paths:
         - build/ionic-angular-official-super/node_modules
 
   - &restore-cache-ionic-angular-official-tabs
       keys:
-        - dependency-cache-{{ .Branch }}{{ checksum "build/ionic-angular-official-tabs/package.json" }}-1
+        - dependency-cache-{{ .Branch }}{{ checksum "build/ionic-angular-official-tabs/package.json" }}-2
 
   - &save-cache-ionic-angular-official-tabs
-      key: dependency-cache-{{ .Branch }}{{ checksum "build/ionic-angular-official-tabs/package.json" }}-1
+      key: dependency-cache-{{ .Branch }}{{ checksum "build/ionic-angular-official-tabs/package.json" }}-2
       paths:
         - build/ionic-angular-official-tabs/node_modules
 
