@@ -1,15 +1,23 @@
 {
   "name": "AWS Starter",
   "baseref": "master",
-  "packageJson": {
-    "dependencies": {
-      "@types/node": "^9.4.0",
-      "@ionic-native/camera": "4.5.3",
-      "aws-amplify": "^0.2.9"
-    }
-  },
   "gitignore": [
     "cors-policy.xml",
     "mobile-hub-project.zip"
-  ]
+  ],
+  "tarignore": [
+    ".sourcemaps",
+    "node_modules",
+    "package-lock.json",
+    "www"
+  ],
+  "packageJson": {
+    "dependencies": {
+      "@ionic-native/camera": "4.5.3",
+      "aws-amplify": "^0.2.9"
+    },
+    "devDependencies": {
+      "@types/node": "^9.4.0"
+    }
+  }
 }
