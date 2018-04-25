@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-page-list',
@@ -20,8 +19,8 @@ export class ListPage implements OnInit {
     'bluetooth',
     'build'
   ];
-  private items: Array<{ title: string; note: string; icon: string }> = [];
-  constructor(private route: ActivatedRoute, private router: Router) {
+  public items: Array<{ title: string; note: string; icon: string }> = [];
+  constructor() {
     for (let i = 1; i < 11; i++) {
       this.items.push({
         title: 'Item ' + i,
@@ -32,10 +31,6 @@ export class ListPage implements OnInit {
   }
 
   ngOnInit() {
-    const { selectedItem } = this.route.snapshot.params;
-    if (selectedItem) {
-      this.selectedItem = JSON.parse(selectedItem);
-    }
   }
   // add back when alpha.4 is out
   // navigate(item) {
