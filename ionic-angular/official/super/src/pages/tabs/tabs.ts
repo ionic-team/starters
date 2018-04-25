@@ -2,9 +2,7 @@ import { Component } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { IonicPage, NavController } from 'ionic-angular';
 
-import { Tab1Root } from '../pages';
-import { Tab2Root } from '../pages';
-import { Tab3Root } from '../pages';
+import { Tab1Root, Tab2Root, Tab3Root } from '../';
 
 @IonicPage()
 @Component({
