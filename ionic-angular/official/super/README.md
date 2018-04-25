@@ -56,7 +56,7 @@ set to be the `TabsPage` as the default.
 
 The entry and main pages can be configured easily by updating the corresponding
 variables in
-[src/pages/pages.ts](https://github.com/ionic-team/starters/blob/master/ionic-angular/official/super/src/pages/pages.ts).
+[src/pages/index.ts](https://github.com/ionic-team/starters/blob/master/ionic-angular/official/super/src/pages/index.ts).
 
 Please read the
 [Pages](https://github.com/ionic-team/starters/tree/master/ionic-angular/official/super/src/pages)
