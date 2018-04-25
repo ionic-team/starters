@@ -1,4 +1,13 @@
 {
   "name": "Blank Starter",
-  "baseref": "master"
+  "baseref": "master",
+  "tarignore": [
+    ".sourcemaps",
+    "node_modules",
+    "package-lock.json",
+    "www"
+  ],
+  "scripts": {
+    "test": "npm run build"
+  }
 }
