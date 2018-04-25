@@ -13,8 +13,8 @@ import { AppComponent } from './app.component';
     BrowserModule,
     IonicModule.forRoot(),
     RouterModule.forRoot([
-      { path: '', redirectTo: 'home', pathMatch: 'full'},
-      { path: 'home', loadChildren: './pages/home/home.module#HomePageModule'},
+      { path: '', redirectTo: 'home', pathMatch: 'full' },
+      { path: 'home', loadChildren: './pages/home/home.module#HomePageModule' }
     ])
   ],
   providers: [],
