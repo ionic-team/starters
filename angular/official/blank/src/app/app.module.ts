@@ -3,6 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
+import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 
@@ -17,7 +19,7 @@ import { AppComponent } from './app.component';
       { path: 'home', loadChildren: './pages/home/home.module#HomePageModule' }
     ])
   ],
-  providers: [],
+  providers: [StatusBar, SplashScreen],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
