@@ -15,18 +15,18 @@ export class TestCommand extends Command {
       inputs: [
         {
           name: 'starter',
-          summary: 'Path to single starter to test',
+          summary: 'ID of built starter to test',
         },
       ],
     };
   }
 
   async run(inputs: CommandLineInputs, options: CommandLineOptions) {
-    // const [ starter ] = inputs;
+    const [ starter ] = inputs;
 
     console.log(getCommandHeader('TEST'));
 
-    const contents = await getDirectories(BUILD_DIRECTORY);
+    const contents = starter ? [path.resolve(BUILD_DIRECTORY, starter)] : await getDirectories(BUILD_DIRECTORY);
     const failedTests: string[] = [];
 
     for (const dir of contents) {
