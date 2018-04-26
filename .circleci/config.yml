@@ -57,6 +57,7 @@ jobs:
       - save_cache: *save-cache-src
       - run: npm run src:lint
       - run: npm run src:build
+      - run: npm run starters:file-redundant
       - run: npm run starters:build
       - run: npm run starters:generate-checksum
       - persist_to_workspace:
