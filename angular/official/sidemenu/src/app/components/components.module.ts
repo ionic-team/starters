@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-import { HomePage } from './home/home.page';
 
 @NgModule({
   imports: [
@@ -10,11 +9,7 @@ import { HomePage } from './home/home.page';
     FormsModule,
     IonicModule.forRoot(),
   ],
-  declarations: [
-    HomePage,
-  ],
-  entryComponents: [
-    HomePage,
-  ],
+  declarations: [],
+  entryComponents: [],
 })
-export class PagesModule {}
+export class ComponentsModule {}
