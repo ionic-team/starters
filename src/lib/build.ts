@@ -6,7 +6,8 @@ import * as _ from 'lodash';
 import { copyDirectory, fsUnlink, fsWriteFile } from '@ionic/cli-framework/utils/fs';
 import { readPackageJsonFile } from '@ionic/cli-framework/utils/npm';
 
-import { log, readGitignore, readStarterManifest, readTsconfigJson } from '../utils';
+import { StarterList } from '../definitions';
+import { getDirectories, log, readGitignore, readStarterManifest, readTsconfigJson, runcmd } from '../utils';
 
 export const STARTER_TYPE_OFFICIAL = 'official';
 export const STARTER_TYPE_COMMUNITY = 'community';
@@ -32,10 +33,111 @@ export function generateStarterName(starterType: string, starterDir: string) {
   throw new Error(chalk.red(`Unknown starter type: ${starterType}`));
 }
 
-export async function buildStarter(ionicType: string, starterType: string, starterDir: string): Promise<string> {
-  const baseDir = path.resolve(REPO_DIRECTORY, ionicType, 'base');
+export async function gatherChangedBaseFiles(): Promise<string[]> {
+  const changedBaseFiles: string[] = [];
+
+  for (const ionicType of IONIC_TYPE_DIRECTORIES) {
+    const baseDir = path.resolve(REPO_DIRECTORY, ionicType, 'base');
+    const baseChanges = (await runcmd('git', ['status', '--porcelain', '--', baseDir])).trim();
+
+    if (baseChanges) {
+      changedBaseFiles.push(baseDir);
+    }
+  }
+
+  return changedBaseFiles;
+}
+
+export async function getStarterDirectories(ionicType: string, { community = true }: { community?: boolean; } = {}): Promise<string[]> {
+  const officialStarterDirs = await getDirectories(path.resolve(REPO_DIRECTORY, ionicType, STARTER_TYPE_OFFICIAL));
+
+  if (community) {
+    const communityScopes = await getDirectories(path.resolve(REPO_DIRECTORY, ionicType, STARTER_TYPE_COMMUNITY));
+    const communityStarterDirs = _.flatten(await Promise.all(communityScopes.map(async (scopeDir) => getDirectories(scopeDir))));
+    return [...officialStarterDirs, ...communityStarterDirs];
+  }
+
+  return officialStarterDirs;
+}
+
+export async function buildStarters({ current = false, sha1 }: { current?: boolean; sha1?: string; }): Promise<StarterList> {
+  const starterList: StarterList = { starters: [], integrations: [] };
+
+  if (!sha1) {
+    sha1 = (await runcmd('git', ['rev-parse', 'HEAD'])).trim();
+  }
+
+  const currentSha1 = sha1;
+
+  for (const ionicType of IONIC_TYPE_DIRECTORIES) {
+    const baseDir = path.resolve(REPO_DIRECTORY, ionicType, 'base');
+    const starterDirs = await getStarterDirectories(ionicType);
+
+    const refmap = new Map<string, string[]>();
+
+    await Promise.all(starterDirs.map(async (starterDir) => {
+      const manifest = await readStarterManifest(starterDir);
+
+      if (manifest) {
+        let starterDirsAtRef = refmap.get(manifest.baseref);
+
+        if (!starterDirsAtRef) {
+          starterDirsAtRef = [];
+        }
+
+        starterDirsAtRef.push(starterDir);
+        refmap.set(manifest.baseref, starterDirsAtRef);
+      }
+    }));
+
+    for (const [ ref, starterDirsAtRef ] of refmap.entries()) {
+      if (!current) {
+        console.log(`Checking out ${chalk.cyan.bold(ionicType)} base files at ${chalk.bold(ref)}`);
+        await runcmd('git', ['checkout', ref, '--', baseDir]);
+      }
+
+      await Promise.all(starterDirsAtRef.map(async (starterDir) => {
+        const [ , starterType, ...rest ] = getStarterInfoFromPath(starterDir);
+        const id = buildStarterId(ionicType, starterType, starterDir);
+        await buildStarter(ionicType, starterType, starterDir);
+
+        const name = rest.join('/');
+        const sha1 = current ? currentSha1 : (await runcmd('git', ['rev-parse', ref])).trim();
+        starterList.starters.push({ name, id, type: ionicType, ref, sha1 });
+      }));
+
+      if (!current) {
+        await runcmd('git', ['checkout', currentSha1, '--', baseDir]);
+      }
+    }
+  }
+
+  const integrationDirs = await getDirectories(INTEGRATIONS_DIRECTORY);
+
+  await Promise.all(integrationDirs.map(async (integrationDir) => {
+    const name = path.basename(integrationDir);
+    const integration = `integration-${name}`;
+    await copyDirectory(integrationDir, path.resolve(BUILD_DIRECTORY, integration));
+    starterList.integrations.push({ name, id: integration });
+    log(integration, chalk.green('Copied!'));
+  }));
+
+  console.log(`Writing ${chalk.cyan('starters.json')}\n`);
+  await fsWriteFile(STARTERS_LIST_PATH, JSON.stringify(starterList, undefined, 2), { encoding: 'utf8' });
+
+  return starterList;
+}
+
+export function buildStarterId(ionicType: string, starterType: string, starterDir: string): string {
   const starter = generateStarterName(starterType, starterDir);
   const id = `${ionicType}-${starterType}-${starter}`;
+
+  return id;
+}
+
+export async function buildStarter(ionicType: string, starterType: string, starterDir: string): Promise<void> {
+  const id = buildStarterId(ionicType, starterType, starterDir);
+  const baseDir = path.resolve(REPO_DIRECTORY, ionicType, 'base');
   const tmpdest = path.resolve(BUILD_DIRECTORY, id);
 
   log(id, 'Building...');
@@ -80,6 +182,4 @@ export async function buildStarter(ionicType: string, starterType: string, start
     const united = _.union(gitignore.map(x => x.trim()), manifest.gitignore.map(x => x.trim()));
     await fsWriteFile(path.resolve(tmpdest, '.gitignore'), united.join('\n') + '\n', { encoding: 'utf8' });
   }
-
-  return id;
 }

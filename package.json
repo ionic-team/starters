@@ -6,6 +6,7 @@
     "src:watch": "tsc -w",
     "starters:build": "node ./bin/ionic-starters build",
     "starters:deploy": "node ./bin/ionic-starters deploy",
+    "starters:find-redundant": "node ./bin/ionic-starters find-redundant",
     "starters:generate-checksum": "node ./bin/ionic-starters generate-checksum",
     "starters:test": "node ./bin/ionic-starters test",
     "build": "npm run src:build && npm run starters:build",
@@ -23,7 +24,7 @@
     "tar": "^4.4.1"
   },
   "devDependencies": {
-    "@ionic/cli-framework": "1.0.0-rc.2",
+    "@ionic/cli-framework": "1.0.0-rc.5",
     "@types/dargs": "^5.1.0",
     "@types/lodash": "^4.14.81",
     "@types/minimatch": "^3.0.3",
