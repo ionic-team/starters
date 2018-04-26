@@ -19,12 +19,13 @@ aliases:
         - node_modules
 
   - &restore-cache-starters
-      key: dependency-cache-{{ checksum "starter-checksum" }}-2
+      key: dependency-cache-{{ checksum "starter-checksum" }}-3
 
   - &save-cache-starters
-      key: dependency-cache-{{ checksum "starter-checksum" }}-2
+      key: dependency-cache-{{ checksum "starter-checksum" }}-3
       paths:
         - build/angular-official-blank/node_modules
+        - build/angular-official-sidemenu/node_modules
         - build/angular-official-tabs/node_modules
         - build/ionic-angular-community-danielsogl-super/node_modules
         - build/ionic-angular-community-ionic-team-example/node_modules
