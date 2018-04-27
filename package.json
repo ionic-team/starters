@@ -24,7 +24,7 @@
     "tar": "^4.4.1"
   },
   "devDependencies": {
-    "@ionic/cli-framework": "1.0.0-rc.5",
+    "@ionic/cli-framework": "1.0.0-testing.70319022",
     "@types/dargs": "^5.1.0",
     "@types/lodash": "^4.14.81",
     "@types/minimatch": "^3.0.3",
