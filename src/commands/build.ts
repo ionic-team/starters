@@ -25,6 +25,11 @@ export class BuildCommand extends Command {
           summary: 'Use base files as-is, do not checkout base files using baseref',
           type: Boolean,
         },
+        {
+          name: 'nowipe',
+          summary: 'do not wipe directory',
+          type: Boolean,
+        },
       ],
     };
   }
@@ -32,14 +37,16 @@ export class BuildCommand extends Command {
   async run(inputs: CommandLineInputs, options: CommandLineOptions) {
     const [ starter ] = inputs;
     const current = options['current'] ? true : false;
+    const noWipe = options['nowipe'];
 
     const gitVersion = (await runcmd('git', ['--version'])).trim();
 
     console.log(getCommandHeader('BUILD'));
     console.log(`\n${gitVersion}\n`);
-    console.log(`Wiping ${chalk.bold(`${BUILD_DIRECTORY}/*`)}`);
-
-    await removeDirectory(`${BUILD_DIRECTORY}/*`);
+    if (!noWipe) {
+      console.log(`Wiping ${chalk.bold(`${BUILD_DIRECTORY}/*`)}`);
+      await removeDirectory(`${BUILD_DIRECTORY}/*`);
+    }
 
     const changedBaseFiles = await gatherChangedBaseFiles();
 
