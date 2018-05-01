@@ -1,3 +1,5 @@
+[![Build Status][circle-badge]][circle-badge-url]
+
 # Ionic Starter Templates
 
 :book: **Start an Ionic app**: See our [Getting
@@ -23,3 +25,6 @@ Project Type        | Description                                           | Li
 * [Cordova](https://github.com/ionic-team/starters/tree/master/integrations/cordova)
 
 [ionic-support]: https://ionicframework.com/support
+
+[circle-badge]: https://circleci.com/gh/ionic-team/starters.svg?style=shield
+[circle-badge-url]: https://circleci.com/gh/ionic-team/starters
