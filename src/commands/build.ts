@@ -26,9 +26,10 @@ export class BuildCommand extends Command {
           type: Boolean,
         },
         {
-          name: 'nowipe',
-          summary: 'do not wipe directory',
+          name: 'wipe',
+          summary: 'Do not wipe build directory',
           type: Boolean,
+          default: true,
         },
       ],
     };
@@ -37,13 +38,14 @@ export class BuildCommand extends Command {
   async run(inputs: CommandLineInputs, options: CommandLineOptions) {
     const [ starter ] = inputs;
     const current = options['current'] ? true : false;
-    const noWipe = options['nowipe'];
+    const wipe = options['wipe'] ? true : false;
 
     const gitVersion = (await runcmd('git', ['--version'])).trim();
 
     console.log(getCommandHeader('BUILD'));
     console.log(`\n${gitVersion}\n`);
-    if (!noWipe) {
+
+    if (wipe) {
       console.log(`Wiping ${chalk.bold(`${BUILD_DIRECTORY}/*`)}`);
       await removeDirectory(`${BUILD_DIRECTORY}/*`);
     }
