@@ -4,7 +4,10 @@
   "projects": {
     "app": {
       "root": "",
+      "sourceRoot": "src",
       "projectType": "application",
+      "prefix": "app",
+      "schematics": {},
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -41,8 +44,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "src": "src/environments/environment.ts",
-                  "replaceWith": "src/environments/environment.prod.ts"
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -82,9 +85,7 @@
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
             "styles": [
-              {
-                "input": "styles.css"
-              }
+              "styles.css"
             ],
             "scripts": [],
             "assets": [
@@ -137,5 +138,6 @@
         }
       }
     }
-  }
+  },
+  "defaultProject": "app"
 }
