@@ -44,7 +44,7 @@ aliases:
 defaults: &defaults
   working_directory: /tmp/workspace
   docker:
-    - image: circleci/node:latest-browsers
+    - image: circleci/node:8-browsers
 
 jobs:
   build:
