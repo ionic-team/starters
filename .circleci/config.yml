@@ -11,18 +11,18 @@ aliases:
         rm google-chrome.deb
 
   - &restore-cache-src
-      key: dependency-cache-{{ checksum "package.json" }}-2
+      key: dependency-cache-{{ checksum "package.json" }}-3
 
   - &save-cache-src
-      key: dependency-cache-{{ checksum "package.json" }}-2
+      key: dependency-cache-{{ checksum "package.json" }}-3
       paths:
         - node_modules
 
   - &restore-cache-starters
-      key: dependency-cache-{{ checksum "starter-checksum" }}-3
+      key: dependency-cache-{{ checksum "starter-checksum" }}-4
 
   - &save-cache-starters
-      key: dependency-cache-{{ checksum "starter-checksum" }}-3
+      key: dependency-cache-{{ checksum "starter-checksum" }}-4
       paths:
         - build/angular-official-blank/node_modules
         - build/angular-official-sidemenu/node_modules
