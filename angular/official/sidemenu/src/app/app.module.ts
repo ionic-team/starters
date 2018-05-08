@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, RouteReuseStrategy } from '@angular/router';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -31,6 +33,9 @@ import { ComponentsModule } from './components/components.module';
       //   path: 'list/:selectedItem', loadChildren: './pages/list/list.module#ListPageModule'
       // }
     ]),
+    ServiceWorkerModule.register('/ngsw-worker.js', {
+      enabled: environment.production
+    }),
     IonicModule.forRoot(),
     ComponentsModule
   ],
