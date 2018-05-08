@@ -9,7 +9,7 @@
       <ion-content>
         <ion-list>
           <ion-menu-toggle auto-hide="false" *ngFor="let p of appPages">
-            <ion-item [routerLink]="[p.url]">
+            <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
               <ion-icon slot="start" [name]="p.icon"></ion-icon>
               <ion-label>
                 {{p.title}}
@@ -19,6 +19,6 @@
         </ion-list>
       </ion-content>
     </ion-menu>
-    <ion-router-outlet main animated='false'></ion-router-outlet>
+    <ion-router-outlet main></ion-router-outlet>
   </ion-split-pane>
 </ion-app>
