@@ -15,7 +15,7 @@
   "dependencies": {
     "@angular/common": "6.0.0",
     "@angular/core": "6.0.0",
-    "@angular/forms": "6.0.0",
+    "@angular/forms": "6.0.1",
     "@angular/http": "6.0.0",
     "@angular/platform-browser": "6.0.0",
     "@angular/platform-browser-dynamic": "6.0.0",
