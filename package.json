@@ -31,7 +31,7 @@
     "@types/minimatch": "^3.0.3",
     "@types/minimist": "^1.2.0",
     "@types/ncp": "^2.0.1",
-    "@types/node": "^8.0.47",
+    "@types/node": "^9.6.18",
     "@types/rimraf": "^2.0.2",
     "@types/tar": "^4.0.0",
     "husky": "^0.14.3",
