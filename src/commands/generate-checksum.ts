@@ -2,14 +2,14 @@ import * as path from 'path';
 
 import chalk from 'chalk';
 
-import { Command, CommandLineInputs, CommandLineOptions } from '@ionic/cli-framework';
+import { Command, CommandLineInputs, CommandLineOptions, CommandMetadata } from '@ionic/cli-framework';
 import { fsReadFile, fsWriteFile } from '@ionic/cli-framework/utils/fs';
 
 import { IONIC_MANIFEST_FILE, getCommandHeader, getDirectories, log } from '../utils';
 import { BUILD_DIRECTORY, REPO_DIRECTORY } from '../lib/build';
 
 export class GenerateChecksumCommand extends Command {
-  async getMetadata() {
+  async getMetadata(): Promise<CommandMetadata> {
     return {
       name: 'generate-checksum',
       summary: 'Generate a checksum file of starter package.json and manifest files',

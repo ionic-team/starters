@@ -2,14 +2,14 @@ import * as path from 'path';
 
 import chalk from 'chalk';
 
-import { Command, CommandLineInputs, CommandLineOptions } from '@ionic/cli-framework';
+import { Command, CommandLineInputs, CommandLineOptions, CommandMetadata } from '@ionic/cli-framework';
 import { removeDirectory } from '@ionic/cli-framework/utils/fs';
 
 import { getCommandHeader, runcmd } from '../utils';
 import { BUILD_DIRECTORY, REPO_DIRECTORY, buildStarter, buildStarters, gatherChangedBaseFiles, getStarterInfoFromPath } from '../lib/build';
 
 export class BuildCommand extends Command {
-  async getMetadata() {
+  async getMetadata(): Promise<CommandMetadata> {
     return {
       name: 'build',
       summary: 'Builds all the starters',

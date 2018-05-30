@@ -1,14 +1,14 @@
 import * as path from 'path';
 
 import chalk from 'chalk';
-import { Command, CommandLineInputs, CommandLineOptions } from '@ionic/cli-framework';
+import { Command, CommandLineInputs, CommandLineOptions, CommandMetadata } from '@ionic/cli-framework';
 import { fsStat, getFileChecksum, readDir } from '@ionic/cli-framework/utils/fs';
 
 import { IONIC_TYPE_DIRECTORIES, REPO_DIRECTORY, buildStarterId, getStarterDirectories, getStarterInfoFromPath } from '../lib/build';
 import { log } from '../utils';
 
 export class FindRedundantCommand extends Command {
-  async getMetadata() {
+  async getMetadata(): Promise<CommandMetadata> {
     return {
       name: 'find-redundant',
       summary: 'Find redundant files in starters that exist as base files',
