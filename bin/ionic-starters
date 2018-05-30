@@ -1,4 +1,4 @@
 #!/usr/bin/env node
 
 const { run } = require('../');
-run(process.argv.slice(2), process.env).catch(e => console.error(e));
+run(process.argv.slice(2), process.env).catch(e => { console.error(e); process.exitCode = 1; });
