@@ -18,18 +18,32 @@ export class TestCommand extends Command {
           summary: 'ID of built starter to test',
         },
       ],
+      options: [
+        {
+          name: 'type',
+          summary: 'Only test starters of this type',
+        },
+      ]
     };
   }
 
   async run(inputs: CommandLineInputs, options: CommandLineOptions) {
     const [ starter ] = inputs;
+    const type = options['type'] ? String(options['type']) : undefined;
 
     console.log(getCommandHeader('TEST'));
 
     const contents = starter ? [path.resolve(BUILD_DIRECTORY, starter)] : await getDirectories(BUILD_DIRECTORY);
     const failedTests: string[] = [];
+    const builtStarters = type ? contents.filter(d => path.basename(d).startsWith(type)) : contents;
 
-    for (const dir of contents) {
+    if (builtStarters.length === 0) {
+      console.error('No starters found.');
+      process.exitCode = 1;
+      return;
+    }
+
+    for (const dir of builtStarters) {
       const id = path.basename(dir);
 
       try {
@@ -40,6 +54,8 @@ export class TestCommand extends Command {
           await runcmd('npm', ['install'], { cwd: dir, stdio: 'inherit' });
           log(id, `> ${chalk.green(manifest.scripts.test)}`);
           await runcmd(manifest.scripts.test, [], { cwd: dir, stdio: 'inherit', shell: true });
+        } else {
+          log(id, 'No tests defined in manifest!');
         }
       } catch (e) {
         log(id, chalk.red('Test script failed!'));
