@@ -38,7 +38,7 @@
     "husky": "^0.14.3",
     "rimraf": "^2.6.2",
     "tslint": "^5.9.1",
-    "tslint-ionic-rules": "0.0.14",
+    "tslint-ionic-rules": "0.0.16",
     "typescript": "^2.8.1"
   }
 }
