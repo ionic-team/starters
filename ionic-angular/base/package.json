@@ -32,7 +32,7 @@
     "zone.js": "0.8.26"
   },
   "devDependencies": {
-    "@ionic/app-scripts": "3.1.9",
+    "@ionic/app-scripts": "3.1.10",
     "typescript": "~2.6.2"
   }
 }
