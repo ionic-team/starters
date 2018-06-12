@@ -12,15 +12,15 @@
     "ionic:serve": "ionic-app-scripts serve"
   },
   "dependencies": {
-    "@angular/animations": "5.2.10",
-    "@angular/common": "5.2.10",
-    "@angular/compiler": "5.2.10",
-    "@angular/compiler-cli": "5.2.10",
-    "@angular/core": "5.2.10",
-    "@angular/forms": "5.2.10",
-    "@angular/http": "5.2.10",
-    "@angular/platform-browser": "5.2.10",
-    "@angular/platform-browser-dynamic": "5.2.10",
+    "@angular/animations": "5.2.11",
+    "@angular/common": "5.2.11",
+    "@angular/compiler": "5.2.11",
+    "@angular/compiler-cli": "5.2.11",
+    "@angular/core": "5.2.11",
+    "@angular/forms": "5.2.11",
+    "@angular/http": "5.2.11",
+    "@angular/platform-browser": "5.2.11",
+    "@angular/platform-browser-dynamic": "5.2.11",
     "@ionic-native/core": "4.7.0",
     "@ionic-native/splash-screen": "4.7.0",
     "@ionic-native/status-bar": "4.7.0",
@@ -32,7 +32,7 @@
     "zone.js": "0.8.26"
   },
   "devDependencies": {
-    "@ionic/app-scripts": "3.1.9",
+    "@ionic/app-scripts": "3.1.10",
     "typescript": "~2.6.2"
   }
 }
