@@ -20,7 +20,7 @@
     "@angular/forms": "5.2.11",
     "@angular/http": "5.2.11",
     "@angular/platform-browser": "5.2.11",
-    "@angular/platform-browser-dynamic": "5.2.11",
+    "@angular/platform-browser-dynamic": "5.2.10",
     "@ionic-native/core": "4.7.0",
     "@ionic-native/splash-screen": "4.7.0",
     "@ionic-native/status-bar": "4.7.0",
