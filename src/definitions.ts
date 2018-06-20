@@ -32,7 +32,7 @@ export interface PackageJson {
   devDependencies?: { [key: string]: string; };
 }
 
-export type TsconfigJson = TsconfigBase & ( TsconfgFiles | TsconfigExclude | TsconfigInclude );
+export type TsconfigJson = TsconfigBase & (TsconfgFiles | TsconfigExclude | TsconfigInclude);
 
 export interface TsconfigBase {
   compilerOptions?: {
