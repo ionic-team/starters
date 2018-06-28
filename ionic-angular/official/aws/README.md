@@ -132,6 +132,22 @@ awsmobile pull
 
 Answer yes, when asked "? sync corresponding contents in backend/ with #current-backend-info/"
 
+### Install dependencies
+
+
+```bash
+npm install
+```
+
+The following commands are needed due to breaking changes in
+[aws-amplify](https://github.com/aws/aws-amplify) 0.4.6.
+They may not be needed in the future.
+
+```bash
+npm install @types/zen-observable
+npm install @types/paho-mqtt
+```
+
 ### Running the app
 
 Now the app is configured and wired up to the AWS Mobile Hub and AWS services. To run the app in the browser, run
