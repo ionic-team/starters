@@ -41,7 +41,7 @@
     "@angular-devkit/schematics": "0.7.0-rc.0",
     "@types/jasmine": "~2.8.6",
     "@types/jasminewd2": "~2.0.3",
-    "@types/node": "~10.3.2",
+    "@types/node": "~10.5.2",
     "codelyzer": "~4.4.2",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",
