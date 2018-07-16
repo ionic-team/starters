@@ -32,7 +32,7 @@
   },
   "devDependencies": {
     "@angular/cli": "6.0.8",
-    "@angular/compiler": "6.0.7",
+    "@angular/compiler": "6.0.9",
     "@angular/compiler-cli": "6.0.7",
     "@angular/language-service": "6.0.7",
     "@angular-devkit/architect": "0.7.0-rc.1",
