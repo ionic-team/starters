@@ -38,7 +38,7 @@
     "@angular-devkit/architect": "0.7.0-rc.1",
     "@angular-devkit/build-angular": "0.7.0-rc.1",
     "@angular-devkit/core": "0.7.0-rc.1",
-    "@angular-devkit/schematics": "0.7.0-rc.1",
+    "@angular-devkit/schematics": "0.7.0-rc.2",
     "@types/jasmine": "~2.8.6",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~10.5.2",
