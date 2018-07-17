@@ -27,7 +27,7 @@
     "@ionic/ng-toolkit": "1.0.0-rc.11",
     "@ionic/schematics-angular": "1.0.0-rc.11",
     "core-js": "^2.5.3",
-    "rxjs": "6.2.1",
+    "rxjs": "6.2.2",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
