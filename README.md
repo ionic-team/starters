@@ -1,4 +1,5 @@
 [![Build Status][circle-badge]][circle-badge-url]
+[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&identifier=109052620)](https://dependabot.com)
 
 # Ionic Starter Templates
 
