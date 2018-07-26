@@ -16,6 +16,7 @@ const routes: Routes = [
     loadChildren: './list/list.module#ListPageModule'
   }
 ];
+
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
