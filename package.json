@@ -15,7 +15,7 @@
   },
   "main": "./dist/index.js",
   "dependencies": {
-    "aws-sdk": "^2.145.0",
+    "aws-sdk": "^2.282.1",
     "chalk": "^2.3.0",
     "cross-spawn": "^6.0.5",
     "lodash": "^4.17.4",
