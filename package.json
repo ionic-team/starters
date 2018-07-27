@@ -37,7 +37,7 @@
     "@types/tar": "^4.0.0",
     "husky": "^0.14.3",
     "rimraf": "^2.6.2",
-    "tslint": "^5.9.1",
+    "tslint": "^5.11.0",
     "tslint-ionic-rules": "0.0.17",
     "typescript": "^2.8.1"
   }
