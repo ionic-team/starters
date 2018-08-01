@@ -45,7 +45,7 @@ awsmobile init
 
 Please tell us about your project:
 ? Where is your project's source directory:  src
-? Where is your project's distribution directory that stores build artifacts:  dist
+? Where is your project's distribution directory that stores build artifacts:  www
 ? What is your project's build command:  npm run-script build
 ? What is your project's start command for local test run:  ionic serve
 
@@ -54,70 +54,98 @@ Please tell us about your project:
 Successfully created AWS Mobile Hub project: ...
 ```
 
-Enable user-signin and database features
+### Configuring AWS Mobile Hub Project
 
-```bash
-awsmobile features
+The starter project gives instructions on how to do this from the
+command line, but some have reported bugs with
+[awsmobile](https://github.com/ionic-team/starters/issues/46),
+so here's how to do it in the browser.
 
-? select features:
- ◉ user-signin
- ◉ user-files
- ◯ cloud-api
-❯◉ database
- ◉ analytics
- ◉ hosting
+#### NoSQL Database
+
+Enable.
+
+Create a custom table named `tasks`. Make it Private.
+
+Accept `userId` as Partition key.
+
+Add an attribute `taskId` with type string and make it a Sort key
+
+Add an attribute `category` with type string.
+
+Add an attribute `description` with type string.
+
+Add an attribute `created` with type number.
+
+Create an index `DateSorted` with userId as Partition key and taskId
+as Sort key.
+
+#### User Sign-In
+
+Turn this on.
+
+Set your password requirements.
+
+
+#### Hosting and Streaming
+
+Turn this on.
+
+#### User File Storage
+
+Turn this on.
+
+### Configuring S3
+
+From the AWS Console, go to S3.
+
+Select the bucket named `<project name>-userfiles-mobilehub-<AWS resource number>`
+
+Go to the Permissions tab. Click on CORS Configuration. Paste the
+following into the editor and save.
+
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<CORSConfiguration xmlns="http://s3.amazonaws.com/doc/2006-03-01/">
+<CORSRule>
+    <AllowedOrigin>*</AllowedOrigin>
+    <AllowedMethod>HEAD</AllowedMethod>
+    <AllowedMethod>PUT</AllowedMethod>
+    <AllowedMethod>GET</AllowedMethod>
+    <MaxAgeSeconds>3000</MaxAgeSeconds>
+    <ExposeHeader>x-amz-server-side-encryption</ExposeHeader>
+    <ExposeHeader>x-amz-request-id</ExposeHeader>
+    <ExposeHeader>x-amz-id-2</ExposeHeader>
+    <AllowedHeader>*</AllowedHeader>
+</CORSRule>
+</CORSConfiguration>
 ```
 
-Configure database, create a table with name `tasks`
+
+### Integrating Changes into App
+
+Go back to the command line for your project.
 
 ```bash
-awsmobile database configure
-
-? Select from one of the choices below. Create a new table
-
-Welcome to NoSQL database wizard
-You will be asked a series of questions to help determine how to best construct your NoSQL database table.
-
-? Should the data of this table be open or restricted by user? Open
-? Table name tasks
-
- You can now add columns to the table.
-
-? What would you like to name this column taskId
-? Choose the data type string
-? Would you like to add another column Yes
-? What would you like to name this column userId
-? Choose the data type string
-? Would you like to add another column Yes
-? What would you like to name this column category
-? Choose the data type string
-? Would you like to add another column Yes
-? What would you like to name this column description
-? Choose the data type string
-? Would you like to add another column Yes
-? What would you like to name this column created
-? Choose the data type number
-? Would you like to add another column No
-
-... /* primary and sort key */
-
-? Select primary key userId
-? Select sort key taskId
-
-... /* index */
-
-? Add index Yes
-? Index name DateSorted
-? Select partition key userId
-? Select sort key created
-? Add index No
-Table tasks saved
+awsmobile pull
 ```
 
-Finally push the changes to server side
+Answer yes, when asked "? sync corresponding contents in backend/ with #current-backend-info/"
+
+### Install dependencies
+
 
 ```bash
-awsmobile push
+npm install
+```
+
+The following commands are needed due to breaking changes in
+[aws-amplify](https://github.com/aws/aws-amplify) 0.4.6.
+They may not be needed in the future.
+
+```bash
+npm install @types/zen-observable
+npm install @types/paho-mqtt
 ```
 
 ### Running the app
