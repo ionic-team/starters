@@ -8,7 +8,7 @@ import * as minimatch from 'minimatch';
 import * as S3 from 'aws-sdk/clients/s3';
 import * as CloudFront from 'aws-sdk/clients/cloudfront';
 
-import { Command, CommandLineInputs, CommandLineOptions } from '@ionic/cli-framework';
+import { Command, CommandLineInputs, CommandLineOptions, CommandMetadata } from '@ionic/cli-framework';
 
 import { getCommandHeader, getDirectories, log, readStarterManifest } from '../utils';
 import { BUILD_DIRECTORY, STARTERS_LIST_PATH } from '../lib/build';
@@ -19,7 +19,7 @@ const cloudfront = new CloudFront({ apiVersion: '2017-03-25' });
 const keys: string[] = [];
 
 export class DeployCommand extends Command {
-  async getMetadata() {
+  async getMetadata(): Promise<CommandMetadata> {
     return {
       name: 'deploy',
       summary: 'Deploys the built starter templates to the CDN',

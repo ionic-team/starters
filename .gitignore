@@ -13,4 +13,4 @@ build/*
 !build/.gitkeep
 dist
 
-starter-checksum
+starter-checksum*

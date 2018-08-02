@@ -1,6 +1,7 @@
 {
   "private": true,
   "scripts": {
+    "src:clean": "rimraf dist",
     "src:lint": "tslint --project tsconfig.json",
     "src:build": "tsc",
     "src:watch": "tsc -w",
@@ -20,11 +21,11 @@
     "lodash": "^4.17.4",
     "minimatch": "^3.0.4",
     "ncp": "^2.0.0",
-    "rimraf": "^2.6.2",
-    "tar": "^4.4.1"
+    "tar": "^4.4.1",
+    "hoek": "^4.2.1"
   },
   "devDependencies": {
-    "@ionic/cli-framework": "1.0.0-rc.5",
+    "@ionic/cli-framework": "1.0.0-rc.6",
     "@types/dargs": "^5.1.0",
     "@types/jasmine": "^2.8.6",
     "@types/lodash": "^4.14.81",
@@ -33,10 +34,12 @@
     "@types/ncp": "^2.0.1",
     "@types/node": "^8.0.47",
     "@types/rimraf": "^2.0.2",
+    "@types/strip-ansi": "^3.0.0",
     "@types/tar": "^4.0.0",
     "husky": "^0.14.3",
+    "rimraf": "^2.6.2",
     "tslint": "^5.9.1",
-    "tslint-ionic-rules": "0.0.14",
-    "typescript": "^2.8.1"
+    "tslint-ionic-rules": "0.0.17",
+    "typescript": "^3.0.1"
   }
 }
