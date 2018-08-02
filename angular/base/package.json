@@ -37,7 +37,7 @@
     "@angular/language-service": "6.0.9",
     "@angular-devkit/architect": "0.7.0-rc.3",
     "@angular-devkit/build-angular": "0.7.0-rc.3",
-    "@angular-devkit/core": "0.7.0-rc.3",
+    "@angular-devkit/core": "0.7.2",
     "@angular-devkit/schematics": "0.7.0-rc.3",
     "@types/jasmine": "~2.8.6",
     "@types/jasminewd2": "~2.0.3",
