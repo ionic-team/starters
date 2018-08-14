@@ -7,12 +7,12 @@ describe('ContactPage', () => {
   let component: ContactPage;
   let fixture: ComponentFixture<ContactPage>;
 
-  beforeEach(async () => {
+  beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ContactPage],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
     }).compileComponents();
-  });
+  }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(ContactPage);
