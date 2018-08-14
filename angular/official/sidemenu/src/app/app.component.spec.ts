@@ -12,7 +12,7 @@ describe('AppComponent', () => {
 
   let statusBarSpy, splashScreenSpy, platformReadySpy, platformSpy;
 
-  beforeEach(async () => {
+  beforeEach(async(() => {
     statusBarSpy = jasmine.createSpyObj('StatusBar', ['styleDefault']);
     splashScreenSpy = jasmine.createSpyObj('SplashScreen', ['hide']);
     platformReadySpy = Promise.resolve();
@@ -28,7 +28,7 @@ describe('AppComponent', () => {
       ],
       imports: [ RouterTestingModule.withRoutes([])],
     }).compileComponents();
-  });
+  }));
 
   it('should create the app', async () => {
     const fixture = TestBed.createComponent(AppComponent);
