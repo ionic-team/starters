@@ -72,6 +72,7 @@ jobs:
       - save_cache: *save-cache-src
       - run: npm run src:lint
       - run: npm run src:build
+      - run: rm -rf node_modules/@types
       - run: npm run starters:find-redundant
       - run: npm run starters:build
       - run: npm run starters:generate-checksum
