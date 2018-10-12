@@ -41,7 +41,7 @@ export class AccountPage {
 
   refreshAvatar() {
     Storage.get(this.userId + '/avatar')
-      .then(url => this.avatarPhoto = url);
+      .then(url => this.avatarPhoto = (url as string));
   }
 
   dataURItoBlob(dataURI) {
