@@ -1,4 +1,4 @@
-import { toPromise } 'rxjs/operators';
+import 'rxjs/add/operator/toPromise';
 
 import { Injectable } from '@angular/core';
 
