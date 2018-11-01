@@ -1,11 +1,32 @@
 <ion-tabs>
-  <ion-tab label="Home" icon="home" href="/tabs/(home:home)">
+
+  <ion-tab tab="home">
     <ion-router-outlet name="home"></ion-router-outlet>
   </ion-tab>
-  <ion-tab label="About" icon="information-circle" href="/tabs/(about:about)">
+  <ion-tab tab="about">
     <ion-router-outlet name="about"></ion-router-outlet>
   </ion-tab>
-  <ion-tab label="Contact" icon="contacts" href="/tabs/(contact:contact)">
+  <ion-tab tab="contact">
     <ion-router-outlet name="contact"></ion-router-outlet>
   </ion-tab>
+
+  <ion-tab-bar slot="bottom">
+
+    <ion-tab-button tab="home" href="/tabs/(home:home)">
+      <ion-icon name="home"></ion-icon>
+      <ion-label>Home</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="about" href="/tabs/(about:about)">
+      <ion-icon name="information-circle"></ion-icon>
+      <ion-label>About</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="contact" href="/tabs/(contact:contact)">
+      <ion-icon name="contacts"></ion-icon>
+      <ion-label>Contact</ion-label>
+    </ion-tab-button>
+
+  </ion-tab-bar>
+
 </ion-tabs>
