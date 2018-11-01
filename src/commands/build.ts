@@ -3,7 +3,7 @@ import * as path from 'path';
 import chalk from 'chalk';
 
 import { Command, CommandLineInputs, CommandLineOptions, CommandMetadata } from '@ionic/cli-framework';
-import { removeDirectory } from '@ionic/cli-framework/utils/fs';
+import { removeDirectory } from '@ionic/utils-fs';
 
 import { getCommandHeader, runcmd } from '../utils';
 import { BUILD_DIRECTORY, REPO_DIRECTORY, buildStarter, buildStarters, gatherChangedBaseFiles, getStarterInfoFromPath } from '../lib/build';

@@ -22,13 +22,16 @@
     "tar": "^4.4.1"
   },
   "devDependencies": {
-    "@ionic/cli-framework": "1.0.0-rc.6",
+    "@ionic/cli-framework": "^1.2.0",
+    "@ionic/utils-fs": "0.0.4",
     "@types/dargs": "^5.1.0",
+    "@types/inquirer": "0.0.43",
     "@types/jasmine": "^2.8.6",
     "@types/lodash": "^4.14.81",
     "@types/minimatch": "^3.0.3",
     "@types/minimist": "^1.2.0",
-    "@types/node": "^8.0.47",
+    "@types/ncp": "^2.0.1",
+    "@types/node": "^10.12.1",
     "@types/rimraf": "^2.0.2",
     "@types/strip-ansi": "^3.0.0",
     "@types/tar": "^4.0.0",

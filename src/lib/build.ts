@@ -3,8 +3,8 @@ import * as path from 'path';
 import chalk from 'chalk';
 import * as _ from 'lodash';
 
-import { copyDirectory, fsUnlink, fsWriteFile } from '@ionic/cli-framework/utils/fs';
-import { readPackageJsonFile } from '@ionic/cli-framework/utils/npm';
+import { copyDirectory, unlink, writeFile } from '@ionic/utils-fs';
+import { readPackageJsonFile } from '@ionic/cli-framework/utils/node';
 
 import { StarterList } from '../definitions';
 import { getDirectories, log, readGitignore, readStarterManifest, readTsconfigJson, runcmd } from '../utils';
@@ -123,7 +123,7 @@ export async function buildStarters({ current = false, sha1 }: { current?: boole
   }));
 
   console.log(`Writing ${chalk.cyan('starters.json')}\n`);
-  await fsWriteFile(STARTERS_LIST_PATH, JSON.stringify(starterList, undefined, 2), { encoding: 'utf8' });
+  await writeFile(STARTERS_LIST_PATH, JSON.stringify(starterList, undefined, 2), { encoding: 'utf8' });
 
   return starterList;
 }
@@ -152,7 +152,7 @@ export async function buildStarter(ionicType: string, starterType: string, start
   await copyDirectory(starterDir, tmpdest, {});
 
   try {
-    await fsUnlink(path.resolve(tmpdest, '.git'));
+    await unlink(path.resolve(tmpdest, '.git'));
   } catch (e) {
     if (e.code !== 'ENOENT') {
       throw e;
@@ -166,20 +166,20 @@ export async function buildStarter(ionicType: string, starterType: string, start
 
   if (manifest.packageJson) {
     _.mergeWith(pkg, manifest.packageJson, (objv, v) => _.isArray(v) ? v : undefined);
-    await fsWriteFile(pkgPath, JSON.stringify(pkg, undefined, 2) + '\n', { encoding: 'utf8' });
+    await writeFile(pkgPath, JSON.stringify(pkg, undefined, 2) + '\n', { encoding: 'utf8' });
   }
 
   const tsconfigJson = await readTsconfigJson(tmpdest);
 
   if (Object.keys(tsconfigJson).length > 0 && manifest.tsconfigJson) {
     _.mergeWith(tsconfigJson, manifest.tsconfigJson, (objv, v) => _.isArray(v) ? v : undefined);
-    await fsWriteFile(path.resolve(tmpdest, 'tsconfig.json'), JSON.stringify(tsconfigJson, undefined, 2) + '\n', { encoding: 'utf8' });
+    await writeFile(path.resolve(tmpdest, 'tsconfig.json'), JSON.stringify(tsconfigJson, undefined, 2) + '\n', { encoding: 'utf8' });
   }
 
   const gitignore = await readGitignore(tmpdest);
 
   if (manifest.gitignore) {
     const united = _.union(gitignore.map(x => x.trim()), manifest.gitignore.map(x => x.trim()));
-    await fsWriteFile(path.resolve(tmpdest, '.gitignore'), united.join('\n') + '\n', { encoding: 'utf8' });
+    await writeFile(path.resolve(tmpdest, '.gitignore'), united.join('\n') + '\n', { encoding: 'utf8' });
   }
 }

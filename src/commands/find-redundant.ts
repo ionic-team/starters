@@ -2,7 +2,7 @@ import * as path from 'path';
 
 import chalk from 'chalk';
 import { Command, CommandLineInputs, CommandLineOptions, CommandMetadata } from '@ionic/cli-framework';
-import { fsStat, getFileChecksum, readDir } from '@ionic/cli-framework/utils/fs';
+import { getFileChecksum, readDirp, stat } from '@ionic/utils-fs';
 
 import { IONIC_TYPE_DIRECTORIES, REPO_DIRECTORY, buildStarterId, getStarterDirectories, getStarterInfoFromPath } from '../lib/build';
 import { log } from '../utils';
@@ -35,14 +35,14 @@ export class FindRedundantCommand extends Command {
         const [ , starterType ] = getStarterInfoFromPath(starterDir);
         const id = buildStarterId(ionicType, starterType, starterDir);
 
-        const contents = (await readDir(starterDir, { recursive: true })).map(p => p.substring(starterDir.length + 1));
+        const contents = (await readDirp(starterDir)).map(p => p.substring(starterDir.length + 1));
 
         for (const file of contents) {
           const filePath = path.resolve(starterDir, file);
           const baseFilePath = path.resolve(baseDir, file);
 
           try {
-            const [ fileStat, baseFileStat ] = await Promise.all([fsStat(filePath), fsStat(baseFilePath)]);
+            const [ fileStat, baseFileStat ] = await Promise.all([stat(filePath), stat(baseFilePath)]);
 
             if (!fileStat.isDirectory() && !baseFileStat.isDirectory()) {
               const [ fileChecksum, baseFileChecksum ] = await Promise.all([getFileChecksum(filePath), getFileChecksum(baseFilePath)]);
