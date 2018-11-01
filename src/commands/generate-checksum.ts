@@ -4,7 +4,7 @@ import { createHash } from 'crypto';
 import chalk from 'chalk';
 
 import { Command, CommandLineInputs, CommandLineOptions, CommandMetadata } from '@ionic/cli-framework';
-import { fsReadFile, fsWriteFile } from '@ionic/cli-framework/utils/fs';
+import { readFile, writeFile } from '@ionic/utils-fs';
 
 import { IONIC_MANIFEST_FILE, getCommandHeader, getDirectories, log } from '../utils';
 import { BUILD_DIRECTORY, IONIC_TYPE_DIRECTORIES, REPO_DIRECTORY } from '../lib/build';
@@ -31,8 +31,8 @@ export class GenerateChecksumCommand extends Command {
         const id = path.basename(dir);
 
         try {
-          const pkg = await fsReadFile(path.resolve(dir, 'package.json'), { encoding: 'utf8' });
-          const manifest = await fsReadFile(path.resolve(dir, IONIC_MANIFEST_FILE), { encoding: 'utf8' });
+          const pkg = await readFile(path.resolve(dir, 'package.json'), { encoding: 'utf8' });
+          const manifest = await readFile(path.resolve(dir, IONIC_MANIFEST_FILE), { encoding: 'utf8' });
 
           log(id, `Appending to checksum file: ${chalk.bold(checksumFile)}`);
 
@@ -44,7 +44,7 @@ export class GenerateChecksumCommand extends Command {
         }
       }
 
-      await fsWriteFile(path.resolve(REPO_DIRECTORY, checksumFile), hash.digest('hex'), { encoding: 'utf8' });
+      await writeFile(path.resolve(REPO_DIRECTORY, checksumFile), hash.digest('hex'), { encoding: 'utf8' });
     }
   }
 }
