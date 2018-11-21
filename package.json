@@ -22,8 +22,8 @@
     "tar": "^4.4.1"
   },
   "devDependencies": {
-    "@ionic/cli-framework": "^1.2.0",
-    "@ionic/utils-fs": "0.0.4",
+    "@ionic/cli-framework": "1.4.0",
+    "@ionic/utils-fs": "0.0.5",
     "@types/dargs": "^5.1.0",
     "@types/inquirer": "0.0.43",
     "@types/jasmine": "^2.8.6",
