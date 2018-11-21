@@ -28,6 +28,7 @@
     "@types/inquirer": "0.0.43",
     "@types/jasmine": "^2.8.6",
     "@types/lodash": "^4.14.81",
+    "@types/log-update": "^2.0.0",
     "@types/minimatch": "^3.0.3",
     "@types/minimist": "^1.2.0",
     "@types/ncp": "^2.0.1",
