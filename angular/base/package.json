@@ -35,7 +35,7 @@
     "@angular-devkit/schematics": "~7.0.0",
     "@angular/cli": "~7.0.0",
     "@angular/compiler": "~7.0.0",
-    "@angular/compiler-cli": "~7.0.0",
+    "@angular/compiler-cli": "~7.1.0",
     "@angular/language-service": "~7.0.0",
     "@ionic/angular-toolkit": "~1.2.0",
     "@types/node": "~10.12.0",
