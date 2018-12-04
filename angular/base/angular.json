@@ -60,6 +60,9 @@
                   "maximumError": "5mb"
                 }
               ]
+            },
+            "ci": {
+              "progress": false
             }
           }
         },
@@ -71,6 +74,9 @@
           "configurations": {
             "production": {
               "browserTarget": "app:build:production"
+            },
+            "ci": {
+              "progress": false
             }
           }
         },
@@ -101,6 +107,12 @@
                 "output": "/assets"
               }
             ]
+          },
+          "configurations": {
+            "ci": {
+              "progress": false,
+              "watch": false
+            }
           }
         },
         "lint": {
@@ -145,6 +157,11 @@
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
             "devServerTarget": "app:serve"
+          },
+          "configurations": {
+            "ci": {
+              "devServerTarget": "app:serve:ci"
+            }
           }
         },
         "lint": {
