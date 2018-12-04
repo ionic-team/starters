@@ -4,7 +4,35 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  The world is your oyster.
-  <p>If you get lost, the <a target="_blank" rel="noopener" href="https://ionicframework.com/docs">docs</a> will be your guide.</p>
+<ion-content>
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>Next Steps</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p>Welcome! Now that your app has been created, you'll want to start building out features and components. Check out some of the resources below for next steps.</p>
+        <ion-button style="--margin-top: 1em;" href="https://beta.ionicframework.com/docs/">Read The Docs</ion-button>
+      </ion-card-content>
+    </ion-card>
+    <ion-list lines="none">
+      <ion-list-header>
+        <ion-label>Resources</ion-label>
+      </ion-list-header>
+      <ion-item href="https://beta.ionicframework.com/docs/building/scaffolding">
+        <ion-icon slot="start" color="primary" name="construct"></ion-icon>
+        <ion-label>Scaffold Out Your App</ion-label>
+      </ion-item>
+      <ion-item href="https://beta.ionicframework.com/docs/api">
+        <ion-icon slot="start" color="primary" name="paper"></ion-icon>
+        <ion-label>API Documentation</ion-label>
+      </ion-item>
+      <ion-item href="https://beta.ionicframework.com/docs/layout/structure">
+        <ion-icon slot="start" color="primary" name="grid"></ion-icon>
+        <ion-label>Change Your App Layout</ion-label>
+      </ion-item>
+      <ion-item href="https://beta.ionicframework.com/docs/theming/basics">
+        <ion-icon slot="start" color="primary" name="color-palette"></ion-icon>
+        <ion-label>Theme Your App</ion-label>
+      </ion-item>
+    </ion-list>
 </ion-content>
