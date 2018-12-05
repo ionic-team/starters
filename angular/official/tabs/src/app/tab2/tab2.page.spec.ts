@@ -1,7 +1,7 @@
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { Tab2Page } from './about.page';
+import { Tab2Page } from './tab2.page';
 
 describe('Tab2Page', () => {
   let component: Tab2Page;
