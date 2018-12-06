@@ -26,7 +26,7 @@
     "@ionic/utils-fs": "0.0.5",
     "@types/dargs": "^5.1.0",
     "@types/inquirer": "0.0.43",
-    "@types/jasmine": "^2.8.6",
+    "@types/jasmine": "^3.3.1",
     "@types/lodash": "^4.14.81",
     "@types/log-update": "^2.0.0",
     "@types/minimatch": "^3.0.3",
