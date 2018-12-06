@@ -9,6 +9,6 @@ describe('new App', () => {
 
   it('should be blank', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toContain('');
+    expect(page.getParagraphText()).toBe('');
   });
 });
