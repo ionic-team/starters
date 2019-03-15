@@ -4,7 +4,7 @@
   "tarignore": [
     "node_modules",
     "package-lock.json",
-    "www"e
+    "www"
   ],
   "scripts": {
     "test": "npm run lint && npm run ng -- build --configuration=ci && npm run ng -- build --prod --progress=false && npm run ng -- test --configuration=ci && npm run ng -- e2e --configuration=ci && npm run ng -- g pg my-page --dry-run && npm run ng -- g c my-component --dry-run"
