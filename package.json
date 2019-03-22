@@ -25,7 +25,7 @@
     "@ionic/cli-framework": "1.4.0",
     "@ionic/utils-fs": "0.0.5",
     "@types/dargs": "^5.1.0",
-    "@types/inquirer": "0.0.43",
+    "@types/inquirer": "0.0.44",
     "@types/lodash": "^4.14.81",
     "@types/log-update": "^2.0.0",
     "@types/minimatch": "^3.0.3",
