@@ -1,20 +1,36 @@
-import { IonApp } from '@ionic/react';
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import './globals.scss';
-import './theme/variables.scss';
-import { Home } from './pages/Home';
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
+import { IonPage, IonRouterOutlet } from '@ionic/react';
+import Home from './pages/Home';
 
-const App: React.SFC<any> = () => {
-  return (
-    <IonApp>
-      <Router>
-        <Switch>
-          <Route path="/" component={Home} />
-        </Switch>
-      </Router>
-    </IonApp>
-  );
-};
+/* Core CSS required for Ionic components to work properly */
+import "@ionic/core/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+import "@ionic/core/css/normalize.css";
+import "@ionic/core/css/structure.css";
+import "@ionic/core/css/typography.css";
+
+/* Optional CSS utils that can be commented out */
+import "@ionic/core/css/padding.css";
+import "@ionic/core/css/float-elements.css";
+import "@ionic/core/css/text-alignment.css";
+import "@ionic/core/css/text-transformation.css";
+import "@ionic/core/css/flex-utils.css";
+import "@ionic/core/css/display.css";
+import './App.css';
+
+const App: React.SFC = () => (
+  <Router>
+    <div className="App">
+      <IonPage>
+        <IonRouterOutlet>
+          <Route exact path="/" render={() => <Redirect to="/home"/>} />
+          <Route path="/:tab(home)" component={Home} exact={true} />
+        </IonRouterOutlet>
+      </IonPage>
+    </div>
+  </Router>
+);
 
 export default App;

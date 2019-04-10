@@ -1,9 +1,9 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { IonApp, IonPage, IonTabs, IonRouterOutlet, IonTabBar, IonTabButton, IonLabel, IonIcon } from '@ionic/react';
-import Tab1 from './Tab1';
-import Tab2 from './Tab2';
-import Tab3 from './Tab3';
+import Tab1 from './pages/Tab1';
+import Tab2 from './pages/Tab2';
+import Tab3 from './pages/Tab3';
 
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/core/css/core.css";
@@ -20,7 +20,6 @@ import "@ionic/core/css/text-alignment.css";
 import "@ionic/core/css/text-transformation.css";
 import "@ionic/core/css/flex-utils.css";
 import "@ionic/core/css/display.css";
-import './App.css';
 
 const App = () => (
   <Router>
