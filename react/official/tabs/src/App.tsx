@@ -1,21 +1,58 @@
-import { IonApp } from '@ionic/react';
 import React from 'react';
-import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom';
-import { Tabs } from './components/Tabs';
-import './globals.scss';
-import './theme/variables.scss';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { IonApp, IonPage, IonTabs, IonRouterOutlet, IonTabBar, IonTabButton, IonLabel, IonIcon } from '@ionic/react';
+import Tab1 from './Tab1';
+import Tab2 from './Tab2';
+import Tab3 from './Tab3';
 
-const App: React.SFC<any> = () => {
-  return (
-    <IonApp>
-      <Router>
-        <Switch>
-          <Route path="/tabs" component={Tabs} />
-          <Redirect path="/" to="/tabs" />
-        </Switch>
-      </Router>
-    </IonApp>
-  );
-};
+/* Core CSS required for Ionic components to work properly */
+import "@ionic/core/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+import "@ionic/core/css/normalize.css";
+import "@ionic/core/css/structure.css";
+import "@ionic/core/css/typography.css";
+
+/* Optional CSS utils that can be commented out */
+import "@ionic/core/css/padding.css";
+import "@ionic/core/css/float-elements.css";
+import "@ionic/core/css/text-alignment.css";
+import "@ionic/core/css/text-transformation.css";
+import "@ionic/core/css/flex-utils.css";
+import "@ionic/core/css/display.css";
+import './App.css';
+
+const App = () => (
+  <Router>
+    <div className="App">
+      <IonApp>
+        <IonPage id="main">
+          <IonTabs>
+            <IonRouterOutlet>
+              <Route path="/:tab(tab1)" component={Tab1} exact={true} />
+              <Route path="/:tab(tab2)" component={Tab2} />
+              <Route path="/:tab(tab3)" component={Tab3} />
+            </IonRouterOutlet>
+            <IonTabBar slot="bottom">
+              <IonTabButton tab="schedule" href="/tab1">
+                <IonIcon name="flash" />
+                <IonLabel>Tab One</IonLabel>
+              </IonTabButton>
+              <IonTabButton tab="speakers" href="/tab2">
+                <IonIcon name="apps" />
+                <IonLabel>Tab Two</IonLabel>
+              </IonTabButton>
+              <IonTabButton tab="map" href="/tab3">
+                <IonIcon name="send" />
+                <IonLabel>Tab Three</IonLabel>
+              </IonTabButton>
+            </IonTabBar>
+          </IonTabs>
+        </IonPage>
+      </IonApp>
+    </div>
+  </Router>
+);
+
 
 export default App;
