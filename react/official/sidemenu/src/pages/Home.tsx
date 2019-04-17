@@ -1,44 +1,75 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>
-      Home
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+import {
+  IonCard,
+  IonCardHeader,
+  IonContent,
+  IonHeader,
+  IonImg,
+  IonTitle,
+  IonToolbar,
+  IonCardSubtitle,
+  IonCardTitle,
+  IonCardContent,
+  IonList,
+  IonLabel,
+  IonListHeader,
+  IonItem,
+  IonIcon,
+  IonButtons,
+  IonMenuButton
+} from '@ionic/react';
+import React from 'react';
+import './Home.css';
 
-<ion-content>
-    <ion-card class="welcome-card">
-      <ion-img src="/assets/shapes.svg"></ion-img>
-      <ion-card-header>
-        <ion-card-subtitle>Get Started</ion-card-subtitle>
-        <ion-card-title>Welcome to Ionic</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <p>Now that your app has been created, you'll want to start building out features and components. Check out some of the resources below for next steps.</p>
-      </ion-card-content>
-    </ion-card>
-    <ion-list lines="none">
-      <ion-list-header>
-        <ion-label>Resources</ion-label>
-      </ion-list-header>
-      <ion-item href="https://ionicframework.com/docs/">
-        <ion-icon slot="start" color="medium" name="book"></ion-icon>
-        <ion-label>Ionic Documentation</ion-label>
-      </ion-item>
-      <ion-item href="https://ionicframework.com/docs/building/scaffolding">
-        <ion-icon slot="start" color="medium" name="build"></ion-icon>
-        <ion-label>Scaffold Out Your App</ion-label>
-      </ion-item>
-      <ion-item href="https://ionicframework.com/docs/layout/structure">
-        <ion-icon slot="start" color="medium" name="grid"></ion-icon>
-        <ion-label>Change Your App Layout</ion-label>
-      </ion-item>
-      <ion-item href="https://ionicframework.com/docs/theming/basics">
-        <ion-icon slot="start" color="medium" name="color-fill"></ion-icon>
-        <ion-label>Theme Your App</ion-label>
-      </ion-item>
-    </ion-list>
-</ion-content>
+const HomePage: React.SFC<any> = () => {
+  return (
+    <>
+      <IonHeader>
+        <IonToolbar>
+          <IonButtons slot="start">
+            <IonMenuButton />
+          </IonButtons>
+          <IonTitle>Home</IonTitle>
+        </IonToolbar>
+      </IonHeader>
+      <IonContent>
+        <IonCard class="welcome-card">
+          <IonImg src="/assets/shapes.svg" />
+          <IonCardHeader>
+            <IonCardSubtitle>Get Started</IonCardSubtitle>
+            <IonCardTitle>Welcome to Ionic</IonCardTitle>
+          </IonCardHeader>
+          <IonCardContent>
+            <p>
+              Now that your app has been created, you'll want to start building out features and
+              components. Check out some of the resources below for next steps.
+            </p>
+          </IonCardContent>
+        </IonCard>
+
+        <IonList lines="none">
+          <IonListHeader>
+            <IonLabel>Resources</IonLabel>
+          </IonListHeader>
+          <IonItem href="https://ionicframework.com/docs/">
+            <IonIcon slot="start" color="medium" name="book" />
+            <IonLabel>Ionic Documentation</IonLabel>
+          </IonItem>
+          <IonItem href="https://ionicframework.com/docs/building/scaffolding">
+            <IonIcon slot="start" color="medium" name="build" />
+            <IonLabel>Scaffold Out Your App</IonLabel>
+          </IonItem>
+          <IonItem href="https://ionicframework.com/docs/layout/structure">
+            <IonIcon slot="start" color="medium" name="grid" />
+            <IonLabel>Change Your App Layout</IonLabel>
+          </IonItem>
+          <IonItem href="https://ionicframework.com/docs/theming/basics">
+            <IonIcon slot="start" color="medium" name="color-fill" />
+            <IonLabel>Theme Your App</IonLabel>
+          </IonItem>
+        </IonList>
+      </IonContent>
+    </>
+  );
+};
+
+export default HomePage;

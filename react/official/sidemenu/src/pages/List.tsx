@@ -1,51 +1,62 @@
 import React from 'react';
-import { IonHeader, IonToolbar, IonButtons, IonMenuButton, IonTitle, IonContent, IonList, IonItem, IonIcon } from '@ionic/react';
-import { ListItem } from '../declarations';
+import {
+  IonHeader,
+  IonToolbar,
+  IonButtons,
+  IonMenuButton,
+  IonTitle,
+  IonItem,
+  IonIcon,
+  IonContent,
+  IonList
+} from '@ionic/react';
 
-const items: ListItem[] = [
-  'flask',
-  'wifi',
-  'beer',
-  'football',
-  'basketball',
-  'paper-plane',
-  'american-football',
-  'boat',
-  'bluetooth',
-  'build'
-].map((_item, index, iconList) => ({
-  title: `Item ${index}`,
-  note: `This is item #${index}`,
-  icon: iconList[Math.floor(Math.random() * iconList.length)]
-}));
+const ListPage: React.SFC<any> = () => {
+  return (
+    <>
+      <IonHeader>
+        <IonToolbar>
+          <IonButtons slot="start">
+            <IonMenuButton />
+          </IonButtons>
+          <IonTitle>List</IonTitle>
+        </IonToolbar>
+      </IonHeader>
 
-const List: React.SFC = () => (
-  <>
-  <IonHeader>
-    <IonToolbar>
-      <IonButtons slot="start">
-        <IonMenuButton></IonMenuButton>
-      </IonButtons>
-      <IonTitle>
-        List
-      </IonTitle>
-    </IonToolbar>
-  </IonHeader>
+      <IonContent>
+        <ListItems />
+      </IonContent>
+    </>
+  );
+};
 
-  <IonContent>
-    <IonList>
-      { items.map((item) => (
-      <IonItem>
-        <IonIcon name={item.icon} slot="start"></IonIcon>
-        {item.title}
+const ListItems = () => {
+  const icons = [
+    'flask',
+    'wifi',
+    'beer',
+    'football',
+    'basketball',
+    'paper-plane',
+    'american-football',
+    'boat',
+    'bluetooth',
+    'build'
+  ];
+
+  const items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(x => {
+    return (
+      <IonItem key={x}>
+        <IonIcon name={icons[x - 1]} slot="start" />
+        Item {x}
         <div className="item-note" slot="end">
-          {item.note}
+          This is item # {x}
         </div>
       </IonItem>
-      ))}
-    </IonList>
-  </IonContent>
-  </>
-);
+    );
+  });
 
-export default List;
+  return <IonList>{items}</IonList>;
+};
+
+export default ListPage;
