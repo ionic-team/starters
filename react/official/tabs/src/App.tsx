@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Redirect } from 'react-router-dom';
 import { IonApp, IonPage, IonTabs, IonRouterOutlet, IonTabBar, IonTabButton, IonLabel, IonIcon } from '@ionic/react';
 import Tab1 from './pages/Tab1';
 import Tab2 from './pages/Tab2';
@@ -21,12 +21,13 @@ import "@ionic/core/css/text-transformation.css";
 import "@ionic/core/css/flex-utils.css";
 import "@ionic/core/css/display.css";
 
-const App = () => (
+const App: React.SFC = () => (
   <Router>
     <div className="App">
       <IonApp>
         <IonPage id="main">
           <IonTabs>
+            <Route exact path="/" render={() => <Redirect to="/tab1"/>} />
             <IonRouterOutlet>
               <Route path="/:tab(tab1)" component={Tab1} exact={true} />
               <Route path="/:tab(tab2)" component={Tab2} />

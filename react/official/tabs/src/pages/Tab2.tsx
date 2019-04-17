@@ -1,19 +1,17 @@
 import React from 'react';
 import { IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/react';
-import './Tab2.css';
 
-const Tab1 = () => (
-  <>
-    <IonHeader>
-      <IonToolbar>
-        <IonTitle>
-          Tab Two
-        </IonTitle>
-      </IonToolbar>
-    </IonHeader>
+const Tab2: React.SFC = () => {
+  return (
+    <>
+      <IonHeader>
+        <IonToolbar>
+          <IonTitle>Tab Two</IonTitle>
+        </IonToolbar>
+      </IonHeader>
+      <IonContent />
+    </>
+  );
+};
 
-    <IonContent></IonContent>
-  </>
-);
-
-export default Tab1;
+export default Tab2;
