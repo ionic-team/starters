@@ -33,7 +33,7 @@
     "@types/ncp": "^2.0.1",
     "@types/node": "^10.12.1",
     "@types/rimraf": "^2.0.2",
-    "@types/strip-ansi": "^3.0.0",
+    "@types/strip-ansi": "^5.2.1",
     "@types/tar": "^4.0.0",
     "husky": "^1.1.0",
     "rimraf": "^2.6.2",
