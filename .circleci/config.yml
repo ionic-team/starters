@@ -11,28 +11,38 @@ aliases:
         rm google-chrome.deb
 
   - &restore-cache-src
-      key: dependency-cache-{{ checksum "package.json" }}
+      key: dependency-cache-{{ checksum "package.json" }}-1
 
   - &save-cache-src
-      key: dependency-cache-{{ checksum "package.json" }}
+      key: dependency-cache-{{ checksum "package.json" }}-1
       paths:
         - node_modules
 
+  - &restore-cache-react-starters
+      key: dependency-cache-{{ checksum "starter-checksum-react.sha256" }}-1
+
+  - &save-cache-react-starters
+      key: dependency-cache-{{ checksum "starter-checksum-react.sha256" }}-1
+      paths:
+        - build/react-official-blank/node_modules
+        - build/react-official-sidemenu/node_modules
+        - build/react-official-tabs/node_modules
+
   - &restore-cache-angular-starters
-      key: dependency-cache-{{ checksum "starter-checksum-angular.sha256" }}
+      key: dependency-cache-{{ checksum "starter-checksum-angular.sha256" }}-1
 
   - &save-cache-angular-starters
-      key: dependency-cache-{{ checksum "starter-checksum-angular.sha256" }}
+      key: dependency-cache-{{ checksum "starter-checksum-angular.sha256" }}-1
       paths:
         - build/angular-official-blank/node_modules
         - build/angular-official-sidemenu/node_modules
         - build/angular-official-tabs/node_modules
 
   - &restore-cache-ionic-angular-starters
-      key: dependency-cache-{{ checksum "starter-checksum-ionic-angular.sha256" }}
+      key: dependency-cache-{{ checksum "starter-checksum-ionic-angular.sha256" }}-1
 
   - &save-cache-ionic-angular-starters
-      key: dependency-cache-{{ checksum "starter-checksum-ionic-angular.sha256" }}
+      key: dependency-cache-{{ checksum "starter-checksum-ionic-angular.sha256" }}-1
       paths:
         - build/ionic-angular-community-danielsogl-super/node_modules
         - build/ionic-angular-community-ionic-team-example/node_modules
@@ -45,10 +55,10 @@ aliases:
         - build/ionic-angular-official-tutorial/node_modules
 
   - &restore-cache-ionic1-starters
-      key: dependency-cache-{{ checksum "starter-checksum-ionic1.sha256" }}
+      key: dependency-cache-{{ checksum "starter-checksum-ionic1.sha256" }}-1
 
   - &save-cache-ionic1-starters
-      key: dependency-cache-{{ checksum "starter-checksum-ionic1.sha256" }}
+      key: dependency-cache-{{ checksum "starter-checksum-ionic1.sha256" }}-1
       paths:
         - build/ionic1-official-blank/node_modules
         - build/ionic1-official-maps/node_modules
@@ -58,7 +68,7 @@ aliases:
 defaults: &defaults
   working_directory: /tmp/workspace
   docker:
-    - image: circleci/node:8-browsers
+    - image: circleci/node:10-browsers
 
 jobs:
   build:
@@ -80,6 +90,15 @@ jobs:
           root: /tmp/workspace
           paths:
             - "*"
+
+  test_react:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: /tmp/workspace
+      - restore_cache: *restore-cache-react-starters
+      - run: npm run starters:test -- --type=react
+      - save_cache: *save-cache-react-starters
 
   test_angular:
     <<: *defaults
@@ -121,6 +140,9 @@ workflows:
   build:
     jobs:
       - build
+      - test_react:
+          requires:
+            - build
       - test_angular:
           requires:
             - build
@@ -132,6 +154,7 @@ workflows:
             - build
       - deploy:
           requires:
+            - test_react
             - test_angular
             - test_ionic_angular
             - test_ionic1
