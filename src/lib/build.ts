@@ -3,7 +3,7 @@ import * as path from 'path';
 import chalk from 'chalk';
 import * as _ from 'lodash';
 
-import { copyDirectory, unlink, writeFile } from '@ionic/utils-fs';
+import { copy, remove, writeFile } from '@ionic/utils-fs';
 import { readPackageJsonFile } from '@ionic/cli-framework/utils/node';
 
 import { StarterList } from '../definitions';
@@ -13,7 +13,7 @@ export const STARTER_TYPE_OFFICIAL = 'official';
 export const STARTER_TYPE_COMMUNITY = 'community';
 export const REPO_DIRECTORY = path.resolve(path.dirname(path.dirname(__dirname)));
 export const INTEGRATIONS_DIRECTORY = path.resolve(REPO_DIRECTORY, 'integrations');
-export const IONIC_TYPE_DIRECTORIES = ['ionic1', 'ionic-angular', 'angular'];
+export const IONIC_TYPE_DIRECTORIES = ['ionic1', 'ionic-angular', 'angular', 'react'];
 
 export const BUILD_DIRECTORY = path.resolve(REPO_DIRECTORY, 'build');
 export const STARTERS_LIST_PATH = path.resolve(BUILD_DIRECTORY, 'starters.json');
@@ -117,7 +117,7 @@ export async function buildStarters({ current = false, sha1 }: { current?: boole
   await Promise.all(integrationDirs.map(async (integrationDir) => {
     const name = path.basename(integrationDir);
     const integration = `integration-${name}`;
-    await copyDirectory(integrationDir, path.resolve(BUILD_DIRECTORY, integration));
+    await copy(integrationDir, path.resolve(BUILD_DIRECTORY, integration));
     starterList.integrations.push({ name, id: integration });
     log(integration, chalk.green('Copied!'));
   }));
@@ -148,11 +148,11 @@ export async function buildStarter(ionicType: string, starterType: string, start
     throw new Error(`No starter manifest found in ${starterDir}`);
   }
 
-  await copyDirectory(baseDir, tmpdest, {});
-  await copyDirectory(starterDir, tmpdest, {});
+  await copy(baseDir, tmpdest, {});
+  await copy(starterDir, tmpdest, {});
 
   try {
-    await unlink(path.resolve(tmpdest, '.git'));
+    await remove(path.resolve(tmpdest, '.git'));
   } catch (e) {
     if (e.code !== 'ENOENT') {
       throw e;
