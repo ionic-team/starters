@@ -25,7 +25,8 @@
     "@ionic-native/status-bar": "^5.0.0",
     "@ionic/angular": "^4.1.0",
     "core-js": "^2.5.4",
-    "rxjs": "~6.3.3",
+    "rxjs": "~6.4.0",
+    "tslib": "^1.9.0",
     "zone.js": "~0.8.29"
   },
   "devDependencies": {
@@ -37,7 +38,7 @@
     "@angular/compiler": "~7.2.2",
     "@angular/compiler-cli": "~7.2.2",
     "@angular/language-service": "~7.2.2",
-    "@ionic/angular-toolkit": "~1.4.0",
+    "@ionic/angular-toolkit": "~1.5.1",
     "@types/node": "~10.14.2",
     "@types/jasmine": "~2.8.8",
     "@types/jasminewd2": "~2.0.3",
@@ -50,8 +51,8 @@
     "karma-jasmine": "~1.1.2",
     "karma-jasmine-html-reporter": "^0.2.2",
     "protractor": "~5.4.0",
-    "ts-node": "~8.0.0",
-    "tslint": "~5.12.0",
+    "ts-node": "~8.1.0",
+    "tslint": "~5.16.0",
     "typescript": "~3.1.6"
   }
 }

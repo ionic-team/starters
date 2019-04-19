@@ -2,7 +2,7 @@ import * as path from 'path';
 
 import chalk from 'chalk';
 import { Command, CommandLineInputs, CommandLineOptions, CommandMetadata } from '@ionic/cli-framework';
-import { getFileChecksum, readDirp, stat } from '@ionic/utils-fs';
+import { getFileChecksum, readdirp, stat } from '@ionic/utils-fs';
 
 import { IONIC_TYPE_DIRECTORIES, REPO_DIRECTORY, buildStarterId, getStarterDirectories, getStarterInfoFromPath } from '../lib/build';
 import { log } from '../utils';
@@ -35,7 +35,7 @@ export class FindRedundantCommand extends Command {
         const [ , starterType ] = getStarterInfoFromPath(starterDir);
         const id = buildStarterId(ionicType, starterType, starterDir);
 
-        const contents = (await readDirp(starterDir)).map(p => p.substring(starterDir.length + 1));
+        const contents = (await readdirp(starterDir)).map(p => p.substring(starterDir.length + 1));
 
         for (const file of contents) {
           const filePath = path.resolve(starterDir, file);

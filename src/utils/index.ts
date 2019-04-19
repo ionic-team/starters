@@ -3,8 +3,8 @@ import * as path from 'path';
 import chalk from 'chalk';
 import { SpawnOptions, spawn } from 'cross-spawn';
 
-import { filter } from '@ionic/cli-framework/utils/array';
-import { readDir, readFile, stat } from '@ionic/utils-fs';
+import { filter } from '@ionic/utils-array';
+import { readFile, readdir, stat } from '@ionic/utils-fs';
 
 import { StarterManifest, TsconfigJson } from '../definitions';
 
@@ -21,7 +21,7 @@ export function getCommandHeader(title: string): string {
 }
 
 export async function getDirectories(p: string): Promise<string[]> {
-  const contents = await readDir(p);
+  const contents = await readdir(p);
   return filter(contents.map(f => path.resolve(p, f)), async f => (await stat(f)).isDirectory());
 }
 
