@@ -7,3 +7,6 @@
 [submodule "ionic-angular/community/oktadeveloper/jhipster"]
 	path = ionic-angular/community/oktadeveloper/jhipster
 	url = https://github.com/oktadeveloper/ionic-jhipster-starter.git
+[submodule "angular/community/fleboulch/jhipster"]
+	path = angular/community/fleboulch/jhipster
+	url = https://github.com/fleboulch/ionic-jhipster-starter.git
