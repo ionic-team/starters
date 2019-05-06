@@ -21,10 +21,10 @@ import "@ionic/core/css/display.css";
 
 const App: React.SFC = () => (
   <Router>
+    <Route exact path="/" render={() => <Redirect to="/home"/>} />
     <div className="App">
       <IonPage>
         <IonRouterOutlet>
-          <Route exact path="/" render={() => <Redirect to="/home"/>} />
           <Route path="/:tab(home)" component={Home} exact={true} />
         </IonRouterOutlet>
       </IonPage>
