@@ -39,13 +39,13 @@ const appPages: AppPage[] = [
 
 const App: React.SFC = () => (
   <Router>
+    <Route exact path="/" render={() => <Redirect to="/home"/>} />
     <div className="App">
       <IonApp>
         <IonSplitPane contentId="main">
           <Menu appPages={appPages}/>
           <IonPage id="main">
             <IonRouterOutlet>
-              <Route exact path="/" render={() => <Redirect to="/home"/>} />
               <Route path="/:tab(home)" component={Home} exact={true} />
               <Route path="/:tab(home)/list" component={List} exact={true} />
             </IonRouterOutlet>
