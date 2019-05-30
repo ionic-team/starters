@@ -9,7 +9,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "update": "ng update @ionic/angular @ionic/angular-toolkit"
   },
   "private": true,
   "dependencies": {
