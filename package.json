@@ -14,7 +14,7 @@
   },
   "main": "./dist/index.js",
   "dependencies": {
-    "@ionic/utils-array": "0.0.1",
+    "@ionic/utils-array": "1.0.0",
     "aws-sdk": "^2.145.0",
     "chalk": "^2.3.0",
     "cross-spawn": "^6.0.5",
