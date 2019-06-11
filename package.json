@@ -13,31 +13,29 @@
     "build": "npm run src:build && npm run starters:build"
   },
   "main": "./dist/index.js",
-  "dependencies": {
-    "@ionic/utils-array": "0.0.1",
-    "aws-sdk": "^2.145.0",
-    "chalk": "^2.3.0",
-    "cross-spawn": "^6.0.5",
-    "lodash": "^4.17.4",
-    "minimatch": "^3.0.4",
-    "tar": "^4.4.1"
-  },
   "devDependencies": {
-    "@ionic/cli-framework": "1.7.0",
-    "@ionic/utils-fs": "^1.2.0",
+    "@ionic/cli-framework": "^2.0.2",
+    "@ionic/utils-array": "^1.0.1",
+    "@ionic/utils-fs": "^2.0.2",
     "@types/fs-extra": "^7.0.0",
-    "@types/inquirer": "^6.0.0",
-    "@types/lodash": "^4.14.81",
-    "@types/log-update": "^2.0.0",
+    "@types/inquirer": "0.0.43",
+    "@types/lodash": "^4.14.134",
+    "@types/log-update": "^3.1.0",
     "@types/minimatch": "^3.0.3",
     "@types/minimist": "^1.2.0",
     "@types/node": "^10.12.1",
     "@types/tar": "^4.0.0",
-    "husky": "^2.1.0",
+    "aws-sdk": "^2.472.0",
+    "chalk": "^2.3.0",
+    "cross-spawn": "^6.0.5",
+    "husky": "^2.4.0",
+    "lodash": "^4.17.4",
+    "minimatch": "^3.0.4",
     "rimraf": "^2.6.2",
-    "tslint": "^5.9.1",
+    "tar": "^4.4.10",
+    "tslint": "^5.17.0",
     "tslint-ionic-rules": "0.0.21",
-    "typescript": "^3.0.1"
+    "typescript": "^3.5.1"
   },
   "husky": {
     "hooks": {
