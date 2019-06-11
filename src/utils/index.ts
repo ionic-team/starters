@@ -3,8 +3,8 @@ import * as path from 'path';
 import chalk from 'chalk';
 import { SpawnOptions, spawn } from 'cross-spawn';
 
-import { filter } from '@ionic/cli-framework/utils/array';
-import { fsReadDir, fsReadFile, fsStat } from '@ionic/cli-framework/utils/fs';
+import { filter } from '@ionic/utils-array';
+import { readFile, readdir, stat } from '@ionic/utils-fs';
 
 import { StarterManifest, TsconfigJson } from '../definitions';
 
@@ -21,13 +21,13 @@ export function getCommandHeader(title: string): string {
 }
 
 export async function getDirectories(p: string): Promise<string[]> {
-  const contents = await fsReadDir(p);
-  return filter(contents.map(f => path.resolve(p, f)), async f => (await fsStat(f)).isDirectory());
+  const contents = await readdir(p);
+  return filter(contents.map(f => path.resolve(p, f)), async f => (await stat(f)).isDirectory());
 }
 
 export async function readTsconfigJson(dir: string): Promise<TsconfigJson> {
   try {
-    return JSON.parse(await fsReadFile(path.resolve(dir, 'tsconfig.json'), { encoding: 'utf8' }));
+    return JSON.parse(await readFile(path.resolve(dir, 'tsconfig.json'), { encoding: 'utf8' }));
   } catch (e) {
     // ignore
   }
@@ -37,7 +37,7 @@ export async function readTsconfigJson(dir: string): Promise<TsconfigJson> {
 
 export async function readGitignore(dir: string): Promise<string[]> {
   try {
-    return (await fsReadFile(path.resolve(dir, '.gitignore'), { encoding: 'utf8' })).split(/\n/);
+    return (await readFile(path.resolve(dir, '.gitignore'), { encoding: 'utf8' })).split(/\n/);
   } catch (e) {
     // ignore
   }
@@ -47,7 +47,7 @@ export async function readGitignore(dir: string): Promise<string[]> {
 
 export async function readStarterManifest(dir: string): Promise<StarterManifest | undefined> {
   try {
-    return JSON.parse(await fsReadFile(path.resolve(dir, IONIC_MANIFEST_FILE), { encoding: 'utf8' }));
+    return JSON.parse(await readFile(path.resolve(dir, IONIC_MANIFEST_FILE), { encoding: 'utf8' }));
   } catch (e) {
     // ignore
   }
