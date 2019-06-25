@@ -29,12 +29,10 @@ const Menu: React.SFC<Props> = ({ history, appPages }) => (
       <IonList>
         {appPages.map((appPage, index) => {
           return (
-            <IonMenuToggle key={index}>
-              <IonItem routerDirection="root" onClick={() => history.push(appPage.url)}>
-                <IonIcon slot="start" name={appPage.icon} />
-                <IonLabel>{appPage.title}</IonLabel>
-              </IonItem>
-            </IonMenuToggle>
+            <IonItem routerDirection="root" onClick={() => history.push(appPage.url)} key={index}>
+              <IonIcon slot="start" name={appPage.icon} />
+              <IonLabel>{appPage.title}</IonLabel>
+            </IonItem>
           );
         })}
       </IonList>
