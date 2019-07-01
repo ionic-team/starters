@@ -14,12 +14,11 @@ import "@ionic/core/css/text-alignment.css";
 import "@ionic/core/css/text-transformation.css";
 import "@ionic/core/css/flex-utils.css";
 import "@ionic/core/css/display.css";
-import './App.css';
 
 const App: React.FunctionComponent = () => {
   return (
     <div className="App">
-      <header className="App-header">
+      <header>
       </header>
     </div>
   );

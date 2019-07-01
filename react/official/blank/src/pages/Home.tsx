@@ -13,7 +13,7 @@ const Home: React.FunctionComponent = () => {
         The world is your oyster.
         <p>
           If you get lost, the{' '}
-          <a target="_blank" rel="noopener" href="https://ionicframework.com/docs/">
+          <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/">
             docs
           </a>{' '}
           will be your guide.

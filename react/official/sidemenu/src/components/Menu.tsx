@@ -19,19 +19,19 @@ type MenuProps = RouteComponentProps<{}> & {
 };
 
 const Menu: React.FunctionComponent<MenuProps> = ({ history, appPages }) => (
-  <IonMenu contentId="main" type="overlay">
+  <IonMenu contentId="main">
     <IonHeader>
       <IonToolbar>
         <IonTitle>Menu</IonTitle>
       </IonToolbar>
     </IonHeader>
-    <IonContent class="outer-content">
+    <IonContent>
       <IonList>
         {appPages.map((appPage, index) => {
           return (
-            <IonMenuToggle key={index}>
+            <IonMenuToggle key={index} auto-hide="false">
               <IonItem routerDirection="root" onClick={() => history.push(appPage.url)}>
-                <IonIcon slot="start" name={appPage.icon} />
+                <IonIcon slot="start" icon={appPage.icon} />
                 <IonLabel>{appPage.title}</IonLabel>
               </IonItem>
             </IonMenuToggle>

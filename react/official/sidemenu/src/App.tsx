@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Redirect, Route } from 'react-router-dom';
+import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonPage, IonReactRouter, IonRouterOutlet, IonSplitPane } from '@ionic/react';
 import { AppPage } from './declarations';
 
@@ -38,22 +38,20 @@ const appPages: AppPage[] = [
 ];
 
 const App: React.FunctionComponent = () => (
-  <Router>
-    <IonApp>
-      <IonReactRouter>
-        <Route exact path="/" render={() => <Redirect to="/home" />} />
-        <IonSplitPane contentId="main">
-          <Menu appPages={appPages} />
-          <IonPage id="main">
-            <IonRouterOutlet>
-              <Route path="/:tab(home)" component={Home} exact={true} />
-              <Route path="/:tab(home)/list" component={List} exact={true} />
-            </IonRouterOutlet>
-          </IonPage>
-        </IonSplitPane>
-      </IonReactRouter>
-    </IonApp>
-  </Router>
+  <IonApp>
+    <IonReactRouter>
+      <IonSplitPane contentId="main">
+        <Menu appPages={appPages} />
+        <IonPage id="main">
+          <IonRouterOutlet>
+            <Route path="/:tab(home)" component={Home} exact={true} />
+            <Route path="/:tab(home)/list" component={List} exact={true} />
+            <Route exact path="/" render={() => <Redirect to="/home" />} />
+          </IonRouterOutlet>
+        </IonPage>
+      </IonSplitPane>
+    </IonReactRouter>
+  </IonApp>
 );
 
 export default App;

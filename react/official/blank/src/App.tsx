@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Redirect, Route } from 'react-router-dom';
+import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonPage, IonReactRouter, IonRouterOutlet } from '@ionic/react';
 import Home from './pages/Home';
 
@@ -20,18 +20,16 @@ import '@ionic/core/css/flex-utils.css';
 import '@ionic/core/css/display.css';
 
 const App: React.FunctionComponent = () => (
-  <Router>
-    <IonApp>
-      <IonReactRouter>
-        <Route exact path="/" render={() => <Redirect to="/home" />} />
-        <IonPage>
-          <IonRouterOutlet>
-            <Route path="/:tab(home)" component={Home} exact={true} />
-          </IonRouterOutlet>
-        </IonPage>
-      </IonReactRouter>
-    </IonApp>
-  </Router>
+  <IonApp>
+    <IonReactRouter>
+      <IonPage>
+        <IonRouterOutlet>
+          <Route path="/home" component={Home} exact={true} />
+          <Route exact path="/" render={() => <Redirect to="/home" />} />
+        </IonRouterOutlet>
+      </IonPage>
+    </IonReactRouter>
+  </IonApp>
 );
 
 export default App;
