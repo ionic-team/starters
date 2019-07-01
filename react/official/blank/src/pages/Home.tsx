@@ -1,7 +1,7 @@
 import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/react';
 import React from 'react';
 
-const Home: React.SFC<any> = () => {
+const Home: React.FunctionComponent = () => {
   return (
     <>
       <IonHeader>
@@ -9,7 +9,7 @@ const Home: React.SFC<any> = () => {
           <IonTitle>Ionic Blank</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent padding>
+      <IonContent className="ion-padding">
         The world is your oyster.
         <p>
           If you get lost, the{' '}

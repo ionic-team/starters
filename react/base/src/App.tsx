@@ -16,15 +16,13 @@ import "@ionic/core/css/flex-utils.css";
 import "@ionic/core/css/display.css";
 import './App.css';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-        </header>
-      </div>
-    );
-  }
+const App: React.FunctionComponent = () => {
+  return (
+    <div className="App">
+      <header className="App-header">
+      </header>
+    </div>
+  );
 }
 
 export default App;

@@ -14,11 +14,11 @@ import React from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 import { AppPage } from '../declarations';
 
-type Props = RouteComponentProps<{}> & {
+type MenuProps = RouteComponentProps<{}> & {
   appPages: AppPage[]
 };
 
-const Menu: React.SFC<Props> = ({ history, appPages }) => (
+const Menu: React.FunctionComponent<MenuProps> = ({ history, appPages }) => (
   <IonMenu contentId="main" type="overlay">
     <IonHeader>
       <IonToolbar>

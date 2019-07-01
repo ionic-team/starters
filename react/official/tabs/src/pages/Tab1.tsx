@@ -18,7 +18,7 @@ import {
 import React from 'react';
 import './Tab1.css';
 
-const Tab1: React.SFC = () => {
+const Tab1: React.FunctionComponent = () => {
   return (
     <>
       <IonHeader>

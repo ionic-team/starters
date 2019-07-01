@@ -1,7 +1,7 @@
 import React from 'react';
 import { IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/react';
 
-const Tab3Page: React.SFC = () => {
+const Tab3Page: React.FunctionComponent = () => {
   return (
     <>
       <IonHeader>

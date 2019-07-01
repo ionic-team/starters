@@ -20,7 +20,7 @@ import {
 import React from 'react';
 import './Home.css';
 
-const HomePage: React.SFC<any> = () => {
+const HomePage: React.FunctionComponent = () => {
   return (
     <>
       <IonHeader>
