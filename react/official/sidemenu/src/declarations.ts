@@ -1,11 +1,5 @@
 export interface AppPage {
-  url: string,
-  icon: string,
-  title: string
-}
-
-export interface ListItem {
+  url: string;
+  icon: object;
   title: string;
-  note: string;
-  icon: string;
 }

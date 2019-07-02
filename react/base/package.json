@@ -1,23 +1,23 @@
 {
-  "name": "base",
+  "name": "ionic-app-base",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@ionic/react": "0.0.5",
-    "react": "~16.8.6",
-    "react-dom": "~16.8.6",
-    "react-router": "~5.0.0",
-    "react-router-dom": "~5.0.0",
-    "react-scripts": "~2.1.8",
-    "typescript": "~3.4.3"
-  },
-  "devDependencies": {
-    "@types/jest": "^24.0.11",
-    "@types/node": "^12.0.0",
-    "@types/react": "^16.8.13",
-    "@types/react-dom": "^16.8.3",
-    "@types/react-router": "^4.4.5",
-    "@types/react-router-dom": "^4.3.1"
+    "@ionic/react": "0.0.6-10",
+    "@types/jest": "24.0.11",
+    "@types/node": "11.11.3",
+    "@types/react": "^16.8.19",
+    "@types/react-dom": "^16.8.4",
+    "@types/react-router": "^4.4.4",
+    "@types/react-router-dom": "^4.3.1",
+    "ionicons": "^4.6.0",
+    "node-sass": "^4.12.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-router": "^5.0.1",
+    "react-router-dom": "^5.0.1",
+    "react-scripts": "3.0.1",
+    "typescript": "3.5.2"
   },
   "scripts": {
     "start": "react-scripts start",

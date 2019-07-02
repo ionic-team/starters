@@ -1,17 +1,8 @@
+import { IonButtons, IonContent, IonHeader, IonIcon, IonItem, IonList, IonMenuButton, IonTitle, IonToolbar } from '@ionic/react';
+import { americanFootball, basketball, beer, bluetooth, boat, build, flask, football, paperPlane, wifi } from 'ionicons/icons';
 import React from 'react';
-import {
-  IonHeader,
-  IonToolbar,
-  IonButtons,
-  IonMenuButton,
-  IonTitle,
-  IonItem,
-  IonIcon,
-  IonContent,
-  IonList
-} from '@ionic/react';
 
-const ListPage: React.SFC<any> = () => {
+const ListPage: React.FunctionComponent = () => {
   return (
     <>
       <IonHeader>
@@ -32,22 +23,22 @@ const ListPage: React.SFC<any> = () => {
 
 const ListItems = () => {
   const icons = [
-    'flask',
-    'wifi',
-    'beer',
-    'football',
-    'basketball',
-    'paper-plane',
-    'american-football',
-    'boat',
-    'bluetooth',
-    'build'
+    flask,
+    wifi,
+    beer,
+    football,
+    basketball,
+    paperPlane,
+    americanFootball,
+    boat,
+    bluetooth,
+    build
   ];
 
   const items = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(x => {
     return (
       <IonItem key={x}>
-        <IonIcon name={icons[x - 1]} slot="start" />
+        <IonIcon icon={icons[x - 1]} slot="start" />
         Item {x}
         <div className="item-note" slot="end">
           This is item # {x}
