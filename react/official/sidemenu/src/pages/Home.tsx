@@ -17,10 +17,11 @@ import {
   IonButtons,
   IonMenuButton
 } from '@ionic/react';
+import { book, build, colorFill, grid } from 'ionicons/icons';
 import React from 'react';
 import './Home.css';
 
-const HomePage: React.SFC<any> = () => {
+const HomePage: React.FunctionComponent = () => {
   return (
     <>
       <IonHeader>
@@ -51,19 +52,19 @@ const HomePage: React.SFC<any> = () => {
             <IonLabel>Resources</IonLabel>
           </IonListHeader>
           <IonItem href="https://ionicframework.com/docs/">
-            <IonIcon slot="start" color="medium" name="book" />
+            <IonIcon slot="start" color="medium" icon={book} />
             <IonLabel>Ionic Documentation</IonLabel>
           </IonItem>
           <IonItem href="https://ionicframework.com/docs/building/scaffolding">
-            <IonIcon slot="start" color="medium" name="build" />
+            <IonIcon slot="start" color="medium" icon={build} />
             <IonLabel>Scaffold Out Your App</IonLabel>
           </IonItem>
           <IonItem href="https://ionicframework.com/docs/layout/structure">
-            <IonIcon slot="start" color="medium" name="grid" />
+            <IonIcon slot="start" color="medium" icon={grid} />
             <IonLabel>Change Your App Layout</IonLabel>
           </IonItem>
           <IonItem href="https://ionicframework.com/docs/theming/basics">
-            <IonIcon slot="start" color="medium" name="color-fill" />
+            <IonIcon slot="start" color="medium" icon={colorFill} />
             <IonLabel>Theme Your App</IonLabel>
           </IonItem>
         </IonList>
