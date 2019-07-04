@@ -17,7 +17,8 @@
     "react-router": "^5.0.1",
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
-    "typescript": "3.5.2"
+    "typescript": "3.5.2",
+    "@trust/webcrypto": "^0.9.2"
   },
   "scripts": {
     "start": "react-scripts start",
