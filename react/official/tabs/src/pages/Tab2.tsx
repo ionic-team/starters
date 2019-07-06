@@ -1,6 +1,5 @@
 import React from 'react';
 import { RouteComponentProps } from 'react-router';
-import { Link } from 'react-router-dom';
 import { IonContent, IonHeader, IonItem, IonLabel, IonList, IonTitle, IonToolbar } from '@ionic/react';
 
 const Tab2: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
@@ -14,13 +13,11 @@ const Tab2: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
       </IonHeader>
       <IonContent>
         <IonList>
-          <Link to="/tab2/details">
-            <IonItem>
-              <IonLabel>
-                <h2>Go to detail</h2>
-              </IonLabel>
-            </IonItem>
-          </Link>
+          <IonItem href="/tab2/details">
+            <IonLabel>
+              <h2>Go to detail</h2>
+            </IonLabel>
+          </IonItem>
         </IonList>
       </IonContent>
     </>
