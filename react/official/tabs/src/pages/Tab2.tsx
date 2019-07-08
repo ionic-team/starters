@@ -13,7 +13,7 @@ const Tab2: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
       </IonHeader>
       <IonContent>
         <IonList>
-          <IonItem href="/tab2/details" onClick={(e) => {e.preventDefault(); history.push('/tab2/details'); }}>
+          <IonItem href="/tab2/details">
             <IonLabel>
               <h2>Go to detail</h2>
             </IonLabel>
