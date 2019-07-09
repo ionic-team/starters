@@ -122,6 +122,18 @@ for the Super Starter.
 
 ## Deploying
 
+First, make sure you pull down the latest community starter submodules by running:
+
+```bash
+git pull --recurse-submodules
+```
+
+If you have not already initialized the submodules locally run:
+
+```bash
+git submodule update --init --recursive
+```
+
 During the deploy process, the `build/` directory is read and an archive of each
 generated starter is created and gzipped and uploaded to an S3 bucket. The S3
 bucket has a CloudFront distribution for close-proximity downloads. The
