@@ -120,7 +120,18 @@ example
 script](https://github.com/ionic-team/starters/tree/master/ionic-angular/official/super.welcome.js)
 for the Super Starter.
 
-## Deploying
+## Deploying (Automatic through CI)
+
+Starters are deployed automatically when new commits are pushed to the `master`
+branch.
+
+During the deploy process, the `build/` directory is read and an archive of each
+generated starter is created and gzipped and uploaded to an S3 bucket. The S3
+bucket has a CloudFront distribution for close-proximity downloads. The
+distribution ID is `E1XZ2T0DZXJ521` and can be found [at this
+URL](https://d2ql0qc7j8u4b2.cloudfront.net).
+
+## Deploying (Manually)
 
 First, make sure you pull down the latest community starter submodules by running:
 
@@ -134,14 +145,7 @@ If you have not already initialized the submodules locally run:
 git submodule update --init --recursive
 ```
 
-During the deploy process, the `build/` directory is read and an archive of each
-generated starter is created and gzipped and uploaded to an S3 bucket. The S3
-bucket has a CloudFront distribution for close-proximity downloads. The
-distribution ID is `E1XZ2T0DZXJ521` and can be found [at this
-URL](https://d2ql0qc7j8u4b2.cloudfront.net).
-
-Starters are deployed automatically when new commits are pushed to the `master`
-branch. To deploy manually, run:
+Then run:
 
 ```bash
 npm run starters:deploy
@@ -152,3 +156,5 @@ You can use `npm run starters:deploy -- --dry` to test the tar process.
 By default, starters are deployed to the `testing` "tag" (`latest` is
 production). You can install tagged starters by specifying the `--tag=<tag>`
 option to `ionic start`).
+
+> Note you will need permissions to the S3 bucket to manually deploy
