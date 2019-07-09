@@ -1,22 +1,21 @@
 import {
+  IonButtons,
   IonCard,
+  IonCardContent,
   IonCardHeader,
-  IonContent,
-  IonHeader,
-  IonImg,
-  IonTitle,
-  IonToolbar,
   IonCardSubtitle,
   IonCardTitle,
-  IonCardContent,
-  IonList,
-  IonLabel,
-  IonListHeader,
-  IonItem,
+  IonContent,
+  IonHeader,
   IonIcon,
-  IonButtons,
-  IonMenuButton
-} from '@ionic/react';
+  IonItem,
+  IonLabel,
+  IonList,
+  IonListHeader,
+  IonMenuButton,
+  IonTitle,
+  IonToolbar
+  } from '@ionic/react';
 import { book, build, colorFill, grid } from 'ionicons/icons';
 import React from 'react';
 import './Home.css';
@@ -34,7 +33,7 @@ const HomePage: React.FunctionComponent = () => {
       </IonHeader>
       <IonContent>
         <IonCard class="welcome-card">
-          <IonImg src="/assets/shapes.svg" />
+          <img src="/assets/shapes.svg" alt=""/>
           <IonCardHeader>
             <IonCardSubtitle>Get Started</IonCardSubtitle>
             <IonCardTitle>Welcome to Ionic</IonCardTitle>
