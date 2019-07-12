@@ -50,19 +50,19 @@ const HomePage: React.FunctionComponent = () => {
           <IonListHeader>
             <IonLabel>Resources</IonLabel>
           </IonListHeader>
-          <IonItem href="https://ionicframework.com/docs/">
+          <IonItem href="https://ionicframework.com/docs/" target="_blank">
             <IonIcon slot="start" color="medium" icon={book} />
             <IonLabel>Ionic Documentation</IonLabel>
           </IonItem>
-          <IonItem href="https://ionicframework.com/docs/building/scaffolding">
+          <IonItem href="https://ionicframework.com/docs/building/scaffolding" target="_blank">
             <IonIcon slot="start" color="medium" icon={build} />
             <IonLabel>Scaffold Out Your App</IonLabel>
           </IonItem>
-          <IonItem href="https://ionicframework.com/docs/layout/structure">
+          <IonItem href="https://ionicframework.com/docs/layout/structure" target="_blank">
             <IonIcon slot="start" color="medium" icon={grid} />
             <IonLabel>Change Your App Layout</IonLabel>
           </IonItem>
-          <IonItem href="https://ionicframework.com/docs/theming/basics">
+          <IonItem href="https://ionicframework.com/docs/theming/basics" target="_blank">
             <IonIcon slot="start" color="medium" icon={colorFill} />
             <IonLabel>Theme Your App</IonLabel>
           </IonItem>
