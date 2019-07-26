@@ -140,6 +140,9 @@
           "configurations": {
             "production": {
               "devServerTarget": "app:serve:production"
+            },
+            "ci": {
+              "devServerTarget": "app:serve:ci"
             }
           }
         },
