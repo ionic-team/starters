@@ -5,12 +5,12 @@ import {
   IonIcon,
   IonLabel,
   IonPage,
-  IonReactRouter,
   IonRouterOutlet,
   IonTabBar,
   IonTabButton,
   IonTabs
 } from '@ionic/react';
+import { IonReactRouter } from '@ionic/react-router';
 import { apps, flash, send } from 'ionicons/icons';
 import Tab1 from './pages/Tab1';
 import Tab2 from './pages/Tab2';
@@ -35,7 +35,7 @@ import '@ionic/core/css/display.css';
 
 const App: React.FunctionComponent = () => (
   <IonApp>
-    <IonReactRouter>
+    <IonReactRouter.Router>
       <IonPage id="main">
         <IonTabs>
           <IonRouterOutlet>
@@ -46,22 +46,22 @@ const App: React.FunctionComponent = () => (
             <Route exact path="/" render={() => <Redirect to="/tab1" />} />
           </IonRouterOutlet>
           <IonTabBar slot="bottom">
-            <IonTabButton tab="schedule" href="/tab1">
+            <IonTabButton tab="tab1" href="/tab1">
               <IonIcon icon={flash} />
               <IonLabel>Tab One</IonLabel>
             </IonTabButton>
-            <IonTabButton tab="speakers" href="/tab2">
+            <IonTabButton tab="tab2" href="/tab2">
               <IonIcon icon={apps} />
               <IonLabel>Tab Two</IonLabel>
             </IonTabButton>
-            <IonTabButton tab="map" href="/tab3">
+            <IonTabButton tab="tab3" href="/tab3">
               <IonIcon icon={send} />
               <IonLabel>Tab Three</IonLabel>
             </IonTabButton>
           </IonTabBar>
         </IonTabs>
       </IonPage>
-    </IonReactRouter>
+    </IonReactRouter.Router>
   </IonApp>
 );
 

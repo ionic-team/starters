@@ -1,6 +1,7 @@
 import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
-import { IonApp, IonPage, IonReactRouter, IonRouterOutlet, IonSplitPane } from '@ionic/react';
+import { IonApp, IonPage, IonRouterOutlet, IonSplitPane } from '@ionic/react';
+import { IonReactRouter } from '@ionic/react-router';
 import { AppPage } from './declarations';
 
 import Menu from './components/Menu';
@@ -39,7 +40,7 @@ const appPages: AppPage[] = [
 
 const App: React.FunctionComponent = () => (
   <IonApp>
-    <IonReactRouter>
+    <IonReactRouter.Router>
       <IonSplitPane contentId="main">
         <Menu appPages={appPages} />
         <IonPage id="main">
@@ -50,7 +51,7 @@ const App: React.FunctionComponent = () => (
           </IonRouterOutlet>
         </IonPage>
       </IonSplitPane>
-    </IonReactRouter>
+    </IonReactRouter.Router>
   </IonApp>
 );
 
