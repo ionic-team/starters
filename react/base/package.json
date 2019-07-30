@@ -6,7 +6,7 @@
     "@ionic/react": "^0.0.9",
     "@ionic/react-router": "^0.0.9",
     "@types/jest": "24.0.11",
-    "@types/node": "11.11.3",
+    "@types/node": "12.6.8",
     "@types/react": "^16.8.19",
     "@types/react-dom": "^16.8.4",
     "@types/react-router": "^4.4.4",
