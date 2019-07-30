@@ -35,7 +35,7 @@ import '@ionic/core/css/display.css';
 
 const App: React.FunctionComponent = () => (
   <IonApp>
-    <IonReactRouter.Router>
+    <IonReactRouter>
       <IonPage id="main">
         <IonTabs>
           <IonRouterOutlet>
@@ -61,7 +61,7 @@ const App: React.FunctionComponent = () => (
           </IonTabBar>
         </IonTabs>
       </IonPage>
-    </IonReactRouter.Router>
+    </IonReactRouter>
   </IonApp>
 );
 

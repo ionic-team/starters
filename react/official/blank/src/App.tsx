@@ -22,14 +22,14 @@ import '@ionic/core/css/display.css';
 
 const App: React.FunctionComponent = () => (
   <IonApp>
-    <IonReactRouter.Router>
+    <IonReactRouter>
       <IonPage>
         <IonRouterOutlet>
           <Route path="/home" component={Home} exact={true} />
           <Route exact path="/" render={() => <Redirect to="/home" />} />
         </IonRouterOutlet>
       </IonPage>
-    </IonReactRouter.Router>
+    </IonReactRouter>
   </IonApp>
 );
 

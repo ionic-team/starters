@@ -40,7 +40,7 @@ const appPages: AppPage[] = [
 
 const App: React.FunctionComponent = () => (
   <IonApp>
-    <IonReactRouter.Router>
+    <IonReactRouter>
       <IonSplitPane contentId="main">
         <Menu appPages={appPages} />
         <IonPage id="main">
@@ -51,7 +51,7 @@ const App: React.FunctionComponent = () => (
           </IonRouterOutlet>
         </IonPage>
       </IonSplitPane>
-    </IonReactRouter.Router>
+    </IonReactRouter>
   </IonApp>
 );
 
