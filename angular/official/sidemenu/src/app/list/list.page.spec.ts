@@ -14,7 +14,7 @@ describe('ListPage', () => {
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
-    fixture = await TestBed.createComponent(ListPage);
+    fixture = TestBed.createComponent(ListPage);
     component = fixture.componentInstance;
     fixture.detectChanges();
   }));
