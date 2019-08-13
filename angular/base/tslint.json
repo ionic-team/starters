@@ -63,7 +63,6 @@
     "trailing-comma": false,
     "no-output-on-prefix": true,
     "no-inputs-metadata-property": true,
-    "no-inputs-metadata-property": true,
     "no-host-metadata-property": true,
     "no-input-rename": true,
     "no-output-rename": true,
