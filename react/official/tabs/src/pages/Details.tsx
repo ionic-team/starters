@@ -9,7 +9,7 @@ const Details: React.FunctionComponent = () => {
             <IonButtons slot="start">
               <IonBackButton defaultHref="/tab2" />
             </IonButtons>
-            <IonTitle>Details</IonTitle>
+            <IonTitle>Detail</IonTitle>
           </IonToolbar>
         </IonHeader>
       <IonContent>
