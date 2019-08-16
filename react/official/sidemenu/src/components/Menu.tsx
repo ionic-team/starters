@@ -29,7 +29,7 @@ const Menu: React.FunctionComponent<MenuProps> = ({ appPages }) => (
       <IonList>
         {appPages.map((appPage, index) => {
           return (
-            <IonMenuToggle key={index} auto-hide="false">
+            <IonMenuToggle key={index} autoHide={false}>
               <IonItem href={appPage.url}>
                 <IonIcon slot="start" icon={appPage.icon} />
                 <IonLabel>{appPage.title}</IonLabel>
