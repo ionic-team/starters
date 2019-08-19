@@ -27,7 +27,7 @@ const Tab1: React.FunctionComponent = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent>
-        <IonCard class="welcome-card">
+        <IonCard className="welcome-card">
           <img src="/assets/shapes.svg" alt=""/>
           <IonCardHeader>
             <IonCardSubtitle>Get Started</IonCardSubtitle>
