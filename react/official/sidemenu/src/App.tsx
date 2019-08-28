@@ -1,7 +1,7 @@
 import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
 import { IonApp, IonPage, IonRouterOutlet, IonSplitPane } from '@ionic/react';
-import { IonReactRouter } from '@ionic/react-router';
+import { IonReactRouter, ViewManager } from '@ionic/react-router';
 import { AppPage } from './declarations';
 
 import Menu from './components/Menu';
@@ -47,11 +47,13 @@ const App: React.FunctionComponent = () => (
       <IonSplitPane contentId="main">
         <Menu appPages={appPages} />
         <IonPage id="main">
-          <IonRouterOutlet>
-            <Route path="/:tab(home)" component={Home} exact={true} />
-            <Route path="/:tab(home)/list" component={List} exact={true} />
-            <Route exact path="/" render={() => <Redirect to="/home" />} />
-          </IonRouterOutlet>
+          <ViewManager>
+            <IonRouterOutlet>
+              <Route path="/:tab(home)" component={Home} exact={true} />
+              <Route path="/:tab(home)/list" component={List} exact={true} />
+              <Route exact path="/" render={() => <Redirect to="/home" />} />
+            </IonRouterOutlet>
+          </ViewManager>
         </IonPage>
       </IonSplitPane>
     </IonReactRouter>
