@@ -1,9 +1,9 @@
-import { IonContent, IonHeader, IonTitle, IonToolbar } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import React from 'react';
 
 const Home: React.FunctionComponent = () => {
   return (
-    <>
+    <IonPage>
       <IonHeader>
         <IonToolbar>
           <IonTitle>Ionic Blank</IonTitle>
@@ -19,7 +19,7 @@ const Home: React.FunctionComponent = () => {
           will be your guide.
         </p>
       </IonContent>
-    </>
+    </IonPage>
   );
 };
 

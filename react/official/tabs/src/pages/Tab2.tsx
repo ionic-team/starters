@@ -1,11 +1,11 @@
 import React from 'react';
 import { RouteComponentProps } from 'react-router';
-import { IonContent, IonHeader, IonItem, IonLabel, IonList, IonTitle, IonToolbar } from '@ionic/react';
+import { IonContent, IonHeader, IonItem, IonLabel, IonList, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 
 const Tab2: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
 
   return (
-    <>
+    <IonPage>
       <IonHeader>
         <IonToolbar>
           <IonTitle>Tab Two</IonTitle>
@@ -20,7 +20,7 @@ const Tab2: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
           </IonItem>
         </IonList>
       </IonContent>
-    </>
+    </IonPage>
   );
 };
 

@@ -1,16 +1,16 @@
 import React from 'react';
-import { IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/react';
+import { IonHeader, IonToolbar, IonPage, IonTitle, IonContent } from '@ionic/react';
 
 const Tab3Page: React.FunctionComponent = () => {
   return (
-    <>
+    <IonPage>
       <IonHeader>
         <IonToolbar>
           <IonTitle>Tab Three</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent />
-    </>
+    </IonPage>
   );
 };
 

@@ -11,6 +11,7 @@ import {
   IonLabel,
   IonList,
   IonListHeader,
+  IonPage,
   IonTitle,
   IonToolbar
   } from '@ionic/react';
@@ -20,7 +21,7 @@ import './Tab1.css';
 
 const Tab1: React.FunctionComponent = () => {
   return (
-    <>
+    <IonPage>
       <IonHeader>
         <IonToolbar>
           <IonTitle>Tab One</IonTitle>
@@ -63,7 +64,7 @@ const Tab1: React.FunctionComponent = () => {
           </IonItem>
         </IonList>
       </IonContent>
-    </>
+    </IonPage>
   );
 };
 
