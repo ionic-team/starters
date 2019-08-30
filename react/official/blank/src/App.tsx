@@ -1,6 +1,6 @@
 import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
-import { IonApp, IonPage, IonRouterOutlet } from '@ionic/react';
+import { IonApp, IonRouterOutlet } from '@ionic/react';
 import { IonReactRouter, ViewManager } from '@ionic/react-router';
 import Home from './pages/Home';
 
@@ -26,14 +26,12 @@ import './theme/variables.css';
 const App: React.FunctionComponent = () => (
   <IonApp>
     <IonReactRouter>
-      <IonPage>
-        <ViewManager>
-          <IonRouterOutlet>
-            <Route path="/home" component={Home} exact={true} />
-            <Route exact path="/" render={() => <Redirect to="/home" />} />
-          </IonRouterOutlet>
-        </ViewManager>
-      </IonPage>
+      <ViewManager>
+        <IonRouterOutlet>
+          <Route path="/home" component={Home} exact={true} />
+          <Route exact path="/" render={() => <Redirect to="/home" />} />
+        </IonRouterOutlet>
+      </ViewManager>
     </IonReactRouter>
   </IonApp>
 );
