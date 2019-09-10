@@ -1,7 +1,9 @@
 import React from 'react';
-import { IonHeader, IonToolbar, IonTitle, IonContent } from '@ionic/react';
+import { RouteComponentProps } from 'react-router';
+import { IonContent, IonHeader, IonItem, IonLabel, IonList, IonTitle, IonToolbar } from '@ionic/react';
 
-const Tab2: React.SFC = () => {
+const Tab2: React.FunctionComponent<RouteComponentProps> = ({ history }) => {
+
   return (
     <>
       <IonHeader>
@@ -9,7 +11,15 @@ const Tab2: React.SFC = () => {
           <IonTitle>Tab Two</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent />
+      <IonContent>
+        <IonList>
+          <IonItem href="/tab2/details">
+            <IonLabel>
+              <h2>Go to detail</h2>
+            </IonLabel>
+          </IonItem>
+        </IonList>
+      </IonContent>
     </>
   );
 };
