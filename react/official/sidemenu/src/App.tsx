@@ -1,6 +1,6 @@
 import React from 'react';
 import { Redirect, Route } from 'react-router-dom';
-import { IonApp, IonPage, IonRouterOutlet, IonSplitPane } from '@ionic/react';
+import { IonApp, IonRouterOutlet, IonSplitPane } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { AppPage } from './declarations';
 
@@ -41,18 +41,16 @@ const appPages: AppPage[] = [
   }
 ];
 
-const App: React.FunctionComponent = () => (
+const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
       <IonSplitPane contentId="main">
         <Menu appPages={appPages} />
-        <IonPage id="main">
-          <IonRouterOutlet>
-            <Route path="/:tab(home)" component={Home} exact={true} />
-            <Route path="/:tab(home)/list" component={List} exact={true} />
-            <Route exact path="/" render={() => <Redirect to="/home" />} />
-          </IonRouterOutlet>
-        </IonPage>
+        <IonRouterOutlet id="main">
+          <Route path="/home" component={Home} exact={true} />
+          <Route path="/home/list" component={List} exact={true} />
+          <Route exact path="/" render={() => <Redirect to="/home" />} />
+        </IonRouterOutlet>
       </IonSplitPane>
     </IonReactRouter>
   </IonApp>

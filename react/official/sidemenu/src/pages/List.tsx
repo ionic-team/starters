@@ -1,10 +1,10 @@
-import { IonButtons, IonContent, IonHeader, IonIcon, IonItem, IonList, IonMenuButton, IonTitle, IonToolbar } from '@ionic/react';
+import { IonButtons, IonContent, IonHeader, IonIcon, IonItem, IonList, IonMenuButton, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import { americanFootball, basketball, beer, bluetooth, boat, build, flask, football, paperPlane, wifi } from 'ionicons/icons';
 import React from 'react';
 
-const ListPage: React.FunctionComponent = () => {
+const ListPage: React.FC = () => {
   return (
-    <>
+    <IonPage>
       <IonHeader>
         <IonToolbar>
           <IonButtons slot="start">
@@ -17,7 +17,7 @@ const ListPage: React.FunctionComponent = () => {
       <IonContent>
         <ListItems />
       </IonContent>
-    </>
+    </IonPage>
   );
 };
 

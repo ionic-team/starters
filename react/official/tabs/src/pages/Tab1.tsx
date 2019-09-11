@@ -11,16 +11,17 @@ import {
   IonLabel,
   IonList,
   IonListHeader,
+  IonPage,
   IonTitle,
   IonToolbar
-  } from '@ionic/react';
+} from '@ionic/react';
 import { book, build, colorFill, grid } from 'ionicons/icons';
 import React from 'react';
 import './Tab1.css';
 
-const Tab1: React.FunctionComponent = () => {
+const Tab1: React.FC = () => {
   return (
-    <>
+    <IonPage>
       <IonHeader>
         <IonToolbar>
           <IonTitle>Tab One</IonTitle>
@@ -28,7 +29,7 @@ const Tab1: React.FunctionComponent = () => {
       </IonHeader>
       <IonContent>
         <IonCard className="welcome-card">
-          <img src="/assets/shapes.svg" alt=""/>
+          <img src="/assets/shapes.svg" alt="" />
           <IonCardHeader>
             <IonCardSubtitle>Get Started</IonCardSubtitle>
             <IonCardTitle>Welcome to Ionic</IonCardTitle>
@@ -63,7 +64,7 @@ const Tab1: React.FunctionComponent = () => {
           </IonItem>
         </IonList>
       </IonContent>
-    </>
+    </IonPage>
   );
 };
 
