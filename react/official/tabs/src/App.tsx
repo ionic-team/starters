@@ -35,7 +35,7 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 
-const App: React.FunctionComponent = () => (
+const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
       <IonTabs>

@@ -41,7 +41,7 @@ const appPages: AppPage[] = [
   }
 ];
 
-const App: React.FunctionComponent = () => (
+const App: React.FC = () => (
   <IonApp>
     <IonReactRouter>
       <IonSplitPane contentId="main">

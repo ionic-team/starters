@@ -19,7 +19,7 @@ import { book, build, colorFill, grid } from 'ionicons/icons';
 import React from 'react';
 import './Tab1.css';
 
-const Tab1: React.FunctionComponent = () => {
+const Tab1: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
