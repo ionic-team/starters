@@ -28,7 +28,4 @@ npm-debug.log*
 /node_modules
 /platforms
 /plugins
-/resources/android
-/resources/ios
-/resources/windows
 /www
