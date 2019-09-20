@@ -5,10 +5,10 @@
   "dependencies": {
     "@ionic/react": "^4.9.0-rc.2",
     "@ionic/react-router": "^4.9.0-rc.2",
-    "@types/jest": "24.0.11",
-    "@types/node": "11.11.3",
-    "@types/react": "^16.9.1",
-    "@types/react-dom": "^16.8.5",
+    "@types/jest": "24.0.18",
+    "@types/node": "12.7.5",
+    "@types/react": "^16.9.2",
+    "@types/react-dom": "^16.9.0",
     "@types/react-router": "^5.0.3",
     "@types/react-router-dom": "^4.3.1",
     "ionicons": "^4.6.3",
@@ -16,8 +16,8 @@
     "react-dom": "^16.9.0",
     "react-router": "^5.0.1",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "3.1.0",
-    "typescript": "3.5.3"
+    "react-scripts": "3.1.2",
+    "typescript": "3.6.3"
   },
   "scripts": {
     "start": "react-scripts start",
