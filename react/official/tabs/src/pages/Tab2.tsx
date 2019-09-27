@@ -11,7 +11,7 @@ const Tab2: React.FC = () => {
       </IonHeader>
       <IonContent>
         <IonList>
-          <IonItem href="/tab2/details">
+          <IonItem routerLink="/tab2/details">
             <IonLabel>
               <h2>Go to detail</h2>
             </IonLabel>
