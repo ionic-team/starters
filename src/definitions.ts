@@ -27,11 +27,6 @@ export interface StarterManifest {
   gitignore?: string[];
 }
 
-export interface PackageJson {
-  dependencies?: { [key: string]: string; };
-  devDependencies?: { [key: string]: string; };
-}
-
 export type TsconfigJson = TsconfigBase & (TsconfgFiles | TsconfigExclude | TsconfigInclude);
 
 export interface TsconfigBase {
