@@ -19,6 +19,10 @@
     "react-scripts": "3.2.0",
     "typescript": "3.6.3"
   },
+  "devDependencies": {
+    "tslint": "^5.20.0",
+    "tslint-react": "^4.1.0"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
