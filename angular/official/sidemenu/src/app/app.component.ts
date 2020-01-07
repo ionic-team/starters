@@ -10,18 +10,40 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
+  public selectedIndex: number = 0;
   public appPages = [
     {
-      title: 'Home',
+      title: 'Inbox',
       url: '/home',
-      icon: 'home'
+      icon: 'mail'
     },
     {
-      title: 'List',
-      url: '/list',
-      icon: 'list'
+      title: 'Outbox',
+      url: '/home',
+      icon: 'paper-plane'
+    },
+    {
+      title: 'Favorites',
+      url: '/home',
+      icon: 'heart'
+    },
+    {
+      title: 'Archived',
+      url: '/home',
+      icon: 'archive'
+    },
+    {
+      title: 'Trash',
+      url: '/home',
+      icon: 'trash'
+    },
+    {
+      title: 'Spam',
+      url: '/home',
+      icon: 'warning'
     }
   ];
+  public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
 
   constructor(
     private platform: Platform,
@@ -36,5 +58,14 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
+  }
+
+  public select(index: number) {
+    const { title } = this.appPages[index];
+
+    const event = new CustomEvent('sideMenuItemSelect', { detail: { page: title } });
+    document.dispatchEvent(event);
+
+    this.selectedIndex = index;
   }
 }

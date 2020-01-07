@@ -7,6 +7,12 @@ import { Component } from '@angular/core';
 })
 export class HomePage {
 
-  constructor() {}
+  public page: string = 'Inbox';
+
+  constructor() {
+    document.addEventListener('sideMenuItemSelect', (ev: CustomEvent) => {
+      this.page = ev.detail.page;
+    });
+  }
 
 }
