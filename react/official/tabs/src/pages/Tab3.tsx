@@ -1,5 +1,5 @@
 import React from 'react';
-import { IonHeader, IonToolbar, IonPage, IonTitle, IonContent } from '@ionic/react';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 
 const Tab3Page: React.FC = () => {
   return (
@@ -9,7 +9,7 @@ const Tab3Page: React.FC = () => {
           <IonTitle>Tab Three</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent />
+      <IonContent></IonContent>
     </IonPage>
   );
 };
