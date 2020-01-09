@@ -9,9 +9,9 @@ import {
   IonMenuToggle,
   IonNote,
 } from '@ionic/react';
-import React, { useState } from 'react';
+import React from 'react';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
-import { bookmarkOutline, bookmarkSharp, mailOutline, mailSharp, paperPlaneOutline, paperPlaneSharp, heartOutline, heartSharp, archiveOutline, archiveSharp, trashOutline, trashSharp, warningOutline, warningSharp } from 'ionicons/icons';
+import { archiveOutline, archiveSharp, bookmarkOutline, heartOutline, heartSharp, mailOutline, mailSharp, paperPlaneOutline, paperPlaneSharp, trashOutline, trashSharp, warningOutline, warningSharp } from 'ionicons/icons';
 import './Menu.css';
 
 interface MenuProps extends RouteComponentProps {
