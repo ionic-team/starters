@@ -1,5 +1,6 @@
 import React from 'react';
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
+import ExploreContainer from '../components/ExploreContainer';
 
 const Tab1: React.FC = () => {
   return (
@@ -15,11 +16,7 @@ const Tab1: React.FC = () => {
             <IonTitle size="large">Tab 1</IonTitle>
           </IonToolbar>
         </IonHeader>
-
-        <div id="container">
-          <strong>Tab 1 page</strong>
-          <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-        </div>
+        <ExploreContainer name="Tab 1 page" />
       </IonContent>
     </IonPage>
   );
