@@ -14,32 +14,32 @@ export class AppComponent {
   public appPages = [
     {
       title: 'Inbox',
-      url: '/home',
+      url: '/folder/inbox',
       icon: 'mail'
     },
     {
       title: 'Outbox',
-      url: '/home',
+      url: '/folder/outbox',
       icon: 'paper-plane'
     },
     {
       title: 'Favorites',
-      url: '/home',
+      url: '/folder/favorites',
       icon: 'heart'
     },
     {
       title: 'Archived',
-      url: '/home',
+      url: '/folder/archived',
       icon: 'archive'
     },
     {
       title: 'Trash',
-      url: '/home',
+      url: '/folder/trash',
       icon: 'trash'
     },
     {
       title: 'Spam',
-      url: '/home',
+      url: '/folder/spam',
       icon: 'warning'
     }
   ];
@@ -60,12 +60,8 @@ export class AppComponent {
     });
   }
 
-  public select(index: number) {
-    const { title } = this.appPages[index];
-
-    const event = new CustomEvent('sideMenuItemSelect', { detail: { page: title } });
-    document.dispatchEvent(event);
-
-    this.selectedIndex = index;
+  ngOnInit() {
+    const path = window.location.pathname.split('folder/')[1];
+    this.selectedIndex = this.appPages.findIndex(page => page.title.toLowerCase() === path);
   }
 }
