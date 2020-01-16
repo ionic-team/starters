@@ -11,7 +11,7 @@ import {
   IonTitle,
   IonToolbar,
   useIonViewWillEnter
-  } from '@ionic/react';
+} from '@ionic/react';
 import './Home.css';
 
 const Home: React.FC = () => {
@@ -23,6 +23,12 @@ const Home: React.FC = () => {
     setMessages(msgs);
   });
 
+  const refresh = (e: CustomEvent) => {
+    setTimeout(() => {
+      e.detail.complete();
+    }, 3000);
+  };
+
   return (
     <IonPage id="home-page">
       <IonHeader>
@@ -31,7 +37,7 @@ const Home: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        <IonRefresher slot="fixed">
+        <IonRefresher slot="fixed" onIonRefresh={refresh}>
           <IonRefresherContent></IonRefresherContent>
         </IonRefresher>
 
