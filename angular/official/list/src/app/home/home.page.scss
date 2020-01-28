@@ -7,6 +7,10 @@ ion-content ion-toolbar {
   --background: transparent;
 }
 
+ion-list {
+  padding-bottom: 0px;
+}
+
 ion-label {
   margin-top: 12px;
   margin-bottom: 12px;
