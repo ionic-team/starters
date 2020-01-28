@@ -2,6 +2,7 @@ import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, Io
 import React from 'react';
 import { RouteComponentProps } from 'react-router';
 import ExploreContainer from '../components/ExploreContainer';
+import './Page.css';
 
 const Page: React.FC<RouteComponentProps<{ name: string; }>> = ({ match }) => {
   return (
