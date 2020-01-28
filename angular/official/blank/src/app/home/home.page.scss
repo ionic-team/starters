@@ -25,3 +25,7 @@
 #container a {
   text-decoration: none;
 }
+
+ion-content ion-toolbar {
+  --background: translucent;
+}
