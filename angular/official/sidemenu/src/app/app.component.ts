@@ -14,32 +14,32 @@ export class AppComponent {
   public appPages = [
     {
       title: 'Inbox',
-      url: '/folder/inbox',
+      url: '/folder/Inbox',
       icon: 'mail'
     },
     {
       title: 'Outbox',
-      url: '/folder/outbox',
+      url: '/folder/Outbox',
       icon: 'paper-plane'
     },
     {
       title: 'Favorites',
-      url: '/folder/favorites',
+      url: '/folder/Favorites',
       icon: 'heart'
     },
     {
       title: 'Archived',
-      url: '/folder/archived',
+      url: '/folder/Archived',
       icon: 'archive'
     },
     {
       title: 'Trash',
-      url: '/folder/trash',
+      url: '/folder/Trash',
       icon: 'trash'
     },
     {
       title: 'Spam',
-      url: '/folder/spam',
+      url: '/folder/Spam',
       icon: 'warning'
     }
   ];
