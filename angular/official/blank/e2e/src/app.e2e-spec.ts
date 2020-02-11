@@ -9,6 +9,6 @@ describe('new App', () => {
 
   it('should be blank', () => {
     page.navigateTo();
-    expect(page.getParagraphText()).toContain('The world is your oyster.');
+    expect(page.getParagraphText()).toContain('Start with Ionic UI Components');
   });
 });

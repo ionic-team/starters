@@ -17,6 +17,7 @@ export class MessageComponent implements OnInit {
   ngOnInit() {}
 
   isIos() {
-    return this.config.get('mode') === 'ios';
+    const win = window as any;
+    return win && win.Ionic && win.Ionic.mode === 'ios';
   }
 }
