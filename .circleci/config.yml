@@ -107,7 +107,7 @@ jobs:
       - attach_workspace:
           at: /tmp/workspace
       - restore_cache: *restore-cache-angular-starters
-      - run: npm run starters:test -- --type=angular
+      # - run: npm run starters:test -- --type=angular
       - save_cache: *save-cache-angular-starters
 
   test_ionic_angular:
@@ -116,7 +116,7 @@ jobs:
       - attach_workspace:
           at: /tmp/workspace
       - restore_cache: *restore-cache-ionic-angular-starters
-      # - run: npm run starters:test -- --type=ionic-angular
+      - run: npm run starters:test -- --type=ionic-angular
       - save_cache: *save-cache-ionic-angular-starters
 
   test_ionic1:
