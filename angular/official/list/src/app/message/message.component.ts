@@ -9,13 +9,13 @@ import { Config } from '@ionic/angular';
 })
 export class MessageComponent implements OnInit {
   @Input() message: Message;
-  
+
   constructor(
     private config: Config
   ) { }
 
   ngOnInit() {}
-  
+
   isIos() {
     return this.config.get('mode') === 'ios';
   }

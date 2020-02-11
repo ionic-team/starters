@@ -8,7 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class FolderPage implements OnInit {
   public folder: string;
-  
+
   constructor(private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {

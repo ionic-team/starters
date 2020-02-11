@@ -10,7 +10,7 @@ import { Config } from '@ionic/angular';
 })
 export class ViewMessagePage implements OnInit {
   public message: Message;
-  
+
   constructor(
     private data: DataService,
     private activatedRoute: ActivatedRoute,
@@ -21,7 +21,7 @@ export class ViewMessagePage implements OnInit {
     const id = this.activatedRoute.snapshot.paramMap.get('id');
     this.message = this.data.getMessageById(parseInt(id));
   }
-  
+
   getBackButtonText() {
     return this.config.get('mode') === 'ios' ? 'Inbox' : '';
   }

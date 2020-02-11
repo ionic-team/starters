@@ -29,7 +29,7 @@ export class DataService {
       subject: 'Report Results',
       date: '4:55 AM',
       id: 2
-      
+
     },
     {
       fromName: 'Bill Thomas',
@@ -64,11 +64,11 @@ export class DataService {
   ];
 
   constructor() { }
-  
+
   public getMessages(): Message[] {
     return this.messages;
   }
-  
+
   public getMessageById(id: number): Message {
     return this.messages[id];
   }

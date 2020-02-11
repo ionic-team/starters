@@ -8,13 +8,13 @@ import { DataService, Message } from '../services/data.service';
 })
 export class HomePage {
   constructor(private data: DataService) {}
-  
+
   refresh(ev: CustomEvent) {
     setTimeout(() => {
       ev.detail.complete();
     }, 3000);
   }
-  
+
   getMessages(): Message[] {
     return this.data.getMessages();
   }
