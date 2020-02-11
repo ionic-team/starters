@@ -10,6 +10,6 @@ export class AppPage {
   }
 
   getPageOneTitleText() {
-    return element(by.tagName('app-home')).element(by.deepCss('ion-title')).getText();
+    return element(by.tagName('app-folder')).element(by.deepCss('ion-title')).getText();
   }
 }
