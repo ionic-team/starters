@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { DataService, Message } from '../services/data.service';
-import { Config } from '@ionic/angular';
 
 @Component({
   selector: 'app-view-message',
@@ -13,8 +12,7 @@ export class ViewMessagePage implements OnInit {
 
   constructor(
     private data: DataService,
-    private activatedRoute: ActivatedRoute,
-    private config: Config
+    private activatedRoute: ActivatedRoute
   ) { }
 
   ngOnInit() {
