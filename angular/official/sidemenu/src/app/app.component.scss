@@ -66,9 +66,6 @@ ion-menu.md ion-item ion-label {
 }
 
 ion-menu.ios ion-content {
-  --padding-start: 16px;
-  --padding-end: 16px;
-  --padding-top: 20px;
   --padding-bottom: 20px;
 }
 
@@ -82,7 +79,8 @@ ion-menu.ios ion-note {
 }
 
 ion-menu.ios ion-item {
-  --padding-start: 0;
+  --padding-start: 16px;
+  --padding-end: 16px;
   --min-height: 50px;
 }
 
@@ -101,7 +99,10 @@ ion-menu.ios ion-list#labels-list ion-list-header {
 
 ion-menu.ios ion-list-header,
 ion-menu.ios ion-note {
-  padding-left: 2px;
+  padding-left: 16px;
+  padding-right: 16px;
+
+  margin-bottom: 8px;
 }
 
 ion-note {
