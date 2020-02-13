@@ -34,9 +34,10 @@ ion-item ion-note {
   font-size: 15px;
   margin-right: 8px;
   font-weight: normal;
-  &.md {
-    margin-right: 14px;
-  }
+}
+
+ion-item ion-note.md {
+  margin-right: 14px;
 }
 
 .dot {
