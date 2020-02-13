@@ -18,9 +18,6 @@ import '@ionic/react/css/display.css';
 /* Theme variables */
 import './theme/variables.css';
 
-/* Global styles */
-import './global.css';
-
 const App: React.FunctionComponent = () => {
   return (
     <div className="App">
