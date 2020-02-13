@@ -1,4 +1,4 @@
-<ion-header translucent>
+<ion-header translucent="true">
   <ion-toolbar>
     <ion-buttons>
       <ion-back-button [text]="getBackButtonText()" defaultHref="/"></ion-back-button>
@@ -6,7 +6,7 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content fullscreen *ngIf="message">
+<ion-content fullscreen="true" *ngIf="message">
   <ion-item>
     <ion-icon name="person-circle" color="primary"></ion-icon>
     <ion-label class="ion-text-wrap">
