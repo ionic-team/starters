@@ -9,7 +9,7 @@ import { DataService, Message } from '../services/data.service';
 export class HomePage {
   constructor(private data: DataService) {}
 
-  refresh(ev: CustomEvent) {
+  refresh(ev) {
     setTimeout(() => {
       ev.detail.complete();
     }, 3000);
