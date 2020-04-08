@@ -26,19 +26,16 @@ import './theme/variables.css';
 
 const App: React.FC = () => {
 
-  const [selectedPage, setSelectedPage] = useState('');
-
   return (
     <IonApp>
       <IonReactRouter>
         <IonSplitPane contentId="main">
-          <Menu selectedPage={selectedPage} />
+          <Menu />
           <IonRouterOutlet id="main">
             <Route path="/page/:name" render={(props) => {
-              setSelectedPage(props.match.params.name);
               return <Page {...props} />;
             }} exact={true} />
-            <Route path="/" render={() => <Redirect to="/page/Inbox" />} exact={true} />
+          	<Redirect exact from="/" to="/page/Inbox" />
           </IonRouterOutlet>
         </IonSplitPane>
       </IonReactRouter>
