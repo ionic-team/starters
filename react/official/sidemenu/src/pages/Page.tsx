@@ -12,7 +12,7 @@ const Page: React.FC = () => {
 
   useEffect(() => {
     context.setSelectedPage(name);
-  }, [name]);
+  }, [context, name]);
 
   return (
     <IonPage>
