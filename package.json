@@ -15,7 +15,7 @@
   "main": "./dist/index.js",
   "devDependencies": {
     "@ionic/cli-framework": "^2.0.2",
-    "@ionic/utils-array": "^1.0.1",
+    "@ionic/utils-array": "^2.1.1",
     "@ionic/utils-fs": "^2.0.2",
     "@types/fs-extra": "^8.0.0",
     "@types/inquirer": "0.0.43",
