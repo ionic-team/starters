@@ -9,11 +9,11 @@ import {
   IonMenuToggle,
   IonNote,
 } from '@ionic/react';
-import React, { useContext } from 'react';
-import { withRouter } from 'react-router-dom';
+
+import React from "react";
+import { withRouter, useLocation } from "react-router-dom";
 import { archiveOutline, archiveSharp, bookmarkOutline, heartOutline, heartSharp, mailOutline, mailSharp, paperPlaneOutline, paperPlaneSharp, trashOutline, trashSharp, warningOutline, warningSharp } from 'ionicons/icons';
 import './Menu.css';
-import { SimpleStore } from './SimpleStore';
 
 interface AppPage {
   url: string;
@@ -63,9 +63,8 @@ const appPages: AppPage[] = [
 
 const labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
 
-const Menu: React.FC = () => {
-
-  const context = useContext(SimpleStore);
+const Menu: React.FunctionComponent = () => {
+	let location = useLocation();
 
   return (
     <IonMenu contentId="main" type="overlay">
@@ -76,7 +75,7 @@ const Menu: React.FC = () => {
           {appPages.map((appPage, index) => {
             return (
               <IonMenuToggle key={index} autoHide={false}>
-                <IonItem className={context.selectedPage === appPage.title ? 'selected' : ''} routerLink={appPage.url} routerDirection="none" lines="none" detail={false}>
+                <IonItem className={location.pathname === appPage.url ? "selected" : ""}  routerLink={appPage.url} routerDirection="none" lines="none" detail={false}>
                   <IonIcon slot="start" icon={appPage.iosIcon} />
                   <IonLabel>{appPage.title}</IonLabel>
                 </IonItem>
