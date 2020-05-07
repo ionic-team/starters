@@ -225,8 +225,4 @@ http://ionicframework.com/docs/theming/ */
 
     --ion-tab-bar-background: #1f1f1f;
   }
-
-  ion-title.title-large {
-    --color: white;
-  }
 }

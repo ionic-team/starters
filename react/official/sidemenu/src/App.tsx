@@ -1,6 +1,6 @@
 import Menu from './components/Menu';
 import Page from './pages/Page';
-import React, { useState } from 'react';
+import React from 'react';
 import { IonApp, IonRouterOutlet, IonSplitPane } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { Redirect, Route } from 'react-router-dom';
@@ -26,19 +26,14 @@ import './theme/variables.css';
 
 const App: React.FC = () => {
 
-  const [selectedPage, setSelectedPage] = useState('');
-
   return (
     <IonApp>
       <IonReactRouter>
         <IonSplitPane contentId="main">
-          <Menu selectedPage={selectedPage} />
+          <Menu />
           <IonRouterOutlet id="main">
-            <Route path="/page/:name" render={(props) => {
-              setSelectedPage(props.match.params.name);
-              return <Page {...props} />;
-            }} exact={true} />
-            <Route path="/" render={() => <Redirect to="/page/Inbox" />} exact={true} />
+            <Route path="/page/:name" component={Page} exact />
+            <Redirect from="/" to="/page/Inbox" exact />
           </IonRouterOutlet>
         </IonSplitPane>
       </IonReactRouter>
