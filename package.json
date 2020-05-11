@@ -34,7 +34,7 @@
     "tar": "^4.4.10",
     "tslint": "^5.17.0",
     "tslint-ionic-rules": "0.0.21",
-    "typescript": "~3.7.2"
+    "typescript": "~3.8.3"
   },
   "husky": {
     "hooks": {
