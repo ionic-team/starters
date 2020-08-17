@@ -27,7 +27,7 @@
     "aws-sdk": "^2.472.0",
     "chalk": "^2.3.0",
     "cross-spawn": "^7.0.0",
-    "husky": "^3.0.0",
+    "husky": "^4.2.5",
     "lodash": "^4.17.4",
     "minimatch": "^3.0.4",
     "rimraf": "^2.6.2",
