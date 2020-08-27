@@ -12,7 +12,6 @@
           <ion-title size="large">Blank</ion-title>
         </ion-toolbar>
       </ion-header>
-      <ion-input @ioninput="onChange($event)"></ion-input>
     
       <div id="container">
         <strong>Ready to create an app?</strong>
@@ -23,9 +22,9 @@
 </template>
 
 <script lang="ts">
-import { IonContent, IonInput, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
 import { defineComponent } from 'vue';
-import './Home.scss';
+import './Home.css';
 
 export default defineComponent({
   name: 'Home',
@@ -34,15 +33,7 @@ export default defineComponent({
     IonHeader,
     IonPage,
     IonTitle,
-    IonInput,
     IonToolbar
-  },
-  setup() {
-    return {
-      onChange: (ev: any) => {
-        console.log('on change',ev)
-      }
-    }
   }
 });
 </script>

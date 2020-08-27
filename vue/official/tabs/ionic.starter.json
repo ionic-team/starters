@@ -1,0 +1,12 @@
+{
+  "name": "Tabs Starter",
+  "baseref": "vue-starters",
+  "tarignore": [
+    "node_modules",
+    "package-lock.json",
+    "www"
+  ],
+  "scripts": {
+    "test": "npm run build"
+  }
+}
