@@ -1,6 +1,6 @@
 {
   "name": "Blank Starter",
-  "baseref": "vue-starters",
+  "baseref": "master",
   "tarignore": [
     "node_modules",
     "package-lock.json",
