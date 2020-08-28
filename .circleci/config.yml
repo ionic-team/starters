@@ -96,9 +96,9 @@ jobs:
       - run: npm run src:lint
       - run: npm run src:build
       - run: rm -rf node_modules/@types
-      - run: npm run starters:find-redundant
-      - run: npm run starters:build
-      - run: npm run starters:generate-checksum
+      - run: npm run starters:find-redundant -- --current
+      - run: npm run starters:build -- --current
+      - run: npm run starters:generate-checksum -- --current
       - persist_to_workspace:
           root: /tmp/workspace
           paths:
