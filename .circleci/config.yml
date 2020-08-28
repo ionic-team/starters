@@ -19,10 +19,10 @@ aliases:
         - node_modules
 
   - &restore-cache-vue-starters
-      key: dependency-cache-{{ checksum "starter-checksum-vue.sha256" }}-1
+      key: dependency-cache-{{ checksum "starter-checksum-vue.sha256" }}-2
 
   - &save-cache-vue-starters
-      key: dependency-cache-{{ checksum "starter-checksum-vue.sha256" }}-1
+      key: dependency-cache-{{ checksum "starter-checksum-vue.sha256" }}-2
       paths:
         - build/vue-official-list/node_modules
         - build/vue-official-blank/node_modules
