@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@ionic/vue": "5.4.0-dev.202008272001.faa6736",
-    "@ionic/vue-router": "5.4.0-dev.202008272001.faa6736e",
+    "@ionic/vue-router": "5.4.0-dev.202008272001.faa6736",
     "core-js": "^3.6.5",
     "vue": "^3.0.0-0",
     "vue-router": "^4.0.0-0"
