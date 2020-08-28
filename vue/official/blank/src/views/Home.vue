@@ -24,7 +24,6 @@
 <script lang="ts">
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
 import { defineComponent } from 'vue';
-import './Home.css';
 
 export default defineComponent({
   name: 'Home',

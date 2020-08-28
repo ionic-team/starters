@@ -1,5 +1,5 @@
 <template>
-  <ion-page id="view-message-page">
+  <ion-page>
     <ion-header :translucent="true">
       <ion-toolbar>
         <ion-buttons>
@@ -38,7 +38,6 @@ import { IonBackButton, IonButtons, IonContent, IonHeader, IonIcon, IonItem, Ion
 import { personCircle } from 'ionicons/icons';
 import { getMessage } from '../data/messages';
 import { defineComponent } from 'vue';
-import './ViewMessage.css';
 
 export default defineComponent({
   name: 'Home',
@@ -72,3 +71,46 @@ export default defineComponent({
   },
 });
 </script>
+
+<style scoped>
+ion-item {
+  --inner-padding-end: 0;
+  --background: transparent;
+}
+
+ion-label {
+  margin-top: 12px;
+  margin-bottom: 12px;
+}
+
+ion-item h2 {
+  font-weight: 600;
+}
+
+ion-item .date {
+  float: right;
+  align-items: center;
+  display: flex;
+}
+
+ion-item ion-icon {
+  font-size: 42px;
+  margin-right: 8px;
+}
+
+ion-item ion-note {
+  font-size: 15px;
+  margin-right: 12px;
+  font-weight: normal;
+}
+
+h1 {
+  margin: 0;
+  font-weight: bold;
+  font-size: 22px;
+}
+
+p {
+  line-height: 22px;
+}
+</style>

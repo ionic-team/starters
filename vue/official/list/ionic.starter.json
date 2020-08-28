@@ -1,6 +1,6 @@
 {
   "name": "List Starter",
-  "baseref": "master",
+  "baseref": "vue-starters",
   "tarignore": [
     "node_modules",
     "package-lock.json",
