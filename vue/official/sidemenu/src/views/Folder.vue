@@ -42,7 +42,7 @@ export default {
   },
   setup() {
     const route = useRoute();
-    const folder = ref('Inbox');
+    const folder = ref(route.params.id || 'Inbox');
     const matchedFolder = computed(() => route.params.id);
     
     watch(matchedFolder, () => {
