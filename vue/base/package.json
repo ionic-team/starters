@@ -10,8 +10,8 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "@ionic/vue": "^0.4.0",
-    "@ionic/vue-router": "^0.4.0",
+    "@ionic/vue": "^0.5.1",
+    "@ionic/vue-router": "^0.5.1",
     "core-js": "^3.6.5",
     "vue": "^3.0.0-0",
     "vue-router": "^4.0.0-0"
