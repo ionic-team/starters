@@ -11,19 +11,31 @@ aliases:
         rm google-chrome.deb
 
   - &restore-cache-src
-      key: dependency-cache-{{ checksum "package.json" }}-1
+      key: dependency-cache-{{ checksum "package.json" }}-2
 
   - &save-cache-src
-      key: dependency-cache-{{ checksum "package.json" }}-1
+      key: dependency-cache-{{ checksum "package.json" }}-2
       paths:
         - node_modules
 
+  - &restore-cache-vue-starters
+      key: dependency-cache-{{ checksum "starter-checksum-vue.sha256" }}-2
+
+  - &save-cache-vue-starters
+      key: dependency-cache-{{ checksum "starter-checksum-vue.sha256" }}-2
+      paths:
+        - build/vue-official-list/node_modules
+        - build/vue-official-blank/node_modules
+        - build/vue-official-sidemenu/node_modules
+        - build/vue-official-tabs/node_modules
+  
   - &restore-cache-react-starters
       key: dependency-cache-{{ checksum "starter-checksum-react.sha256" }}-1
 
   - &save-cache-react-starters
       key: dependency-cache-{{ checksum "starter-checksum-react.sha256" }}-1
       paths:
+        - build/react-official-list/node_modules
         - build/react-official-blank/node_modules
         - build/react-official-sidemenu/node_modules
         - build/react-official-tabs/node_modules
@@ -34,6 +46,7 @@ aliases:
   - &save-cache-angular-starters
       key: dependency-cache-{{ checksum "starter-checksum-angular.sha256" }}-1
       paths:
+        - build/angular-official-list/node_modules
         - build/angular-official-blank/node_modules
         - build/angular-official-sidemenu/node_modules
         - build/angular-official-tabs/node_modules
@@ -90,6 +103,15 @@ jobs:
           root: /tmp/workspace
           paths:
             - "*"
+            
+  test_vue:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: /tmp/workspace
+      - restore_cache: *restore-cache-vue-starters
+      - run: npm run starters:test -- --type=vue
+      - save_cache: *save-cache-vue-starters
 
   test_react:
     <<: *defaults
@@ -140,6 +162,9 @@ workflows:
   build:
     jobs:
       - build
+      - test_vue:
+          requires:
+            - build
       - test_react:
           requires:
             - build
@@ -154,6 +179,7 @@ workflows:
             - build
       - deploy:
           requires:
+            - test_vue
             - test_react
             - test_angular
             - test_ionic_angular
