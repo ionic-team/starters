@@ -17,7 +17,7 @@
     "@ionic/cli-framework": "^2.0.2",
     "@ionic/utils-array": "^1.0.1",
     "@ionic/utils-fs": "^2.0.2",
-    "@types/fs-extra": "^8.0.0",
+    "@types/fs-extra": "^9.0.2",
     "@types/inquirer": "0.0.43",
     "@types/lodash": "^4.14.134",
     "@types/minimatch": "^3.0.3",
