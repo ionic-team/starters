@@ -13,7 +13,7 @@ export const STARTER_TYPE_OFFICIAL = 'official';
 export const STARTER_TYPE_COMMUNITY = 'community';
 export const REPO_DIRECTORY = path.resolve(path.dirname(path.dirname(__dirname)));
 export const INTEGRATIONS_DIRECTORY = path.resolve(REPO_DIRECTORY, 'integrations');
-export const IONIC_TYPE_DIRECTORIES = ['ionic1', 'ionic-angular', 'angular', 'react'];
+export const IONIC_TYPE_DIRECTORIES = ['ionic1', 'ionic-angular', 'angular', 'react', 'vue'];
 
 export const BUILD_DIRECTORY = path.resolve(REPO_DIRECTORY, 'build');
 export const STARTERS_LIST_PATH = path.resolve(BUILD_DIRECTORY, 'starters.json');
