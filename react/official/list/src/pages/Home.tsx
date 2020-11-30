@@ -1,5 +1,5 @@
 import MessageListItem from '../components/MessageListItem';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Message, getMessages } from '../data/messages';
 import {
   IonContent,
