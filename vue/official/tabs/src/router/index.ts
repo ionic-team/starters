@@ -13,7 +13,7 @@ const routes: Array<RouteRecordRaw> = [
     children: [
       {
         path: '',
-        redirect: 'tab1'
+        redirect: '/tabs/tab1'
       },
       {
         path: 'tab1',
