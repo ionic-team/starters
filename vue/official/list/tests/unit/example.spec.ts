@@ -2,8 +2,8 @@ import { mount } from '@vue/test-utils'
 import Home from '@/views/Home.vue'
 
 describe('Home.vue', () => {
-  it('renders home vue', () => {
+  it('should render home view', () => {
     const wrapper = mount(Home)
-    expect(wrapper.text()).toMatch('Ready to create an app?')
+    expect(wrapper.text()).toMatch('Inbox')
   })
 })
