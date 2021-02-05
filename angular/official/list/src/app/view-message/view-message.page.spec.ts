@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 import { ViewMessagePageRoutingModule } from './view-message-routing.module';
@@ -9,7 +9,7 @@ describe('ViewMessagePage', () => {
   let component: ViewMessagePage;
   let fixture: ComponentFixture<ViewMessagePage>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ ViewMessagePage ],
       imports: [IonicModule.forRoot(), ViewMessagePageRoutingModule, RouterModule.forRoot([])]
