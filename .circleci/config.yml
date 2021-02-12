@@ -28,7 +28,7 @@ aliases:
         - build/vue-official-blank/node_modules
         - build/vue-official-sidemenu/node_modules
         - build/vue-official-tabs/node_modules
-  
+
   - &restore-cache-react-starters
       key: dependency-cache-{{ checksum "starter-checksum-react.sha256" }}-1
 
@@ -103,7 +103,7 @@ jobs:
           root: /tmp/workspace
           paths:
             - "*"
-            
+
   test_vue:
     <<: *defaults
     steps:
@@ -186,4 +186,4 @@ workflows:
             - test_ionic1
           filters:
             branches:
-              only: master
+              only: main
