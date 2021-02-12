@@ -1,6 +1,6 @@
 {
   "name": "Sidemenu Starter",
-  "baseref": "master",
+  "baseref": "main",
   "tarignore": [
     ".sourcemaps",
     "node_modules",

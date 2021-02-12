@@ -1,6 +1,6 @@
 {
   "name": "AWS Starter",
-  "baseref": "master",
+  "baseref": "main",
   "gitignore": [
     "cors-policy.xml",
     "mobile-hub-project.zip"

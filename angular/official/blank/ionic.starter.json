@@ -1,6 +1,6 @@
 {
   "name": "Blank Starter",
-  "baseref": "master",
+  "baseref": "main",
   "tarignore": [
     "node_modules",
     "package-lock.json",

@@ -1,6 +1,6 @@
 {
   "name": "Ionic Super Starter",
-  "baseref": "master",
+  "baseref": "main",
   "welcome": "Welcome to the \u001b[36m\u001b[1mIONIC SUPER STARTER\u001b[22m\u001b[39m!\n\nThe Super Starter comes packed with ready-to-use page designs for common mobile designs like master detail, login/signup, settings, tutorials, and more. Pick and choose which page types you want to use and remove the ones you don't!\n\nFor more details, please see the project README: \u001b[1mhttps://github.com/ionic-team/starters/blob/master/ionic-angular/official/super/README.md\u001b[22m",
   "tarignore": [
     ".sourcemaps",
