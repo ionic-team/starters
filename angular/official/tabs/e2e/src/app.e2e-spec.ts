@@ -7,8 +7,8 @@ describe('new App', () => {
     page = new AppPage();
   });
 
-  it('should display welcome message', () => {
-    page.navigateTo();
+  it('should display welcome message', async () => {
+    await page.navigateTo();
     expect(page.getPageTitle()).toContain('Tab 1');
   });
 });
