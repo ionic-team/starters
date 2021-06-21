@@ -1,6 +1,6 @@
 {
   "name": "Tutorial Starter",
-  "baseref": "master",
+  "baseref": "main",
   "tarignore": [
     ".sourcemaps",
     "node_modules",
