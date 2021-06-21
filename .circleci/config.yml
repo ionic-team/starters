@@ -186,4 +186,4 @@ workflows:
             - test_ionic1
           filters:
             branches:
-              only: master
+              only: main
