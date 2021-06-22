@@ -2,7 +2,7 @@
   <ion-page>
     <ion-header :translucent="true">
       <ion-toolbar>
-        <ion-buttons>
+        <ion-buttons slot="start">
           <ion-back-button :text="getBackButtonText()" default-href="/"></ion-back-button>
         </ion-buttons>
       </ion-toolbar>
