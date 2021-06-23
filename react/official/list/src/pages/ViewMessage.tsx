@@ -30,7 +30,7 @@ function ViewMessage() {
     <IonPage id="view-message-page">
       <IonHeader translucent>
         <IonToolbar>
-          <IonButtons>
+          <IonButtons slot="start">
             <IonBackButton text="Inbox" defaultHref="/home"></IonBackButton>
           </IonButtons>
         </IonToolbar>
