@@ -10,29 +10,33 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "@ionic/vue": "^5.4.0",
-    "@ionic/vue-router": "^5.4.0",
+    "@ionic/vue": "^6.0.0-rc.2",
+    "@ionic/vue-router": "^6.0.0-rc.2",
     "core-js": "^3.6.5",
-    "vue": "^3.2.1",
-    "vue-router": "^4.0.0-0"
+    "vue": "^3.2.21",
+    "vue-router": "^4.0.12"
   },
   "devDependencies": {
-    "@types/jest": "^24.0.19",
+    "@types/jest": "^27.0.2",
     "@typescript-eslint/eslint-plugin": "^2.33.0",
     "@typescript-eslint/parser": "^2.33.0",
-    "@vue/cli-plugin-babel": "~4.5.0",
-    "@vue/cli-plugin-e2e-cypress": "~4.5.0",
-    "@vue/cli-plugin-eslint": "~4.5.0",
-    "@vue/cli-plugin-router": "~4.5.0",
-    "@vue/cli-plugin-typescript": "~4.5.0",
-    "@vue/cli-plugin-unit-jest": "~4.5.0",
-    "@vue/cli-service": "~4.5.0",
+    "@vue/cli-plugin-babel": "~5.0.0-beta.7",
+    "@vue/cli-plugin-e2e-cypress": "~5.0.0-beta.7",
+    "@vue/cli-plugin-eslint": "~5.0.0-beta.7",
+    "@vue/cli-plugin-router": "~5.0.0-beta.7",
+    "@vue/cli-plugin-typescript": "~5.0.0-beta.7",
+    "@vue/cli-plugin-unit-jest": "~5.0.0-beta.7",
+    "@vue/cli-service": "~5.0.0-beta.7",
     "@vue/compiler-sfc": "^3.0.0-0",
     "@vue/eslint-config-typescript": "^5.0.2",
-    "@vue/test-utils": "^2.0.0-0",
-    "eslint": "^6.7.2",
+    "@vue/test-utils": "^2.0.0-rc.16",
+    "@vue/vue3-jest": "^27.0.0-alpha.3",
+    "babel-jest": "^27.3.1",
+    "cypress": "^8.7.0",
+    "eslint": "^7.20.0",
     "eslint-plugin-vue": "^7.0.0-0",
-    "typescript": "^4.3.5",
-    "vue-jest": "^5.0.0-0"
+    "jest": "^27.3.1",
+    "ts-jest": "^27.0.7",
+    "typescript": "^4.3.5"
   }
 }
