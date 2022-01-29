@@ -40,6 +40,7 @@ import { getMessage } from '../data/messages';
 import { defineComponent } from 'vue';
 
 export default defineComponent({
+  name: 'ViewMessagePage',
   data() {
     return {
       personCircle,
