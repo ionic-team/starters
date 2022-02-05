@@ -6,13 +6,14 @@
 </template>
 
 <script lang="ts">
+import { defineComponent } from 'vue';
 
-export default {
+export default defineComponent({
   name: 'ExploreContainer',
   props: {
     name: String
   }
-}
+});
 </script>
 
 <style scoped>
