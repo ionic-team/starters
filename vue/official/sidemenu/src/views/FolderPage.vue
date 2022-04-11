@@ -25,9 +25,11 @@
 </template>
 
 <script lang="ts">
+import { defineComponent } from 'vue';
 import { IonButtons, IonContent, IonHeader, IonMenuButton, IonPage, IonTitle, IonToolbar } from '@ionic/vue';
 
-export default {
+export default defineComponent({
+  name: 'FolderPage',
   components: {
     IonButtons,
     IonContent,
@@ -37,7 +39,7 @@ export default {
     IonTitle,
     IonToolbar
   }
-}
+});
 </script>
 
 <style scoped>
