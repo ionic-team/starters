@@ -2,7 +2,9 @@
   "private": true,
   "scripts": {
     "src:clean": "rimraf dist",
-    "src:lint": "tslint --project tsconfig.json",
+    "src:lint": "npm run eslint",
+    "src:lint:fix": "npm run eslint -- --fix",
+    "eslint": "eslint . --ext .ts",
     "src:build": "tsc",
     "src:watch": "tsc -w",
     "starters:build": "node ./bin/ionic-starters build",
@@ -14,31 +16,65 @@
   },
   "main": "./dist/index.js",
   "devDependencies": {
-    "@ionic/cli-framework": "^2.0.2",
-    "@ionic/utils-array": "^1.0.1",
-    "@ionic/utils-fs": "^2.0.2",
-    "@types/fs-extra": "^8.0.0",
-    "@types/inquirer": "0.0.43",
-    "@types/lodash": "^4.14.134",
-    "@types/minimatch": "^3.0.3",
-    "@types/minimist": "^1.2.0",
-    "@types/node": "^10.12.1",
-    "@types/tar": "^4.0.0",
-    "aws-sdk": "^2.472.0",
-    "chalk": "^2.3.0",
-    "cross-spawn": "^7.0.0",
-    "husky": "^3.0.0",
-    "lodash": "^4.17.4",
-    "minimatch": "^3.0.4",
-    "rimraf": "^2.6.2",
-    "tar": "^4.4.10",
-    "tslint": "^5.17.0",
-    "tslint-ionic-rules": "0.0.21",
-    "typescript": "~3.7.2"
+    "@ionic/cli-framework": "^5.1.3",
+    "@ionic/prettier-config": "^2.0.0",
+    "@ionic/utils-array": "^2.1.5",
+    "@ionic/utils-fs": "^3.1.6",
+    "@types/fs-extra": "^9.0.13",
+    "@types/inquirer": "9.0.1",
+    "@types/lodash": "^4.14.183",
+    "@types/minimatch": "^3.0.5",
+    "@types/minimist": "^1.2.2",
+    "@types/node": "^18.7.6",
+    "@types/tar": "^6.1.2",
+    "@typescript-eslint/eslint-plugin": "^5.33.1",
+    "@typescript-eslint/parser": "^5.33.1",
+    "aws-sdk": "^2.1197.0",
+    "colorette": "^2.0.19",
+    "cross-spawn": "^7.0.3",
+    "eslint": "^8.22.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "husky": "^8.0.1",
+    "lodash": "^4.17.21",
+    "minimatch": "^5.1.0",
+    "prettier": "^2.7.1",
+    "rimraf": "^3.0.2",
+    "tar": "^6.1.11",
+    "typescript": "^4.7",
+    "typescript-eslint-language-service": "^5.0.0"
   },
   "husky": {
     "hooks": {
       "pre-commit": "npm run src:lint"
     }
+  },
+  "prettier": "@ionic/prettier-config",
+  "eslintConfig": {
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+      "project": "./tsconfig.json"
+    },
+    "plugins": [
+      "@typescript-eslint",
+      "prettier"
+    ],
+    "rules": {
+      "prettier/prettier": "error"
+    },
+    "ignorePatterns": [
+      "node_modules",
+      "**/*.d.ts",
+      "angular",
+      "vue",
+      "react",
+      "integrations",
+      "ionic-angular",
+      "ionic1",
+      "dist",
+      "build"
+    ]
   }
 }
