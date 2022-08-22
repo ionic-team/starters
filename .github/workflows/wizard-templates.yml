@@ -1,0 +1,32 @@
+name: Generate Wizard Templates
+
+on:
+  schedule:
+    - cron: '30 9 * * *'
+
+jobs:
+  wizard-templates:
+    strategy:
+      matrix:
+        framework: ['angular', 'react', 'vue']
+        template: ['list', 'tabs', 'sidemenu']
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Install Ionic CLI
+        run: npm install -g @ionic/cli
+
+      - name: Run ionic start
+        run: ionic start __NAME__ ${{ matrix.template }} --type=${{ matrix.framework }} --capacitor --no-link --no-interactive --no-color --confirm
+
+      - name: Run git push
+        run: |
+          git config user.email hi@ionicframework.com
+          git config user.name Ionitron
+          git add __NAME__
+          git commit -m 'Initial commit'
+          git subtree split -P __NAME__ -b wizard/${{ matrix.framework }}-official-${{ matrix.template }}
+          git push -f origin wizard/${{ matrix.framework }}-official-${{ matrix.template }}
