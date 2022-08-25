@@ -1,6 +1,6 @@
 import * as path from 'path';
 
-import chalk from 'chalk';
+import { bold, cyan, green, red } from 'colorette';
 import * as _ from 'lodash';
 
 import { copy, remove, writeFile } from '@ionic/utils-fs';
@@ -30,7 +30,7 @@ export function generateStarterName(starterType: string, starterDir: string) {
     return `${path.basename(scope)}-${path.basename(starterDir)}`.toLowerCase();
   }
 
-  throw new Error(chalk.red(`Unknown starter type: ${starterType}`));
+  throw new Error(red(`Unknown starter type: ${starterType}`));
 }
 
 export async function gatherChangedBaseFiles(): Promise<string[]> {
@@ -48,19 +48,30 @@ export async function gatherChangedBaseFiles(): Promise<string[]> {
   return changedBaseFiles;
 }
 
-export async function getStarterDirectories(ionicType: string, { community = true }: { community?: boolean; } = {}): Promise<string[]> {
+export async function getStarterDirectories(
+  ionicType: string,
+  { community = true }: { community?: boolean } = {}
+): Promise<string[]> {
   const officialStarterDirs = await getDirectories(path.resolve(REPO_DIRECTORY, ionicType, STARTER_TYPE_OFFICIAL));
 
   if (community) {
     const communityScopes = await getDirectories(path.resolve(REPO_DIRECTORY, ionicType, STARTER_TYPE_COMMUNITY));
-    const communityStarterDirs = _.flatten(await Promise.all(communityScopes.map(async (scopeDir) => getDirectories(scopeDir))));
+    const communityStarterDirs = _.flatten(
+      await Promise.all(communityScopes.map(async (scopeDir) => getDirectories(scopeDir)))
+    );
     return [...officialStarterDirs, ...communityStarterDirs];
   }
 
   return officialStarterDirs;
 }
 
-export async function buildStarters({ current = false, sha1 }: { current?: boolean; sha1?: string; }): Promise<StarterList> {
+export async function buildStarters({
+  current = false,
+  sha1,
+}: {
+  current?: boolean;
+  sha1?: string;
+}): Promise<StarterList> {
   const starterList: StarterList = { starters: [], integrations: [] };
 
   if (!sha1) {
@@ -75,36 +86,40 @@ export async function buildStarters({ current = false, sha1 }: { current?: boole
 
     const refmap = new Map<string, string[]>();
 
-    await Promise.all(starterDirs.map(async (starterDir) => {
-      const manifest = await readStarterManifest(starterDir);
+    await Promise.all(
+      starterDirs.map(async (starterDir) => {
+        const manifest = await readStarterManifest(starterDir);
 
-      if (manifest) {
-        let starterDirsAtRef = refmap.get(manifest.baseref);
+        if (manifest) {
+          let starterDirsAtRef = refmap.get(manifest.baseref);
 
-        if (!starterDirsAtRef) {
-          starterDirsAtRef = [];
+          if (!starterDirsAtRef) {
+            starterDirsAtRef = [];
+          }
+
+          starterDirsAtRef.push(starterDir);
+          refmap.set(manifest.baseref, starterDirsAtRef);
         }
+      })
+    );
 
-        starterDirsAtRef.push(starterDir);
-        refmap.set(manifest.baseref, starterDirsAtRef);
-      }
-    }));
-
-    for (const [ ref, starterDirsAtRef ] of refmap.entries()) {
+    for (const [ref, starterDirsAtRef] of refmap.entries()) {
       if (!current) {
-        console.log(`Checking out ${chalk.cyan.bold(ionicType)} base files at ${chalk.bold(ref)}`);
+        console.log(`Checking out ${bold(cyan(ionicType))} base files at ${bold(ref)}`);
         await runcmd('git', ['checkout', ref, '--', baseDir]);
       }
 
-      await Promise.all(starterDirsAtRef.map(async (starterDir) => {
-        const [ , starterType, ...rest ] = getStarterInfoFromPath(starterDir);
-        const id = buildStarterId(ionicType, starterType, starterDir);
-        await buildStarter(ionicType, starterType, starterDir);
+      await Promise.all(
+        starterDirsAtRef.map(async (starterDir) => {
+          const [, starterType, ...rest] = getStarterInfoFromPath(starterDir);
+          const id = buildStarterId(ionicType, starterType, starterDir);
+          await buildStarter(ionicType, starterType, starterDir);
 
-        const name = rest.join('/');
-        const sha1 = current ? currentSha1 : (await runcmd('git', ['rev-parse', ref])).trim();
-        starterList.starters.push({ name, id, type: ionicType, ref, sha1 });
-      }));
+          const name = rest.join('/');
+          const sha1 = current ? currentSha1 : (await runcmd('git', ['rev-parse', ref])).trim();
+          starterList.starters.push({ name, id, type: ionicType, ref, sha1 });
+        })
+      );
 
       if (!current) {
         await runcmd('git', ['checkout', currentSha1, '--', baseDir]);
@@ -114,15 +129,17 @@ export async function buildStarters({ current = false, sha1 }: { current?: boole
 
   const integrationDirs = await getDirectories(INTEGRATIONS_DIRECTORY);
 
-  await Promise.all(integrationDirs.map(async (integrationDir) => {
-    const name = path.basename(integrationDir);
-    const integration = `integration-${name}`;
-    await copy(integrationDir, path.resolve(BUILD_DIRECTORY, integration));
-    starterList.integrations.push({ name, id: integration });
-    log(integration, chalk.green('Copied!'));
-  }));
+  await Promise.all(
+    integrationDirs.map(async (integrationDir) => {
+      const name = path.basename(integrationDir);
+      const integration = `integration-${name}`;
+      await copy(integrationDir, path.resolve(BUILD_DIRECTORY, integration));
+      starterList.integrations.push({ name, id: integration });
+      log(integration, green('Copied!'));
+    })
+  );
 
-  console.log(`Writing ${chalk.cyan('starters.json')}\n`);
+  console.log(`Writing ${cyan('starters.json')}\n`);
   await writeFile(STARTERS_LIST_PATH, JSON.stringify(starterList, undefined, 2), { encoding: 'utf8' });
 
   return starterList;
@@ -153,7 +170,7 @@ export async function buildStarter(ionicType: string, starterType: string, start
 
   try {
     await remove(path.resolve(tmpdest, '.git'));
-  } catch (e) {
+  } catch (e: any) {
     if (e.code !== 'ENOENT') {
       throw e;
     }
@@ -162,24 +179,29 @@ export async function buildStarter(ionicType: string, starterType: string, start
   const pkgPath = path.resolve(tmpdest, 'package.json');
   const pkg = await readPackageJsonFile(pkgPath);
 
-  log(id, `Performing manifest operations for ${chalk.bold(manifest.name)}`);
+  log(id, `Performing manifest operations for ${bold(manifest.name)}`);
 
   if (manifest.packageJson) {
-    _.mergeWith(pkg, manifest.packageJson, (objv, v) => _.isArray(v) ? v : undefined);
+    _.mergeWith(pkg, manifest.packageJson, (objv, v) => (_.isArray(v) ? v : undefined));
     await writeFile(pkgPath, JSON.stringify(pkg, undefined, 2) + '\n', { encoding: 'utf8' });
   }
 
   const tsconfigJson = await readTsconfigJson(tmpdest);
 
   if (Object.keys(tsconfigJson).length > 0 && manifest.tsconfigJson) {
-    _.mergeWith(tsconfigJson, manifest.tsconfigJson, (objv, v) => _.isArray(v) ? v : undefined);
-    await writeFile(path.resolve(tmpdest, 'tsconfig.json'), JSON.stringify(tsconfigJson, undefined, 2) + '\n', { encoding: 'utf8' });
+    _.mergeWith(tsconfigJson, manifest.tsconfigJson, (objv, v) => (_.isArray(v) ? v : undefined));
+    await writeFile(path.resolve(tmpdest, 'tsconfig.json'), JSON.stringify(tsconfigJson, undefined, 2) + '\n', {
+      encoding: 'utf8',
+    });
   }
 
   const gitignore = await readGitignore(tmpdest);
 
   if (manifest.gitignore) {
-    const united = _.union(gitignore.map(x => x.trim()), manifest.gitignore.map(x => x.trim()));
+    const united = _.union(
+      gitignore.map((x) => x.trim()),
+      manifest.gitignore.map((x) => x.trim())
+    );
     await writeFile(path.resolve(tmpdest, '.gitignore'), united.join('\n') + '\n', { encoding: 'utf8' });
   }
 }

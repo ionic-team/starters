@@ -119,7 +119,8 @@ export interface TsconfigBase {
       | 'es2016.array.include'
       | 'es2017.object'
       | 'es2017.sharedmemory'
-      | 'esnext.asynciterable')[];
+      | 'esnext.asynciterable'
+    )[];
     strictNullChecks?: boolean;
     maxNodeModuleJsDepth?: number;
     importHelpers?: boolean;
