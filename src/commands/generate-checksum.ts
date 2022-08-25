@@ -1,7 +1,7 @@
 import * as path from 'path';
 import { createHash } from 'crypto';
 
-import chalk from 'chalk';
+import { bold, red } from 'colorette';
 
 import { Command, CommandLineInputs, CommandLineOptions, CommandMetadata } from '@ionic/cli-framework';
 import { readFile, writeFile } from '@ionic/utils-fs';
@@ -24,7 +24,7 @@ export class GenerateChecksumCommand extends Command {
 
     for (const type of IONIC_TYPE_DIRECTORIES) {
       const hash = createHash('sha256');
-      const builtStarters = contents.filter(d => path.basename(d).startsWith(type));
+      const builtStarters = contents.filter((d) => path.basename(d).startsWith(type));
       const checksumFile = `starter-checksum-${type}.sha256`;
 
       for (const dir of builtStarters) {
@@ -34,13 +34,13 @@ export class GenerateChecksumCommand extends Command {
           const pkg = await readFile(path.resolve(dir, 'package.json'), { encoding: 'utf8' });
           const manifest = await readFile(path.resolve(dir, IONIC_MANIFEST_FILE), { encoding: 'utf8' });
 
-          log(id, `Appending to checksum file: ${chalk.bold(checksumFile)}`);
+          log(id, `Appending to checksum file: ${bold(checksumFile)}`);
 
           hash.update(id);
           hash.update(pkg.trim());
           hash.update(manifest.trim());
-        } catch (e) {
-          log(id, chalk.red(`Error during checksum collection: ${e.stack ? e.stack : e}`));
+        } catch (e: any) {
+          log(id, red(`Error during checksum collection: ${e.stack ? e.stack : e}`));
         }
       }
 

@@ -10,17 +10,11 @@
     "outDir": "./dist",
     "pretty": true,
     "strict": true,
-    "target": "es6",
-    "lib": [
-      "es2016"
-    ]
+    "skipLibCheck": true,
+    "target": "es2018",
+    "lib": ["es2018"],
+    "plugins": [{ "name": "typescript-eslint-language-service" }]
   },
-  "include": [
-    "types/**/*.d.ts",
-    "src/**/*.ts"
-  ],
-  "exclude": [
-    "node_modules",
-    "src/**/__tests__/*.ts"
-  ]
+  "include": ["types/**/*.d.ts", "src/**/*.ts"],
+  "exclude": ["node_modules", "src/**/__tests__/*.ts"]
 }
