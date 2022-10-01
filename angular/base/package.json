@@ -21,7 +21,7 @@
     "@angular/router": "^14.0.0",
     "@ionic/angular": "^6.1.9",
     "ionicons": "^6.0.3",
-    "rxjs": "~6.6.0",
+    "rxjs": "~7.5.0",
     "tslib": "^2.2.0",
     "zone.js": "~0.11.4"
   },
