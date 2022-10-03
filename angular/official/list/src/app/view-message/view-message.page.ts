@@ -8,15 +8,12 @@ import { DataService, Message } from '../services/data.service';
   styleUrls: ['./view-message.page.scss'],
 })
 export class ViewMessagePage implements OnInit {
-  public message: Message;
+  public message!: Message;
 
-  constructor(
-    private data: DataService,
-    private activatedRoute: ActivatedRoute
-  ) { }
+  constructor(private data: DataService, private activatedRoute: ActivatedRoute) {}
 
   ngOnInit() {
-    const id = this.activatedRoute.snapshot.paramMap.get('id');
+    const id = this.activatedRoute.snapshot.paramMap.get('id') as string;
     this.message = this.data.getMessageById(parseInt(id, 10));
   }
 
