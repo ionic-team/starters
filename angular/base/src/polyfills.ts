@@ -8,8 +8,8 @@
  *      file.
  *
  * The current setup is for so-called "evergreen" browsers; the last versions of browsers that
- * automatically update themselves. This includes Safari >= 10, Chrome >= 55 (including Opera),
- * Edge >= 13 on the desktop, and iOS 10 and Chrome on mobile.
+ * automatically update themselves. This includes recent versions of Safari, Chrome (including
+ * Opera), Edge on the desktop, and iOS and Chrome on mobile.
  *
  * Learn more in https://angular.io/guide/browser-support
  */
@@ -17,16 +17,6 @@
 /***************************************************************************************************
  * BROWSER POLYFILLS
  */
-
-/** IE11 requires the following for NgClass support on SVG elements */
-// import 'classlist.js';  // Run `npm install --save classlist.js`.
-
-/**
- * Web Animations `@angular/platform-browser/animations`
- * Only required if AnimationBuilder is used within the application and using IE/Edge or Safari.
- * Standard animation support in Angular DOES NOT require any polyfills (as of Angular 6.0).
- */
-// import 'web-animations-js';  // Run `npm install --save web-animations-js`.
 
 /**
  * By default, zone.js will patch all possible macroTask and DomEvents
@@ -50,15 +40,21 @@
  *
  *  (window as any).__Zone_enable_cross_context_check = true;
  *
+ *  full list
+ *  https://github.com/angular/angular/blob/382330cd6b20719b4e123f059aeb9a2fce443dde/packages/zone.js/lib/zone.configurations.api.ts#L426
  */
 
-import './zone-flags';
+/**
+ * Prevents Angular change detection from
+ * running with certain Web Component callbacks
+ */
+
+(window as any).__Zone_disable_customElements = true;
 
 /***************************************************************************************************
  * Zone JS is required by default for Angular itself.
  */
-import 'zone.js/dist/zone';  // Included with Angular CLI.
-
+import 'zone.js'; // Included with Angular CLI.
 
 /***************************************************************************************************
  * APPLICATION IMPORTS

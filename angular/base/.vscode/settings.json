@@ -1,0 +1,3 @@
+{
+  "eslint.rules.customizations": [{ "rule": "prettier/*", "severity": "warn" }]
+}
