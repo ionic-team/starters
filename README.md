@@ -20,6 +20,8 @@ Project Type        | Description                                           | Li
 **`angular`**       | Ionic Angular 4+ w/ Angular CLI for Tooling           | [base template](https://github.com/ionic-team/starters/tree/master/angular/base) / [starter templates](https://github.com/ionic-team/starters/tree/master/angular/official)
 **`ionic-angular`** | Ionic Angular 2/3 w/ `@ionic/app-scripts` for Tooling | [base template](https://github.com/ionic-team/starters/tree/master/ionic-angular/base) / [starter templates](https://github.com/ionic-team/starters/tree/master/ionic-angular/official)
 **`ionic1`**        | Ionic 1 w/ AngularJS                                  | [base template](https://github.com/ionic-team/starters/tree/master/ionic1/base) / [starter templates](https://github.com/ionic-team/starters/tree/master/ionic1/official)
+**`react`**         | React 16+ w/ react-scripts for Tooling                | [base template](https://github.com/ionic-team/starters/tree/master/react/base) / [starter templates](https://github.com/ionic-team/starters/tree/master/react/official)
+**`vue`**           | Vue 3+ w/ @vue/cli-service for Tooling                | [base template](https://github.com/ionic-team/starters/tree/master/vue/base) / [starter templates](https://github.com/ionic-team/starters/tree/master/vue/official)
 
 ### Integrations
 
