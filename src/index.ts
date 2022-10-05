@@ -27,6 +27,6 @@ class StartersNamespace extends Namespace {
 
 const namespace = new StartersNamespace();
 
-export async function run(argv: string[], env: { [k: string]: string; }) {
+export async function run(argv: string[], env: { [k: string]: string }) {
   await execute({ namespace, argv, env });
 }

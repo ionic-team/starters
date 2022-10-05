@@ -1,10 +1,16 @@
 import * as path from 'path';
 
-import chalk from 'chalk';
+import { bold, gray, red } from 'colorette';
 import { Command, CommandLineInputs, CommandLineOptions, CommandMetadata } from '@ionic/cli-framework';
 import { getFileChecksum, readdirp, stat } from '@ionic/utils-fs';
 
-import { IONIC_TYPE_DIRECTORIES, REPO_DIRECTORY, buildStarterId, getStarterDirectories, getStarterInfoFromPath } from '../lib/build';
+import {
+  IONIC_TYPE_DIRECTORIES,
+  REPO_DIRECTORY,
+  buildStarterId,
+  getStarterDirectories,
+  getStarterInfoFromPath,
+} from '../lib/build';
 import { log } from '../utils';
 
 export class FindRedundantCommand extends Command {
@@ -32,26 +38,29 @@ export class FindRedundantCommand extends Command {
       const starterDirs = await getStarterDirectories(ionicType, { community });
 
       for (const starterDir of starterDirs) {
-        const [ , starterType ] = getStarterInfoFromPath(starterDir);
+        const [, starterType] = getStarterInfoFromPath(starterDir);
         const id = buildStarterId(ionicType, starterType, starterDir);
 
-        const contents = (await readdirp(starterDir)).map(p => p.substring(starterDir.length + 1));
+        const contents = (await readdirp(starterDir)).map((p) => p.substring(starterDir.length + 1));
 
         for (const file of contents) {
           const filePath = path.resolve(starterDir, file);
           const baseFilePath = path.resolve(baseDir, file);
 
           try {
-            const [ fileStat, baseFileStat ] = await Promise.all([stat(filePath), stat(baseFilePath)]);
+            const [fileStat, baseFileStat] = await Promise.all([stat(filePath), stat(baseFilePath)]);
 
             if (!fileStat.isDirectory() && !baseFileStat.isDirectory()) {
-              const [ fileChecksum, baseFileChecksum ] = await Promise.all([getFileChecksum(filePath), getFileChecksum(baseFilePath)]);
+              const [fileChecksum, baseFileChecksum] = await Promise.all([
+                getFileChecksum(filePath),
+                getFileChecksum(baseFilePath),
+              ]);
 
               if (fileChecksum === baseFileChecksum) {
-                log(id, chalk.red(`${chalk.bold(file)}: same file in base files`));
+                log(id, red(`${bold(file)}: same file in base files`));
                 redundantFiles.push(filePath);
               } else {
-                log(id, chalk.gray(`${chalk.bold(file)}: found in base files, but checksum differs`));
+                log(id, gray(`${bold(file)}: found in base files, but checksum differs`));
               }
             }
           } catch (e) {
@@ -64,7 +73,7 @@ export class FindRedundantCommand extends Command {
     if (redundantFiles.length > 0) {
       console.log(
         `The following files were identified as redundant and should be deleted:\n` +
-        ` - ${redundantFiles.map(f => chalk.bold(f.substring(REPO_DIRECTORY.length + 1))).join('\n - ')}\n`
+          ` - ${redundantFiles.map((f) => bold(f.substring(REPO_DIRECTORY.length + 1))).join('\n - ')}\n`
       );
       process.exit(1);
     } else {
