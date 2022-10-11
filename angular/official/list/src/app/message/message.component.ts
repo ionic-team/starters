@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Message } from '../services/data.service';
 
 @Component({
@@ -6,12 +6,8 @@ import { Message } from '../services/data.service';
   templateUrl: './message.component.html',
   styleUrls: ['./message.component.scss'],
 })
-export class MessageComponent implements OnInit {
+export class MessageComponent {
   @Input() message: Message;
-
-  constructor() { }
-
-  ngOnInit() {}
 
   isIos() {
     const win = window as any;
