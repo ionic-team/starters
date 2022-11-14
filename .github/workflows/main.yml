@@ -1,0 +1,97 @@
+name: Build & Test
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          submodules: true
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - name: Build
+        run: |
+          npm install
+          npm run src:lint
+          npm run src:build
+          npm run starters:find-redundant
+          npm run starters:build -- --current
+
+      - run: tar -cf build.tar build dist
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: build
+          path: build.tar
+
+  test:
+    strategy:
+      matrix:
+        framework: ['vue', 'react', 'ionic-angular', 'ionic1']
+
+    runs-on: ubuntu-latest
+    needs: build
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/download-artifact@v2
+        with:
+          name: build
+
+      - run: tar -xf build.tar
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14
+          cache: npm
+          cache-dependency-path: |
+            build/${{ matrix.framework }}-*/ionic.starter.json
+            build/${{ matrix.framework }}-*/package.json
+
+      - name: Test ${{ matrix.framework }}
+        run: |
+          npm install
+          rm -rf node_modules/@types
+          npm run starters:test -- --type=${{ matrix.framework }}
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: test
+    permissions:
+      contents: read
+      id-token: write
+    if: ${{ github.ref == 'refs/heads/main' }}
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 14
+
+      - uses: actions/download-artifact@v2
+        with:
+          name: build
+
+      - run: tar -xf build.tar
+
+      - uses: aws-actions/configure-aws-credentials@v1
+        with:
+          role-to-assume: ${{ secrets.AWS_ROLE_ARN }}
+          aws-region: us-west-2
+
+      - name: Deploy
+        run: |
+          npm install
+          npm run starters:deploy -- --tag latest

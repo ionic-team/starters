@@ -1,6 +1,6 @@
 import * as path from 'path';
 
-import chalk from 'chalk';
+import { bold, cyan, dim } from 'colorette';
 import { SpawnOptions, spawn } from 'cross-spawn';
 
 import { filter } from '@ionic/utils-array';
@@ -13,16 +13,15 @@ export const IONIC_MANIFEST_FILE = 'ionic.starter.json';
 export function getCommandHeader(title: string): string {
   const separator = '-'.repeat(title.length);
 
-  return (
-    `${separator}\n` +
-    `${chalk.cyan.bold(title)}\n` +
-    `${separator}\n`
-  );
+  return `${separator}\n` + `${bold(cyan(title))}\n` + `${separator}\n`;
 }
 
 export async function getDirectories(p: string): Promise<string[]> {
   const contents = await readdir(p);
-  return filter(contents.map(f => path.resolve(p, f)), async f => (await stat(f)).isDirectory());
+  return filter(
+    contents.map((f) => path.resolve(p, f)),
+    async (f) => (await stat(f)).isDirectory()
+  );
 }
 
 export async function readTsconfigJson(dir: string): Promise<TsconfigJson> {
@@ -54,10 +53,10 @@ export async function readStarterManifest(dir: string): Promise<StarterManifest 
 }
 
 export async function log(id: string, msg: string) {
-  console.log(chalk.dim('=>'), chalk.cyan(id), msg);
+  console.log(dim('=>'), cyan(id), msg);
 }
 
-export function runcmd(command: string, args?: string[], opts?: SpawnOptions): Promise<string> {
+export function runcmd(command: string, args: string[] = [], opts: SpawnOptions = {}): Promise<string> {
   return new Promise<string>((resolve, reject) => {
     const p = spawn(command, args, opts);
 
@@ -65,7 +64,7 @@ export function runcmd(command: string, args?: string[], opts?: SpawnOptions): P
     const stderrbufs: Buffer[] = [];
 
     if (p.stdout) {
-      p.stdout.on('data', chunk => {
+      p.stdout.on('data', (chunk) => {
         if (Buffer.isBuffer(chunk)) {
           stdoutbufs.push(chunk);
         } else {
@@ -75,7 +74,7 @@ export function runcmd(command: string, args?: string[], opts?: SpawnOptions): P
     }
 
     if (p.stderr) {
-      p.stderr.on('data', chunk => {
+      p.stderr.on('data', (chunk) => {
         if (Buffer.isBuffer(chunk)) {
           stderrbufs.push(chunk);
         } else {
@@ -84,11 +83,11 @@ export function runcmd(command: string, args?: string[], opts?: SpawnOptions): P
       });
     }
 
-    p.on('error', err => {
+    p.on('error', (err) => {
       reject(err);
     });
 
-    p.on('close', code => {
+    p.on('close', (code) => {
       const stdout = Buffer.concat(stdoutbufs).toString();
       const stderr = Buffer.concat(stderrbufs).toString();
 

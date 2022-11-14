@@ -31,7 +31,7 @@ import { defineComponent } from 'vue';
 import { getMessages } from '@/data/messages';
 
 export default defineComponent({
-  name: 'Home',
+  name: 'HomePage',
   data() {
     return {
       messages: getMessages()

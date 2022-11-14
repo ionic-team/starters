@@ -1,6 +1,6 @@
 <template>
-  <IonApp>
-    <IonSplitPane content-id="main-content">
+  <ion-app>
+    <ion-split-pane content-id="main-content">
       <ion-menu content-id="main-content" type="overlay">
         <ion-content>
           <ion-list id="inbox-list">
@@ -26,8 +26,8 @@
         </ion-content>
       </ion-menu>
       <ion-router-outlet id="main-content"></ion-router-outlet>
-    </IonSplitPane>
-  </IonApp>
+    </ion-split-pane>
+  </ion-app>
 </template>
 
 <script lang="ts">
