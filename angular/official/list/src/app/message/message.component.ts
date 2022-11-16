@@ -7,7 +7,7 @@ import { Message } from '../services/data.service';
   styleUrls: ['./message.component.scss'],
 })
 export class MessageComponent {
-  @Input() message: Message;
+  @Input() message?: Message;
 
   isIos() {
     const win = window as any;
