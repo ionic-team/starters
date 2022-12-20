@@ -1,9 +1,9 @@
 <template>
   <div id="container">
-    <strong>{{ name }}</strong>
-    <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-    <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/native">Native Functionality</a></p>
-    <p>Explore <a target="_blank" rel="noopener noreferrer" href="https://ionic.io/enterprise-sdk">Enterprise Auth & Security</a></p>
+    <strong>Explore more of Ionic</strong>
+    <p><a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <p><a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/native">Native Functionality</a></p>
+    <p><a target="_blank" rel="noopener noreferrer" href="https://ionic.io/enterprise-sdk">Enterprise Auth & Security</a></p>
   </div>
 </template>
 
