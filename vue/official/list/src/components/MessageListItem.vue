@@ -17,32 +17,18 @@
   </ion-item>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import { IonIcon, IonItem, IonLabel, IonNote } from '@ionic/vue';
 import { chevronForward } from 'ionicons/icons';
-import { defineComponent } from 'vue';
 
-export default defineComponent({
-  name: 'MessageListItem',
-  components: {
-    IonIcon,
-    IonItem,
-    IonLabel,
-    IonNote,
-  },
-  props: {
-    message: Object,
-  },
-  methods: {
-    isIos: () => {
-      const win = window as any;
-      return win && win.Ionic && win.Ionic.mode === 'ios';
-    }
-  },
-  data() {
-    return { chevronForward }
-  }
+defineProps({
+  message: Object,
 });
+
+const isIos = () => {
+  const win = window as any;
+  return win && win.Ionic && win.Ionic.mode === 'ios';
+};
 </script>
 
 <style scoped>
@@ -56,7 +42,7 @@ export default defineComponent({
   margin-bottom: 12px;
 }
 
-.list-item  h2 {
+.list-item h2 {
   font-weight: 600;
   margin: 0;
 }

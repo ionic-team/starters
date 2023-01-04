@@ -7,7 +7,7 @@
         </ion-buttons>
       </ion-toolbar>
     </ion-header>
-    
+
     <ion-content :fullscreen="true" v-if="message">
       <ion-item>
         <ion-icon :icon="personCircle" color="primary"></ion-icon>
@@ -21,7 +21,7 @@
           <h3>To: <ion-note>Me</ion-note></h3>
         </ion-label>
       </ion-item>
-      
+
       <div class="ion-padding">
         <h1>{{ message.subject }}</h1>
         <p>
@@ -32,44 +32,31 @@
   </ion-page>
 </template>
 
-<script lang="ts">
+<script setup lang="ts">
 import { useRoute } from 'vue-router';
-import { IonBackButton, IonButtons, IonContent, IonHeader, IonIcon, IonItem, IonLabel, IonNote, IonPage, IonToolbar } from '@ionic/vue';
+import {
+  IonBackButton,
+  IonButtons,
+  IonContent,
+  IonHeader,
+  IonIcon,
+  IonItem,
+  IonLabel,
+  IonNote,
+  IonPage,
+  IonToolbar,
+} from '@ionic/vue';
 import { personCircle } from 'ionicons/icons';
 import { getMessage } from '../data/messages';
-import { defineComponent } from 'vue';
 
-export default defineComponent({
-  name: 'ViewMessagePage',
-  data() {
-    return {
-      personCircle,
-      getBackButtonText: () => {
-        const win = window as any;
-        const mode = win && win.Ionic && win.Ionic.mode;
-        return mode === 'ios' ? 'Inbox' : '';
-      }
-    }
-  },
-  setup() {
-    const route = useRoute();
-    const message = getMessage(parseInt(route.params.id as string, 10));
+const getBackButtonText = () => {
+  const win = window as any;
+  const mode = win && win.Ionic && win.Ionic.mode;
+  return mode === 'ios' ? 'Inbox' : '';
+};
 
-    return { message }
-  },
-  components: {
-    IonBackButton,
-    IonButtons,
-    IonContent,
-    IonHeader,
-    IonIcon,
-    IonItem,
-    IonLabel,
-    IonNote,
-    IonPage,
-    IonToolbar,
-  },
-});
+const route = useRoute();
+const message = getMessage(parseInt(route.params.id as string, 10));
 </script>
 
 <style scoped>
