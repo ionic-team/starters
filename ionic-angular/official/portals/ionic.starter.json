@@ -1,0 +1,9 @@
+{
+  "name": "Portals Starter",
+  "baseref": "main",
+  "packageJson": {
+    "dependencies": {
+      "@ionic/portals": "0.7.0"
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "Portals Starter",
+  "tarignore": [
+    "node_modules",
+    "package-lock.json",
+    "www"
+  ],
+  "scripts": {
+    "test": "npm run build"
+  },
+  "baseref": "main",
+  "packageJson": {
+    "dependencies": {
+      "@ionic/portals": "0.7.0"
+    }
+  }
+}
