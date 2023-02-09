@@ -61,6 +61,7 @@ export class DeployCommand extends Command {
           {
             gzip: true,
             cwd: dir,
+            portable: true,
             filter: (p, _stat) => {
               const filePath = path.relative(dir, path.resolve(dir, p));
 
