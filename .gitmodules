@@ -13,3 +13,12 @@
 [submodule "angular/community/ionic-team/enterprise-tabs"]
 	path = angular/community/ionic-team/enterprise-tabs
 	url = https://github.com/ionic-team/ionic-enterprise-starter.git
+[submodule "react/community/ionic-team/portals"]
+	path = react/community/ionic-team/portals
+	url = https://github.com/ionic-team/portals-starter-react
+[submodule "angular/community/ionic-team/portals"]
+	path = angular/community/ionic-team/portals
+	url = https://github.com/ionic-team/portals-starter-angular
+[submodule "vue/community/ionic-team/portals"]
+	path = vue/community/ionic-team/portals
+	url = https://github.com/ionic-team/portals-starter-vue
