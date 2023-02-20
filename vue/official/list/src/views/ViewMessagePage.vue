@@ -10,7 +10,7 @@
 
     <ion-content :fullscreen="true" v-if="message">
       <ion-item>
-        <ion-icon :icon="personCircle" color="primary"></ion-icon>
+        <ion-icon :aria-hidden="true" :icon="personCircle" color="primary"></ion-icon>
         <ion-label class="ion-text-wrap">
           <h2>
             {{ message.fromName }}

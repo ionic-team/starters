@@ -6,7 +6,7 @@
         {{ message.fromName }}
         <span class="date">
           <ion-note>{{ message.date }}</ion-note>
-          <ion-icon :icon="chevronForward" size="small" v-if="isIos()"></ion-icon>
+          <ion-icon :aria-hidden="true" :icon="chevronForward" size="small" v-if="isIos()"></ion-icon>
         </span>
       </h2>
       <h3>{{ message.subject }}</h3>
