@@ -1,66 +1,39 @@
 {
   "name": "ionic-app-base",
-  "version": "0.1.0",
   "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "test.e2e": "cypress run",
+    "test.unit": "vitest",
+    "lint": "eslint"
+  },
   "dependencies": {
-    "@ionic/react": "^6.0.0",
-    "@ionic/react-router": "^6.0.0",
-    "@testing-library/jest-dom": "^5.11.9",
-    "@testing-library/react": "^13.3.0",
-    "@testing-library/user-event": "^12.6.3",
-    "@types/jest": "^26.0.20",
-    "@types/node": "^12.19.15",
-    "@types/react": "^18.0.17",
-    "@types/react-dom": "^18.0.6",
-    "@types/react-router": "^5.1.11",
-    "@types/react-router-dom": "^5.1.7",
-    "ionicons": "^6.0.3",
-    "history": "^4.9.0",
+    "@ionic/react": "^7.0.0-rc.0",
+    "@ionic/react-router": "^7.0.0-rc.0",
+    "@types/react-router": "^5.1.20",
+    "@types/react-router-dom": "^5.3.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router": "^5.2.0",
-    "react-router-dom": "^5.2.0",
-    "react-scripts": "^5.0.0",
-    "typescript": "^4.1.3",
-    "web-vitals": "^0.2.4",
-    "workbox-background-sync": "^5.1.4",
-    "workbox-broadcast-update": "^5.1.4",
-    "workbox-cacheable-response": "^5.1.4",
-    "workbox-core": "^5.1.4",
-    "workbox-expiration": "^5.1.4",
-    "workbox-google-analytics": "^5.1.4",
-    "workbox-navigation-preload": "^5.1.4",
-    "workbox-precaching": "^5.1.4",
-    "workbox-range-requests": "^5.1.4",
-    "workbox-routing": "^5.1.4",
-    "workbox-strategies": "^5.1.4",
-    "workbox-streams": "^5.1.4"
+    "react-router": "^5.3.4",
+    "react-router-dom": "^5.3.4"
   },
-  "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --transformIgnorePatterns 'node_modules/(?!(@ionic/react|@ionic/react-router|@ionic/core|@stencil/core|ionicons)/)'",
-    "eject": "react-scripts eject"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      "Chrome >=60",
-      "ChromeAndroid >=60",
-      "Firefox >=63",
-      "Edge >=79",
-      "Safari >=13",
-      "iOS >=13"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+  "devDependencies": {
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/user-event": "^14.4.3",
+    "@types/react": "^18.0.27",
+    "@types/react-dom": "^18.0.10",
+    "@vitejs/plugin-react": "^3.1.0",
+    "cypress": "^12.7.0",
+    "eslint": "^8.35.0",
+    "eslint-plugin-react": "^7.32.2",
+    "jsdom": "^21.1.0",
+    "typescript": "^4.9.3",
+    "vite": "^4.1.0",
+    "vitest": "^0.29.2"
   }
 }
