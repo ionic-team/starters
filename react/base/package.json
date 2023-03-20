@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@ionic/react": "^6.0.0",
-    "@ionic/react-router": "^6.0.0",
+    "@ionic/react": "^7.0.0-rc.2",
+    "@ionic/react-router": "^7.0.0-rc.2",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^12.6.3",
@@ -14,8 +14,8 @@
     "@types/react-dom": "^18.0.6",
     "@types/react-router": "^5.1.11",
     "@types/react-router-dom": "^5.1.7",
-    "ionicons": "^6.0.3",
     "history": "^4.9.0",
+    "ionicons": "^6.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router": "^5.2.0",
@@ -50,12 +50,12 @@
   },
   "browserslist": {
     "production": [
-      "Chrome >=60",
-      "ChromeAndroid >=60",
-      "Firefox >=63",
+      "Chrome >=79",
+      "ChromeAndroid >=79",
+      "Firefox >=70",
       "Edge >=79",
-      "Safari >=13",
-      "iOS >=13"
+      "Safari >=14",
+      "iOS >=14"
     ],
     "development": [
       "last 1 chrome version",
