@@ -37,7 +37,7 @@ jobs:
   test:
     strategy:
       matrix:
-        framework: ['vue', 'react', 'ionic-angular', 'ionic1']
+        framework: ['vue', 'react', 'ionic-angular', 'ionic1', 'vue-vite', 'react-vite']
 
     runs-on: ubuntu-latest
     needs: build
