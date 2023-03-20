@@ -1,6 +1,6 @@
 {
   "name": "ionic-app-base",
   "app_id": "",
-  "type": "vue",
+  "type": "vue-vite",
   "integrations": {}
 }
