@@ -1,0 +1,12 @@
+{
+  "name": "Sidemenu Starter",
+  "baseref": "main",
+  "tarignore": [
+    "node_modules",
+    "package-lock.json",
+    "www"
+  ],
+  "scripts": {
+    "test": "npm run build"
+  }
+}
