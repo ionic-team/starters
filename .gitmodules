@@ -22,3 +22,9 @@
 [submodule "vue/community/ionic-team/portals"]
 	path = vue/community/ionic-team/portals
 	url = https://github.com/ionic-team/portals-starter-vue
+[submodule "vue-vite/community/ionic-team/portals"]
+	path = vue-vite/community/ionic-team/portals
+	url = https://github.com/ionic-team/portals-starter-vue-vite
+[submodule "react-vite/community/ionic-team/portals"]
+	path = react-vite/community/ionic-team/portals
+	url = https://github.com/ionic-team/portals-starter-react-vite
