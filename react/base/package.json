@@ -48,19 +48,12 @@
       "react-app/jest"
     ]
   },
-  "browserslist": {
-    "production": [
-      "Chrome >=60",
-      "ChromeAndroid >=60",
-      "Firefox >=63",
-      "Edge >=79",
-      "Safari >=13",
-      "iOS >=13"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  }
+  "browserslist": [
+    "Chrome >=60",
+    "ChromeAndroid >=60",
+    "Firefox >=63",
+    "Edge >=79",
+    "Safari >=13",
+    "iOS >=13"
+  ]
 }
