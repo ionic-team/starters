@@ -1,19 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { IonicModule, Platform } from '@ionic/angular';
 import { DataService, Message } from '../services/data.service';
 
 @Component({
   selector: 'app-view-message',
   templateUrl: './view-message.page.html',
   styleUrls: ['./view-message.page.scss'],
+  standalone: true,
+  imports: [IonicModule, CommonModule],
 })
 export class ViewMessagePage implements OnInit {
   public message!: Message;
+  private data = inject(DataService);
+  private activatedRoute = inject(ActivatedRoute);
+  private platform = inject(Platform);
 
-  constructor(
-    private data: DataService,
-    private activatedRoute: ActivatedRoute
-  ) { }
+  constructor() {}
 
   ngOnInit() {
     const id = this.activatedRoute.snapshot.paramMap.get('id') as string;
@@ -21,8 +25,7 @@ export class ViewMessagePage implements OnInit {
   }
 
   getBackButtonText() {
-    const win = window as any;
-    const mode = win && win.Ionic && win.Ionic.mode;
-    return mode === 'ios' ? 'Inbox' : '';
+    const isIos = this.platform.is('ios')
+    return isIos ? 'Inbox' : '';
   }
 }

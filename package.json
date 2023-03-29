@@ -74,7 +74,9 @@
       "ionic-angular",
       "ionic1",
       "dist",
-      "build"
+      "build",
+      "vue-vite",
+      "react-vite"
     ]
   }
 }
