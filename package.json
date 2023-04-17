@@ -76,7 +76,8 @@
       "dist",
       "build",
       "vue-vite",
-      "react-vite"
+      "react-vite",
+      "angular-standalone"
     ]
   }
 }
