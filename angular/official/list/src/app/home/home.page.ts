@@ -1,7 +1,5 @@
-import { CommonModule } from '@angular/common';
-import { Component, inject } from '@angular/core';
-import { IonicModule, RefresherCustomEvent } from '@ionic/angular';
-import { MessageComponent } from '../message/message.component';
+import { Component } from '@angular/core';
+import { RefresherCustomEvent } from '@ionic/angular';
 
 import { DataService, Message } from '../services/data.service';
 
@@ -9,12 +7,9 @@ import { DataService, Message } from '../services/data.service';
   selector: 'app-home',
   templateUrl: 'home.page.html',
   styleUrls: ['home.page.scss'],
-  standalone: true,
-  imports: [IonicModule, CommonModule, MessageComponent],
 })
 export class HomePage {
-  private data = inject(DataService);
-  constructor() {}
+  constructor(private data: DataService) { }
 
   refresh(ev: any) {
     setTimeout(() => {
@@ -25,4 +20,5 @@ export class HomePage {
   getMessages(): Message[] {
     return this.data.getMessages();
   }
+
 }
