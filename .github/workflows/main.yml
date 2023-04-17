@@ -37,10 +37,10 @@ jobs:
   test:
     strategy:
       matrix:
-        # We do not need to explicitly test vue-vite and react-vite
-        # because the test command finds apps that start with
-        # the framework string. As a result "vue" will map
-        # to both "vue" and "vue-vite" apps. Similarly,
+        # We do not need to explicitly test vue-vite, react-vite,
+        # and angular-standalone because the test command finds
+        # apps that start with the framework string. As a result
+        # "vue" will map to both "vue" and "vue-vite" apps. Similarly,
         # "react" will map to both "react" and "react-vite" apps.
         framework: ['vue', 'react', 'ionic-angular', 'ionic1']
 
