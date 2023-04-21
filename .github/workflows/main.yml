@@ -17,7 +17,7 @@ jobs:
 
       - uses: actions/setup-node@v2
         with:
-          node-version: 14
+          node-version: 16
 
       - name: Build
         run: |
@@ -58,7 +58,7 @@ jobs:
 
       - uses: actions/setup-node@v2
         with:
-          node-version: 14
+          node-version: 16
           cache: npm
           cache-dependency-path: |
             build/${{ matrix.framework }}-*/ionic.starter.json
@@ -83,7 +83,7 @@ jobs:
 
       - uses: actions/setup-node@v2
         with:
-          node-version: 14
+          node-version: 16
 
       - uses: actions/download-artifact@v2
         with:
