@@ -8,8 +8,6 @@ import { DataService, Message } from '../services/data.service';
   selector: 'app-view-message',
   templateUrl: './view-message.page.html',
   styleUrls: ['./view-message.page.scss'],
-  standalone: true,
-  imports: [IonicModule, CommonModule],
 })
 export class ViewMessagePage implements OnInit {
   public message!: Message;

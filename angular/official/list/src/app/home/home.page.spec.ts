@@ -1,7 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { provideRouter } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
-import { MessageComponent } from '../message/message.component';
+
+import { MessageComponentModule } from '../message/message.module';
 
 import { HomePage } from './home.page';
 
@@ -11,8 +12,8 @@ describe('HomePage', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HomePage, IonicModule, MessageComponent],
-      providers: [provideRouter([])],
+      declarations: [HomePage],
+      imports: [IonicModule.forRoot(), MessageComponentModule, RouterModule.forRoot([])]
     }).compileComponents();
 
     fixture = TestBed.createComponent(HomePage);
