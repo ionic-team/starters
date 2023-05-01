@@ -1,14 +1,27 @@
 module.exports = {
   root: true,
   env: {
-    node: true
+    browser: true,
+    es2021: true
   },
-  'extends': [
+  extends: [
+    'eslint:recommended',
     'plugin:react/recommended',
-    'eslint:recommended'
+    'plugin:@typescript-eslint/recommended'
   ],
+  parser: '@typescript-eslint/parser',
   parserOptions: {
-    ecmaVersion: 2020
+    ecmaVersion: 'latest',
+    sourceType: 'module'
+  },
+  plugins: [
+    'react',
+    '@typescript-eslint'
+  ],
+  settings: {
+    react: {
+      version: 'detect'
+    }
   },
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',

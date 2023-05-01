@@ -1,3 +1,4 @@
+import React from 'react';
 import MessageListItem from '../components/MessageListItem';
 import { useState } from 'react';
 import { Message, getMessages } from '../data/messages';
