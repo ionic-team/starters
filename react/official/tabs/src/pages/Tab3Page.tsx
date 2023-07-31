@@ -1,25 +1,26 @@
+import React from 'react';
 import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
 import ExploreContainer from '../components/ExploreContainer';
-import './Home.css';
+import './Tab3Page.css';
 
-const Home: React.FC = () => {
+const Tab3Page: React.FC = () => {
   return (
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Blank</IonTitle>
+          <IonTitle>Tab 3</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size="large">Blank</IonTitle>
+            <IonTitle size="large">Tab 3</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <ExploreContainer />
+        <ExploreContainer name="Tab 3 page" />
       </IonContent>
     </IonPage>
   );
 };
 
-export default Home;
+export default Tab3Page;
