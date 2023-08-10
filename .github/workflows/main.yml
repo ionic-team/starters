@@ -42,7 +42,7 @@ jobs:
         # the framework string. As a result "vue" will map
         # to both "vue" and "vue-vite" apps. Similarly,
         # "react" will map to both "react" and "react-vite" apps.
-        framework: ['angular', vue', 'react']
+        framework: ['angular', 'vue', 'react']
 
     runs-on: ubuntu-latest
     needs: build
