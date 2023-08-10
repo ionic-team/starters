@@ -61,8 +61,8 @@ jobs:
           node-version: 16
           cache: npm
           cache-dependency-path: |
-            build/${{ matrix.framework }}-*/ionic.starter.json
-            build/${{ matrix.framework }}-*/package.json
+            build/${{ matrix.framework }}/ionic.starter.json
+            build/${{ matrix.framework }}/package.json
 
       - name: Test ${{ matrix.framework }}
         run: |
