@@ -42,7 +42,7 @@ jobs:
         # the framework string. As a result "vue" will map
         # to both "vue" and "vue-vite" apps. Similarly,
         # "react" will map to both "react" and "react-vite" apps.
-        framework: ['angular-official-blank', 'angular-official-list', 'angular-official-sidemenu', 'angular-official-tabs', 'vue', 'react']
+        framework: ['angular-official-blank', 'angular-official-list', 'angular-official-sidemenu', 'angular-official-tabs', 'angular-standalone-official-blank', 'angular-standalone-official-list', 'angular-standalone-official-sidemenu', 'angular-standalone-official-tabs', 'vue', 'react']
 
     runs-on: ubuntu-latest
     needs: build
@@ -61,8 +61,8 @@ jobs:
           node-version: 16
           cache: npm
           cache-dependency-path: |
-            build/${{ matrix.framework }}-*/ionic.starter.json
-            build/${{ matrix.framework }}-*/package.json
+            build/${{ matrix.framework }}/ionic.starter.json
+            build/${{ matrix.framework }}/package.json
 
       - name: Test ${{ matrix.framework }}
         run: |
