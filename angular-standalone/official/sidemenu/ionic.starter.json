@@ -7,6 +7,6 @@
     "www"
   ],
   "scripts": {
-    "test": "test": "npm run lint && npm run build && npm run test -- --configuration=ci --browsers=ChromeHeadless"
+    "test": "npm run lint && npm run build && npm run test -- --configuration=ci --browsers=ChromeHeadless"
   }
 }
