@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { provideRouter } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 import { IonicModule } from '@ionic/angular';
 
 import { FolderPage } from './folder.page';
@@ -9,10 +9,11 @@ describe('FolderPage', () => {
   let fixture: ComponentFixture<FolderPage>;
 
   beforeEach(async () => {
-    await TestBed.configureTestingModule({
-      imports: [FolderPage, IonicModule],
-      providers: [provideRouter([])],
-    }).compileComponents();
+    TestBed.overrideComponent(FolderPage, {
+      add: {
+        imports: [RouterTestingModule]
+      }
+    });
 
     fixture = TestBed.createComponent(FolderPage);
     component = fixture.componentInstance;
