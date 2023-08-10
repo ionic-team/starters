@@ -1,5 +1,3 @@
-[![Build Status][circle-badge]][circle-badge-url]
-
 # Ionic Starter Templates
 
 :book: **Start an Ionic app**: See our [Getting
