@@ -7,6 +7,6 @@
     "www"
   ],
   "scripts": {
-    "test": "npm run build"
+    "test": "npm run build && npm run test -- --watchAll=false"
   }
 }
