@@ -37,12 +37,10 @@ jobs:
   test:
     strategy:
       matrix:
-        # We do not need to explicitly test vue-vite and react-vite
-        # because the test command finds apps that start with
-        # the framework string. As a result "vue" will map
-        # to both "vue" and "vue-vite" apps. Similarly,
-        # "react" will map to both "react" and "react-vite" apps.
-        framework: ['vue', 'react']
+        # We explicitly list each test app so they can
+        # be built in parallel rather than only specifying
+        # "vue" which would cause several projects to be built sequentially.
+        framework: ['vue-vite-official-blank', 'vue-vite-official-list', 'vue-vite-official-tabs', 'vue-vite-official-sidemenu', 'vue-official-blank', 'vue-official-list', 'vue-official-tabs', 'vue-official-sidemenu', 'react-vite-official-blank', 'react-vite-official-list', 'react-vite-official-tabs', 'react-vite-official-sidemenu', 'react-official-blank', 'react-official-list', 'react-official-tabs', 'react-official-sidemenu', 'angular-standalone-official-blank', 'angular-standalone-official-list', 'angular-standalone-official-tabs', 'angular-standalone-official-sidemenu', 'angular-official-blank', 'angular-official-list', 'angular-official-tabs', 'angular-official-sidemenu']
 
     runs-on: ubuntu-latest
     needs: build
@@ -61,15 +59,28 @@ jobs:
           node-version: 16
           cache: npm
           cache-dependency-path: |
-            build/${{ matrix.framework }}-*/ionic.starter.json
-            build/${{ matrix.framework }}-*/package.json
+            build/${{ matrix.framework }}/ionic.starter.json
+            build/${{ matrix.framework }}/package.json
 
       - name: Test ${{ matrix.framework }}
         run: |
           npm install
           rm -rf node_modules/@types
           npm run starters:test -- --type=${{ matrix.framework }}
-          
+        
+  # This step allows us to have a required
+  # status check for each matrix job without having
+  # to manually add each matrix run in the branch protection rules.
+  # Source: https://github.community/t/status-check-for-a-matrix-jobs/127354  
+  verify-test:
+    if: ${{ always() }}
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check build matrix status
+        if: ${{ needs.test.result != 'success' }}
+        run: exit 1
+
   test-legacy:
     strategy:
       matrix:
@@ -102,6 +113,19 @@ jobs:
           npm install
           rm -rf node_modules/@types
           npm run starters:test -- --type=${{ matrix.framework }}
+  
+  # This step allows us to have a required
+  # status check for each matrix job without having
+  # to manually add each matrix run in the branch protection rules.
+  # Source: https://github.community/t/status-check-for-a-matrix-jobs/127354  
+  verify-test-legacy:
+    if: ${{ always() }}
+    needs: test-legacy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check build matrix status
+        if: ${{ needs.test-legacy.result != 'success' }}
+        run: exit 1
 
   deploy:
     runs-on: ubuntu-latest
