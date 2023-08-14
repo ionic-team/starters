@@ -64,7 +64,6 @@ jobs:
 
       - name: Test ${{ matrix.framework }}
         run: |
-          exit 1
           npm install
           rm -rf node_modules/@types
           npm run starters:test -- --type=${{ matrix.framework }}
