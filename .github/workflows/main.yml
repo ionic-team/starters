@@ -37,11 +37,9 @@ jobs:
   test:
     strategy:
       matrix:
-        # We do not need to explicitly test vue-vite and react-vite
-        # because the test command finds apps that start with
-        # the framework string. As a result "vue" will map
-        # to both "vue" and "vue-vite" apps. Similarly,
-        # "react" will map to both "react" and "react-vite" apps.
+        # We explicitly list each test app so they can
+        # be built in parallel rather than only specifying
+        # "vue" which would cause several projects to be built sequentially.
         framework: ['vue-vite-official-blank', 'vue-vite-official-list', 'vue-vite-official-tabs', 'vue-vite-official-sidemenu', 'vue-official-blank', 'vue-official-list', 'vue-official-tabs', 'vue-official-sidemenu', 'react-vite-official-blank', 'react-vite-official-list', 'react-vite-official-tabs', 'react-vite-official-sidemenu', 'react-official-blank', 'react-official-list', 'react-official-tabs', 'react-official-sidemenu', 'angular-standalone-official-blank', 'angular-standalone-official-list', 'angular-standalone-official-tabs', 'angular-standalone-official-sidemenu', 'angular-official-blank', 'angular-official-list', 'angular-official-tabs', 'angular-official-sidemenu']
 
     runs-on: ubuntu-latest
