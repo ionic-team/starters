@@ -1,15 +1,20 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { IonicModule, Platform } from '@ionic/angular';
+import { Platform } from '@ionic/angular/common';
+import { IonHeader, IonToolbar, IonButtons, IonBackButton, IonContent, IonItem, IonIcon, IonLabel, IonNote } from '@ionic/angular/standalone';
+import { addIcons } from 'ionicons';
+import { personCircleOutline } from 'ionicons/icons';
 import { DataService, Message } from '../services/data.service';
+
+addIcons({ personCircleOutline });
 
 @Component({
   selector: 'app-view-message',
   templateUrl: './view-message.page.html',
   styleUrls: ['./view-message.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule],
+  imports: [CommonModule, IonHeader, IonToolbar, IonButtons, IonBackButton, IonContent, IonItem, IonIcon, IonLabel, IonNote],
 })
 export class ViewMessagePage implements OnInit {
   public message!: Message;
