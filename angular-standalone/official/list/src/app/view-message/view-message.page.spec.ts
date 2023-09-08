@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { IonicModule } from '@ionic/angular';
 import { provideRouter } from '@angular/router';
+import { IonHeader, IonToolbar, IonButtons, IonBackButton, IonContent, IonItem, IonIcon, IonLabel, IonNote } from '@ionic/angular/standalone';
 
 import { ViewMessagePage } from './view-message.page';
 
@@ -10,7 +10,7 @@ describe('ViewMessagePage', () => {
 
   beforeEach(async () => {
     TestBed.configureTestingModule({
-      imports: [ViewMessagePage, IonicModule],
+      imports: [IonHeader, IonToolbar, IonButtons, IonBackButton, IonContent, IonItem, IonIcon, IonLabel, IonNote, ViewMessagePage],
       providers: [provideRouter([])],
     }).compileComponents();
 
