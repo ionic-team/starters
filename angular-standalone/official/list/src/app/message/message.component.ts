@@ -4,10 +4,10 @@ import { RouterLink } from '@angular/router';
 import { Platform } from '@ionic/angular/common';
 import { IonItem, IonLabel, IonNote, IonIcon } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { chevronForwardOutline } from 'ionicons/icons';
+import { chevronForward } from 'ionicons/icons';
 import { Message } from '../services/data.service';
 
-addIcons({ chevronForwardOutline });
+addIcons({ chevronForward });
 
 @Component({
   selector: 'app-message',

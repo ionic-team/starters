@@ -1,6 +1,5 @@
 import { TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { IonApp, IonSplitPane, IonMenu, IonContent, IonList, IonListHeader, IonNote, IonMenuToggle, IonItem, IonIcon, IonLabel, IonRouterOutlet } from '@ionic/angular/standalone';
 
 import { AppComponent } from './app.component';
 
@@ -8,7 +7,7 @@ describe('AppComponent', () => {
   beforeEach(async () => {
     TestBed.overrideComponent(AppComponent, {
       add: {
-        imports: [RouterTestingModule, IonApp, IonSplitPane, IonMenu, IonContent, IonList, IonListHeader, IonNote, IonMenuToggle, IonItem, IonIcon, IonLabel, IonRouterOutlet]
+        imports: [RouterTestingModule]
       }
     });
   });

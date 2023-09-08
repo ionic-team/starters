@@ -4,10 +4,10 @@ import { ActivatedRoute } from '@angular/router';
 import { Platform } from '@ionic/angular/common';
 import { IonHeader, IonToolbar, IonButtons, IonBackButton, IonContent, IonItem, IonIcon, IonLabel, IonNote } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
-import { personCircleOutline } from 'ionicons/icons';
+import { personCircle } from 'ionicons/icons';
 import { DataService, Message } from '../services/data.service';
 
-addIcons({ personCircleOutline });
+addIcons({ personCircle });
 
 @Component({
   selector: 'app-view-message',

@@ -1,6 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { IonHeader, IonToolbar, IonButtons, IonMenuButton, IonTitle, IonContent } from '@ionic/angular/standalone';
 
 import { FolderPage } from './folder.page';
 
@@ -11,7 +10,7 @@ describe('FolderPage', () => {
   beforeEach(async () => {
     TestBed.overrideComponent(FolderPage, {
       add: {
-        imports: [RouterTestingModule, IonHeader, IonToolbar, IonButtons, IonMenuButton, IonTitle, IonContent]
+        imports: [RouterTestingModule]
       }
     });
 
