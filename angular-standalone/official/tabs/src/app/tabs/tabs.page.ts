@@ -3,8 +3,6 @@ import { IonTabs, IonTabBar, IonTabButton, IonIcon, IonLabel } from '@ionic/angu
 import { addIcons } from 'ionicons';
 import { triangle, ellipse, square } from 'ionicons/icons';
 
-addIcons({ triangle, ellipse, square });
-
 @Component({
   selector: 'app-tabs',
   templateUrl: 'tabs.page.html',
@@ -15,5 +13,7 @@ addIcons({ triangle, ellipse, square });
 export class TabsPage {
   public environmentInjector = inject(EnvironmentInjector);
 
-  constructor() {}
+  constructor() {
+    addIcons({ triangle, ellipse, square });
+  }
 }
