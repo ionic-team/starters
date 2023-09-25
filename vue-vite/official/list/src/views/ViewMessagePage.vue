@@ -72,10 +72,20 @@ ion-label {
 
 ion-item h2 {
   font-weight: 600;
+  
+  /**
+   * With larger font scales
+   * the date/time should wrap to the next
+   * line. However, there should be
+   * space between the name and the date/time
+   * if they can appear on the same line.
+   */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 ion-item .date {
-  float: right;
   align-items: center;
   display: flex;
 }
