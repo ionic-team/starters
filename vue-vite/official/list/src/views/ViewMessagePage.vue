@@ -94,10 +94,10 @@ ion-item ion-note {
 h1 {
   margin: 0;
   font-weight: bold;
-  font-size: 22px;
+  font-size: 1.4rem;
 }
 
 p {
-  line-height: 22px;
+  line-height: 1.4;
 }
 </style>
