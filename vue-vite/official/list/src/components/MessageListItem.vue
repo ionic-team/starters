@@ -75,7 +75,7 @@ const isIos = () => {
 }
 
 .list-item ion-note {
-  font-size: 15px;
+  font-size: 0.9375rem;
   margin-right: 8px;
   font-weight: normal;
 }
