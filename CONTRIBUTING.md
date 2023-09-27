@@ -82,6 +82,19 @@ npm run start
 > [!NOTE]
 > The browser will automatically open a tab and navigate to http://localhost:3000/ to preview the app.
 
+### React Vite
+
+Navigate into the starter's directory, install dependencies, then serve the app:
+
+```bash
+cd react-vite-official-list/
+npm i
+npm run dev
+```
+
+> [!NOTE]
+> The URL to preview the app defaults to http://localhost:5173/ unless that port is in use. The exact URL will be displayed after running the dev server.
+
 ### Vue
 
 Navigate into the starter's directory, install dependencies, then serve the app:
@@ -94,6 +107,19 @@ npm run serve
 
 > [!NOTE]
 > Navigate to http://localhost:8080/ in your browser to preview the app.
+
+### Vue Vite
+
+Navigate into the starter's directory, install dependencies, then serve the app:
+
+```bash
+cd vue-vite-official-list/
+npm i
+npm run dev
+```
+
+> [!NOTE]
+> The URL to preview the app defaults to http://localhost:5173/ unless that port is in use. The exact URL will be displayed after running the dev server.
 
 ## Testing
 
