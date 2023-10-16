@@ -11,9 +11,6 @@
 # production
 /build
 
-# production - vite
-/dist 
-
 # misc
 .DS_Store
 .env.local
