@@ -129,7 +129,7 @@ jobs:
 
   deploy:
     runs-on: ubuntu-latest
-    needs: test
+    needs: [verify-test, verify-test-legacy]
     permissions:
       contents: read
       id-token: write
