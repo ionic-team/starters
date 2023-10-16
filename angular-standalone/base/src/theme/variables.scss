@@ -234,3 +234,11 @@
     --ion-card-background: #1e1e1e;
   }
 }
+
+html {
+  /* 
+   * For more information on dynamic font scaling, visit the documentation:
+   * https://ionicframework.com/docs/layout/dynamic-font-scaling
+   */
+  --ion-dynamic-font: var(--ion-default-dynamic-font);
+}
