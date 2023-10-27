@@ -45,6 +45,17 @@ const isIos = () => {
 .list-item h2 {
   font-weight: 600;
   margin: 0;
+  
+  /**
+   * With larger font scales
+   * the date/time should wrap to the next
+   * line. However, there should be
+   * space between the name and the date/time
+   * if they can appear on the same line.
+   */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
 .list-item p {
@@ -55,7 +66,6 @@ const isIos = () => {
 }
 
 .list-item .date {
-  float: right;
   align-items: center;
   display: flex;
 }
@@ -65,7 +75,7 @@ const isIos = () => {
 }
 
 .list-item ion-note {
-  font-size: 15px;
+  font-size: 0.9375rem;
   margin-right: 8px;
   font-weight: normal;
 }
