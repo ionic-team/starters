@@ -1,5 +1,4 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { IonicModule } from '@ionic/angular';
 import { provideRouter } from '@angular/router';
 
 import { ViewMessagePage } from './view-message.page';
@@ -10,7 +9,7 @@ describe('ViewMessagePage', () => {
 
   beforeEach(async () => {
     TestBed.configureTestingModule({
-      imports: [ViewMessagePage, IonicModule],
+      imports: [ViewMessagePage],
       providers: [provideRouter([])],
     }).compileComponents();
 
