@@ -27,6 +27,7 @@
     "eslint": "^8.35.0",
     "eslint-plugin-vue": "^9.9.0",
     "jsdom": "^22.1.0",
+    "terser": "^5.4.0",
     "typescript": "^5.1.6",
     "vite": "^4.3.9",
     "vitest": "^0.32.2",
