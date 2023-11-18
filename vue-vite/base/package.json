@@ -15,22 +15,22 @@
     "@ionic/vue": "^7.0.0",
     "@ionic/vue-router": "^7.0.0",
     "ionicons": "^7.0.0",
-    "vue": "^3.2.45",
-    "vue-router": "^4.1.6"
+    "vue": "^3.3.0",
+    "vue-router": "^4.2.0"
   },
   "devDependencies": {
-    "@vitejs/plugin-legacy": "^4.0.2",
+    "@vitejs/plugin-legacy": "^5.0.0",
     "@vitejs/plugin-vue": "^4.0.0",
-    "@vue/eslint-config-typescript": "^11.0.2",
+    "@vue/eslint-config-typescript": "^12.0.0",
     "@vue/test-utils": "^2.3.0",
-    "cypress": "^12.7.0",
+    "cypress": "^13.5.0",
     "eslint": "^8.35.0",
     "eslint-plugin-vue": "^9.9.0",
     "jsdom": "^22.1.0",
     "terser": "^5.4.0",
     "typescript": "^5.1.6",
-    "vite": "^4.3.9",
-    "vitest": "^0.32.2",
+    "vite": "^5.0.0",
+    "vitest": "^0.34.6",
     "vue-tsc": "^1.0.24"
   }
 }
