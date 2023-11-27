@@ -9,7 +9,7 @@
     "preview": "vite preview",
     "test:e2e": "cypress run",
     "test:unit": "vitest",
-    "lint": "eslint"
+    "lint": "eslint ."
   },
   "dependencies": {
     "@ionic/vue": "^7.0.0",
