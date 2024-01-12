@@ -12,7 +12,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@ionic/vue": "^7.0.0",
+    "@ionic/vue": "7.6.2-dev.11704998705.1e1f9850",
     "@ionic/vue-router": "^7.0.0",
     "ionicons": "^7.0.0",
     "vue": "^3.3.0",

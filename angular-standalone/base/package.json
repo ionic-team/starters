@@ -21,7 +21,7 @@
     "@angular/platform-browser": "^17.0.2",
     "@angular/platform-browser-dynamic": "^17.0.2",
     "@angular/router": "^17.0.2",
-    "@ionic/angular": "^7.5.0",
+    "@ionic/angular": "7.6.2-dev.11704998705.1e1f9850",
     "ionicons": "^7.2.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
