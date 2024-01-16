@@ -1,8 +1,8 @@
-/* Ionic Variables and Theming. For more info, please see:
+/* For information on how to create your own theme, please see:
 http://ionicframework.com/docs/theming/ */
 
 html {
-  /* For more information on dynamic font scaling, visit the documentation: 
+  /* For more information on dynamic font scaling, visit the documentation:
   https://ionicframework.com/docs/layout/dynamic-font-scaling */
   --ion-dynamic-font: var(--ion-default-dynamic-font);
 }
