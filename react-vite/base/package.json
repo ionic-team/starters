@@ -12,8 +12,8 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@ionic/react": "^8.0.0-rc.1",
-    "@ionic/react-router": "^8.0.0-rc.1",
+    "@ionic/react": "^8.0.0",
+    "@ionic/react-router": "^8.0.0",
     "@types/react-router": "^5.1.20",
     "@types/react-router-dom": "^5.3.3",
     "ionicons": "^7.0.0",
