@@ -17,6 +17,8 @@
 .env.development.local
 .env.test.local
 .env.production.local
+/.nx
+/.nx/cache
 /.vscode/*
 !/.vscode/extensions.json
 .idea
