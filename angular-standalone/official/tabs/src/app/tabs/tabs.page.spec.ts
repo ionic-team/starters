@@ -1,5 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { RouterModule } from '@angular/router';
+import { provideRouter } from '@angular/router';
 
 import { TabsPage } from './tabs.page';
 
@@ -8,11 +8,10 @@ describe('TabsPage', () => {
   let fixture: ComponentFixture<TabsPage>;
 
   beforeEach(async () => {
-    TestBed.overrideComponent(TabsPage, {
-      add: {
-        imports: [RouterModule]
-      }
-    });
+    await TestBed.configureTestingModule({
+      imports: [TabsPage],
+      providers: [provideRouter([])]
+    }).compileComponents();
   });
 
   beforeEach(() => {
