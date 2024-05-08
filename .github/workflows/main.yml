@@ -29,7 +29,7 @@ jobs:
 
       - run: tar -cf build.tar build dist
 
-      - uses: actions/upload-artifact@v3
+      - uses: actions/upload-artifact@v4
         with:
           name: build
           path: build.tar
