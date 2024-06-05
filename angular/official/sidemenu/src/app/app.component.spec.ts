@@ -23,6 +23,7 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
+  // TODO(ROU-10799): Fix the flaky test.
   it.skip('should have menu labels', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
