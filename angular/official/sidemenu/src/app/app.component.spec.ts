@@ -24,7 +24,7 @@ describe('AppComponent', () => {
   });
 
   // TODO(ROU-10799): Fix the flaky test.
-  it.skip('should have menu labels', () => {
+  xit.skip('should have menu labels', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const app = fixture.nativeElement;
