@@ -13,6 +13,7 @@ import {
   IonPage,
   IonToolbar,
   useIonViewWillEnter,
+  isPlatform
 } from '@ionic/react';
 import { personCircle } from 'ionicons/icons';
 import { useParams } from 'react-router';
@@ -27,12 +28,17 @@ function ViewMessage() {
     setMessage(msg);
   });
 
+  const getBackButtonText = () => {
+    const isIos = isPlatform('ios')
+    return isIos ? 'Inbox' : '';
+  };
+
   return (
     <IonPage id="view-message-page">
       <IonHeader translucent>
         <IonToolbar>
           <IonButtons slot="start">
-            <IonBackButton text="Inbox" defaultHref="/home"></IonBackButton>
+            <IonBackButton text={getBackButtonText()} defaultHref="/home"></IonBackButton>
           </IonButtons>
         </IonToolbar>
       </IonHeader>
