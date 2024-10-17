@@ -1,3 +1,4 @@
+import React from 'react';
 import { useState } from 'react';
 import { Message, getMessage } from '../data/messages';
 import {
