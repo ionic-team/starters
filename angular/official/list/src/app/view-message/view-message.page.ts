@@ -8,6 +8,7 @@ import { DataService, Message } from '../services/data.service';
   selector: 'app-view-message',
   templateUrl: './view-message.page.html',
   styleUrls: ['./view-message.page.scss'],
+  standalone: false,
 })
 export class ViewMessagePage implements OnInit {
   public message!: Message;

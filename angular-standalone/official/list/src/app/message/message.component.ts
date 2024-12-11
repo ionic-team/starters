@@ -11,7 +11,6 @@ import { Message } from '../services/data.service';
   templateUrl: './message.component.html',
   styleUrls: ['./message.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
   imports: [CommonModule, RouterLink, IonItem, IonLabel, IonNote, IonIcon],
 })
 export class MessageComponent {
