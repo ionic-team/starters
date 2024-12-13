@@ -28,9 +28,9 @@
     "eslint-plugin-vue": "^9.9.0",
     "jsdom": "^22.1.0",
     "terser": "^5.4.0",
-    "typescript": "^5.1.6",
+    "typescript": "5.6.2",
     "vite": "~5.2.0",
     "vitest": "^0.34.6",
-    "vue-tsc": "^2.0.22"
+    "vue-tsc": "^2.1.10"
   }
 }
