@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { ChangeDetectionStrategy, Component, inject, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Platform, IonItem, IonLabel, IonNote, IonIcon } from '@ionic/angular/standalone';
@@ -11,8 +11,7 @@ import { Message } from '../services/data.service';
   templateUrl: './message.component.html',
   styleUrls: ['./message.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  standalone: true,
-  imports: [CommonModule, RouterLink, IonItem, IonLabel, IonNote, IonIcon],
+  imports: [RouterLink, IonItem, IonLabel, IonNote, IonIcon],
 })
 export class MessageComponent {
   private platform = inject(Platform);

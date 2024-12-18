@@ -6,6 +6,7 @@ import { Message } from '../services/data.service';
   selector: 'app-message',
   templateUrl: './message.component.html',
   styleUrls: ['./message.component.scss'],
+  standalone: false,
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MessageComponent {
