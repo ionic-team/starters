@@ -1,17 +1,19 @@
-ion-item {
+#message-list-item {
   --padding-start: 0;
   --inner-padding-end: 0;
 }
 
-ion-label {
+#message-list-item ion-label {
   margin-top: 12px;
   margin-bottom: 12px;
+
+  overflow: hidden;
 }
 
-ion-item h2 {
+#message-list-item ion-label h2 {
   font-weight: 600;
   margin: 0;
-  
+
   /**
    * With larger font scales
    * the date/time should wrap to the next
@@ -24,33 +26,31 @@ ion-item h2 {
   justify-content: space-between;
 }
 
-ion-item p {
-  text-overflow: ellipsis;
-  overflow: hidden;
+#message-list-item p {
   white-space: nowrap;
   width: 95%;
 }
 
-ion-item .date {
+#message-list-item .date {
   align-items: center;
   display: flex;
 }
 
-ion-item ion-icon {
+#message-list-item ion-icon {
   color: #c9c9ca;
 }
 
-ion-item ion-note {
+#message-list-item ion-note {
   font-size: 0.9375rem;
   margin-right: 8px;
   font-weight: normal;
 }
 
-ion-item ion-note.md {
+#message-list-item ion-note.md {
   margin-right: 14px;
 }
 
-.dot {
+#message-list-item .dot {
   display: block;
   height: 12px;
   width: 12px;
@@ -59,11 +59,6 @@ ion-item ion-note.md {
   margin: 16px 10px 16px 16px;
 }
 
-.dot-unread {
+#message-list-item .dot-unread {
   background: var(--ion-color-primary);
-}
-
-ion-footer ion-title {
-  font-size: 11px;
-  font-weight: normal;
 }
