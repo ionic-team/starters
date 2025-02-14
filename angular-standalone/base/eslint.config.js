@@ -13,6 +13,12 @@ module.exports = tseslint.config(
     ],
     processor: angular.processInlineTemplates,
     rules: {
+      "@angular-eslint/component-class-suffix": [
+        "error",
+        {
+          "suffixes": ["Page", "Component"]
+        }
+      ],
       "@angular-eslint/directive-selector": [
         "error",
         {
