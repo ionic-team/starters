@@ -8,7 +8,7 @@ support questions. The issues on GitHub should be reserved for bug reports and
 feature requests.
 
 :sparkling_heart: **Modify or add starter templates**: See
-[CONTRIBUTING.md](https://github.com/ionic-team/starters/blob/main/CONTRIBUTING.md).
+[CONTRIBUTING.md](./CONTRIBUTING.md).
 
 ### Starters
 
