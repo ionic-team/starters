@@ -1,6 +1,6 @@
 
 import { Component, inject } from '@angular/core';
-import { RefresherCustomEvent, IonHeader, IonToolbar, IonTitle, IonContent, IonRefresher, IonRefresherContent, IonList } from '@ionic/angular/standalone';
+import { IonHeader, IonToolbar, IonTitle, IonContent, IonRefresher, IonRefresherContent, IonList } from '@ionic/angular/standalone';
 import { MessageComponent } from '../message/message.component';
 
 import { DataService, Message } from '../services/data.service';
@@ -15,9 +15,9 @@ export class HomePage {
   private data = inject(DataService);
   constructor() {}
 
-  refresh(ev: any) {
+  refresh(ev: CustomEvent) {
     setTimeout(() => {
-      (ev as RefresherCustomEvent).detail.complete();
+      (ev.target as HTMLIonRefresherElement).complete();
     }, 3000);
   }
 
