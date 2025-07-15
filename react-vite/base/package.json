@@ -43,8 +43,5 @@
     "typescript-eslint": "^8.24.0",
     "vite": "^5.0.0",
     "vitest": "^0.34.6"
-  },
-  "overrides": {
-    "rollup": "4.44.0"
   }
 }
