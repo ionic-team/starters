@@ -172,15 +172,15 @@ var START_TAG_REGEXP =
 
 
 // Good source of info about elements and attributes
-// http://dev.w3.org/html5/spec/Overview.html#semantics
-// http://simon.html5.org/html-elements
+// https://dev.w3.org/html5/spec/Overview.html#semantics
+// https://simon.html5.org/html-elements
 
 // Safe Void Elements - HTML5
-// http://dev.w3.org/html5/spec/Overview.html#void-elements
+// https://dev.w3.org/html5/spec/Overview.html#void-elements
 var voidElements = makeMap("area,br,col,hr,img,wbr");
 
 // Elements that you can, intentionally, leave open (and which close themselves)
-// http://dev.w3.org/html5/spec/Overview.html#optional-tags
+// https://dev.w3.org/html5/spec/Overview.html#optional-tags
 var optionalEndTagBlockElements = makeMap("colgroup,dd,dt,li,p,tbody,td,tfoot,th,thead,tr"),
     optionalEndTagInlineElements = makeMap("rp,rt"),
     optionalEndTagElements = angular.extend({},
