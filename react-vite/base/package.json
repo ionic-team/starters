@@ -12,15 +12,13 @@
     "lint": "eslint"
   },
   "dependencies": {
-    "@ionic/react": "^8.5.0",
-    "@ionic/react-router": "^8.5.0",
-    "@types/react-router": "^5.1.20",
-    "@types/react-router-dom": "^5.3.3",
+    "@ionic/react": "8.8.11-dev.11781186446.19d9a1cc",
+    "@ionic/react-router": "8.8.11-dev.11781186446.19d9a1cc",
     "ionicons": "^7.4.0",
     "react": "19.0.0",
     "react-dom": "19.0.0",
-    "react-router": "^5.3.4",
-    "react-router-dom": "^5.3.4"
+    "react-router": "^6.30.0",
+    "react-router-dom": "^6.30.0"
   },
   "devDependencies": {
     "@testing-library/dom": ">=7.21.4",
