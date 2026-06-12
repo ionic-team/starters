@@ -2,6 +2,7 @@ import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 
 import { RouterModule } from '@angular/router';
+import { IonicModule } from '@ionic/angular';
 
 import { AppComponent } from './app.component';
 
@@ -13,7 +14,7 @@ describe('AppComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [AppComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      imports: [RouterModule.forRoot([])],
+      imports: [IonicModule.forRoot(), RouterModule.forRoot([])],
     }).compileComponents();
   });
 
@@ -24,14 +25,14 @@ describe('AppComponent', () => {
   });
 
   // TODO(ROU-10799): Fix the flaky test.
-  xit('should have menu labels', () => {
+  it.skip('should have menu labels', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const app = fixture.nativeElement;
     const menuItems = app.querySelectorAll('ion-label');
     expect(menuItems.length).toEqual(12);
-    expect(menuItems[0].textContent).toContain('Inbox');
-    expect(menuItems[1].textContent).toContain('Outbox');
+    expect(menuItems[0].innerHTML).toContain('Inbox');
+    expect(menuItems[1].innerHTML).toContain('Outbox');
   });
 
   it('should have urls', () => {

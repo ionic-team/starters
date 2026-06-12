@@ -1,12 +1,12 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-buttons slot="start">
-      <ion-back-button [text]="getBackButtonText()" defaultHref="/"></ion-back-button>
+      <ion-back-button [text]="backButtonText" defaultHref="/"></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-@if (message) {
+@if (message(); as message) {
   <ion-content [fullscreen]="true">
     <ion-item>
       <ion-icon aria-hidden="true" name="person-circle" color="primary"></ion-icon>
