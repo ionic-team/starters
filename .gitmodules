@@ -10,9 +10,6 @@
 [submodule "angular/community/oktadeveloper/jhipster"]
 	path = angular/community/oktadeveloper/jhipster
 	url = https://github.com/oktadeveloper/ionic-jhipster-starter.git
-[submodule "angular/community/ionic-team/enterprise-tabs"]
-	path = angular/community/ionic-team/enterprise-tabs
-	url = https://github.com/ionic-team/ionic-enterprise-starter.git
 [submodule "react/community/ionic-team/portals"]
 	path = react/community/ionic-team/portals
 	url = https://github.com/ionic-team/portals-starter-react

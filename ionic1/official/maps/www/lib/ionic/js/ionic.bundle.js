@@ -9702,7 +9702,7 @@ function JQLite(element) {
   if (isString(element)) {
     var div = document.createElement('div');
     // Read about the NoScope elements here:
-    // http://msdn.microsoft.com/en-us/library/ms533897(VS.85).aspx
+    // https://msdn.microsoft.com/en-us/library/ms533897(VS.85).aspx
     div.innerHTML = '<div>&#160;</div>' + element; // IE insanity to make NoScope elements work!
     div.removeChild(div.firstChild); // remove the superfluous div
     jqLiteAddNodes(this, div.childNodes);
@@ -10238,7 +10238,7 @@ forEach({
 
           // Refer to jQuery's implementation of mouseenter & mouseleave
           // Read about mouseenter and mouseleave:
-          // http://www.quirksmode.org/js/events_mouse.html#link8
+          // https://www.quirksmode.org/js/events_mouse.html#link8
           var eventmap = { mouseleave : "mouseout", mouseenter : "mouseover"};
 
           onFn(element, eventmap[type], function(event) {
@@ -11259,7 +11259,7 @@ function createInjector(modulesToLoad) {
         fn = fn[length];
       }
 
-      // http://jsperf.com/angularjs-invoke-apply-vs-switch
+      // https://jsperf.com/angularjs-invoke-apply-vs-switch
       // #5388
       return fn.apply(self, args);
     }
@@ -18016,7 +18016,7 @@ function getterFn(path, options, fullExp) {
       fn;
 
   // When we have only 1 or 2 tokens, use optimized special case closures.
-  // http://jsperf.com/angularjs-parse-getter/6
+  // https://jsperf.com/angularjs-parse-getter/6
   if (!options.unwrapPromises && pathKeysLength === 1) {
     fn = simpleGetterFn1(pathKeys[0], fullExp);
   } else if (!options.unwrapPromises && pathKeysLength === 2) {
@@ -19963,7 +19963,7 @@ var SCE_CONTEXTS = {
 // Helper functions follow.
 
 // Copied from:
-// http://docs.closure-library.googlecode.com/git/closure_goog_string_string.js.source.html#line962
+// https://docs.closure-library.googlecode.com/git/closure_goog_string_string.js.source.html#line962
 // Prereq: s is a string.
 function escapeForRegexp(s) {
   return s.replace(/([-()\[\]{}+?*.$\^|,:#<!\\])/g, '\\$1').
@@ -21084,7 +21084,7 @@ function $SnifferProvider() {
     return {
       // Android has history.pushState, but it does not update location correctly
       // so let's not use the history API at all.
-      // http://code.google.com/p/android/issues/detail?id=17471
+      // https://code.google.com/p/android/issues/detail?id=17471
       // https://github.com/angular/angular.js/issues/904
 
       // older webkit browser (533.9) on Boxee box has exactly the same problem as Android has
@@ -30023,15 +30023,15 @@ var START_TAG_REGEXP =
 
 
 // Good source of info about elements and attributes
-// http://dev.w3.org/html5/spec/Overview.html#semantics
-// http://simon.html5.org/html-elements
+// https://dev.w3.org/html5/spec/Overview.html#semantics
+// https://simon.html5.org/html-elements
 
 // Safe Void Elements - HTML5
-// http://dev.w3.org/html5/spec/Overview.html#void-elements
+// https://dev.w3.org/html5/spec/Overview.html#void-elements
 var voidElements = makeMap("area,br,col,hr,img,wbr");
 
 // Elements that you can, intentionally, leave open (and which close themselves)
-// http://dev.w3.org/html5/spec/Overview.html#optional-tags
+// https://dev.w3.org/html5/spec/Overview.html#optional-tags
 var optionalEndTagBlockElements = makeMap("colgroup,dd,dt,li,p,tbody,td,tfoot,th,thead,tr"),
     optionalEndTagInlineElements = makeMap("rp,rt"),
     optionalEndTagElements = angular.extend({},
