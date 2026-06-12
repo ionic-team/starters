@@ -17,9 +17,12 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it('should have menu labels', () => {
+  it('should have menu labels', async () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
+    // ion-label is a scoped Stencil component whose slot content is relocated
+    // asynchronously, so wait for hydration before reading textContent (ROU-10799).
+    await fixture.whenStable();
     const app = fixture.nativeElement;
     const menuItems = app.querySelectorAll('ion-label');
     expect(menuItems.length).toEqual(12);
