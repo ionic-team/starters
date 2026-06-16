@@ -56,7 +56,9 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 20
+          # Angular 22 starters require Node ^22.22.3 || ^24.15.0 || >=26.0.0.
+          # All other current/legacy starters in this matrix run on Node 22 too.
+          node-version: 22
           cache: npm
           cache-dependency-path: |
             build/${{ matrix.framework }}/ionic.starter.json
