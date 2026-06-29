@@ -49,8 +49,8 @@ describe('AppComponent', () => {
       .queryAll(By.directive(RouterLink))
       .map((el) => el.injector.get(RouterLink));
     expect(links.length).toEqual(6);
-    expect(router.serializeUrl(links[0].urlTree!)).toEqual('/folder/inbox');
-    expect(router.serializeUrl(links[1].urlTree!)).toEqual('/folder/outbox');
+    expect(router.serializeUrl(links[0].urlTree!)).toEqual('/folder/Inbox');
+    expect(router.serializeUrl(links[1].urlTree!)).toEqual('/folder/Outbox');
   });
 
 });
