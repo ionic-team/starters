@@ -1,4 +1,4 @@
-@if (message) {
+@if (message(); as message) {
   <ion-item
     [routerLink]="'/message/' + message.id"
     [detail]="false"
@@ -9,7 +9,7 @@
         {{ message.fromName }}
         <span class="date">
           <ion-note>{{ message.date }}</ion-note>
-          @if (isIos()) {
+          @if (isIos) {
             <ion-icon
               aria-hidden="true"
               name="chevron-forward"

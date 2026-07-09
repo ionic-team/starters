@@ -27,8 +27,8 @@ describe('AppComponent', () => {
     const app = fixture.nativeElement;
     const menuItems = app.querySelectorAll('ion-label');
     expect(menuItems.length).toEqual(12);
-    expect(menuItems[0].textContent).toContain('Inbox');
-    expect(menuItems[1].textContent).toContain('Outbox');
+    expect(menuItems[0].innerHTML).toContain('Inbox');
+    expect(menuItems[1].innerHTML).toContain('Outbox');
   });
 
   it('should have urls', () => {
@@ -44,7 +44,7 @@ describe('AppComponent', () => {
       .queryAll(By.directive(RouterLink))
       .map((el) => el.injector.get(RouterLink));
     expect(links.length).toEqual(6);
-    expect(router.serializeUrl(links[0].urlTree!)).toEqual('/folder/inbox');
-    expect(router.serializeUrl(links[1].urlTree!)).toEqual('/folder/outbox');
+    expect(router.serializeUrl(links[0].urlTree!)).toEqual('/folder/Inbox');
+    expect(router.serializeUrl(links[1].urlTree!)).toEqual('/folder/Outbox');
   });
 });

@@ -1,5 +1,4 @@
-
-import { ChangeDetectionStrategy, Component, inject, Input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Platform, IonItem, IonLabel, IonNote, IonIcon } from '@ionic/angular/standalone';
 import { addIcons } from 'ionicons';
@@ -15,10 +14,9 @@ import { Message } from '../services/data.service';
 })
 export class MessageComponent {
   private platform = inject(Platform);
-  @Input() message?: Message;
-  isIos() {
-    return this.platform.is('ios')
-  }
+  readonly message = input<Message>();
+  readonly isIos = this.platform.is('ios');
+
   constructor() {
     addIcons({ chevronForward });
   }
