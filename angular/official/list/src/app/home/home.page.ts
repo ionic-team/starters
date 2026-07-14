@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { RefresherCustomEvent } from '@ionic/angular';
+import { RefresherCustomEvent } from '@ionic/angular/lazy';
 
 import { DataService } from '../services/data.service';
 

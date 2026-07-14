@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { RefresherCustomEvent, IonHeader, IonToolbar, IonTitle, IonContent, IonRefresher, IonRefresherContent, IonList } from '@ionic/angular/standalone';
+import { RefresherCustomEvent, IonHeader, IonToolbar, IonTitle, IonContent, IonRefresher, IonRefresherContent, IonList } from '@ionic/angular';
 import { MessageComponent } from '../message/message.component';
 
 import { DataService } from '../services/data.service';
