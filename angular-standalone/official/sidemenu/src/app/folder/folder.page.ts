@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-import { IonHeader, IonToolbar, IonButtons, IonMenuButton, IonTitle, IonContent } from '@ionic/angular/standalone';
+import { IonHeader, IonToolbar, IonButtons, IonMenuButton, IonTitle, IonContent } from '@ionic/angular';
 
 @Component({
   selector: 'app-folder',

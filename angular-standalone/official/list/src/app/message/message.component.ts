@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { Platform, IonItem, IonLabel, IonNote, IonIcon } from '@ionic/angular/standalone';
+import { Platform, IonItem, IonLabel, IonNote, IonIcon } from '@ionic/angular';
 import { addIcons } from 'ionicons';
 import { chevronForward } from 'ionicons/icons';
 import { Message } from '../services/data.service';

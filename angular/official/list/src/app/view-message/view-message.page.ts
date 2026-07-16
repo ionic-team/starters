@@ -1,5 +1,5 @@
 import { Component, computed, inject, input } from '@angular/core';
-import { Platform } from '@ionic/angular';
+import { Platform } from '@ionic/angular/lazy';
 import { DataService } from '../services/data.service';
 
 @Component({
