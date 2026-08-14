@@ -12,9 +12,9 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "@ionic/vue": "8.8.11-dev.11781186446.19d9a1cc",
-    "@ionic/vue-router": "8.8.11-dev.11781186446.19d9a1cc",
-    "ionicons": "^7.0.0",
+    "@ionic/vue": "^9.0.0",
+    "@ionic/vue-router": "^9.0.0",
+    "ionicons": "^8.1.0",
     "vue": "^3.5.0",
     "vue-router": "^5.0.0"
   },
