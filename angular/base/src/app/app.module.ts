@@ -1,4 +1,4 @@
-import { NgModule, provideZonelessChangeDetection } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
@@ -10,7 +10,6 @@ import { AppComponent } from './app.component';
   declarations: [AppComponent],
   imports: [BrowserModule, IonicModule.forRoot()],
   providers: [
-    provideZonelessChangeDetection(),
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
   ],
   bootstrap: [AppComponent],
