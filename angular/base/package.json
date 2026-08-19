@@ -30,7 +30,7 @@
     "@angular/cli": "22.0.1",
     "@angular/compiler-cli": "22.0.1",
     "@angular/language-service": "22.0.1",
-    "@ionic/angular-toolkit": "^12.3.0",
+    "@ionic/angular-toolkit": "^13.0.0",
     "angular-eslint": "22.0.0",
     "eslint": "^9.16.0",
     "jsdom": "^26.0.0",
