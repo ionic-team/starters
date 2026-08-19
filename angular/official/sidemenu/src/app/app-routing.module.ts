@@ -4,18 +4,18 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'folder/inbox',
+    redirectTo: 'folder/Inbox',
     pathMatch: 'full'
   },
   {
-    path: 'folder/:id',
+    path: 'folder/:folder',
     loadChildren: () => import('./folder/folder.module').then( m => m.FolderPageModule)
   }
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules, bindToComponentInputs: true })
   ],
   exports: [RouterModule]
 })

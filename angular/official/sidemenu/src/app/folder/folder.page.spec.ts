@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterModule } from '@angular/router';
-import { IonicModule } from '@ionic/angular';
+import { IonicModule } from '@ionic/angular/lazy';
 
 import { FolderPage } from './folder.page';
 
@@ -16,6 +16,7 @@ describe('FolderPage', () => {
 
     fixture = TestBed.createComponent(FolderPage);
     component = fixture.componentInstance;
+    fixture.componentRef.setInput('folder', 'Inbox');
     fixture.detectChanges();
   });
 

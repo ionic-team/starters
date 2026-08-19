@@ -19,10 +19,10 @@ import './ViewMessage.css';
 
 function ViewMessage() {
   const [message, setMessage] = useState<Message>();
-  const params = useParams<{ id: string }>();
+  const { id = '' } = useParams<{ id: string }>();
 
   useIonViewWillEnter(() => {
-    const msg = getMessage(parseInt(params.id, 10));
+    const msg = getMessage(parseInt(id, 10));
     setMessage(msg);
   });
 

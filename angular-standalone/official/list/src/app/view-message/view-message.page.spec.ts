@@ -15,6 +15,7 @@ describe('ViewMessagePage', () => {
 
     fixture = TestBed.createComponent(ViewMessagePage);
     component = fixture.componentInstance;
+    fixture.componentRef.setInput('id', '0');
     fixture.detectChanges();
   });
 

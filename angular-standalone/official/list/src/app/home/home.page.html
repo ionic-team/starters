@@ -20,7 +20,7 @@
   </ion-header>
 
   <ion-list>
-    @for (message of getMessages(); track message) {
+    @for (message of messages; track message.id) {
       <app-message [message]="message"></app-message>
     }
   </ion-list>

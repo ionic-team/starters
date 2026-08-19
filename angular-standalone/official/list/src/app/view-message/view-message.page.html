@@ -2,14 +2,14 @@
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button
-        [text]="getBackButtonText()"
+        [text]="backButtonText"
         defaultHref="/"
       ></ion-back-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-@if (message) {
+@if (message(); as message) {
   <ion-content [fullscreen]="true">
     <ion-item>
       <ion-icon

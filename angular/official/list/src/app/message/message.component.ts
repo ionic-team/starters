@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, inject, Input } from '@angular/core';
-import { Platform } from '@ionic/angular';
+import { ChangeDetectionStrategy, Component, inject, input } from '@angular/core';
+import { Platform } from '@ionic/angular/lazy';
 import { Message } from '../services/data.service';
 
 @Component({
@@ -11,8 +11,6 @@ import { Message } from '../services/data.service';
 })
 export class MessageComponent {
   private platform = inject(Platform);
-  @Input() message?: Message;
-  isIos() {
-    return this.platform.is('ios')
-  }
+  readonly message = input<Message>();
+  readonly isIos = this.platform.is('ios');
 }

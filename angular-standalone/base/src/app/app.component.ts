@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonApp } from '@ionic/angular/standalone';
+import { IonApp } from '@ionic/angular';
 
 @Component({
   selector: 'app-root',

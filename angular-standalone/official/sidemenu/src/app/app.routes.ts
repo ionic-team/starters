@@ -3,11 +3,11 @@ import { Routes } from '@angular/router';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'folder/inbox',
+    redirectTo: 'folder/Inbox',
     pathMatch: 'full',
   },
   {
-    path: 'folder/:id',
+    path: 'folder/:folder',
     loadComponent: () =>
       import('./folder/folder.page').then((m) => m.FolderPage),
   },
