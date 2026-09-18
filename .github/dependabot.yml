@@ -1,0 +1,33 @@
+# The Angular bases exact-pin every @angular/* package because .npmrc sets
+# package-lock=false and Angular's peer deps are exact rather than ranges, so
+# @angular/common@22.1.7 only accepts @angular/core@22.1.7. Ungrouped,
+# Dependabot bumps one package at a time, the rest get left behind, and
+# npm install fails with ERESOLVE. These groups keep the family on one version.
+version: 2
+updates:
+  - package-ecosystem: npm
+    directories:
+      - /angular/base
+      - /angular-standalone/base
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: chore
+      include: scope
+    groups:
+      angular:
+        applies-to: version-updates
+        patterns:
+          - '@angular/*'
+      # Each alert has its own minimum patched version, so a grouped security PR
+      # can still come out mismatched and need a manual bump onto one version.
+      angular-security:
+        applies-to: security-updates
+        patterns:
+          - '@angular/*'
+    ignore:
+      # Angular majors should be deliberate migrations.
+      - dependency-name: '@angular/*'
+        update-types:
+          - version-update:semver-major
