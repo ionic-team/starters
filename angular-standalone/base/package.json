@@ -25,8 +25,8 @@
     "tslib": "^2.3.0"
   },
   "devDependencies": {
-    "@angular/build": "22.1.7",
-    "@angular/cli": "22.1.7",
+    "@angular/build": "22.1.8",
+    "@angular/cli": "22.1.8",
     "@angular/compiler-cli": "22.1.7",
     "@angular/language-service": "22.1.7",
     "@ionic/angular-toolkit": "^13.0.0",
