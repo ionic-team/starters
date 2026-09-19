@@ -1,0 +1,7 @@
+{
+  "name": "__NAME__",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
