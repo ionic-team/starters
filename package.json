@@ -1,0 +1,48 @@
+{
+  "name": "__NAME__",
+  "version": "0.0.1",
+  "author": "Ionic Framework",
+  "homepage": "https://ionicframework.com/",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "test": "ng test",
+    "lint": "ng lint"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/common": "22.1.7",
+    "@angular/compiler": "22.1.7",
+    "@angular/core": "22.1.7",
+    "@angular/forms": "22.1.7",
+    "@angular/platform-browser": "22.1.7",
+    "@angular/platform-browser-dynamic": "22.1.7",
+    "@angular/router": "22.1.7",
+    "@capacitor/app": "8.1.1",
+    "@capacitor/core": "8.5.2",
+    "@capacitor/haptics": "8.0.2",
+    "@capacitor/keyboard": "8.0.5",
+    "@capacitor/status-bar": "8.0.3",
+    "@ionic/angular": "^9.0.0",
+    "ionicons": "^8.1.0",
+    "rxjs": "~7.8.0",
+    "tslib": "^2.3.0"
+  },
+  "devDependencies": {
+    "@angular/build": "22.1.8",
+    "@angular/cli": "22.1.8",
+    "@angular/compiler-cli": "22.1.7",
+    "@angular/language-service": "22.1.7",
+    "@capacitor/cli": "8.5.2",
+    "@ionic/angular-toolkit": "^13.0.0",
+    "angular-eslint": "22.0.0",
+    "eslint": "^10.10.0",
+    "jsdom": "^30.1.0",
+    "typescript": "~6.0.0",
+    "typescript-eslint": "^8.61.0",
+    "vitest": "~4.0.18"
+  },
+  "description": "An Ionic project"
+}
