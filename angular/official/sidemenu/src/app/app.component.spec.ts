@@ -1,11 +1,10 @@
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 
-import { Router, RouterLink, RouterModule } from '@angular/router';
-import { IonicModule } from '@ionic/angular/lazy';
+import { Router, RouterLink } from '@angular/router';
 
 import { AppComponent } from './app.component';
+import { AppModule } from './app.module';
 
 describe('AppComponent', () => {
 
@@ -13,10 +12,15 @@ describe('AppComponent', () => {
   beforeEach(async () => {
 
     await TestBed.configureTestingModule({
-      declarations: [AppComponent],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      imports: [IonicModule.forRoot(), RouterModule.forRoot([])],
+      imports: [AppModule],
     }).compileComponents();
+  });
+
+  afterEach(async () => {
+    // ion-menu is lazy loaded and looks up its content element once it loads.
+    // Let it finish before TestBed tears down the DOM, otherwise it logs after
+    // the test environment has closed.
+    await document.querySelector('ion-menu')?.componentOnReady();
   });
 
   it('should create the app', () => {

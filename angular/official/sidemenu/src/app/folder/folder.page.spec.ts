@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterModule } from '@angular/router';
-import { IonicModule } from '@ionic/angular/lazy';
 
+import { FolderPageModule } from './folder.module';
 import { FolderPage } from './folder.page';
 
 describe('FolderPage', () => {
@@ -10,8 +10,7 @@ describe('FolderPage', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [FolderPage],
-      imports: [IonicModule.forRoot(), RouterModule.forRoot([])]
+      imports: [FolderPageModule, RouterModule.forRoot([])]
     }).compileComponents();
 
     fixture = TestBed.createComponent(FolderPage);
