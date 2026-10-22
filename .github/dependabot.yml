@@ -31,3 +31,9 @@ updates:
       - dependency-name: '@angular/*'
         update-types:
           - version-update:semver-major
+      # @angular/build and @angular/compiler-cli peer on a single TypeScript
+      # minor (>=6.0 <6.1), so a TypeScript major can't install until Angular
+      # ships support for it. Bump it alongside that Angular release instead.
+      - dependency-name: typescript
+        update-types:
+          - version-update:semver-major

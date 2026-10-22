@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { IonicModule } from '@ionic/angular/lazy';
+import { RouterModule } from '@angular/router';
 
+import { HomePageModule } from './home.module';
 import { HomePage } from './home.page';
 
 describe('HomePage', () => {
@@ -9,8 +10,7 @@ describe('HomePage', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [HomePage],
-      imports: [IonicModule.forRoot()]
+      imports: [HomePageModule, RouterModule.forRoot([])]
     }).compileComponents();
 
     fixture = TestBed.createComponent(HomePage);

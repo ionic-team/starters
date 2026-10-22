@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterModule } from '@angular/router';
-import { IonicModule } from '@ionic/angular/lazy';
 
 import { MessageComponent } from './message.component';
+import { MessageComponentModule } from './message.module';
 
 describe('MessageComponent', () => {
   let component: MessageComponent;
@@ -10,8 +10,7 @@ describe('MessageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [MessageComponent],
-      imports: [IonicModule.forRoot(), RouterModule.forRoot([])]
+      imports: [MessageComponentModule, RouterModule.forRoot([])]
     }).compileComponents();
 
     fixture = TestBed.createComponent(MessageComponent);
