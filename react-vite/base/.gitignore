@@ -29,3 +29,9 @@ yarn-error.log*
 
 # Optional eslint cache
 .eslintcache
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
