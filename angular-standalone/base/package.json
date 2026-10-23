@@ -8,8 +8,14 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test",
-    "lint": "ng lint"
+    "lint": "npm run eslint && npm run prettier -- --check",
+    "lint:fix": "npm run eslint -- --fix && npm run prettier -- --write",
+    "eslint": "ng lint --max-warnings 0",
+    "prettier": "prettier \"**/*.{ts,html}\"",
+    "test": "npm run test:unit && npm run test:e2e",
+    "test:unit": "ng test --no-watch",
+    "test:unit:watch": "ng test --watch",
+    "test:e2e": "playwright test"
   },
   "private": true,
   "dependencies": {
@@ -30,11 +36,16 @@
     "@angular/compiler-cli": "22.2.3",
     "@angular/language-service": "22.2.3",
     "@ionic/angular-toolkit": "^13.0.0",
+    "@ionic/eslint-config": "^0.5.0",
+    "@ionic/prettier-config": "^4.0.0",
+    "@playwright/test": "^1.64.1",
     "angular-eslint": "22.6.0",
     "eslint": "^10.10.0",
     "jsdom": "^30.1.1",
+    "prettier": "^3.9.10",
     "typescript": "~6.0.0",
     "typescript-eslint": "^8.61.0",
     "vitest": "~5.0.5"
-  }
+  },
+  "prettier": "@ionic/prettier-config"
 }
