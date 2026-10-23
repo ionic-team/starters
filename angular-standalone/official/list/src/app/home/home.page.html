@@ -1,8 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Inbox
-    </ion-title>
+    <ion-title> Inbox </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -13,15 +11,13 @@
 
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">
-        Inbox
-      </ion-title>
+      <ion-title size="large"> Inbox </ion-title>
     </ion-toolbar>
   </ion-header>
 
   <ion-list>
     @for (message of messages; track message.id) {
-      <app-message [message]="message"></app-message>
+    <app-message [message]="message"></app-message>
     }
   </ion-list>
 </ion-content>
