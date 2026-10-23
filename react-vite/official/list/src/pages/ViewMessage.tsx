@@ -1,5 +1,3 @@
-import { useState } from 'react';
-import { Message, getMessage } from '../data/messages';
 import {
   IonBackButton,
   IonButtons,
@@ -14,10 +12,14 @@ import {
   useIonViewWillEnter,
 } from '@ionic/react';
 import { personCircle } from 'ionicons/icons';
+import { useState } from 'react';
 import { useParams } from 'react-router';
+
+import { getMessage } from '../data/messages';
+import type { Message } from '../data/messages';
 import './ViewMessage.css';
 
-function ViewMessage() {
+function ViewMessage(): React.JSX.Element {
   const [message, setMessage] = useState<Message>();
   const { id = '' } = useParams<{ id: string }>();
 
@@ -57,13 +59,11 @@ function ViewMessage() {
             <div className="ion-padding">
               <h1>{message.subject}</h1>
               <p>
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum.
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et
+                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip
+                ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+                fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                deserunt mollit anim id est laborum.
               </p>
             </div>
           </>
