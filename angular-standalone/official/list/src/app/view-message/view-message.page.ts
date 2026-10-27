@@ -1,7 +1,19 @@
 import { Component, computed, inject, input } from '@angular/core';
-import { Platform, IonHeader, IonToolbar, IonButtons, IonBackButton, IonContent, IonItem, IonIcon, IonLabel, IonNote } from '@ionic/angular';
+import {
+  Platform,
+  IonHeader,
+  IonToolbar,
+  IonButtons,
+  IonBackButton,
+  IonContent,
+  IonItem,
+  IonIcon,
+  IonLabel,
+  IonNote,
+} from '@ionic/angular';
 import { addIcons } from 'ionicons';
 import { personCircle } from 'ionicons/icons';
+
 import { DataService } from '../services/data.service';
 
 @Component({
