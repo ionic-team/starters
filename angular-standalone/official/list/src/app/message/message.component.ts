@@ -3,7 +3,8 @@ import { RouterLink } from '@angular/router';
 import { Platform, IonItem, IonLabel, IonNote, IonIcon } from '@ionic/angular';
 import { addIcons } from 'ionicons';
 import { chevronForward } from 'ionicons/icons';
-import { Message } from '../services/data.service';
+
+import type { Message } from '../services/data.service';
 
 @Component({
   selector: 'app-message',
