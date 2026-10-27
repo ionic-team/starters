@@ -8,7 +8,7 @@ describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [AppComponent],
-      providers: [provideRouter([])]
+      providers: [provideRouter([])],
     }).compileComponents();
   });
 
@@ -40,9 +40,7 @@ describe('AppComponent', () => {
     // reading the DOM attribute is flaky (FW-6264). Assert the routerLink
     // binding directly, which resolves synchronously.
     const router = TestBed.inject(Router);
-    const links = fixture.debugElement
-      .queryAll(By.directive(RouterLink))
-      .map((el) => el.injector.get(RouterLink));
+    const links = fixture.debugElement.queryAll(By.directive(RouterLink)).map((el) => el.injector.get(RouterLink));
     expect(links.length).toEqual(6);
     expect(router.serializeUrl(links[0].urlTree!)).toEqual('/folder/Inbox');
     expect(router.serializeUrl(links[1].urlTree!)).toEqual('/folder/Outbox');
