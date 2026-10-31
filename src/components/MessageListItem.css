@@ -1,0 +1,64 @@
+#message-list-item {
+  --padding-start: 0;
+  --inner-padding-end: 0;
+}
+
+#message-list-item ion-label {
+  margin-top: 12px;
+  margin-bottom: 12px;
+
+  overflow: hidden;
+}
+
+#message-list-item ion-label h2 {
+  font-weight: 600;
+  margin: 0;
+
+  /**
+   * With larger font scales
+   * the date/time should wrap to the next
+   * line. However, there should be
+   * space between the name and the date/time
+   * if they can appear on the same line.
+   */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+#message-list-item p {
+  white-space: nowrap;
+  width: 95%;
+}
+
+#message-list-item .date {
+  align-items: center;
+  display: flex;
+}
+
+#message-list-item ion-icon {
+  color: #c9c9ca;
+}
+
+#message-list-item ion-note {
+  font-size: 0.9375rem;
+  margin-right: 8px;
+  font-weight: normal;
+}
+
+#message-list-item ion-note.md {
+  margin-right: 14px;
+}
+
+#message-list-item .dot {
+  display: block;
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  align-self: start;
+  margin: 16px 10px 16px 16px;
+}
+
+#message-list-item .dot-unread {
+  background: var(--ion-color-primary);
+}
