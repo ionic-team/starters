@@ -95,6 +95,8 @@ updates:
       prefix: chore
       include: scope
     groups:
-      actions:
+      # download-artifact can't read what an older upload-artifact major wrote.
+      artifacts:
         patterns:
-          - '*'
+          - actions/download-artifact
+          - actions/upload-artifact
