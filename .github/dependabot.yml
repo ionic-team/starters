@@ -1,39 +1,100 @@
-# The Angular bases exact-pin every @angular/* package because .npmrc sets
-# package-lock=false and Angular's peer deps are exact rather than ranges, so
-# @angular/common@22.1.7 only accepts @angular/core@22.1.7. Ungrouped,
-# Dependabot bumps one package at a time, the rest get left behind, and
-# npm install fails with ERESOLVE. These groups keep the family on one version.
+# react/, vue/ and the legacy starters are left out: their toolchains are
+# unmaintained, so update PRs there would fail.
+#
+# The 3-day cooldown skips releases that get pulled soon after publishing.
 version: 2
 updates:
+  # One entry for every current starter, so each group opens a single PR
+  # across all bases and the starters stay on the same versions.
   - package-ecosystem: npm
     directories:
       - /angular/base
       - /angular-standalone/base
+      - /react-vite/base
+      - /vue-vite/base
     schedule:
       interval: weekly
+    cooldown:
+      default-days: 3
+      exclude:
+        - '@ionic/*'
     open-pull-requests-limit: 5
     commit-message:
       prefix: chore
       include: scope
     groups:
+      # .npmrc disables lockfiles and Angular peers on exact versions, so the
+      # @angular/* family has to bump together or npm install fails with ERESOLVE.
       angular:
         applies-to: version-updates
         patterns:
           - '@angular/*'
-      # Each alert has its own minimum patched version, so a grouped security PR
-      # can still come out mismatched and need a manual bump onto one version.
+      # Alerts can have different patched versions, so this PR may still need
+      # a manual bump onto one version.
       angular-security:
         applies-to: security-updates
         patterns:
           - '@angular/*'
+      # Framework packages like @ionic/react and @ionic/react-router must match.
+      ionic:
+        applies-to: version-updates
+        patterns:
+          - '@ionic/*'
+      # @vitest/* peers on an exact Vitest version, and Vitest peers on Vite.
+      vite:
+        applies-to: version-updates
+        patterns:
+          - vite
+          - vitest
+          - '@vitest/*'
+          - '@vitejs/*'
+      types-node:
+        applies-to: version-updates
+        patterns:
+          - '@types/node'
+      minor-and-patch:
+        applies-to: version-updates
+        update-types:
+          - minor
+          - patch
     ignore:
-      # Angular majors should be deliberate migrations.
+      # Angular majors are deliberate migrations.
       - dependency-name: '@angular/*'
         update-types:
           - version-update:semver-major
-      # @angular/build and @angular/compiler-cli peer on a single TypeScript
-      # minor (>=6.0 <6.1), so a TypeScript major can't install until Angular
-      # ships support for it. Bump it alongside that Angular release instead.
+      # Angular peers on a single TypeScript minor, so bump it with Angular.
       - dependency-name: typescript
         update-types:
           - version-update:semver-major
+
+  # Repo tooling
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    cooldown:
+      default-days: 3
+    open-pull-requests-limit: 5
+    commit-message:
+      prefix: chore
+      include: scope
+    groups:
+      minor-and-patch:
+        applies-to: version-updates
+        update-types:
+          - minor
+          - patch
+
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    cooldown:
+      default-days: 3
+    commit-message:
+      prefix: chore
+      include: scope
+    groups:
+      actions:
+        patterns:
+          - '*'
