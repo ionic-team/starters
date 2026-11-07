@@ -1,0 +1,11 @@
+{
+  // Keeps VS Code from suggesting Ionic components off the entry points this app
+  // does not use. Patterns are matched against resolved .d.ts paths, not import
+  // specifiers, so they name @ionic/angular's actual type files. Never use a bare
+  // "@ionic/angular" here: it matches the whole package and blocks every Ionic
+  // auto-import, including @ionic/angular/lazy (ionic-team/starters#1873).
+  "typescript.preferences.autoImportFileExcludePatterns": [
+    "@ionic/angular/types/ionic-angular.d.ts",
+    "@ionic/angular/types/ionic-angular-common.d.ts"
+  ]
+}
