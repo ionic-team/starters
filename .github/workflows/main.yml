@@ -5,6 +5,13 @@ on:
     branches:
       - main
   pull_request:
+  # The starters ship without lockfiles, so an upstream release can break a
+  # fresh install with no change in this repo. The weekly run catches that
+  # without waiting for the next unrelated PR.
+  schedule:
+    # Run every Monday at 6:00 UTC
+    - cron: '00 06 * * 1'
+  workflow_dispatch:
 
 jobs:
   build:
@@ -135,7 +142,8 @@ jobs:
     permissions:
       contents: read
       id-token: write
-    if: ${{ github.ref == 'refs/heads/main' }}
+    # Scheduled and manual runs also have the main ref, so only a push deploys.
+    if: ${{ github.ref == 'refs/heads/main' && github.event_name == 'push' }}
 
     steps:
       - uses: actions/checkout@v4
