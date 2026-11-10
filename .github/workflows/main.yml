@@ -36,7 +36,7 @@ jobs:
 
       - run: tar -cf build.tar build dist
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: build
           path: build.tar
@@ -55,7 +55,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: build
 
@@ -101,7 +101,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
     
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: build
     
@@ -152,7 +152,7 @@ jobs:
         with:
           node-version: 20
 
-      - uses: actions/download-artifact@v4
+      - uses: actions/download-artifact@v8
         with:
           name: build
 
