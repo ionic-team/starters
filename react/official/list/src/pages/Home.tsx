@@ -42,7 +42,7 @@ const Home: React.FC = () => {
           <IonRefresherContent></IonRefresherContent>
         </IonRefresher>
 
-        <IonHeader scrollEffect="condense">
+        <IonHeader collapse="condense">
           <IonToolbar>
             <IonTitle size="large">
               Inbox
