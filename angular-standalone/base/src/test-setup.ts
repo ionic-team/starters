@@ -14,3 +14,9 @@ if (!window.matchMedia) {
       dispatchEvent: () => false,
     }) as MediaQueryList;
 }
+
+// Ionic runs its startup work (tap click, keyboard assist, focus-visible) in an
+// idle callback that lazy loads modules. jsdom has no requestIdleCallback, so the
+// fallback timeout fires after short specs tear down and Vitest fails the run on
+// the late import. Unit tests don't need that work, so skip it.
+window.requestIdleCallback = () => 0;
