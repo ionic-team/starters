@@ -18,8 +18,8 @@
     "test:e2e": "playwright test"
   },
   "dependencies": {
-    "@ionic/react": "^9.0.0",
-    "@ionic/react-router": "^9.0.0",
+    "@ionic/react": "9.0.12-dev.11794527713.1ebd1ea1",
+    "@ionic/react-router": "9.0.12-dev.11794527713.1ebd1ea1",
     "ionicons": "^8.1.0",
     "react": "19.0.0",
     "react-dom": "19.0.0",

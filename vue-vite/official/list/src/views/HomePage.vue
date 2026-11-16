@@ -11,7 +11,7 @@
         <ion-refresher-content></ion-refresher-content>
       </ion-refresher>
 
-      <ion-header collapse="condense">
+      <ion-header scroll-effect="condense">
         <ion-toolbar>
           <ion-title size="large">Inbox</ion-title>
         </ion-toolbar>

@@ -18,8 +18,8 @@
     "test:e2e": "playwright test"
   },
   "dependencies": {
-    "@ionic/vue": "^9.0.0",
-    "@ionic/vue-router": "^9.0.0",
+    "@ionic/vue": "9.0.12-dev.11794527713.1ebd1ea1",
+    "@ionic/vue-router": "9.0.12-dev.11794527713.1ebd1ea1",
     "ionicons": "^8.1.0",
     "vue": "^3.5.0",
     "vue-router": "^5.0.0"

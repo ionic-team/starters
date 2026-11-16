@@ -12,7 +12,7 @@ const Tab3: React.FC = () => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        <IonHeader collapse="condense">
+        <IonHeader scrollEffect="condense">
           <IonToolbar>
             <IonTitle size="large">Tab 3</IonTitle>
           </IonToolbar>
