@@ -167,3 +167,15 @@ jobs:
         run: |
           npm install
           npm run starters:deploy -- --tag latest
+
+  send-failure-messages:
+    needs: [verify-test, verify-test-legacy]
+    runs-on: ubuntu-latest
+    # Only the weekly run alerts, since nobody is watching it.
+    if: ${{ !cancelled() && github.event_name == 'schedule' && contains(needs.*.result, 'failure') }}
+    steps:
+      - name: Notify failure on Slack
+        run: |
+          curl -H "Content-Type:application/json" \
+          -d '{"title": "❌ ${{github.repository}}: Workflow ${{github.workflow}} #${{github.run_number}} failed", "url": "${{github.server_url}}/${{github.repository}}/actions/runs/${{github.run_id}}"}' \
+          ${{secrets.SLACK_NOTIFY_FAILURE_WEBHOOK}}
