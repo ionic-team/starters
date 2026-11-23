@@ -12,7 +12,8 @@
     "starters:find-redundant": "node ./bin/ionic-starters find-redundant",
     "starters:generate-checksum": "node ./bin/ionic-starters generate-checksum",
     "starters:test": "node ./bin/ionic-starters test",
-    "build": "npm run src:build && npm run starters:build"
+    "build": "npm run src:build && npm run starters:build",
+    "prepare": "husky || true"
   },
   "main": "./dist/index.js",
   "devDependencies": {
@@ -36,7 +37,7 @@
     "eslint-config-prettier": "^10.1.8",
     "eslint-plugin-import": "^2.26.0",
     "eslint-plugin-prettier": "^4.2.1",
-    "husky": "^3.1.0",
+    "husky": "^9.1.7",
     "lodash": "^4.17.21",
     "minimatch": "^5.1.0",
     "prettier": "^2.7.1",
@@ -44,11 +45,6 @@
     "tar": "^6.1.11",
     "typescript": "^4.7",
     "typescript-eslint-language-service": "^5.0.0"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm run src:lint"
-    }
   },
   "prettier": "@ionic/prettier-config",
   "eslintConfig": {
