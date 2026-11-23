@@ -3,7 +3,7 @@ import * as path from 'path';
 
 import * as lodash from 'lodash';
 import * as tar from 'tar';
-import * as minimatch from 'minimatch';
+import { minimatch } from 'minimatch';
 import * as S3 from 'aws-sdk/clients/s3';
 import * as CloudFront from 'aws-sdk/clients/cloudfront';
 
