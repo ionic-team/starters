@@ -41,7 +41,7 @@
     "@ionic/prettier-config": "^4.0.0",
     "@playwright/test": "^1.64.1",
     "@types/node": "^26.6.6",
-    "angular-eslint": "22.6.0",
+    "angular-eslint": "22.8.0",
     "eslint": "^10.10.0",
     "jsdom": "^31.0.0",
     "prettier": "^3.9.10",
